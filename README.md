@@ -1,2 +1,3 @@
 # dotOrg
-Public tracker of opensource.org issues
+
+Use this repository to file issues found on the website opensource.org.
