@@ -1,0 +1,89 @@
+// Function for stripping units from values
+// strip-unit(100px)
+@function strip-unit($num) {
+	@return $num / ($num * 0 + 1);
+}
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@function set-text-color( $background ) {
+  @if ( lightness( $background ) < 50) {
+    @return $Nwhite; // Darker backgorund, return light color
+  } @else {
+    @return 'inherit'; // Keep the same
+  }
+}
+
+
+// Horizontally center a block-level element
+// @include center-block()
+@mixin center-block() {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Box shadow with value declarations
+// @include drop-shadow(X-OFFSET, Y-OFFSET, BLUR, ALPHA, SPREAD, COLOR)
+@mixin drop-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $alpha: 0.1, $spread: 0, $color: #000000) {
+	-webkit-box-shadow: $x-axis $y-axis $blur $spread rgba($color, $alpha);
+	-moz-box-shadow: $x-axis $y-axis $blur $spread rgba($color, $alpha);
+	box-shadow: $x-axis $y-axis $blur $spread rgba($color, $alpha);
+}
+
+// Object contains floated children
+// @include clearfix()
+@mixin clearfix() {
+	*zoom: 1;
+	&:before,
+	&:after {
+		display: table;
+		content: "";
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+// Ellipsis at end of line, no wrap.
+// @include text-overflow()
+@mixin text-overflow() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// Image Replacement
+// @include hide-text()
+@mixin hide-text() {
+	text-shadow: none;
+	text-indent: 1000%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+// Mixin for creating animations using single or "all" property transitions
+// @include transition(PROPERTY DURATION DELAY(OPT) TIMING-FUNCTION)
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}
+
+// Mixin for creating animations using multiple property transitions
+// @include multi-transition("PROPERTY DURATION DELAY(OPT) TIMING-FUNCTION, PROPERTY DURATION DELAY(OPT) TIMING-FUNCTION")
+@mixin multi-transition($transition) {
+	-webkit-transition: #{$transition};
+	-moz-transition: #{$transition};
+	-ms-transition: #{$transition};
+	-o-transition: #{$transition};
+	transition: #{$transition};
+}

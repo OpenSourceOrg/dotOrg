@@ -1,0 +1,97 @@
+{
+	"name": "a8cteam51/open-source-initiative",
+	"type": "wordpress-project",
+  
+	"description": "THe Open Source Initiative project WordPress site.",
+	"homepage": "https://opensource.org",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+	  {
+		"name": "Contributors",
+		"homepage": "https://github.com/a8cteam51/open-source-initiative/graphs/contributors"
+	  }
+	],
+  
+	"repositories": [
+	  {
+		"type": "vcs",
+		"url": "https://github.com/a8cteam51/team51-configs"
+	  },
+	  {
+		"type": "composer",
+		"url": "https://wpackagist.org",
+		"only": [
+		  "wpackagist-plugin/*",
+		  "wpackagist-theme/*"
+		]
+	  }
+	],
+	"require": {
+	  "php": ">=7.4",
+	  "ext-json": "*"
+	},
+	"require-dev": {
+	  "a8cteam51/team51-configs": "dev-trunk",
+  
+	  "wp-cli/i18n-command": "^2.4",
+  
+	  "squizlabs/php_codesniffer": "3.*",
+	  "dealerdirect/phpcodesniffer-composer-installer": "*",
+	  "phpcompatibility/phpcompatibility-wp": "*",
+	  "wp-coding-standards/wpcs": "dev-develop",
+  
+	  "roave/security-advisories": "dev-latest"
+	},
+  
+	"scripts": {
+	  "format:php": [
+		"@format:php:theme",
+		"@format:php:plugins",
+		"@format:php:mu-plugins"
+	  ],
+	  "format:php:theme": "phpcbf --standard=./phpcs.xml --basepath=. ./themes/osi -v",
+	  "format:php:plugins": "phpcbf --standard=./phpcs.xml --basepath=. ./plugins -v",
+	  "format:php:mu-plugins": "phpcbf --standard=./phpcs.xml --basepath=. ./mu-plugins -v",
+  
+	  "lint:php": [
+		"@lint:php:theme",
+		"@lint:php:plugins",
+		"@lint:php:mu-plugins"
+	  ],
+	  "lint:php:theme": "phpcs --standard=./phpcs.xml --basepath=. ./themes/osi -v",
+	  "lint:php:plugins": "phpcs --standard=./phpcs.xml --basepath=. ./plugins -v",
+	  "lint:php:mu-plugins": "phpcs --standard=./phpcs.xml --basepath=. ./mu-plugins -v",
+  
+	  "internationalize": [
+		"@makepot:theme",
+		"@updatepo:theme"
+	  ],
+  
+	  "makepot:theme": "wp i18n make-pot themes/osi",
+	  "updatepo:theme": "wp i18n update-po themes/osi/languages/osi.pot",
+	  "makemo:theme": "wp i18n make-mo themes/osi/languages",
+  
+	  "packages-install": "@composer install --ignore-platform-reqs --no-interaction",
+	  "packages-update": [
+		"@composer clear-cache",
+		"@composer update --prefer-stable --no-interaction"
+	  ]
+	},
+	"config": {
+	  "allow-plugins": {
+		"composer/*": true,
+		"dealerdirect/phpcodesniffer-composer-installer": true
+	  }
+	},
+  
+	"extra": {
+	  "installer-paths": {
+		"plugins/{$name}/": [
+		  "type:wordpress-plugin"
+		],
+		"themes/{$name}/": [
+		  "type:wordpress-theme"
+		]
+	  }
+	}
+  }

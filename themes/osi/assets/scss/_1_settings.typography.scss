@@ -1,0 +1,89 @@
+// Root
+$columnMargin: .5em;
+$gutter: 1em;
+$textFontSize: var(--wp--preset--font-size--normal);
+
+// Typography
+$baseFont: var(--wp--custom--typography--body--font-family), sans-serif;
+$baseFontSize: 100%;
+$baselineHeight: var(--wp--custom--typography--body--line-height);
+$baseLetterSpace: var(--wp--custom--typography--body--letter-space);
+$baseMargin: var(--wp--custom--typography--body--margin);
+$baseWeight: var(--wp--custom--typography--body--font-weight);
+$baseWeightBold: var(--wp--custom--typography--body--font-weight-bold);
+
+$headingFont: var(--wp--custom--typography--heading--font-family), sans-serif;
+$headingLineHeight: var(--wp--custom--typography--heading--line-height);
+$headingLetterSpace: var(--wp--custom--typography--heading--letter-space);
+$headingMargin: var(--wp--custom--typography--heading--margin);
+$headingWeight: var(--wp--custom--typography--heading--font-weight);
+$headingWeightBold: var(--wp--custom--typography--heading--font-weight-bold);
+
+$subheadingFont: var(--wp--custom--typography--subheading--font-family), $baseFont;
+$subheadingLineHeight: var(--wp--custom--typography--subheading--line-height);
+$subheadingLetterSpace: var(--wp--custom--typography--subheading--letter-space);
+$subheadingWeight: var(--wp--custom--typography--body--font-weight);
+$subheadingWeightBold: var(--wp--custom--typography--body--font-weight-bold);
+
+$iconFont: 'Font Awesome 5 Pro', 'FontAwesome';
+$iconFontWeight: 900; // solid
+
+$h1Color: $headingColor;
+$h1Size: var(--wp--preset--font-size--x-large);
+$h1FontWeight: $headingWeight;
+
+$h2Color: $headingColor;
+$h2Size: var(--wp--preset--font-size--large);
+$h2FontWeight: $headingWeight;
+
+$h3Color: $subheadingColor;
+$h3Size: var(--wp--preset--font-size--medium);
+$h3FontWeight: $subheadingWeight;
+
+$h4Color: $subheadingColor;
+$h4Size: var(--wp--preset--font-size--small);
+$h4FontWeight: $subheadingWeight;
+
+$h5Color: $textColor;
+$h5Size: var(--wp--preset--font-size--small);
+$h5FontWeight: $baseWeightBold;
+
+$h6Color: $textColor;
+$h6Size: var(--wp--preset--font-size--small);
+$h6FontWeight: $baseWeightBold;
+
+$headingTextShadow: none;
+$codeFont: monospace;
+
+$metaColor: $textColor;
+$metaSize: .875em;
+$metaFontWeight: 300;
+
+// Links
+$linkColor: $interactColor;
+$linkHover: $interactColor_Dk;
+$linkVisited: $interactColor;
+$linkFocus: $interactColor_Dk;
+
+// Blockquotes
+$blockquoteMarginBottom: .875rem;
+$blockquotePadding: .5em;
+$blockquotePaddingLeft: $blockquotePadding;
+$blockquoteBorderWidth: 4px;
+$blockquoteBorderStyle: solid;
+$blockquoteBorderColor: $Nlight;
+$blockquoteColor: $textColor;
+$blockquoteFontFamily: $headingFont;
+$blockquoteFontSize: var(--wp--preset--font-size--medium);
+$blockquoteFontStyle: italic;
+$blockquoteFontWeight: $headingWeight;
+$blockquotelineHeight: var(--wp--custom--quote--typography--line-height);
+
+// Code/Pre blocks
+$codeMargin: 1em 0;
+$codePadding: .5em 1em;
+$codeBackground: #{'rgba('+$Ndark_RGB+', 0.1)'};
+$codeBorder: 0;
+$codeFontFamily: $codeFont;
+$codeFontSize: 1em;
+$codeColor: $textColor;

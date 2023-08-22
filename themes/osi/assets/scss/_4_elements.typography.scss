@@ -1,0 +1,382 @@
+p {
+    line-height: $baselineHeight;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+}
+
+/* Links */
+
+a {
+    color: $linkColor;
+    cursor: pointer;
+    font-weight: inherit;
+    text-decoration: underline;
+    transition: all .3s;
+
+    &:hover {
+        color: $linkHover;
+        outline: 0;
+        text-decoration: none;
+    }
+
+    &:focus {
+        border-width: 0;
+        outline: $outline;
+    }
+
+    &:active {
+      border-width: 0;
+      color: $linkFocus;
+    }
+
+    img {
+        border: 0;
+        outline: 0;
+    }
+
+    &.button:hover {
+        color:$buttonColor;
+    }
+}
+
+/* Headings */
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    margin: 0;
+    padding: 0;
+    text-shadow: $headingTextShadow;
+
+    * {
+        line-height: $headingLineHeight;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover, &:focus {
+        text-decoration: underline;
+      }
+    }
+}
+
+h1,
+.h1 {
+    color: $h1Color;
+    font-family: $headingFont;
+    font-size: $h1Size;
+    font-weight: $h1FontWeight;
+    letter-spacing: $headingLetterSpace;
+    line-height: $headingLineHeight;
+    margin-bottom: $headingMargin !important;
+
+    a {
+        //font-weight: inherit;
+    }
+}
+
+h2,
+.h2 {
+    color: $h2Color;
+    font-family: $headingFont;
+    font-size: $h2Size;
+    font-weight: $h2FontWeight;
+    letter-spacing: $headingLetterSpace;
+    line-height: $headingLineHeight;
+    margin-bottom: $headingMargin !important;
+
+    a {
+        //font-weight: inherit;
+    }
+}
+
+h3,
+.h3 {
+    color: $h3Color;
+    font-family: $subheadingFont;
+    font-size: $h3Size;
+    font-weight: $h3FontWeight;
+    letter-spacing: $subheadingLetterSpace;
+    line-height: $subheadingLineHeight;
+    margin-bottom: $headingMargin !important;
+
+    a {
+        //font-weight: inherit;
+    }
+}
+
+h4,
+.h4 {
+    color: $h4Color;
+    font-family: $subheadingFont;
+    font-size: $h4Size;
+    font-weight: $h4FontWeight;
+    letter-spacing: $subheadingLetterSpace;
+    line-height: $subheadingLineHeight;
+    margin-bottom: $headingMargin !important;
+
+    a {
+        //font-weight: inherit;
+    }
+}
+
+h5,
+.h5 {
+    color: $h5Color;
+    font-family: $baseFont;
+    font-size: $h5Size;
+    font-weight: $h5FontWeight;
+    letter-spacing: $subheadingLetterSpace;
+    line-height: $subheadingLineHeight;
+    margin-bottom: $headingMargin !important;
+
+    a {
+        //font-weight: inherit;
+    }
+}
+
+h6,
+.h6 {
+    color: $h6Color;
+    font-family: $baseFont;
+    font-size: $h6Size;
+    font-weight: $h6FontWeight;
+    letter-spacing: $subheadingLetterSpace;
+    line-height: $subheadingLineHeight;
+    margin-bottom: $headingMargin !important;
+    text-transform: uppercase;
+
+    a {
+        //font-weight: inherit;
+    }
+}
+
+/* Lists */
+
+ol,
+ul,
+dl {
+    line-height: 1.1em;
+    margin-bottom: $baselineHeight;
+}
+
+p,
+address {
+    margin-bottom: $baseMargin;
+}
+
+small {
+    font-size: .875em;
+}
+
+ul,
+ol {
+    //font-family: $baseFont;
+    font-size: inherit;
+    //letter-spacing: $baseLetterSpace;
+    margin-left: 1em;
+    padding: 0 0 0 $gutter;
+
+    ul,
+    ol {
+        margin-bottom: 0;
+    }
+}
+
+    li {
+        font-weight: $baseWeight;
+        line-height: $baselineHeight;
+        margin: .3em 0 .5em;
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: .2em;
+        }
+
+        span {
+            //vertical-align: text-top;
+        }
+    }
+
+blockquote {
+    border: 0;
+    border-left: $blockquoteBorderWidth $blockquoteBorderStyle $blockquoteBorderColor;
+    font-family: $blockquoteFontFamily;
+    font-style: $blockquoteFontStyle;
+    font-weight: $blockquoteFontWeight;
+    line-height: $blockquotelineHeight;
+    margin: 1em 0 #{$blockquoteMarginBottom} 0;
+    padding-left: $blockquotePaddingLeft;
+    font-size: $blockquoteFontSize;
+
+    & > * {
+        font-family: $blockquoteFontFamily;
+        font-style: $blockquoteFontStyle;
+        font-size: $blockquoteFontSize;
+        font-weight: $blockquoteFontWeight;
+        line-height: 1.4rem;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+
+    cite {
+        font-size: 1rem;
+        font-style: normal;
+    }
+}
+
+q {
+    font-style: italic;
+    font-weight: inherit;
+}
+
+cite {
+    font-weight: inherit;
+}
+
+dl,
+dd {
+    margin-bottom: $baselineHeight / 2;
+}
+
+dt {
+    font-weight: $baseWeightBold;
+    margin-bottom:$baselineHeight/4;
+}
+
+b,
+strong {
+    font-weight: $baseWeightBold;
+
+    a {
+        font-weight: $baseWeightBold;
+    }
+}
+
+i,
+dfn,
+em {
+    font-style: italic;
+    font-weight:inherit;
+
+	a {
+		font-style: italic;
+	}
+}
+
+u {
+    text-decoration: underline;
+}
+
+ins {
+    background-color: $Nlightest;
+    color: $alertColor;
+    text-decoration: none;
+}
+
+mark {
+    background-color: $Nlightest;
+    color: $alertColor;
+    font-style: italic;
+    font-weight: $baseWeightBold;
+}
+
+del, strike {
+    font-weight: inherit;
+}
+
+pre,
+code,
+kbd,
+samp,
+var,
+tt {
+    background-color: $codeBackground;
+    border: $codeBorder;
+    color: $codeColor;
+    font-family: $codeFontFamily;
+    font-size: $codeFontSize;
+    line-height: $baselineHeight;
+    padding: $codePadding;
+}
+
+code, kbd, var, tt {
+    display: inline-block;
+}
+
+pre, samp {
+    display: block;
+    margin: $codeMargin;
+
+}
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+sub,
+sup {
+    font-size: .75rem;
+    line-height: 0;
+    position: relative;
+    vertical-align: middle;
+}
+
+sup {
+    top: -.5em;
+}
+
+sub {
+    bottom: -.25em;
+}
+
+hr {
+    background-color: $Ndark;
+    border: 0;
+    display: block;
+    height: 1px;
+    margin: 1em 0;
+    padding: 0;
+}
+
+abbr, acronym {
+    font-weight: inherit;
+}
+
+address {
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+span {
+
+}
+
+nav {
+    ul {
+        line-height: 1;
+        list-style: none;
+    }
+}
+
+/* SELECTION */
+::-moz-selection {
+    background-color: #{'rgba('+$brandColor1_RGB+', .2)'};
+    color: inherit;
+    text-shadow: none;
+}
+
+::selection {
+    background-color: #{'rgba('+$brandColor1_RGB+', .2)'};
+    color: inherit;
+    text-shadow: none;
+}

@@ -1,0 +1,84 @@
+.wp-block-osi-sponsors-list {
+	border-top: 2px solid #414042;
+}
+
+.osi-sponsors-list {
+	
+	text-align: center;
+
+	.osi-sponsor-logo {
+		margin-bottom: 1.5rem;
+		img {
+			max-height: 130px;
+		}
+	}
+
+	@media (min-width: 425px) {
+		display: grid;
+		gap: 24px;
+
+		// 5 col is reduced to 3 based on the 425px breakpoint, and so on
+		&.five-columns {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		&.four-columns {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		&.three-columns,
+		&.two-columns,
+		&.one-column {
+			grid-template-columns: 1fr;
+		}
+
+		.osi-sponsor-logo {
+			align-self: center;
+			margin-bottom: 0;
+			img {
+				max-height: none;
+			}
+		}
+	}
+
+	@media (min-width: 525px) {
+		// 5 col is reduced to 4 based on the 525px breakpoint, and so on
+		&.five-columns {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+
+		&.four-columns {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		&.three-columns {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		&.two-columns,
+		&.one-column {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (min-width: 768px) {
+		&.five-columns {
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		}
+
+		&.four-columns {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+
+		&.three-columns {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		&.two-columns {
+			grid-template-columns: 1fr 1fr;
+		}
+		&.one-column {
+			grid-template-columns: 1fr;
+		}
+	}
+}

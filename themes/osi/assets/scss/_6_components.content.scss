@@ -1,0 +1,213 @@
+.content {
+	.social-icons {
+		float: none;
+	}
+}
+
+article.archive {
+	margin-bottom: 2em;
+}
+
+p, h1, h2, h3, h4, h5, h6, blockquote, ol, ul, dl, address {
+	.post--content > &, .wp-block-group & {
+		max-width: $contentMax;
+	}
+
+	.footer & {
+		max-width: none !important;
+	}
+}
+
+.cover--header {
+	margin-bottom: $maxPadding;
+
+	&.no-thumbnail .wp-block-cover {
+		min-height: 180px;
+	}
+	.wp-block-cover {
+		padding-top: $midPadding;
+		padding-bottom: $midPadding;
+	}
+	.wp-block-columns {
+		margin-bottom: 0;
+	}
+}
+
+	.single-post .cover--header {
+		&.no-thumbnail {
+			min-height: 430px;
+		}
+	}
+
+.pill-taxonomy {
+	ul {
+		list-style: none;
+		margin: .25em 0 1.5em 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+			font-size: var(--wp--preset--font-size--small);
+			margin-right: 10px;
+			margin-bottom: 20px;
+			margin-top: 6px;
+
+			.term-item {
+				border: 2px solid $brandColor2;
+				border-radius: 30px;
+				color: $Ndarkest;
+				cursor: pointer;
+				font-weight: 300;
+				letter-spacing: 1px;
+				padding: .65em 1.5em;
+				text-decoration: none;
+				text-transform: uppercase;
+				white-space: pre; // don't wrap these weird at tiny screen sizes
+				transition: all .3s;
+
+				&:hover, &:focus, &.active {
+					background-color: $brandColor2;
+					color: $Ndark;
+					font-weight: $baseWeightBold;
+					letter-spacing: .7px;
+					transition: all .3s;
+
+				}
+
+			}
+
+			input[type="checkbox"]{
+				display: inline-block !important;
+				-webkit-appearance: none;
+				appearance: none;
+
+				&:checked {
+					&:after {
+						content: 'X';
+						display: inline-block;
+						font-weight: $baseWeightBold;
+						margin-left: 10px;
+						margin-right: -10px;
+					}
+				}
+			}
+		}
+	}
+
+	.wp-block-cover & {
+		a {
+			color: inherit;
+		}
+	}
+
+	.license-categories & {
+		display: block;
+		margin-bottom: 1em;
+		ul {
+			margin-bottom: 0;
+		}
+	}
+
+	.cover--header & {
+		.term-item {
+			color: $Nwhite;
+		}
+	}
+}
+
+
+.inline-list {
+	.post--metadata-group {
+		display: inline-block;
+	}
+	ul {
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+	}
+
+	li {
+		display: inline-block;
+		list-style: none;
+
+		&:before {
+			content: ",";
+			display: inline-block;
+			margin-right: 5px;
+		}
+
+		&:first-of-type {
+			&:before {
+				display: none;
+			}
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+
+			&:hover, &:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.toggleable-section {
+	border-top: 1px solid $Ndark;
+	padding: $smallPadding 0;
+}
+
+.toggle-header {
+	h2 {
+		font-size: $textFontSize;
+		font-weight: $baseWeightBold;
+		text-transform: uppercase;
+
+		&:after {
+			content: '⌃';
+			display: inline-block;
+			margin-left: 10px;
+			transition: all 0.3s;
+		}
+
+		&:hover, &:focus {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
+	&.open{
+		h2:after {
+			transform: rotateZ(180deg) translateY(4px);
+		}
+	}
+}
+
+.toggle-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.3s;
+	&.open {
+		max-height: 1000px;
+		transition: all 0.8s;
+	}
+}
+
+#search-prompt {
+	font-weight: $baseWeightBold;
+
+	a {
+		display: inline-block;
+		font-weight: $baseWeight;
+		margin-left: 10px;
+	}
+
+	span {
+
+		font-style: italic;
+	}
+}
+
+.post--content {
+	margin-bottom: 20px;
+}

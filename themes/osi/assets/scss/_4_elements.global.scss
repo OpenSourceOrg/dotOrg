@@ -1,0 +1,59 @@
+/* BODY */
+@-webkit-viewport {
+    width: device-width;
+}
+
+@-moz-viewport {
+    width: device-width;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
+
+html {
+    background: $Nwhite;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    background: $bodyColor;
+    color: $textColor;
+    font-weight: $baseWeight;
+    font-family: $baseFont;
+    font-size: $baseFontSize;
+    height: 100%;
+    letter-spacing: $baseLetterSpace;
+    line-height: $baselineHeight;
+    text-rendering: optimizeLegibility;
+    width: 100%;
+
+    &:not(.hfeed):before { // fixes a widget bug
+        content: '';
+        background-color: $Nlightest;
+        position: absolute;
+        width: 100%;
+        min-width: 100vw;
+        height: 100vh;
+        min-height: 000px;
+        top: 0;
+        left: 0;
+        right: 0;
+        clip-path: polygon(15% 0, 47% 40vw, 130% 0);
+        mask-repeat: no-repeat;
+        pointer-events: none;
+    }
+}

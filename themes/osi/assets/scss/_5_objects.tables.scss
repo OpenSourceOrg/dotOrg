@@ -1,0 +1,56 @@
+.table-striped {
+    tbody tr:nth-child(odd) td,
+    tbody tr:nth-child(odd) th {
+        background-color: $tableStripe;
+    }
+}
+
+.table-sortable {
+
+    .table-sortable--toggle {
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        color: $Nwhite;
+        height: auto;
+        margin: -10px; // makes up for header padding;
+        overflow: visible;
+        padding: 10px 0 10px 10px;
+        text-align: left;
+        
+
+        &:hover, &:focus {
+            background-color: $tableHover;
+            color: $Nwhite;
+            text-decoration: underline;
+        }
+
+        &:after {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.61 11.91"><defs><style>.cls-1{fill:%233Ea638;}</style></defs><polygon class="cls-1" points="0 5.35 3.8 0 7.61 5.35 0 5.35"/><polygon class="cls-1" points="7.61 6.56 3.8 11.91 0 6.56 7.61 6.56"/></svg>');
+            color: $Nwhite;
+            display: inline-block;
+            height: 14px;
+            width: 8px;
+            margin-left: 10px;
+            overflow: hidden;
+        }
+    }
+
+    th[aria-sort="ascending"] {
+        .table-sortable--toggle {
+            &:after {
+                height: 7px;
+                transform: rotateZ(180deg);
+            }
+        }
+    }
+    th[aria-sort="descending"] {
+        .table-sortable--toggle {
+            &:after {
+                height: 7px;
+                margin-bottom: 3px;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,27 @@
+{
+  "name": "osi",
+  "description": "An Automattic Project",
+  "version": "1.0.0",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "watch:css": "chokidar \"assets/**/*.scss\" -c \"npm run build:css\" --initial",
+    "build:css": "run-s \"css:*\"",
+    "css:style": "sass assets/scss/style.scss style.css",
+    "css:admin-style": "sass assets/scss/admin-style.scss assets/css/admin-style.css",
+    "css:editor-style": "sass assets/scss/editor-style.scss assets/css/editor-style.css",
+    "watch:js": "wp-scripts start assets/js/src/theme/theme.js assets/js/src/vendorjs/vendor.js --output-path=assets/js/build",
+    "build:js": "wp-scripts build assets/js/src/theme/theme.js assets/js/src/vendorjs/vendor.js --output-path=assets/js/build"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^26.3.0",
+    "chokidar-cli": "^3.0.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.62.1"
+  }
+}

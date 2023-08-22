@@ -1,0 +1,252 @@
+/* Block Editor Styling
+
+/* set to match max width of site minus padding */
+.wp-block {
+  margin-left: auto;
+  margin-right: auto;
+}
+& > .wp-block {
+  // max-width: calc( #{$boxedMax} - ( 2 * #{$maxPadding}) );
+  max-width: calc( #{$contentMax} - ( 2 * #{$maxPadding}) ); // for narrow widths
+}
+p.wp-block {
+    font-size: 16px;
+}
+
+.wp-block-spacer {
+  margin: 0 auto !important;
+}
+
+/* Width of "wide" blocks */
+.wp-block[data-align="wide"], .alignwide {
+    max-width: $boxedMax; // for a boxed width background with no sidebar
+}
+
+/* Width of "full-wide" blocks */
+.wp-block[data-align="full"], .alignfull {
+    max-width: none;
+}
+
+/* "alignright" and "alignleft" blocks should not float unless theme says so */
+.wp-block[data-align="right"], .wp-block[data-align="left"] {
+  height: auto;
+  & > * {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  & > .block-editor-block-list__block {
+    //float: none;
+  }
+  .wp-block-cover {
+    max-width: 50%;
+  }
+}
+
+/* Center align block */
+.wp-block[data-align="center"] {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// styles within the visual editor (includes the popup boxes)
+.block-editor-block-list__layout {
+	font-family: $baseFont !important;
+}
+
+span { // to hide text but keep accessible
+  &.editor-block-mover__description, &.block-editor-block-mover__description, &.block-editor-block-mover-button__description {
+    // display: none;
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+  }
+}
+
+// Editor Layout
+// Edit post title to distinguish from other gutenberg content
+.edit-post-visual-editor__post-title-wrapper {
+  box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+  border-bottom: 1px solid $Nlightest;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  width: calc( 100% + 20px);
+  z-index:2;
+
+  .editor-post-title {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+.edit-post-visual-editor {
+  padding-top: 0;
+}
+
+// if cover block is first, remove the top margin
+.is-root-container {
+  & > .wp-block:first-of-type {
+    .wp-block-cover {
+      margin-top: 0;
+    }
+  }
+}
+
+// Typography
+	.block-editor-post-title__block .block-editor-post-title__input, .editor-post-title__block .editor-post-title__input, .wp-block-cover h2 {
+		font-family: $headingFont !important;
+    font-weight: $h1FontWeight !important;
+	}
+
+	p {
+		font-family: $baseFont !important;
+	}
+	h1, h2, h3, .h1, .h2, .h3 {
+		font-family: $headingFont !important;
+	   margin-bottom: var(--wp--custom--typography--heading--margin);
+	   margin-top: var(--wp--custom--typography--heading--margin);
+	}
+
+	h4, h5, h6, .h4, .h5, .h6 {
+		font-family: $subheadingFont !important;
+	   margin-bottom: var(--wp--custom--typography--heading--margin);
+	   margin-top: var(--wp--custom--typography--heading--margin);
+	}
+
+	dd, blockquote {
+		margin-left:0;
+	}
+
+	p.wp-block-subhead {
+	    font-family: $subheadingFont !important;
+	    font-size: 1.3em;
+	    font-style: normal;
+	}
+
+  //Custom Blocks
+  .is-style-cover-image-overlay {
+    &:not(.alignright):not(.aligncenter) {
+      margin-left: 0;
+    }
+    &.alignright {
+      margin-right: 0;
+    }
+
+    @media only screen and (min-width: $boxedMax) {
+      width: 60%;
+      &:not(.alignright):not(.aligncenter) {
+        margin-left: calc(-1 *(88vw - #{$boxedMax} ) / 2);
+      }
+      &.alignright{
+        margin-right: calc(-1 *(88vw - #{$boxedMax} ) / 2);
+      }
+    }
+}
+
+.is-style-background-round {
+
+  img {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+  }
+
+  .components-resizable-box__container {
+      position: absolute !important;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+  }
+  
+}
+
+.has-metaboxes & {
+  .is-style-cover-image-overlay {
+    @media only screen and (min-width: $boxedMax) {
+      &:not(.alignright):not(.aligncenter) {
+        margin-left: calc(-1 *(81vw - #{$boxedMax} ) / 2);
+      }
+      &.alignright {
+        margin-right: calc(-1 *(81vw - #{$boxedMax} ) / 2);
+      }
+    }
+  }
+}
+
+.wp-block-query {
+  ul {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* panel overrides just for editor-styles */
+
+// Tabs Visibility
+.osi-tabs--wrapper {
+  .osi-tabs--content.current {
+    display: none;
+
+    &#tab-1 {
+      display: inherit;
+    }
+  }
+  button.osi-tabs--title.current {
+    background-color: transparent;
+    color: $linkColor;
+
+    &#tab-title-1 {
+      background-color: $tableHeaderBorderColor;
+      color: $Nwhite;
+    }
+  }
+}
+
+// Slides Visibility
+ul.slides {
+  list-style: none;
+  margin-left: auto;
+  padding: 0;
+  li {
+    display: none;
+    &:first-of-type {
+      display: block;
+    }
+  }
+}
+
+// TinyMCE Overrides to emulate post content (classic)
+#tinymce {
+	p {
+		font-family: $baseFont;
+	}
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+       margin-bottom: var(--wp--custom--typography--heading--margin);
+       margin-top: var(--wp--custom--typography--heading--margin);
+    }
+
+    dd, blockquote {
+    	margin-left:0;
+    }
+}
+
+// Resets to not break the menu
+#adminmenu {
+	ul {
+		margin: inherit;
+	}
+
+	span {
+		vertical-align: inherit;
+	}
+}
+
+// Any specific classes available here for the styles box
+// https://codex.wordpress.org/TinyMCE_Custom_Styles

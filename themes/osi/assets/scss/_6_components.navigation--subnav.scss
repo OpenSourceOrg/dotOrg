@@ -1,0 +1,288 @@
+.menu-item.menu-item-has-children a {
+  padding-right: 30px;
+}
+
+.menu-toggle {
+    background: transparent;
+    border: 0;
+    display:inline-block;
+    height: 85%;
+    padding: 0;
+    position: absolute;
+    right: 5px;
+    top: 2px;
+    vertical-align: middle;
+    width: 1em;
+
+    &:hover, &:focus, &:active {
+      background: transparent;
+
+      &:after {
+        transition: all .3s;
+      }
+    }
+
+    &:after {
+      content: "⌃";
+      color: $Ndarkest;
+      font-size: 1em;
+      font-weight: 300;
+      padding: 0;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      transition: all .3s;
+      transform:rotateZ(180deg) translateY(3px);
+    }
+}
+
+.menu-toggle-active {
+    &:after {
+      transform:rotateZ(0) translateY(3px);
+    }
+}
+
+@media only screen and (max-width: #{$break-nav - 1}) {
+  .nav-mobile--menu {
+    .menu-item a {
+      font-size: 20px;
+      padding-right: 30px;
+    }
+  }  
+  
+  .nav-main--menu, .nav-mobile--menu {
+
+      * {
+        &:focus {
+          outline-color: $Nwhite;
+        }
+      }
+
+      .menu-item {
+        position: relative;
+      }
+
+      .menu-item-has-children {
+        a {
+          position: relative;
+        }
+      }
+
+      .menu-toggle {
+        color: $Nwhite;
+        height: 100%;
+        padding: 0;
+        position: absolute;
+        right: -5px;
+        top: 0;
+        width: 2em;
+        
+        &:hover, &:focus, &:active {
+          transition: all .3s;
+
+          &:after {
+              color: $Nwhite;
+          }
+        }
+
+        &:after {
+          color: inherit;
+          font-size: 1.2em;
+          padding: .3em 0;
+        }
+      }
+
+      ul.sub-menu {
+        margin-left: 0;
+        margin-bottom: 20px;
+
+        .menu-item a {
+          font-size: 15px;
+
+          &:hover, &:focus, &.tab-active {
+            letter-spacing: -.15px;
+          }
+        }
+
+        ul.sub-menu {
+          .menu-item a { // tertiary
+            font-size: 13px;
+          }
+        }
+
+          &.menu-collapse {
+          border: 0;
+          height: 0;
+          overflow: hidden;
+          margin: 0;
+        }
+
+        .menu-toggle {
+          &:after {
+            font-size: 1em;
+          }
+        }
+      }
+    }
+
+    
+
+}
+
+@media only screen and (min-width: #{$break-nav}) {
+    .nav-main--menu, .nav-main--menu * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu-item.menu-item-has-children a {
+
+      &:hover, &:focus {
+        .menu-toggle {
+          &:after {
+            
+          }
+        }
+      }
+    }
+
+  .nav-main--menu {
+
+    li { // all menu LI items
+      position: relative;
+
+      &:last-child {
+        ul {
+          left: auto;
+          right: 0;
+        }
+      }
+
+    a {
+      display: block;
+      position: relative;
+      @include text-overflow();
+    }
+  }
+
+  & > li:hover, & > li:focus, li.tab-active {
+    & >a .menu-toggle:after {
+      transform:rotateZ(0) translateY(3px);
+    }
+    &>ul {
+      display: block;
+      max-height: 800px; // change based on your menu height
+      //min-width: 10em; // if you're not using text overflow
+      transition: padding .1s, max-height .1s;
+      padding-top: 15px;
+      padding-bottom: 15px
+    }
+  }
+      
+    ul.sub-menu { // secondary menu
+        background-color: $Nwhite;
+        box-shadow: 0 0 10px rgba(#{$Ndarkest_RGB}, 0.2);
+        border: 0;
+        display: block;
+        height: auto;
+        left: 0;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 15px 0 5px;
+        position: absolute;
+        text-align: left;
+        top: 100%;
+        transition: padding .1s, max-height .1s;
+        width: 260px; // if you want a fixed width menu with text wrap
+        z-index: 99;
+
+        &:hover {
+          overflow: inherit;
+        }
+
+        li { // secondary and tertiary list menus
+          padding: 0em;
+          width: 100%;
+
+          & > a {
+            line-height: 1.3;
+            padding: .6rem 1rem;
+            text-transform: none;
+            width: 100%;
+            white-space: normal; // if you want a fixed width menu with text wrap
+
+            &:hover, &:focus, &:active {
+              color: $linkColor;
+            }
+          }
+        }
+
+        ul { // tertiary menu
+          box-shadow: none;
+          position: relative;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 0;
+          padding-bottom: 0;
+          left: -5px;
+          
+          li {
+            a {
+              font-size: 14px;
+              padding-right: 0;
+              padding-top: 5px;
+              padding-bottom: 5px;
+            }
+          }
+        }
+      }
+
+    .menu-item.megamenu {
+      position:inherit;
+      & > ul.sub-menu {
+        display: inline-block;
+        margin-left: -130px;
+        max-width: calc( #{$boxedMax} - 2 * #{$maxPadding} );
+        top: 95%;
+        width: 90vw;
+        & > li { // first level drop menu items
+          min-width: 200px;
+          max-width: 300px;
+          margin-bottom: .5em;
+          vertical-align: top;
+          width: 19%;
+
+          & > a {
+            background-color: transparent !important;
+            font-weight: $baseWeightBold;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            pointer-events: none;
+            text-decoration: none !important;
+            text-transform: uppercase;
+
+            .menu-toggle {
+              display: none;
+            }
+          }
+
+          a {
+            white-space: normal;
+          }
+
+          & > ul {
+            background-color: transparent;
+            display: block;
+            height: auto;
+            max-height:none;
+          }
+
+          ul {
+            left: auto;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+}

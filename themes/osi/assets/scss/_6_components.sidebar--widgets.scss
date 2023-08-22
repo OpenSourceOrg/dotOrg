@@ -1,0 +1,19 @@
+.widget {
+    margin-bottom: 1.5em;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .social-icons {
+    	float: none;
+    }
+
+    h3 {
+      margin-bottom: .8em;
+    }
+
+    ul {
+      margin-left: 0;
+    }
+}

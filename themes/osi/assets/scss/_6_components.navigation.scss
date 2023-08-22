@@ -1,0 +1,291 @@
+nav {
+	a {
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+// General Menu Items
+.menu-item {
+		padding: 0;
+		margin-bottom: 0;
+		transition: all .3s;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+
+		a,
+		a:visited {
+			color: $Ndarkest;
+			display: block;
+			padding: .5em 0;
+			transition: all .3s;
+
+			&:hover, &:focus {
+				color: $linkColor;
+				transition: all .3s;
+				letter-spacing: -.25px;
+				font-weight: 600;
+				text-decoration: underline;
+			}
+		}
+
+}
+
+// Quicklinks Menu
+.nav-quicklinks {
+	display: inline-block;
+	width: auto;
+	position: relative;
+	z-index: 999;
+
+	& > div { // menu container
+		display: inline-block;
+	}
+
+	.menu-item {
+		a, a:visited {
+			color: $Nlightest;
+			font-weight: $baseWeight;
+			padding: .5em;
+
+			&:hover {
+				color: $Nwhite;
+			}
+		}
+
+		&.current-menu-item > a, &.current-menu-parent > a {
+			color: $Nwhite;
+		}
+}
+
+	li:first-child {
+		a {
+			padding-left: 0;
+		}
+	}
+
+	.sub-menu, .menu-toggle {
+		display: none;
+	}
+}
+	.nav-quicklinks--menu {
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+			margin: 0;
+		}
+	}
+
+// Main Nav
+.nav-main {
+	margin-left: auto;
+	padding: 2.1rem 0;
+	transition: all 0.8s ease;
+	// position: absolute;
+	// right: 100%;
+	// top: 0;
+	// // @include transition(all .8s);
+	// width: 80%;
+
+	.header-main-small & {
+		padding: 0;
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	a, a:visited {
+    color: $Ndarkest;
+    font-size: 1rem;
+
+      &:hover, &:focus {
+        color: $linkColor;
+      }
+  	}
+	.tab-active {
+		& > a {
+			font-weight: $baseWeightBold;
+			letter-spacing: -.25px;
+		}
+	}
+}
+
+.nav-main--menu {
+	margin: 0;
+}
+
+// Main Menu Mobile
+.nav-mobile--menu {
+	padding: 1em;
+	margin-top: 1em;
+	text-align: right;
+}
+
+
+
+
+// Footer Menu
+footer {
+	// no nested menus in footer
+	ul.sub-menu, .menu-toggle {
+		display: none;
+	}
+
+	.widget_nav_menu {
+		h2 {
+			font-size: $h3Size;
+		}
+		.menu {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+
+			a {
+				font-weight: normal;
+				text-decoration: none;
+				&:hover, &:focus {
+					font-weight: bold;
+					text-decoration: underline;
+				}
+			}
+			
+		}
+	}
+	
+}
+
+@media only screen and (max-width: #{$break-nav}) {
+	.nav-main {
+		margin-top: $quicklinksTop; // quicklinks header height
+		max-height: 0;
+		overflow: hidden;
+    	position: absolute;
+		right: 0;
+		top: 0;
+    	transition: all .3s;
+		width: 100%;
+
+		.menu-item {
+			a,
+			a:visited {
+				color: $Nwhite;
+
+				&:hover, &:focus {
+					color: $Nwhite;
+				}
+			}
+		}
+
+		.open-the-menu & {
+			background-color: $Ndark;
+		}
+	}
+
+	.nav-main--menu {
+		height: 0 !important;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	.nav-quicklinks {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: #{$break-small}) {
+
+}
+
+@media only screen and (min-width: #{$break-nav}) {
+	// quicklinks menu
+	.nav-quicklinks > div { // menu container
+			padding: 0;
+	}
+
+	.nav-mobile--menu {
+			display: none;
+	}
+
+	.menu-item {
+		&.current-menu-item > a, &.current-menu-parent > a, &.current-menu-ancestor > a {
+			text-decoration: underline;
+			font-weight: $baseWeightBold;
+			letter-spacing: -.25px;
+		}
+	}
+
+	// main menu
+	.nav-main {
+		// float: right;
+		// clear: right;
+		// height: auto;
+		// left: auto;
+		// padding: 0;
+		// position: relative;
+		// right: auto;
+		// top: auto;
+		// width: auto;
+		// margin-top: 1em;
+
+		& > div { // menu container
+			height:100%;
+		}
+
+		div + div {
+			display: none;
+		}
+	}
+		.nav-main--menu {
+			height:100%;
+			padding: 0;
+			text-align: right;
+
+			.menu-item {
+				display: inline-block;
+				height: 100%;
+				line-height: 0;
+
+				& > a {
+					height: 100%;
+					display: inline-block;
+					padding: .5em;
+				}
+
+				.menu-item {
+					&.current-menu-item > a, &.current-menu-parent > a, &.current-menu-ancestor > a {
+						text-decoration: underline;
+					}
+				}
+
+				&:hover, &:focus, .tab-active {
+					& > a {
+						font-weight: $baseWeightBold;
+						letter-spacing: -.25px;
+					}
+				}
+			}
+		}
+
+	// footer menu
+	.footer--menu {
+		margin-top: 0;
+
+		.menu-item:first-child {
+				a {
+					padding-left: 0;
+				}
+		}
+	}
+}
+
+@media only screen and (min-width: #{$break-wide}) {
+
+}

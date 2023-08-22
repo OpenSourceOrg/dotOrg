@@ -1,0 +1,56 @@
+.osi-event-list {
+
+	.entry-content &__title {
+		text-align: center;
+		font-size: 20px;
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		margin-bottom: 57px !important;
+	}
+
+	&__content {
+		display: grid;
+		grid-template-columns: repeat( auto-fit, minmax( 300px, 1fr ) );
+		gap: clamp( 10px, 7vw, 100px );
+	}
+
+	.entry-title {
+		margin-block: 0 5px !important;
+		font-size: 28px;
+
+		a {
+			color: var( --wp--preset--color--neutral-dark );
+		}
+	}
+
+	.sc_event_location,
+	.sc_event_date {
+		font-size: 18px;
+		margin-bottom: 24px;
+	}
+
+	.sc_event_location {
+		color: var( --wp--preset--color--neutral-dark );
+	}
+
+	.sc_event_date {
+		font-style: italic;
+	}
+
+	.read-more {
+		display: block;
+		margin-top: 55px;
+		color: var( --wp--preset--color--brand-links );
+		text-decoration: underline;
+
+		&:after {
+			content: none;
+		}
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+}

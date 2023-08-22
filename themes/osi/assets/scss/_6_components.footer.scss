@@ -1,0 +1,121 @@
+.footer {
+	border-top: 1px solid $Ndarkest;
+	bottom: 0;
+	font-size: var(--wp--preset--font-size--small);
+	margin-top: 8em;
+	padding-top: 1em;
+	position: relative;
+	width: 100%;
+
+	p, h1, h2, h3 {
+		margin: 0 0 .5em 0;
+	}
+
+	a {
+		color: $Ndarkest;
+		font-weight: bold;
+	}
+}
+	.footer-main, .footer-credits {
+		padding: $smallPadding 0;
+	}
+
+	.footer-credits {
+		background-color: $Ndark;
+		color: $Nlightest;
+
+		a {
+			color: $Nlightest;
+		}
+	}
+	.footer-cta {
+		background-color: $Nwhite;
+		border: 1px solid $Ndarkest;
+		padding: 1em;
+		transform: translateY(-60%);
+		margin-bottom: -5em;
+
+		.wp-block-columns {
+			margin: 0;
+			align-items: center !important;
+		}
+
+		.wp-block-column {
+			margin: 0;
+		}
+
+		.wp-block-group.wp-block-column {
+			nav + p {
+				display: none
+			}
+		}
+	}
+
+	.footer--inner {
+			@include clearfix();
+			padding: 0 $midPadding;
+			margin-left: auto;
+			margin-right: auto;
+	}
+
+	.footer-logo {
+		max-height: 4em;
+		max-width: 9em;
+		width: auto;
+		margin-bottom: 1em;
+		transform: translateZ(0); // chrome blurry fix
+	 }
+
+	.footer--contact {
+		margin-bottom: .75em;
+		margin-left: -.4em;
+	}
+
+	.standard-footer.wp-block-columns {
+		margin: 0;
+	}
+
+	.widgetized-footer.footer--widgets {
+		margin-top: 1em;
+	}
+
+
+
+@media only screen and (min-width: #{$break-small}) {
+
+	.footer--inner {
+		max-width: $contentMax;
+	}
+
+	.footer--extra-text {
+		margin: 0 2em !important;
+	}
+
+	.footer-cta {
+		.wp-block-column:last-of-type {
+			min-width: 220px;
+		}
+	}
+}
+
+
+@media only screen and (min-width: #{$break-medium}) {
+	.footer {
+		margin-top: 6em;
+	}
+	.footer-cta {
+		.wp-block-column:last-of-type {
+			text-align: right;
+		}
+	
+	.footer--inner {
+		padding: 0;
+	}
+}
+}
+
+@media only screen and (min-width: #{$break-wide}) {
+	.footer--inner {
+			@include center-block;
+	}
+}

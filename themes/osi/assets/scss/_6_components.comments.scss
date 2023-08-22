@@ -1,0 +1,113 @@
+.comments {
+    margin: 2em auto;
+    max-width: $contentMax;
+    padding-top: 1em;
+}
+
+    .comments--list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        ul.children,
+        ol.children {
+            border-left: 1px solid $tableBorderColor;
+            border-bottom: 1px solid $tableBorderColor;
+            list-style: none;
+            margin-left: 0;
+            margin-bottom: 0;
+            padding: 0;
+            padding-left: 2.5rem;
+        }
+    }
+
+    .comments--form-row {
+
+         textarea, input {
+            margin-top: .5em;
+         }
+    }
+
+        .comment {
+            @include clearfix();
+            border-top: 1px solid $tableBorderColor;
+            clear: both;
+            margin-top: .5em;
+            padding-top: .5em;
+
+            &:first-of-type {
+                margin-top:0;
+            }
+
+            .avatar {
+                float: left;
+                height: 2rem;
+                margin-right: .25rem;
+                width: 2rem;
+            }
+        }
+
+            .comment-body {
+                float: right;
+                margin-bottom: 1.5em;
+                width: calc(100% - 2.5rem);
+            }
+
+                .comment-author {
+                    font-size: 1rem;
+                    font-weight: $baseWeightBold;
+                    margin-bottom: .5em;
+
+                    a {
+                        font-weight: $baseWeightBold;
+                    }
+                    img.avatar {
+                        border: 2px solid $brandColor1;
+                    }
+                }
+
+                .comment-meta {
+                    margin: 0 0 .375rem 0;
+
+                    a {
+                        font-style: italic;
+                    }
+                }
+
+
+    .comment-respond {
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+        .comment-subscription-form {
+            margin-bottom: 0;
+
+            &:first-of-type {
+                margin-top: 1em;
+            }
+
+            label.subscribe-label {
+                font-size: 1em;
+            }
+        }
+
+@media only screen and (min-width: #{$break-medium}) {
+    .comments--list {
+        ol.comment,
+        ul.comment {
+            padding-left: 5rem;
+        }
+    }
+
+        .comment {
+            .avatar {
+                height: 4rem;
+                margin-right: 1rem;
+                width: 4rem;
+            }
+        }
+
+        .comment-body {
+                width: calc(100% - 5rem);
+            }
+}

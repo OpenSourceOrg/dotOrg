@@ -1,0 +1,13 @@
+{
+	"name": "osi-sponsors-list",
+	"version": "1.0.0",
+	"scripts": {
+		"build": "wp-scripts build --entry=./src/block.js --output-path=build",
+		"watch": "wp-scripts build --entry=./src/block.js --output-path=build --mode=development --devtool=source-map --watch"
+	},
+	"author": "",
+	"license": "GPL-3.0-or-later",
+	"devDependencies": {
+		"@wordpress/scripts": "^26.3.0"
+	}
+}

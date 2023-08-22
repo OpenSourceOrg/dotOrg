@@ -1,0 +1,104 @@
+/*
+Theme Name: Open Source Initiative Theme
+Theme URI: https://github.com/a8cteam51/osi
+Author: The WordPress.com Special Projects Team
+Author URI: https://wpspecialprojects.wordpress.com/
+Description: A Gutenberg-ready theme for OSI.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: osi
+Tags: translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+osi theme is based on the Gutenberg Starter theme https://github.com/WordPress/gutenberg-theme/, which in turn is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Methodology from ITCSS http://www.creativebloq.com/web-design/manage-large-scale-web-projects-new-css-architecture-itcss-41514731
+
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Settings
+# Tools
+# Generic
+# Elements
+# Objects
+# Components
+# Vendor (if applicable)
+# Overrides
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# 01 Settings
+--------------------------------------------------------------*/
+@import "1_settings.breakpoints";
+@import "1_settings.colors";
+@import "1_settings.typography";
+@import "1_settings.inputs";
+@import "1_settings.tables";
+
+/*--------------------------------------------------------------
+# 02 Tools
+--------------------------------------------------------------*/
+@import "pink-grid/pinkgrid";
+@import "2_tools.mixins";
+
+/*--------------------------------------------------------------
+# 03 Generic
+--------------------------------------------------------------*/
+@import "3_generic.normalize";
+@import "3_generic.placeholders";
+
+/*--------------------------------------------------------------
+# 04 Elements
+--------------------------------------------------------------*/
+@import "4_elements.global";
+@import "4_elements.typography";
+@import "4_elements.inputs";
+@import "4_elements.tables";
+@import "4_elements.media";
+
+/*--------------------------------------------------------------
+# 05 Objects
+--------------------------------------------------------------*/
+@import "5_objects.structure";
+@import "5_objects.layout";
+@import "5_objects.inputs";
+@import "5_objects.tables";
+@import "5_objects.media";
+@import "5_objects.wp-objects";
+
+/*--------------------------------------------------------------
+# 06 Components
+--------------------------------------------------------------*/
+@import "6_components.navigation";
+@import "6_components.navigation--subnav";
+@import "6_components.header";
+@import "6_components.mobile-menu";
+@import "6_components.pre-footer";
+@import "6_components.footer";
+@import "6_components.sidebar";
+@import "6_components.sidebar--widgets";
+@import "6_components.search";
+@import "6_components.wp-content";
+@import "6_components.content";
+@import "6_components.comments";
+@import "6_components.pagination";
+@import "6_components.wp-gutenberg";
+@import "6_components.blocks";
+
+/*--------------------------------------------------------------
+# 07 Vendor
+--------------------------------------------------------------*/
+@import "7_vendor.plugins";
+
+/*--------------------------------------------------------------
+# 08 Overrides
+--------------------------------------------------------------*/
+@import "8_overrides.templates";
+@import "8_overrides.admin-bar";

@@ -1,0 +1,298 @@
+.search-form {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+
+    label {
+      display: block;
+      // height: 0;
+      // overflow: hidden;
+    }
+
+    input {
+      border-width: 2px;
+      display: inline-block;
+      width: calc(100% - 115px);
+    }
+
+    button.search--button.button, .wp-block-search__button {
+      background-color: $buttonBackground;
+      bottom: 0;
+      border: var(--wp--custom--button--border--width) var(--wp--custom--button--border--style) var(--wp--custom--button--border--color);
+      border-radius: var(--wp--custom--button--border--radius) ;
+      color: $Ndark;
+      display: inline-block;
+      font-weight: $baseWeightBold;
+      margin-left: 10px;
+      padding: 14px;
+      width: 100px;
+
+      &:hover, &:focus {
+        background-color: $buttonBackground2;
+        border-color: var(--wp--custom--button--hover--border--color);
+      }
+
+    }
+}
+
+.wp-block-search__inside-wrapper {
+  display: block;
+}
+
+
+
+.sidebar {
+    .search-form {
+        max-width: inherit;
+        margin: 0;
+        width: 100%;
+    }
+}
+
+.search-toggle {
+    background-color: $buttonBackground;
+    border: none;
+    color: $Nwhite;
+    float: right;
+    padding: .5em;
+    min-width: 32px;
+    min-height: 32px;
+    transition: padding .8s;
+
+    &:hover {
+        background-color: $buttonBackground2;
+        border: none;
+    }
+
+    &:before {
+      font: normal 20px/1 dashicons;
+      content:"\f179"; // fallback
+    }
+}
+
+.header-main {
+
+	> :not(.search-wrapper).search-form {
+		margin: 0;
+		max-width: 0;
+		float: right;
+		width: 18em;
+		overflow: hidden; // to account for the toggle
+		padding-bottom: 0;
+		transition: all .8s;
+
+		form {
+			width: 14em;
+		}
+
+	}
+
+	.open-search-wrapper {
+		line-height: 1;
+		margin-left: 21px;
+
+		@media only screen and (max-width: #{$break-nav}) {
+			position: absolute;
+			top: 7px;
+			right: 50px;
+		}
+	}
+
+	.open-search {
+		background: none;
+		border: 0;
+		font-size: 1em;
+		padding: 0;
+		cursor: pointer;
+		outline: transparent;
+
+		svg {
+			display: block;
+		}
+
+		&.active {
+			background: #248820;
+			cursor: default;
+
+			path {
+				fill: $Nwhite;
+			}
+		}
+	}
+}
+
+.header-search-wrapper {
+	text-align: center;
+	background: $Ndark;
+	padding: 68px 80px 135px;
+	position: relative;
+  	display: none;
+
+	@media only screen and (max-width: #{$break-nav}) {
+		padding: 48px 16px 80px;
+	}
+
+	.search-title {
+		color: $Nwhite;
+		font-size: 3rem;
+		font-weight: $baseWeightBold;
+		margin-bottom: 3.5rem !important;
+
+		@media only screen and (max-width: 600px ) {
+			font-size: 2rem;
+		}
+	}
+
+	.search-form {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+
+		label {
+			display: initial;
+			width: 100%;
+			max-width: 445px;
+		}
+
+
+		input {
+			border: 0;
+
+			&[type="search"] {
+				font-size: 21px;
+			}
+
+			&[type="submit"] {
+			}
+
+			&:not( .search-field  ) {
+				width: auto;
+				padding: 20px 33px;
+				font-size: 20px;
+			}
+
+		}
+
+		.search-field {
+			width: 100%;
+			margin: 0;
+			padding: 19.34px;
+		}
+
+	}
+
+	.search-form-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: $Nwhite;
+		text-transform: uppercase;
+		gap: 21px;
+	}
+
+	.search-text {
+		margin: 0;
+
+		@media only screen and (max-width: 600px ) {
+			display: none;
+		}
+	}
+
+	.close-search {
+		cursor: pointer;
+		position: absolute;
+		background: 0;
+		top: 35px;
+		right: 80px;
+		border: 0;
+		padding: 0;
+		outline: transparent;
+
+		@media only screen and (max-width: #{$break-nav}) {
+			right: 16px;
+			top: 16px;
+
+		}
+
+	}
+
+}
+
+.header-main .search-form.search-expanded {
+		max-width: 15em;
+		padding: 0 0.4em;
+		transition: all .8s;
+}
+
+.fa-search.search-open:before {
+		content:"×"; // fallback
+		// content:'\f00d'
+}
+
+
+@media only screen and (max-width: #{$break-small}) {
+  .license-search .search-form {
+    input {
+      width: 100%;
+    }
+    button.search--button.button {
+      margin-left: 0px;
+      padding: 12px 30px;
+      width: auto;
+    }
+  }
+}
+
+
+@media only screen and (min-width: #{$break-medium}) {
+
+  .search-toggle {
+    // display: none !important; // if you want the search bar visible with no toggle
+  }
+
+  .header-main .search-form {
+    width: 21em;
+    // overflow: visible; // if you want the search bar visible with no toggle
+
+    form {
+      width: 20em;
+    }
+
+    &.search-expanded {
+      max-width: 21em;
+    }
+
+    button.search--button.button {
+      padding: .5em;
+    }
+  }
+}
+
+.search-table {
+
+	margin-block: 20px;
+
+	th > * {
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
+
+	.search-table--description {
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
+
+	.search-table--title {
+
+		max-width: 500px;
+
+		a {
+			font-size: 18px;
+			font-weight: 700;
+		}
+	}
+}

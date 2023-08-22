@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "osi/event-list",
+	"version": "0.1.0",
+	"title": "OSI Event List",
+	"category": "common",
+	"icon": "calendar-alt",
+	"description": "A block to display a list of events",
+	"supports": {
+		"html": false,
+		"align": true
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Events"
+		},
+		"eventCount": {
+			"type": "number",
+			"default": 2
+		}
+	},
+	"textdomain": "osi-event-list",
+	"editorScript": "file:./main.js",
+	"editorStyle": "file:./main.css",
+	"style": "file:./style-main.css"
+}

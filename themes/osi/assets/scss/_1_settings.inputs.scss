@@ -1,0 +1,44 @@
+// Forms
+$textboxBackground: var(--wp--custom--form--color--background);
+$textboxBorderColor:  var(--wp--custom--form--border--color);
+$textboxBorderColorActive: var(--wp--custom--form--color--active);
+$textboxBorderWidth: var(--wp--custom--form--border--width);
+$textboxBorderRadius: var(--wp--custom--form--border--radius);
+$textboxBorderStyle: var(--wp--custom--form--border--style);
+$textboxColor: var(--wp--custom--form--typography--color);
+$textboxFontSize: var(--wp--custom--form--typography--font-size);
+$textboxPlaceholderColor: var(--wp--custom--form--placeholder--color);
+$textboxPlaceholderSize: var(--wp--custom--form--placeholder--font-size);
+$textboxPlaceholderStyle: var(--wp--custom--form--placeholder--style);
+$textboxPadding: var(--wp--custom--form--padding);
+$textboxMaxWidth: 100%;
+
+$labelColor: var(--wp--custom--form--label--typography--color);
+$labelFontFamily: var(--wp--custom--form--label--typography--font-family);
+$labelFontSize: var(--wp--custom--form--label--typography--font-size);
+$labelFontWeight: var(--wp--custom--form--label--typography--font-weight);
+
+
+// Buttons
+$buttonBackground: var(--wp--custom--button--color--background);
+$buttonBackground2: var(--wp--custom--button--hover--color--background);
+$buttonBorderColor: var(--wp--custom--button--border--color);
+$buttonBorderColor2: var(--wp--custom--button--hover--border--color);
+$buttonBorderWidth: var(--wp--custom--button--border--width);
+$buttonBorderStyle: var(--wp--custom--button--border--style);
+$buttonBorderRadius: var(--wp--custom--button--border--radius) !default;
+
+$buttonColor: var(--wp--custom--button--color--text);
+$buttonColor2: var(--wp--custom--button--hover--color--text);
+
+$buttonFont: var(--wp--custom--button--typography--font-family);
+$buttonFontSize: var(--wp--custom--button--typography--font-size);
+$buttonFontWeight: var(--wp--custom--button--typography--font-weight);
+$buttonPadding: var(--wp--custom--button--spacing--padding--top) var(--wp--custom--button--spacing--padding--right) var(--wp--custom--button--spacing--padding--bottom) var(--wp--custom--button--spacing--padding--left);
+
+$buttonAltBackground: var(--wp--custom--button--color--background-secondary);
+$buttonAltBackground2: var(--wp--custom--button--hover--color--background-secondary);
+$buttonAltBorderColor: var(--wp--custom--button--border--color-secondary);
+$buttonAltBorderColor2: var(--wp--custom--button--hover--border--color-secondary);
+
+$outline: $alertColor dotted 2px;

@@ -1,0 +1,151 @@
+.nav-pager {
+	clear: both;
+	overflow: auto;
+	margin: 0 auto 1em auto;
+	max-width: min( calc( 100% - 2em  ), $boxedMax );
+	text-align: center;
+}
+
+.pager {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.postname-pager {
+	a {
+		color: $Ndarkest;
+		font-size: $h4Size;
+		font-weight: $h5FontWeight;
+		text-decoration: none;
+
+		&:hover, &:focus {
+			color: $linkColor;
+			text-decoration: underline;
+		}
+	}
+}
+
+.pager--previous, a[rel="prev"] {
+	display: inline-block;
+	padding-right: .5em;
+
+	.read-more {
+		&:before {
+			content: '←';
+			display: inline-block;
+			margin-right: .3em;
+		}
+		&:after {
+			content: '';
+			margin: 0;
+		}
+	}
+}
+
+.pager--next, a[rel="next"] {
+	display: inline-block;
+	padding-left: .5em;
+
+	.read-more {
+		&:after {
+			content: '→';
+			display: inline-block;
+			margin-left: .3em;
+		}
+	}
+}
+
+@media only screen and (min-width: $break-small) {
+	.postname-pager .pager--previous {
+		border-top: 1px solid $tableBorderColor;
+		float: left;
+		text-align: left;
+		max-width: 50%;
+		padding-top: .5em;
+	}
+	.postname-pager .pager--next {
+		border-top: 1px solid $tableBorderColor;
+		float: right;
+		text-align: right;
+		max-width: 50%;
+		padding-top: .5em;
+	}
+}
+
+.post--pager {
+	margin: 2em auto;
+	text-align: center;
+}
+
+.post--pager-all {
+	padding: 0 1em;
+}
+
+.post-page-numbers {
+	clear: both;
+}
+
+.pagination, .wp-block-query-pagniation {
+	clear: both;
+	overflow: visible;
+	margin: 0 auto 1em auto;
+	max-width: $boxedMax;
+	// padding: 0 $smallPadding;
+	text-align: center;
+
+	.page-numbers {
+		display: inline-block;
+		padding: .5em;
+		text-align: center;
+		// width: 40px;
+		height: 40px;
+
+		&.current {
+			color: $Ndarkest;
+			font-weight: $baseWeightBold;
+			letter-spacing: .7px;
+			text-decoration: underline;
+			line-height: 1;
+		}
+
+		&:hover, &:focus {
+
+		}
+
+		&.prev, &.next {
+			text-transform: uppercase;
+			width: auto;
+		}
+	}
+}
+
+.nav-links {
+	display: flex;
+
+	.page-numbers {
+		&:not(.prev):not(.next) {
+
+			&:first-child {
+				margin-left: auto;
+			}
+			&:last-child {
+				margin-right: auto;
+			}
+		}
+
+		&.prev {
+			margin-right: auto;
+			padding-left: 0;
+		}
+
+		&.next {
+			margin-left: auto;
+			padding-right: 0;
+		}
+
+		&.dots {
+			line-height: 1;
+		}
+	}
+}

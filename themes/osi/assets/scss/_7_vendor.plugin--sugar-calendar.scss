@@ -1,0 +1,388 @@
+/**
+ * Event Listing Page
+ */
+.post-type-archive-sc_event {
+
+	#content-page {
+		max-width: $contentMax;
+		box-sizing: content-box;
+	}
+
+	.event-register-button {
+		a {
+			text-decoration: none;
+		}
+	}
+
+	.sc_event_url,
+	.sc_event_date,
+	.sc_event_location {
+		font-size: 18px;
+	}
+
+	.sc_event_date {
+		font-style:italic;
+	}
+
+	.sc_event_location {
+		margin-bottom: 24px;
+		color: var( --wp--custom--color--brand-heading );
+	}
+
+	.entry-title {
+		margin-bottom: 12px !important;
+	}
+
+	.page--title {
+		box-sizing: content-box;
+	}
+
+	.sc_event_details {
+		margin-bottom: 26px;
+	}
+
+	.page-header {
+		.wp-block-cover {
+			min-height: 180px;
+			margin-left: 50%;
+			translate: -50%;
+			max-width: none;
+			width: 100vw;
+			margin-bottom: 72px;
+		}
+	}
+
+	article.type-sc_event {
+		margin-bottom: 66px;
+	}
+
+	.pagination {
+
+		box-sizing: content-box;
+		padding-inline: 16px;
+
+		.page-numbers {
+
+			color: #000;
+
+			&.current {
+				color: #248820;
+			}
+
+			&.prev,
+			&.next {
+				text-transform: capitalize;
+				color: var( --wp--preset--color--neutral-dark );
+				font-weight: 600;
+			}
+		}
+
+	}
+
+	.breadcrumb-area {
+
+		width: 100vw;
+		translate: -50%;
+		margin-left: 50%;
+		padding-inline: 16px;
+
+		.wrapper {
+			@extend %alignwide-narrow;
+			max-width: calc( #{$boxedMax} - (2 * #{$maxPadding} ) );
+			margin: auto;
+		}
+	}
+
+	.upcoming-past-buttons {
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		display: flex !important;
+		justify-content: center;
+		gap: 1ch;
+		flex-wrap: wrap;
+
+		.close {
+			display: none;
+			margin-left: 1ch;
+		}
+
+		.active {
+			.close {
+				display: inline;
+			}
+		}
+
+		.wp-block-button {
+
+			&:not(:last-child) {
+				margin-right: 1ch;
+			}
+
+			&:not(.active) {
+				a {
+					font-weight: 400;
+				}
+			}
+
+		}
+	}
+}
+
+#sc-event-ticketing-buy-button,
+#sc-event-ticketing-purchase {
+
+	padding: 0.375rem 0.75rem;
+	@extend %button;
+
+}
+
+/**
+ Event Single Page
+ */
+.single-sc_event {
+
+	.btn:not(.sc-event-ticketing-remove-attendee) {
+		border-radius: 999em;
+		font-size: var(--wp--custom--button--typography--font-size);
+		border-width: 2px;
+		font-weight: 600;
+
+		&:hover {
+			background-color: initial;
+			color: var(--wp--custom--button--hover--color--text);
+		}
+	}
+
+	.content.has_no_sidebar	.entry-header {
+		.wp-block-cover {
+			translate: -50%;
+			margin-left: 50%;
+			width: 100vw;
+			max-width: none;
+		}
+	}
+
+	.post--content {
+		background-color: var(--wp--preset--color--neutral-white);
+		margin-top: -350px;
+		margin-left: auto;
+		margin-right: auto;
+		min-height: 500px;
+		overflow: visible;
+		padding: 32px 50px;
+		position: relative;
+		z-index: 2;
+
+		@media only screen and (max-width: 960px) {
+			padding-inline: 30px;
+		}
+
+
+		> * {
+			max-width: 100%;
+		}
+	}
+
+	.cover--header {
+		&.no-thumbnail {
+			min-height: 430px;
+
+			@media only screen and (max-width: 960px) {
+				min-height: 350px;
+			}
+		}
+	}
+
+	.content.has_no_sidebar .content--page article:not(.archive) {
+		max-width: 100% !important;
+
+		.entry-content {
+			display: grid;
+			grid-template-columns: 1fr 27.92%;
+			column-gap: clamp( 20px, 10.5vw - 50px, 100px );
+
+			@media only screen and (max-width: 960px) {
+				grid-template-columns: 1fr;
+			}
+
+			> * {
+				grid-column-start: 1;
+			}
+		}
+
+		.entry-title {
+			grid-column: 1 / -1;
+		}
+
+		#sc-event-ticketing-wrap {
+			grid-column-start: 2;
+			grid-row: 2 / span 4;
+			margin-bottom: auto;
+			position: sticky;
+			top: 69px; // The height of the floating header
+
+			@media only screen and (max-width: 960px) {
+				grid-column-start: 1;
+				grid-row: unset;
+
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				top: auto;
+				box-shadow: 0 -1px 24px rgba(40,44,53,.1), 0 -2px 8px rgba(40,44,53,0.1);
+			}
+		}
+
+		#sc-event-ticketing-price-wrap {
+			padding: 0;
+
+			.container {
+				padding: 36px 26px;
+				max-width: 100%;
+
+				@media only screen and (max-width: 960px) {
+					padding: 20px;
+				}
+
+
+
+				.row {
+					display: grid;
+					grid-template-columns: 1fr;
+					gap: 10px;
+
+					@media only screen and (max-width: 960px) {
+
+						display: flex;
+
+					}
+
+					.text-right {
+						text-align: left !important;
+						margin-top: 26px;
+
+						@media only screen and (max-width: 960px) {
+							margin-top: auto;
+							flex-grow: unset;
+							flex-basis: content;
+						}
+
+
+						.card-title {
+							margin-bottom: 20px;
+
+							@media only screen and (max-width: 960px) {
+								margin-bottom: 15px;
+							}
+
+						}
+					}
+				}
+			}
+		}
+
+		.sc-event-ticketing-price {
+			margin: 22px auto 0;
+
+			@media only screen and (max-width: 960px) {
+				margin-top: 15px;
+			}
+		}
+
+		#sc-event-ticketing-buy-button {
+			padding: 16px 25px;
+
+			@media only screen and (max-width: 960px) {
+				padding: 6px 25px
+			}
+		}
+
+	}
+
+	.content .content-full .content--page {
+		padding: 0;
+		max-width: min( calc( 100% - 40px * 2), $eventSinglePageMax ) !important;
+		margin: auto;
+	}
+}
+
+#sc-event-ticketing-modal {
+
+	@media only screen and ( max-width: 650px ) {
+		.container.modal-body {
+			.row:first-child {
+				display: grid;
+
+				> * {
+					max-width: 100%;
+				}
+
+				#sc-event-ticketing-checkout-main {
+					order: 2;
+				}
+			}
+		}
+	}
+
+	.modal-content {
+		padding: 15px;
+
+		.container.modal-body {
+			max-width: 800px;
+		}
+	}
+
+	.modal-dialog-centered {
+		max-width: 800px;
+	}
+
+	#sc-event-ticketing-modal-attendee-list {
+
+		.sc-event-ticketing-attendee {
+
+			> .input-group {
+				display: grid;
+				gap: 10px;
+
+				.form-control + .form-control {
+					margin-left: 0;
+				}
+
+				> .input-group-prepend > .input-group-text {
+					background: none;
+					border: unset;
+					padding-inline: unset;
+					font-weight: 700;
+				}
+			}
+
+		}
+	}
+
+	#sc-event-ticketing-checkout {
+		max-width: 100%;
+	}
+
+	.sc-event-ticketing-remove-attendee {
+		visibility: hidden;
+		padding: 0;
+
+		&:hover {
+			&:before {
+				background: #fff;
+				color: #545b62;
+			}
+		}
+
+		&:before {
+			content: 'remove attendee';
+			visibility: visible;
+			display: block;
+			padding: 6px 12px;
+			background: #545b62;
+			border: 4px solid #545b62;
+			transition: all 0.25s ease-in-out;
+		}
+	}
+}

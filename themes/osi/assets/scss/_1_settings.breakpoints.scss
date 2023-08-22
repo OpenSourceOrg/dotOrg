@@ -1,0 +1,71 @@
+@import '../../node_modules/@wordpress/base-styles/breakpoints';
+@import '../../node_modules/@wordpress/base-styles/mixins';
+
+// Included Breakpoints For Reference
+// -----
+// $break-huge: 1440px;
+// $break-xxlarge: 1280px;
+// $break-xlarge: 1080px;
+// $break-large: 960px;	// admin sidebar auto folds
+// $break-medium: 782px;	// adminbar goes big
+// $break-small: 600px; // navigation collapses
+// $break-mobile: 480px;
+// $break-zoomed-in: 280px;
+
+// To add min-width breakpoints
+// -----
+// @include break-X() {
+// 	@media (min-width: #{($break-X)}) {
+// 		@content;
+// 	}
+// }
+
+@mixin break-small-only() {
+	@media (max-width: #{ ($break-small - 1) }) {
+		@content;
+	}
+}
+
+@mixin break-medium-only() {
+	@media (max-width: #{ ($break-medium - 1) }) {
+		@content;
+	}
+}
+
+// Breakpoints defined by WordPress unless overwritten here
+$break-nav: 1200px;
+
+/* values need to be declared explicitly in order to be used in media queries, which do not support variables */
+// boxed max-width
+$boxedMax: 1180px; // duplicates var(--wp--custom--layout--wide-size)
+$wideMax: 1440px;
+
+// padding values
+$maxPadding: 48px; // duplicates var(--wp--custom--spacing--max-padding)
+$midPadding: 32px; // duplicates var(--wp--custom--spacing--mid-padding);
+$smallPadding: 16px; // duplicates var(--wp--custom--spacing--small-padding);
+
+$contentMax: 730px; // duplicates var(--wp--custom--layout--content-size) paragraph line length max width
+$tinyGridMax: 352px; // individual grid items max size on stacked screens
+$postMax: 920px;
+$eventSinglePageMax: 1318px;
+
+
+$paddingTop: 170px;
+$paddingTopMobile: 65px;
+$quicklinksTop: 0;
+
+$sidebarWidthSmall: var(--wp--custom--layout--sidebar-width-small);
+$sidebarWidthMid: var(--wp--custom--layout--sidebar-width-mid);
+
+// For PinkGrid
+
+$sm-bp:			$break-small;		// Set your small breakpoint
+$med-bp:		$break-medium;		// Set your medium breakpoint
+$lg-bp:			$break-xlarge;		// Set your large breakpoint
+$xl-bp:			$break-xlarge;		// Set your x-large breakpoint
+
+// Gallery
+$gallery-height: 250px;
+$gallery-width: 250px;
+$gallery-gutter: 6px;

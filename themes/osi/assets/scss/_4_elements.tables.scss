@@ -1,0 +1,56 @@
+/* TABLES */
+table {
+    background-color: $tableBackground;
+    border: 1px solid $tableBorderColor;
+    border-collapse: collapse;
+    border-spacing: 0;
+    height: 100%;
+    margin-bottom: calc( #{$baselineHeight} / 2 );
+    width: 100%;
+}
+
+th,
+td {
+    border-width: 0;
+    font-size: .875em;
+    line-height: $baselineHeight;
+    padding: $tableCellPadding;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: $Ndark;
+    color: $Nwhite;
+    font-weight: $baseWeightBold;
+}
+
+
+tr {
+    &:nth-of-type(2n+1) {
+        background-color: $tableStripe;
+    }
+}
+
+thead th {
+    vertical-align: bottom;
+    border-bottom: $tableHeaderBorderWidth $tableBorderStyle $tableHeaderBorderColor;
+}
+
+tfoot th {
+  border-bottom: inherit;
+}
+
+thead:first-child tr:first-child th,
+thead:first-child tr-first-child td {
+    border-top: 0;
+}
+
+tbody tr td,
+tbody tr th {
+    @include transition(background-color .25s 0 ease);
+}
+
+tbody tr:hover td {
+    background-color: $tableHover;
+}

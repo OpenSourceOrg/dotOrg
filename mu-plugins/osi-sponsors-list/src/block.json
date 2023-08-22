@@ -1,0 +1,72 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "osi/sponsors-list",
+	"version": "0.1.2",
+	"title": "OSI Sponsor's List",
+	"category": "layout",
+	"icon": "businessperson",
+	"description": "A block to display a list of sponsor's logos ordered alphabetically",
+	"supports": {
+		"html": false,
+		"align": true
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"images": {
+			"type": "array",
+			"source": "query",
+        	"selector": ".osi-sponsor-logo",
+			"default": [],
+			"query": {
+				"mediaID": {
+					"type": "number",
+					"source": "attribute",
+					"attribute": "data-id",
+					"selector": "img"
+				},
+				"mediaURL": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "src",
+					"selector": "img"
+				},
+				"mediaAlt": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "alt",
+					"selector": "img"
+				},
+				"linkTo": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "href",
+					"selector": "a"
+				},
+				"large": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "srcset",
+					"selector": "img"
+				},
+				"thumbnail": {
+					"type": "string",
+					"source": "attribute",
+					"attribute": "srcset",
+					"selector": "img"
+				}
+			}
+		},
+		"columns": {
+			"type": "string",
+			"default": "three-columns"
+		}
+	},
+	"textdomain": "osi-sponsors-list",
+	"editorScript": "file:./main.js",
+	"editorStyle": "file:./main.css",
+	"style": "file:./style-main.css"
+}

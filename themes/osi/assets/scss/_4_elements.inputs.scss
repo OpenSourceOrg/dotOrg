@@ -1,0 +1,75 @@
+/* FORMS & BUTTONS*/
+label {
+    @extend %label;
+}
+
+form {
+  max-width: $contentMax;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="url"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="file"],
+input[type="password"],
+input[type="tel"],
+select,
+textarea,
+.textbox{
+    @extend %textbox;
+}
+
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin: .25em .5em .25em 0;
+    padding: 0;
+    *width: 1em;
+    *height: 1em;
+}
+
+button,
+.button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    @extend %button;
+}
+
+input[type="hidden"] {
+    display: none;
+}
+
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+    cursor: not-allowed;
+    opacity: .5;
+}
+
+::-webkit-input-placeholder {
+    color: $textboxPlaceholderColor;
+    font-size: $textboxPlaceholderSize;
+    font-style: $textboxPlaceholderStyle;
+}
+
+:-moz-placeholder {
+    color: $textboxPlaceholderColor;
+    font-size: $textboxPlaceholderSize;
+    font-style: $textboxPlaceholderStyle;
+}
+
+:-ms-input-placeholder {
+    color: $textboxPlaceholderColor;
+    font-size: $textboxPlaceholderSize;
+    font-style: $textboxPlaceholderStyle;
+}

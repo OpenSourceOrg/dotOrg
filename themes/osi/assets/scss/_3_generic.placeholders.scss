@@ -1,0 +1,343 @@
+%label {
+  color: $labelColor;
+  font-family: $labelFontFamily;
+  font-size: $labelFontSize;
+  font-weight: $labelFontWeight;
+}
+
+%textbox {
+    background-color: $textboxBackground;
+    border: $textboxBorderWidth $textboxBorderStyle $textboxBorderColor;
+    border-radius: $textboxBorderRadius;
+    color: $textboxColor;
+    display: block;
+    font-family: $baseFont;
+    font-size: $textboxFontSize;
+    font-weight: $baseWeight;
+    margin-bottom: .5em;
+    max-width: $textboxMaxWidth;
+    padding: $textboxPadding;
+    width: 100%;
+
+    &:active,
+    &:focus {
+        outline: $outline;
+    }
+}
+
+
+%button {
+    color: $buttonColor;
+    cursor: pointer;
+    background-color: $buttonBackground;
+    border: $buttonBorderWidth $buttonBorderStyle $buttonBorderColor;
+    border-radius: $buttonBorderRadius;
+    display: inline-block;
+    font-family: $buttonFont;
+    font-size: $buttonFontSize;
+     -webkit-font-smoothing: auto;
+    font-weight: $buttonFontWeight;
+    height: auto;
+    padding: $buttonPadding;
+    text-decoration: none;
+    transition: all .3s;
+    width: auto;
+
+    &:hover, &:focus {
+        background-color: $buttonBackground2;
+        border-color: $buttonBorderColor2;
+        border-width: $buttonBorderWidth !important;
+        color: $buttonColor2;
+        text-decoration: none;
+        transition: all .3s;
+    }
+
+    &.alt {
+        background-color: $buttonAltBackground;
+        border-color: $buttonAltBorderColor;
+
+        &:hover, &:focus {
+            background-color: $buttonAltBackground2;
+            border-color: $buttonAltBorderColor2;
+        }
+    }
+
+    &.outline {
+        background-color: transparent;
+        border-color: $buttonBorderColor;
+        color: $buttonBorderColor;
+
+        &:hover, &:focus {
+            background-color: #{'rgba('+$Ndarkest_RGB+', 0.1)'};
+            border-color: $buttonBorderColor;
+            color: $buttonBorderColor;
+        }
+    }
+
+    &.neutral {
+        background-color: $Nmid;
+
+        &:hover, &:focus {
+            background-color: $Ndark;
+        }
+    }
+
+    &:active,
+    &:focus {
+        border-width: $buttonBorderWidth;
+        outline: $outline;
+    }
+}
+
+%nofloats {
+  float: none !important;
+  max-width: none;
+  width: 100%;
+}
+
+%iconlight {
+  font-family: 'Font Awesome 5 Pro';
+  font-weight: 300;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+
+  &:before {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 300;
+  }
+}
+
+%iconbrand {
+  font-family: 'Font Awesome 5 Brands';
+  font-weight: 400;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+
+  &:before {
+    font-family: 'Font Awesome 5 Brands';
+    font-weight: 400;
+  }
+}
+
+%icon {
+  font-family: 'Font Awesome 5 Pro';
+  font-weight: $iconFontWeight;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+
+  &:before {
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: $iconFontWeight;
+  }
+}
+
+%reverse {
+  color: $Nwhite !important;
+
+  h1, h2, h3, h4, h5, h6, p {
+    color: $Nwhite !important;
+  }
+  a {
+    color: $Nwhite !important;
+    &:hover, &:focus {
+      opacity: 0.9;
+    }
+  }
+  label {
+    color: $Nwhite !important;
+  }
+}
+
+// For single post only
+%alignfull {
+  margin-left: -#{$smallPadding};
+  margin-right: -#{$smallPadding};
+  max-width: none;
+  width: calc( 100% + (2 * #{$smallPadding}) );
+
+  .content--inner {
+    padding-left: $smallPadding;
+		padding-right: $smallPadding;
+    margin: 0 auto;
+    max-width: $boxedMax;
+  }
+
+  @media only screen and (min-width: #{$break-small}) {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    width: calc( 100% + (2 * 2rem) );
+
+    .content--inner {
+      padding-left:$midPadding;
+      padding-right: $midPadding;
+    }
+  }
+  @media only screen and (min-width: #{$break-medium}) {
+    margin-left: -#{$maxPadding};
+    margin-right: -#{$maxPadding};
+    width: calc( 100% + (2 * #{$maxPadding}) );
+
+    .content--inner {
+      padding-left:$maxPadding;
+      padding-right: $maxPadding;
+    }
+  }
+
+  @media only screen and (min-width: 1016px) { // $postMax + (2 * $maxPadding)
+		margin-left: calc(-100vw / 2 + ( #{$postMax} ) / 2);
+    margin-right: calc(-100vw / 2 + ( #{$postMax} ) / 2);
+    width: 100vw;
+  }
+}
+
+// for single post only
+%alignwide {
+  margin-left: -#{$smallPadding};
+  margin-right: -#{$smallPadding};
+  max-width: $postMax;
+  width: calc( 100% + (2 * #{$smallPadding}) );
+
+  @media only screen and (min-width: #{$break-small}) {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    width: calc( 100% + (2 * 2rem) );
+  }
+  @media only screen and (min-width: #{$break-medium}) {
+    margin-left: -#{$maxPadding};
+    margin-right: -#{$maxPadding};
+    width: calc( 100% + (2 * #{$maxPadding}) );
+  }
+}
+
+// for pages
+%alignfull-narrow {
+  margin-left: -#{$smallPadding};
+  margin-right: -#{$smallPadding};
+  max-width: none;
+  width: calc( 100% + (2 * #{$smallPadding}) );
+
+  .content--inner {
+    padding-left: $smallPadding;
+		padding-right: $smallPadding;
+    margin: 0 auto;
+    max-width: $boxedMax;
+  }
+
+  @media only screen and (min-width: #{$break-small}) {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    width: calc( 100% + (2 * 2rem) );
+
+    .content--inner {
+      padding-left:$midPadding;
+      padding-right: $midPadding;
+    }
+  }
+
+  @media only screen and (min-width: #{$break-medium}) {
+    margin-left: -3rem;
+    margin-right: -3rem;
+    width: calc( 100% + (2 * 3rem) );
+  }
+
+  @media only screen and (min-width: #{$contentMax + 2 * $maxPadding}) {
+    margin-left: calc(-1 *(100vw - #{$contentMax} ) / 2);
+    margin-right: calc(-1 *(100vw - #{$contentMax} ) / 2);
+    width: 100vw;
+
+    .content--inner {
+      padding-left:$maxPadding;
+      padding-right: $maxPadding;
+    }
+  }
+}
+
+// for pages
+%alignwide-narrow {
+  max-width: $boxedMax;
+  width: 100%;
+
+  @media only screen and (min-width: #{$break-small}) {
+    margin-left: -#{$smallPadding};
+    margin-right: -#{$smallPadding};
+    width: calc( 100% + (2 * #{$smallPadding} ) );
+  }
+  // @media only screen and (min-width: #{$break-medium}) {
+  //   margin-left: -#{$midPadding};
+  //   margin-right: -#{$midPadding};
+  //   width: calc( 100% + (2 * #{$midPadding} ) );
+  // }
+  @media only screen and (min-width: #{$contentMax + 3 * $maxPadding}) {
+    margin-left: calc(-1 *((100vw - 3 * #{$maxPadding}) - #{$contentMax} ) / 2);
+    margin-right: calc(-1 *((100vw - 3 * #{$maxPadding}) - #{$contentMax} ) / 2);
+    width: calc(100vw - 3 * #{$maxPadding});
+  }
+  @media only screen and (min-width: #{$boxedMax}) {
+    margin-left: calc( -1 *( (#{$boxedMax} - (2 * #{$maxPadding}) ) - #{$contentMax} ) / 2);
+    margin-right: calc( -1 *( (#{$boxedMax} - (2 * #{$maxPadding}) ) - #{$contentMax} ) / 2);
+    width: calc( #{$boxedMax} - (2 * #{$maxPadding} ) );
+  }
+}
+
+// for pages
+%alignfull-narrow-maxwidth {
+  margin-left: -#{$smallPadding};
+  margin-right: -#{$smallPadding};
+  max-width: $wideMax;
+  width: calc( 100% + (2 * #{$smallPadding}) );
+
+  .content--inner {
+    padding-left: $smallPadding;
+		padding-right: $smallPadding;
+    margin: 0 auto;
+    max-width: $boxedMax;
+  }
+
+  @media only screen and (min-width: #{$break-small}) {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    width: calc( 100% + (2 * 2rem) );
+
+    .content--inner {
+      padding-left:$midPadding;
+      padding-right: $midPadding;
+    }
+  }
+
+  @media only screen and (min-width: #{$break-medium}) {
+    margin-left: -3rem;
+    margin-right: -3rem;
+    width: calc( 100% + (2 * 3rem) );
+  }
+
+  @media only screen and (min-width: #{$contentMax + 2 * $maxPadding}) {
+    margin-left: calc(-1 *(100vw - #{$contentMax} ) / 2);
+    margin-right: calc(-1 *(100vw - #{$contentMax} ) / 2);
+    width: 100vw;
+
+    .content--inner {
+      padding-left:$maxPadding;
+      padding-right: $maxPadding;
+    }
+  }
+  @media only screen and (min-width: #{$wideMax}) {
+    margin-left: calc(-1 *(#{$wideMax} - #{$contentMax} ) / 2);
+    margin-right: calc(-1 *(#{$wideMax} - #{$contentMax} ) / 2);
+    width: $wideMax;
+  }
+}

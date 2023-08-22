@@ -1,0 +1,108 @@
+.content--sidebar {
+    padding: 2em;
+    position: absolute;
+    width: $sidebarWidthSmall;
+
+    .wp-block-column {
+			margin-left: 0;
+		}
+}
+
+@media only screen and (max-width: #{$break-medium}) {
+
+    .content--sidebar {
+      background-color: $sidebarColor;
+        height: 100%;
+        overflow-y: scroll;
+        position: fixed;
+        top: 0;
+        left: 100%;
+        right: 0;
+        @include transition( all 0.2s ease-out );
+        width: $sidebarWidthMid;
+    }
+
+    .admin-bar {
+        .content--sidebar {
+            top: 45px;
+        }
+    }
+
+    .open-the-sidebar {
+
+        .content--sidebar {
+            right: 0;
+            left: 40%;
+        }
+    }
+}
+
+@media only screen and (max-width: #{$break-small}) {
+
+    .content--sidebar {
+        width: $sidebarWidthSmall;
+    }
+
+    .open-the-sidebar {
+
+        .content--sidebar {
+            left: 20%;
+        }
+    }
+}
+
+@media only screen and (min-width: #{$break-medium}) {
+    //approximate min-width: 768px
+    .content--sidebar {
+        border-top : 1px solid $Nlight;
+        display: flex;
+	      justify-content: space-between;
+        align-items: flex-start;
+        left: auto;
+        margin: 2em 0;
+        position: relative;
+        top: auto;
+        width: 100%;
+    }
+
+    .sidebar-main {
+        border: 0;
+        @include pinkgrid($colspan:12);
+        @include pinkrow($rowitems:1);
+        margin-top: 0;
+    }
+
+        .sidebar--leftcol,
+        .sidebar--rightcol {
+            display: inline-block;
+            margin-top: 2em;
+            vertical-align: top;
+            width: 49.5%;
+        }
+
+        .sidebar--leftcol {
+            padding-right: 1rem;
+        }
+
+        .sidebar--rightcol {
+            padding-left: 1rem;
+        }
+
+}
+
+
+
+@media only screen and (min-width: #{$break-xlarge}) {
+
+    .sidebar-main {
+        @include pinkgrid($colspan:3);
+        @include pinkrow($rowitems:1);
+    }
+
+    .sidebar--leftcol,
+    .sidebar--rightcol {
+        display: none;
+        margin-top: 0;
+    }
+
+}

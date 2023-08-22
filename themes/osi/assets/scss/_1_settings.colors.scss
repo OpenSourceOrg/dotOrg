@@ -1,0 +1,126 @@
+// define typical WordPress presets with our custom colors
+:root {
+	--wp--preset--color--primary: var(--wp--custom--color--primary);
+	--wp--preset--color--secondary: var(--wp--custom--color--secondary);
+	--wp--preset--color--tertiary: var(--wp--custom--color--tertiary);
+	--wp--preset--color--foreground: var(--wp--custom--color--foreground);
+	--wp--preset--color--background: var(--wp--custom--color--background);
+}
+
+// Site Colors
+$brandColor1: var(--wp--preset--color--brand-color-1); //#3Ea638
+$brandColor1_Lt: var(--wp--preset--color--brand-color-1-lighter); //lighten( $brandColor1, 10% );
+$brandColor1_Dk: var(--wp--preset--color--brand-color-1-darker);//darken( $brandColor1, 10% );
+
+$brandColor2: var(--wp--preset--color--brand-color-2); //#FB923c
+$brandColor2_Lt: var(--wp--preset--color--brand-color-2-lighter); //lighten( $brandColor2, 10% )
+$brandColor2_Dk: var(--wp--preset--color--brand-color-2-darker); //darken( $brandColor2, 10% )
+
+$brandColor3: var(--wp--preset--color--brand-color-3); //#ebc342
+$brandColor3_Lt: var(--wp--preset--color--brand-color-3-lighter); //lighten( $brandColor3, 10% )
+$brandColor3_Dk: var(--wp--preset--color--brand-color-3-darker); //darken( $brandColor3, 10% )
+
+$brandColor4: var(--wp--preset--color--brand-color-4); //#e66d4c
+$brandColor4_Lt: var(--wp--preset--color--brand-color-4-lighter); //lighten( $brandColor4, 10% )
+$brandColor4_Dk: var(--wp--preset--color--brand-color-4-darker); //darken( $brandColor4, 10% )
+
+$brandColor5: var(--wp--preset--color--brand-color-5); //#1c531d
+$brandColor5_Lt: var(--wp--preset--color--brand-color-5-lighter); //lighten( $brandColor4, 10% )
+$brandColor5_Dk: var(--wp--preset--color--brand-color-5-darker); //darken( $brandColor4, 10% )
+
+
+// Neutrals
+$Ndarkest:var(--wp--preset--color--neutral-darkest); //#000000
+$Ndark: var(--wp--preset--color--neutral-dark); //#414042
+$Nmid: var(--wp--preset--color--neutral-mid); //#949494
+$Nlight: var(--wp--preset--color--neutral-light); //#d2d2d2
+$Nlightest: var(--wp--preset--color--neutral-lightest); //#f2f3f2
+$Nwhite: var(--wp--preset--color--neutral-white); //#fff
+
+$bodyColor: $Nwhite;
+$sidebarColor: $Nlightest;
+
+// Text
+$textColor: var(--wp--custom--typography--body--color);
+$headingColor: var(--wp--custom--typography--heading--color);
+$subheadingColor: var(--wp--custom--typography--subheading--color);
+
+// Brand
+$interactColor: var(--wp--preset--color--brand-links); //#23881f
+$interactColor_Lt: var(--wp--preset--color--brand-links-lighter);
+$interactColor_Dk: var(--wp--preset--color--brand-links-darker);
+$alertColor: var(--wp--preset--color--brand-alert); //#a11c2e
+$alertColor_Lt: var(--wp--preset--color--brand-alert-lighter);
+$alertColor_Dk: var(--wp--preset--color--brand-alert-darker);
+
+
+// RGB
+$brandColor1_RGB: var(--wp--custom--color--brand-color-1-rgb);
+$brandColor2_RGB: var(--wp--custom--color--brand-color-2-rgb);
+$brandColor3_RGB: var(--wp--custom--color--brand-color-3-rgb);
+$brandColor4_RGB: var(--wp--custom--color--brand-color-4-rgb);
+$brandColor5_RGB: var(--wp--custom--color--brand-color-5-rgb);
+$Ndarkest_RGB:var(--wp--custom--color--neutral-darkest-rgb);
+$Ndark_RGB: var(--wp--custom--color--neutral-dark-rgb);
+$Nmid_RGB: var(--wp--custom--color--neutral-mid-rgb);
+$Nlight_RGB: var(--wp--custom--color--neutral-light-rgb);
+$Nlightest_RGB: var(--wp--custom--color--neutral-lightest-rgb);
+$Nwhite_RGB: var(--wp--custom--color--neutral-white-rgb);
+
+// Color Arrays
+$colors: (
+  brand-color-1: $brandColor1,
+  brand-color-2: $brandColor2,
+  brand-color-3: $brandColor3,
+  brand-color-4: $brandColor4,
+  brand-color-5: $brandColor5,
+  brand-links: $interactColor,
+  brand-alert: $alertColor,
+  neutral-darkest: $Ndarkest,
+  neutral-dark: $Ndark,
+  neutral-mid: $Nmid,
+  neutral-light: $Nlight,
+  neutral-lightest: $Nlightest,
+  neutral-white: $Nwhite
+);
+
+$colorsDarken: (
+  brand-color-1: $brandColor1_Dk,
+  brand-color-2: $brandColor2_Dk,
+  brand-color-3: $brandColor3_Dk,
+  brand-color-4: $brandColor4_Dk,
+  brand-color-5: $brandColor5_Dk,
+  brand-links: $interactColor_Dk,
+  brand-alert: $alertColor_Dk,
+  neutral-darkest: #000000,
+  neutral-dark: $Ndarkest,
+  neutral-mid: $Ndark,
+  neutral-light: $Nmid,
+  neutral-lightest: $Nlight,
+  white: $Nlightest
+);
+
+$colorsLighten: (
+  brand-color-1: $brandColor1_Lt,
+  brand-color-2: $brandColor2_Lt,
+  brand-color-3: $brandColor3_Lt,
+  brand-color-4: $brandColor4_Lt,
+  brand-color-5: $brandColor5_Lt,
+  brand-links: $interactColor_Lt,
+  brand-alert: $alertColor_Lt,
+  neutral-darkest: $Ndark,
+  neutral-dark: $Nmid,
+  neutral-mid: $Nlight,
+  neutral-light: $Nlightest,
+  neutral-lightest: $Nwhite,
+  neutral-white: $Nwhite
+);
+
+$neutrals: (
+neutral-darkest: $Ndarkest,
+neutral-dark: $Ndark,
+neutral-mid: $Nmid,
+neutral-light: $Nlight,
+neutral-lightest: $Nlightest,
+neutral-white: $Nwhite
+)

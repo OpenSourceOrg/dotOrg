@@ -1,0 +1,70 @@
+/**
+ * WordPress dependencies
+ */
+/**
+ * Retrieves the translation of text.
+ *
+ * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
+ */
+import { __ } from '@wordpress/i18n';
+
+/**
+ * WordPress Components.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-components/
+ */
+import { TextControl } from '@wordpress/components';
+
+/**
+ * WordPress data module to manage application state.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-data/
+ */
+import { useSelect } from '@wordpress/data';
+
+/**
+ * WordPress core-data module to manipulation of core WordPress entities.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-core-data/
+ */
+import { useEntityProp } from '@wordpress/core-data';
+
+/**
+ * React hook that is used to mark the block wrapper element.
+ * It provides all the necessary props like the class name.
+ *
+ * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
+ */
+import { useBlockProps } from '@wordpress/block-editor';
+
+/**
+ * The edit function describes the structure of your block in the context of the
+ * editor. This represents what the editor will render when the block is used.
+ *
+ * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
+ *
+ * @return {WPElement} Element to render.
+ */
+export default function Edit() {
+	const postType = useSelect(
+		( select ) => select( 'core/editor' ).getCurrentPostType(),
+		[],
+	);
+	const [ meta, setMeta ] = useEntityProp( 'postType', postType, 'meta' );
+	const metaFieldValue = meta.{{metaBlockKey}};
+	const updateMetaFieldValue = ( value ) => {
+		setMeta( {
+			...meta,
+			{{metaBlockKey}}: value,
+		} );
+	};
+	return (
+		<div { ...useBlockProps() }>
+			<TextControl
+				label={ __( '{{title}} - Meta Field', '{{textdomain}}' ) }
+				value={ metaFieldValue }
+				onChange={ updateMetaFieldValue }
+			/>
+		</div>
+	);
+}

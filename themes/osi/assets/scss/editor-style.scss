@@ -1,0 +1,40 @@
+.editor-styles-wrapper {
+/* 01. SETTINGS */
+@import "1_settings.breakpoints";
+@import "1_settings.colors";
+@import "1_settings.typography";
+@import "1_settings.inputs";
+@import "1_settings.tables";
+
+/* 02. TOOLS */
+@import "pink-grid/pinkgrid";
+@import "2_tools.mixins";
+
+/* 03. GENERIC */
+	@import "3_generic.placeholders";
+
+/* 04. ELEMENTS */
+@import "4_elements.typography";
+@import "4_elements.inputs-gutenberg";
+@import "4_elements.tables";
+@import "4_elements.media";
+
+/* 05. OBJECTS */
+@import "5_objects.structure";
+@import "5_objects.layout";
+@import "5_objects.inputs";
+@import "5_objects.media";
+@import "5_objects.wp-objects";
+
+/* 06. COMPONENTS */
+@import "6_components.wp-content";
+@import "6_components.wp-gutenberg";
+@import "6_components.blocks";
+
+/* 07. VENDOR */
+@import "7_vendor.plugins";
+
+/* 08. OVERRIDES */
+@import "8_overrides.templates";
+@import "8_overrides.editor";
+}

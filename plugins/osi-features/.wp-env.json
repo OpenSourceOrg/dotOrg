@@ -1,0 +1,11 @@
+{
+  "core": null,
+  "phpVersion": "7.4",
+  "plugins": ["."],
+  "port": 5888,
+  "env": {
+    "tests": {
+      "port": 5889
+    }
+  }
+}

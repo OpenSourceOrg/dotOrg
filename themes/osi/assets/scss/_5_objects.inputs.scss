@@ -1,0 +1,127 @@
+.global-button {
+  @extend %button;
+}
+
+/* BUTTON SIZES */
+.button.button-xs {
+	font-size: .75em !important;
+	line-height: .75em !important;
+	padding: .4em .75em !important;
+}
+
+.button.button-sm {
+	font-size: .9em !important;
+	line-height: .9em !important;
+	padding: .375em .75em !important;
+}
+
+.button.button-med {
+	font-size: 1em !important;
+	line-height: 1em !important;
+	padding: .375em, .75em !important;
+}
+
+.button.button-lg {
+	font-size: 1.4em !important;
+	line-height: 1em !important;
+	padding: .5em, 1em !important;
+}
+
+.button.button-xl {
+	font-size: 1.6em !important;
+	line-height: 1em !important;
+	padding: .875em 1.75em !important;
+}
+
+.social-icons {
+    display: inline-block;
+    vertical-align: middle;
+
+		a.button-social {
+        background-color: transparent;
+        border: 0;
+        color: $linkColor;
+        padding: .25rem .5rem;
+
+        &:before {
+          font-family: $iconFont;
+          font-weight: $iconFontWeight;
+        }
+
+        &:hover {
+          color: $linkHover;
+        }
+
+        .footer-main &, .header-main & {
+          color: $Nwhite;
+
+          &:hover {
+            color: $linkHover;
+          }
+        }
+    }
+}
+		.button-social:before { // needs to be low specificity so font awesome can override
+        content: '\2665 '; // replace with your fallback icon, this is a heart
+    }
+
+.button-phone a {
+  text-decoration: none;
+
+  i {
+    margin-right: 5px;
+  }
+
+  .footer-main &, .header-main & {
+    color: $Nwhite;
+
+    &:hover {
+      color: $linkHover;
+    }
+  }
+}
+
+.checkbox {
+        span {
+            display: inline;
+        }
+    }
+
+.select2 {
+    & > span {
+        width: 100%;
+        display: inline;
+    }
+}
+
+.back-to-top {
+  background-color: transparent;
+  border: 0;
+  clear: both;
+  height: 30px;
+  overflow: hidden;
+  padding: 0;
+  width: 30px;
+
+  @extend %iconlight;
+
+  &:before {
+    content: "\f0aa";
+    color: $linkColor;
+    font-size: 29px;
+    line-height: 1.1;
+
+    &:hover, &:focus {
+        color: $linkHover;
+      }
+    }
+
+    &:hover, &:focus {
+      background-color: transparent;
+      border: 0;
+    }
+}
+
+.hide {
+  display: none;
+}

@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "osi-features/example-block",
+	"version": "1.0.0",
+	"title": "Example Block",
+	"category": "theme",
+	"icon": "smiley",
+	"description": "Example block description",
+	"supports": {
+		"html": false
+	},
+	"attributes": {},
+	"textdomain": "osi-features",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
