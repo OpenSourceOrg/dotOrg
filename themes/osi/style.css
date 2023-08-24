@@ -3003,6 +3003,13 @@ body.option-round .open-button:not(.open-search) {
   margin-bottom: 32px;
 }
 
+.single-press-mentions h1.entry-title a {
+  color: var(--wp--preset--color--neutral-dark);
+}
+.single-press-mentions h1.entry-title a:hover, .single-press-mentions h1.entry-title a:focus {
+  color: var(--wp--preset--color--brand-links);
+}
+
 .single .post--title {
   font-size: var(--wp--preset--font-size--xx-large);
 }
