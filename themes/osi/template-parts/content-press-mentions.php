@@ -21,15 +21,16 @@
 			</div><!-- .entry-meta -->
 
 		<?php } ?>
-		<?php 
-		$title = get_field( 'article_url' ) ?
-		sprintf( '<a href="%s" rel="bookmark" target="_blank">%s</a>',
-			esc_url( get_field('article_url') ),
+		<?php
+		$press_title = get_field( 'article_url' ) ?
+		sprintf(
+			'<a href="%s" rel="bookmark" target="_blank">%s</a>',
+			esc_url( get_field( 'article_url' ) ),
 			esc_html( get_the_title() )
 		) :
 		esc_html( get_the_title() );
-		
-		echo '<h1 class="entry-title post--title">'.$title.'</h1>';
+
+		echo '<h1 class="entry-title post--title">' . wp_kses_post( $press_title ) . '</h1>';
 		?>
 
 		<?php the_content(); ?>
