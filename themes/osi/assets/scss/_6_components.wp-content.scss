@@ -167,6 +167,22 @@
     }
 }
 
+.single-press-mentions {
+
+    h1.entry-title {
+
+        a {
+            color: var(--wp--preset--color--neutral-dark);
+
+            &:hover, &:focus {
+                color: var(--wp--preset--color--brand-links);
+            }
+
+        }
+    }
+
+}
+
 .single {
 
     .post--title {

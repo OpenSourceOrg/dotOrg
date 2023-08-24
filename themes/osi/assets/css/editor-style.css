@@ -1333,6 +1333,12 @@
 .editor-styles-wrapper .archive article.post, .editor-styles-wrapper .blog article.post {
   margin-bottom: 32px;
 }
+.editor-styles-wrapper .single-press-mentions h1.entry-title a {
+  color: var(--wp--preset--color--neutral-dark);
+}
+.editor-styles-wrapper .single-press-mentions h1.entry-title a:hover, .editor-styles-wrapper .single-press-mentions h1.entry-title a:focus {
+  color: var(--wp--preset--color--brand-links);
+}
 .editor-styles-wrapper .single .post--title {
   font-size: var(--wp--preset--font-size--xx-large);
 }
