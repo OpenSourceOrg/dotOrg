@@ -210,8 +210,13 @@ function osi_press_mentions_by_publication_date( $query ) {
 
 function osi_the_page_dates() {
 	if ( ! is_home() && ! is_front_page() ) {
+		$max_date = '2023-02-01'; // February 1, 2023
 		$created  = get_the_date( 'F j, Y' );
 		$modified = get_the_modified_date( 'F j, Y' );
-		echo sprintf( '<h4 class="page_dates">Page created on %1$s | Last modified on %2$s</h4>', esc_html( $created ), esc_html( $modified ) );
+
+		if ( strtotime( $created ) < strtotime( $max_date ) ) {
+			// Post was created before the 'max date'.
+			echo sprintf( '<h4 class="page_dates">Page created on %1$s | Last modified on %2$s</h4>', esc_html( $created ), esc_html( $modified ) );
+		}
 	}
 }
