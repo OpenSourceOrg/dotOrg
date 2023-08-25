@@ -169,7 +169,6 @@ if ( ! function_exists( 'get_license_search_query' ) ) {
 		$query = sanitize_text_field( $query );
 
 		return $query;
-
 	}
 }
 
@@ -177,7 +176,7 @@ if ( ! function_exists( 'get_license_search_query' ) ) {
 // Meta Block Field Filter Date
 add_filter( 'meta_field_block_get_block_content', 'osi_filter_meta_block_date_output', 10, 4 );
 function osi_filter_meta_block_date_output( $content, $attributes, $block, $post_id ) {
-	if ( is_numeric( $content ) && 8 == strlen( $content ) ) {
+	if ( is_numeric( $content ) && 8 === strlen( $content ) ) {
 		$content = DateTime::createFromFormat( 'Ymd', $content )->format( 'M Y' );
 	}
 	return $content;
@@ -187,17 +186,32 @@ function osi_filter_meta_block_date_output( $content, $attributes, $block, $post
 add_action( 'pre_get_posts', 'osi_press_mentions_by_publication_date' );
 function osi_press_mentions_by_publication_date( $query ) {
 	if ( ! is_admin() && $query->is_main_query() ) {
-		if( is_post_type_archive( 'press-mentions' ) ) {
+		if ( is_post_type_archive( 'press-mentions' ) ) {
 			$query->set( 'meta_key', 'date_of_publication' );
 			$query->set( 'orderby', 'meta_value_num' );
-			$query->set( 'order', 'DESC');
-			$query->set( 'meta_query', array(
+			$query->set( 'order', 'DESC' );
+			$query->set(
+				'meta_query',
 				array(
-					'key'     => 'date_of_publication',
-					'type'    => 'numeric',
-            	)
-       		 ) );
+					array(
+						'key'  => 'date_of_publication',
+						'type' => 'numeric',
+					),
+				)
+			);
 		}
 	}
 	return $query;
+}
+
+/**
+* Renders the "Created" and "Last modified" string for a page.
+*/
+
+function osi_the_page_dates() {
+	if ( ! is_home() && ! is_front_page() ) {
+		$created  = get_the_date( 'F j, Y' );
+		$modified = get_the_modified_date( 'F j, Y' );
+		echo sprintf( '<h4 class="page_dates">Page created on %1$s | Last modified on %2$s</h4>', esc_html( $created ), esc_html( $modified ) );
+	}
 }
