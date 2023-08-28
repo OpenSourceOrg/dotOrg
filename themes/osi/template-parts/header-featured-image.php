@@ -9,7 +9,7 @@ if ( function_exists( 'Sugar_Calendar\AddOn\Ticketing\Settings\get_setting' ) ) 
 	}
 }
 
-if( ! isset( $page_title ) ) {
+if ( ! isset( $page_title ) ) {
 	$page_title = get_the_title();
 }
 
@@ -28,6 +28,7 @@ if( ! isset( $page_title ) ) {
 		<div class="wp-block-cover alignfull has-neutral-dark-background-color has-background-dim-100 has-background-dim">
 			<div class="wp-block-cover__inner-container">
 				<?php echo ( ! empty( $page_title ) ) ? '<h1 class="entry-title page--title">' . esc_html( $page_title ) . '</h1>' : ''; ?>
+				<?php osi_the_page_dates(); ?>
 			</div>
 		</div>
 	</header>
