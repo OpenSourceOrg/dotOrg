@@ -14,4 +14,6 @@
 			<?php the_content(); ?>
 		</div><!-- .entry-content -->
 
+		<?php osi_the_page_dates(); ?>
+
 	</article><!-- #post-<?php the_ID(); ?> -->
