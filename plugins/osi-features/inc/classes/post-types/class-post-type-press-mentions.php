@@ -24,7 +24,7 @@ class Post_Type_Press_Mentions extends Base {
 	 *
 	 * @var string
 	 */
-	const LABEL = 'In The News';
+	const LABEL = 'Press mentions';
 
 	/**
 	 * To get list of labels for post type.
@@ -34,17 +34,17 @@ class Post_Type_Press_Mentions extends Base {
 	public function get_labels() {
 
 		return [
-			'name'               => __( 'In The News', 'osi-features' ),
-			'singular_name'      => __( 'Articles', 'osi-features' ),
-			'all_items'          => __( 'Articles', 'osi-features' ),
+			'name'               => __( 'Press mentions', 'osi-features' ),
+			'singular_name'      => __( 'Press mentions', 'osi-features' ),
+			'all_items'          => __( 'Press mentions', 'osi-features' ),
 			'add_new'            => __( 'Add New', 'osi-features' ),
-			'add_new_item'       => __( 'Add New Article', 'osi-features' ),
-			'edit_item'          => __( 'Edit Article', 'osi-features' ),
-			'new_item'           => __( 'New Article', 'osi-features' ),
-			'view_item'          => __( 'View Article', 'osi-features' ),
-			'search_items'       => __( 'Search Articles', 'osi-features' ),
-			'not_found'          => __( 'No Articles found', 'osi-features' ),
-			'not_found_in_trash' => __( 'No Articles found in Trash', 'osi-features' ),
+			'add_new_item'       => __( 'Add New Press mention', 'osi-features' ),
+			'edit_item'          => __( 'Edit Press mention', 'osi-features' ),
+			'new_item'           => __( 'New Press mention', 'osi-features' ),
+			'view_item'          => __( 'View Press mention', 'osi-features' ),
+			'search_items'       => __( 'Search Press mentions', 'osi-features' ),
+			'not_found'          => __( 'No Press mentions found', 'osi-features' ),
+			'not_found_in_trash' => __( 'No Press mentions found in Trash', 'osi-features' ),
 		];
 
 	}
@@ -62,7 +62,7 @@ class Post_Type_Press_Mentions extends Base {
 			'has_archive'   => true,
 			'menu_position' => 6,
 			'supports'      => [ 'title', 'author', 'excerpt' ],
-			'rewrite'       => [ 'slug' => 'in-the-news' ]
+			'rewrite'       => [ 'slug' => 'press-mentions' ]
 		];
 
 	}
