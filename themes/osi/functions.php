@@ -313,3 +313,21 @@ require get_template_directory() . '/inc/class-svg.php';
  * Load the Sugar Calendar compatibility file.
  */
 require get_template_directory() . '/inc/sugar-calendar.php';
+
+/**
+ * Register the "Footer - Above credits" sidebar.
+ */
+function register_footer_above_sidebar() {
+    register_sidebar(
+		array(
+			'name'          => esc_html__( 'Footer - Above Credits', 'osi' ),
+			'id'            => 'footer-above-credits',
+			'description'   => esc_html__( 'Add widgets here to appear above the credits in the footer.', 'osi' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+    	)
+	);
+}
+add_action('widgets_init', 'register_footer_above_sidebar');
