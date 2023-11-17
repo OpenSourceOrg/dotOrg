@@ -32,8 +32,13 @@ $footerclass = is_active_sidebar( 'sidebar-footer' ) ? 'widgetized-footer footer
 				<div class="footer--inner">
 					<div class="widgetized-footer footer--widgets wp-block-columns alignwide">
 					<?php dynamic_sidebar( 'sidebar-footer-secondary' ); ?>
-						<div class="wp-block-column" style="max-width:480px">
+						<div class="wp-block-column">
 							<p class="footer--extra-text">
+							<?php
+							if ( is_active_sidebar( 'footer-above-credits' ) ) {
+								dynamic_sidebar( 'footer-above-credits' );
+							}
+							?>
 								<?php do_action( 'osi_credits' ); ?>
 							</p><!-- .powered-by-wordpress -->
 						</div>
