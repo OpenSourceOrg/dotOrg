@@ -27,7 +27,7 @@ if ( ! isset( $page_title ) ) {
 	<header class="entry-header cover--header no-thumbnail">
 		<div class="wp-block-cover alignfull has-neutral-dark-background-color has-background-dim-100 has-background-dim">
 			<div class="wp-block-cover__inner-container">
-				<?php echo ( ! empty( $page_title ) ) ? '<h1 class="entry-title page--title">' . esc_html( $page_title ) . '</h1>' : ''; ?>
+				<?php echo ( ! empty( $page_title ) && ! is_singular( 'sc_event' ) ) ? '<h1 class="entry-title page--title">' . esc_html( $page_title ) . '</h1>' : ''; ?>
 				<?php osi_the_page_dates(); ?>
 			</div>
 		</div>
