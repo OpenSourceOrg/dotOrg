@@ -318,7 +318,7 @@ require get_template_directory() . '/inc/sugar-calendar.php';
  * Register the "Footer - Above credits" sidebar.
  */
 function register_footer_above_sidebar() {
-    register_sidebar(
+	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Footer - Above Credits', 'osi' ),
 			'id'            => 'footer-above-credits',
@@ -327,7 +327,37 @@ function register_footer_above_sidebar() {
 			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-    	)
+		)
 	);
 }
-add_action('widgets_init', 'register_footer_above_sidebar');
+add_action( 'widgets_init', 'register_footer_above_sidebar' );
+
+// these two functions adjust the 'news' (post archive) to show 1 fewer posts on the first page, for symmetry
+add_action( 'pre_get_posts', 'osi_query_offset', 1 );
+function osi_query_offset( &$query ) {
+	if ( ! ( $query->is_blog() || is_main_query() ) ) {
+		return;
+	}
+
+	$offset = -1;
+	$ppp    = get_option( 'posts_per_page' );
+
+	if ( $query->is_paged ) {
+		// Manually determine page query offset (offset + current page (minus one) x posts per page)
+		$page_offset = $offset + ( ( $query->query_vars['paged'] - 1 ) * $ppp );
+		// Apply adjust page offset
+		$query->set( 'offset', $page_offset );
+	} else {
+		// This is the first page. Set a different number for posts per page
+		$query->set( 'posts_per_page', $offset + $ppp );
+	}
+}
+
+add_filter( 'found_posts', 'osi_adjust_offset_pagination', 1, 2 );
+function osi_adjust_offset_pagination( $found_posts, $query ) {
+	$offset = -1;
+	if ( $query->is_blog() && is_main_query() ) {
+		return $found_posts - $offset;
+	}
+	return $found_posts;
+}
