@@ -39,7 +39,7 @@ get_header(); ?>
 
 			<div class="wp-block-buttons aligncenter upcoming-past-buttons">
 
-				<div class="wp-block-button<?php echo ( 'upcoming' !== $display_type ? ' is-style-outline' : ' active' ); ?>">
+				<div class="wp-block-button<?php echo ( 'upcoming' === $display_type || '' === $display_type ? ' active' : ' is-style-outline' ); ?>">
 					<a href="<?php echo esc_url( $upcoming_url ); ?>" class="wp-block-button__link wp-element-button has-neutral-dark-color has-text-color">
 						<?php echo esc_html__( 'Upcoming Events', 'osi' ); ?>
 						<span class="close">X</span>
