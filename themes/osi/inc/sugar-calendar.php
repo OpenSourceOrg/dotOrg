@@ -8,6 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Sugar_Calendar\AddOn\Ticketing\Common\Functions as Functions;
+use Sugar_Calendar\AddOn\Ticketing\Frontend\Single as Single;
+
 /**
  * Add date & time details to event contents.
  * A modified version of the function sc_add_date_time_details() of the plugin Sugar Calendar.
@@ -161,8 +164,8 @@ add_action( 'sc_event_details', 'osi_add_date_time_details', 20 );
  * @param int $post_id
  */
 function osi_maybe_display_ticketing() {
+	remove_action( 'sc_after_event_content', 'Sugar_Calendar\AddOn\Ticketing\Frontend\Single\display' );
 	if ( ! is_single() ) {
-		remove_action( 'sc_after_event_content', 'Sugar_Calendar\AddOn\Ticketing\Frontend\Single\display' );
 		remove_action( 'sc_event_details', 'Sugar_Calendar\AddOn\Events\URLs\Theme\Singular\display' );
 	}
 }
@@ -176,7 +179,24 @@ add_action( 'wp', 'osi_maybe_display_ticketing' );
  */
 function osi_register_button_after_content( $post_id ) {
 
+	// For single posts, if ticket is priced at $0.0, display 'Free Event'.
+	// And Button text 'Get a ticket' -> 'Register'
 	if ( is_single() ) {
+		// Capture current sugar-calendar output
+		ob_start();
+
+		Single\display( $post_id );
+
+		$event_tickets_html = ob_get_clean();
+
+		// Replace amount with "Free Event"
+		if ( strpos( $event_tickets_html, Functions\currency_filter( 0.0 ) . ' Per Ticket' ) ) {
+			$event_tickets_html = str_replace( Functions\currency_filter( 0.0 ) . ' Per Ticket', esc_html__( 'Free Event', 'osi' ), $event_tickets_html );
+			$event_tickets_html = str_replace( 'Get a ticket', 'Register', $event_tickets_html );
+		}
+
+		echo $event_tickets_html; // phpcs:ignore WordPress.Security.EscapeOutput
+
 		return;
 	}
 
