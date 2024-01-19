@@ -39,6 +39,10 @@
 
 	.sc_event_details {
 		margin-bottom: 26px;
+
+		.sc_event_details_inner .sc-add-to-calendar-list a {
+			padding: 5px 25px 5px 36px;
+		}
 	}
 
 	.page-header {
@@ -202,7 +206,7 @@
 			column-gap: clamp( 20px, 10.5vw - 50px, 100px );
 
 			@media only screen and (max-width: 960px) {
-				grid-template-columns: 1fr;
+				grid-template-columns: 100%;
 			}
 
 			> * {
@@ -304,6 +308,14 @@
 		padding: 0;
 		max-width: min( calc( 100% - 40px * 2), $eventSinglePageMax ) !important;
 		margin: auto;
+	}
+
+	.sc_event_details {
+		margin-bottom: 26px;
+
+		.sc_event_details_inner .sc-add-to-calendar-list a {
+			padding: 5px 25px 5px 36px;
+		}
 	}
 }
 
