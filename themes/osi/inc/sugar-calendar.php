@@ -8,6 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Sugar_Calendar\AddOn\Ticketing\Common\Functions as Functions;
+use Sugar_Calendar\AddOn\Ticketing\Frontend\Single as Single;
+use Sugar_Calendar\AddOn\Calendars\Feeds\Theme\Singular as Singular;
+use Sugar_Calendar\AddOn\Calendars\Feeds as Feeds;
+
 /**
  * Add date & time details to event contents.
  * A modified version of the function sc_add_date_time_details() of the plugin Sugar Calendar.
@@ -161,8 +166,9 @@ add_action( 'sc_event_details', 'osi_add_date_time_details', 20 );
  * @param int $post_id
  */
 function osi_maybe_display_ticketing() {
+	remove_action( 'sc_after_event_content', 'Sugar_Calendar\AddOn\Ticketing\Frontend\Single\display' );
+
 	if ( ! is_single() ) {
-		remove_action( 'sc_after_event_content', 'Sugar_Calendar\AddOn\Ticketing\Frontend\Single\display' );
 		remove_action( 'sc_event_details', 'Sugar_Calendar\AddOn\Events\URLs\Theme\Singular\display' );
 	}
 }
@@ -175,8 +181,24 @@ add_action( 'wp', 'osi_maybe_display_ticketing' );
  * @return void
  */
 function osi_register_button_after_content( $post_id ) {
-
+	// For single posts, if ticket is priced at $0.0, display 'Free Event'.
+	// And Button text 'Get a ticket' -> 'Register'
 	if ( is_single() ) {
+		// Capture current sugar-calendar output
+		ob_start();
+
+		Single\display( $post_id );
+
+		$event_tickets_html = ob_get_clean();
+
+		// Replace amount with "Free Event"
+		if ( strpos( $event_tickets_html, Functions\currency_filter( 0.0 ) . ' Per Ticket' ) ) {
+			$event_tickets_html = str_replace( Functions\currency_filter( 0.0 ) . ' Per Ticket', esc_html__( 'Free Event', 'osi' ), $event_tickets_html );
+			$event_tickets_html = str_replace( 'Get a ticket', 'Register', $event_tickets_html );
+		}
+
+		echo $event_tickets_html; // phpcs:ignore WordPress.Security.EscapeOutput
+
 		return;
 	}
 
@@ -233,6 +255,60 @@ function osi_is_past_event( $post_id ) {
 
 }
 
+
+function osi_singular_display( $post_id = 0 ) {
+	// Capture the current add-to-calendar output
+	ob_start();
+	Singular\display( $post_id );
+	$add_to_calendar_html = ob_get_clean();
+
+	// Processing for add URL to the google calendar link.
+	$processor = new WP_HTML_Tag_Processor( $add_to_calendar_html );
+
+	// Process the google calendar link container.
+	if ( $processor->next_tag( array( 'class_name' => 'sc-subscribe-link-google' ) ) ) {
+		$processor->next_tag( 'a' );
+
+		// Retrieve google calendar link, event URL.
+		$calendar_link = Feeds\get_google_single_url( $post_id, 'post' );
+		$event         = sugar_calendar_get_event_by_object( $post_id, 'post' );
+		$url           = get_event_meta( $event->id, 'url', true );
+
+		if ( ! empty( $url ) ) {
+			$processor->remove_attribute( 'href' );
+			$details = '';
+
+			// If details already exists ( Sugar-Calendar uses post content for details ).
+			if ( strpos( $calendar_link, '&details=' ) ) {
+				preg_match( '/&details=(.*?)&/', $calendar_link, $matches );
+				$calendar_link = str_replace( '&details=' . $matches[1], '', $calendar_link );
+				$details       = $calendar_link . '&details=URL: ' . $url . '%0A' . $matches[1];
+				// If empty details exists.
+			} elseif ( strpos( $calendar_link, '&details' ) ) {
+				$calendar_link = str_replace( '&details', '', $calendar_link );
+				$details       = $calendar_link . '&details=URL: ' . $url;
+				// If no details exists.
+			} else {
+				$details = $calendar_link . '&details=URL: ' . $url;
+			}
+
+			// Add the URL and details to the google calendar link.
+			$processor->set_attribute( 'href', $details );
+		}
+
+		echo wp_kses_post( $processor->get_updated_html() );
+
+		return;
+	}
+
+	echo wp_kses_post( $add_to_calendar_html );
+}
+
+// Remove default behaviour of the sc_event_details action.
+remove_action( 'sc_event_details', 'Sugar_Calendar\AddOn\Calendars\Feeds\Theme\Singular\display' );
+// Replace it with our own.
+add_action( 'sc_event_details', 'osi_singular_display', 9 );
+
 /**
  * Add location details to event contents.
  *
@@ -273,3 +349,34 @@ function osi_purchase_button_html( $button_html, $event ) {
 
 }
 add_filter( 'sc_et_purchase_button_html', 'osi_purchase_button_html', 10, 2 );
+
+
+/**
+ * Modify the events archive query.
+ * Set the default display to upcoming events in an ascending order.
+ *
+ * @param WP_Query $query The query object to be modified.
+ * @return void
+ */
+function osi_modify_events_archive( $query ) {
+	// Bail if in admin
+	if ( is_admin() ) {
+		return $query;
+	}
+
+	// Bail if not the main query
+	if ( ! $query->is_main_query() ) {
+		return $query;
+	}
+
+	// Get post types
+	$pts = sugar_calendar_allowed_post_types();
+
+	// Only proceed if an Event post type
+	if ( is_post_type_archive( $pts ) && ! isset( $_GET['event-display'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+		$query->set( '_sc_display', 'upcoming' );
+		$query->set( '_sc_order', 'ASC' );
+	}
+}
+
+add_action( 'pre_get_posts', 'osi_modify_events_archive', 1000 );
