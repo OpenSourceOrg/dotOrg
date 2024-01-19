@@ -273,3 +273,32 @@ function osi_purchase_button_html( $button_html, $event ) {
 
 }
 add_filter( 'sc_et_purchase_button_html', 'osi_purchase_button_html', 10, 2 );
+
+/**
+ * Modify the events archive query.
+ * Set the default display to upcoming events in an ascending order.
+ *
+ * @param WP_Query $query The query object to be modified.
+ * @return void
+ */
+function osi_modify_events_archive( $query ) {
+	// Bail if in admin
+	if ( is_admin() ) {
+		return $query;
+	}
+
+	// Bail if not the main query
+	if ( ! $query->is_main_query() ) {
+		return $query;
+	}
+
+	// Get post types
+	$pts = sugar_calendar_allowed_post_types();
+
+	// Only proceed if an Event post type
+	if ( is_post_type_archive( $pts ) && ! isset( $_GET['event-display'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+		wp_safe_redirect( '/events/?event-display=upcoming' );
+	}
+}
+
+add_action( 'pre_get_posts', 'osi_modify_events_archive', 1000 );
