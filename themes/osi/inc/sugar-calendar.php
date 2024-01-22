@@ -281,15 +281,10 @@ add_filter( 'sc_et_purchase_button_html', 'osi_purchase_button_html', 10, 2 );
  * @param WP_Query $query The query object to be modified.
  * @return void
  */
-function osi_modify_events_archive( $query ) {
+function osi_modify_events_archive() {
 	// Bail if in admin
 	if ( is_admin() ) {
-		return $query;
-	}
-
-	// Bail if not the main query
-	if ( ! $query->is_main_query() ) {
-		return $query;
+		return;
 	}
 
 	// Get post types
@@ -301,4 +296,4 @@ function osi_modify_events_archive( $query ) {
 	}
 }
 
-add_action( 'pre_get_posts', 'osi_modify_events_archive', 1000 );
+add_action( 'template_redirect', 'osi_modify_events_archive' );
