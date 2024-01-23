@@ -4358,6 +4358,7 @@ hr.wp-block-separator {
 }
 .post-type-archive-sc_event article.type-sc_event {
   margin-bottom: 66px;
+  width: 100%;
 }
 .post-type-archive-sc_event .pagination {
   box-sizing: content-box;
