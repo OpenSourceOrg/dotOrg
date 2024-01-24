@@ -294,7 +294,7 @@ function osi_purchase_button_html( $button_html, $event ) {
 	$ticket_price = get_event_meta( $event->id, 'ticket_price', true );
 
 	// If the price is $0.0, Button text should be replace by 'Register'.
-	if ( 0.0 === $ticket_price ) {
+	if ( 0.0 === (float) $ticket_price ) {
 		$button_html = str_replace( 'Add to Cart', __( 'Register', 'osi' ), $button_html );
 	}
 
