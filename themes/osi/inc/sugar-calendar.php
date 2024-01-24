@@ -312,7 +312,6 @@ add_filter( 'sc_et_purchase_button_html', 'osi_purchase_button_html', 10, 2 );
  * Modify the events archive query.
  * Set the default display to upcoming events in an ascending order.
  *
- * @param WP_Query $query The query object to be modified.
  * @return void
  */
 function osi_modify_events_archive() {
