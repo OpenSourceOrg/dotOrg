@@ -332,10 +332,13 @@ function register_footer_above_sidebar() {
 }
 add_action( 'widgets_init', 'register_footer_above_sidebar' );
 
-// these two functions adjust the 'news' (post archive) to show 1 fewer posts on the first page, for symmetry
+/**
+ * Adjust the 'news' (post archive) to show 1 fewer posts on the first page, for symmetry
+ */
+
 add_action( 'pre_get_posts', 'osi_query_offset', 1 );
 function osi_query_offset( &$query ) {
-	if ( ! ( $query->is_blog() || is_main_query() ) ) {
+	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() ) {
 		return;
 	}
 
@@ -356,7 +359,7 @@ function osi_query_offset( &$query ) {
 add_filter( 'found_posts', 'osi_adjust_offset_pagination', 1, 2 );
 function osi_adjust_offset_pagination( $found_posts, $query ) {
 	$offset = -1;
-	if ( $query->is_blog() && is_main_query() ) {
+	if ( $query->is_blog() && is_main_query() && ! is_admin() ) {
 		return $found_posts - $offset;
 	}
 	return $found_posts;
