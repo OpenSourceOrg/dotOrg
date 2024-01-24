@@ -8,6 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Sugar_Calendar\AddOn\Ticketing\Common\Functions as Functions;
+use Sugar_Calendar\AddOn\Ticketing\Frontend\Single as Single;
+
 /**
  * Add date & time details to event contents.
  * A modified version of the function sc_add_date_time_details() of the plugin Sugar Calendar.
@@ -161,8 +164,8 @@ add_action( 'sc_event_details', 'osi_add_date_time_details', 20 );
  * @param int $post_id
  */
 function osi_maybe_display_ticketing() {
+	remove_action( 'sc_after_event_content', 'Sugar_Calendar\AddOn\Ticketing\Frontend\Single\display' );
 	if ( ! is_single() ) {
-		remove_action( 'sc_after_event_content', 'Sugar_Calendar\AddOn\Ticketing\Frontend\Single\display' );
 		remove_action( 'sc_event_details', 'Sugar_Calendar\AddOn\Events\URLs\Theme\Singular\display' );
 	}
 }
@@ -176,7 +179,26 @@ add_action( 'wp', 'osi_maybe_display_ticketing' );
  */
 function osi_register_button_after_content( $post_id ) {
 
+	// For single posts, if ticket is priced at $0.0, display 'Free Event'.
+	// And Button text 'Get a ticket' -> 'Register'
 	if ( is_single() ) {
+		// Capture current sugar-calendar output
+		ob_start();
+
+		Single\display( $post_id );
+
+		$event_tickets_html = ob_get_clean();
+
+		// translators: %s is a placeholder for the currency amount.
+		$price_html = sprintf( esc_html__( '%s Per Ticket', 'sc-event-ticketing' ), Functions\currency_filter( 0.0 ) );
+
+		// Replace amount with "Free Event"
+		if ( false !== strpos( $event_tickets_html, $price_html ) ) {
+			$event_tickets_html = str_replace( $price_html, esc_html__( 'Free Event', 'osi' ), $event_tickets_html );
+		}
+
+		echo $event_tickets_html; // phpcs:ignore WordPress.Security.EscapeOutput
+
 		return;
 	}
 
@@ -263,11 +285,20 @@ add_action( 'sc_event_details', 'osi_add_location_details' );
  *
  * @param string $button_html
  * @param object $event
+ *
  * @return string
  */
 function osi_purchase_button_html( $button_html, $event ) {
 
-	$button_html = str_replace( 'Add to Cart', 'Get a ticket', $button_html );
+	// Get the ticket price.
+	$ticket_price = get_event_meta( $event->id, 'ticket_price', true );
+
+	// If the price is $0.0, Button text should be replace by 'Register'.
+	if ( 0.0 === (float) $ticket_price ) {
+		$button_html = str_replace( 'Add to Cart', __( 'Register', 'osi' ), $button_html );
+	}
+
+	$button_html = str_replace( 'Add to Cart', __( 'Get a ticket', 'osi' ), $button_html );
 
 	return $button_html;
 
@@ -297,3 +328,23 @@ function osi_modify_events_archive() {
 }
 
 add_action( 'template_redirect', 'osi_modify_events_archive' );
+
+/**
+ * Generates default event metadata if ticket price is empty.
+ *
+ * @param mixed $value The value of the metadata.
+ * @param int $object_id The ID of the object.
+ * @param string $meta_key The key of the metadata.
+ *
+ * @return mixed The modified or original value.
+ */
+function osi_default_event_metadata( $value, $object_id, $meta_key ) {
+
+	if ( 'ticket_price' === $meta_key && '' === $value ) {
+		$value = 0.0;
+	}
+
+	return $value;
+}
+
+add_filter( 'default_sc_event_metadata', 'osi_default_event_metadata', 20, 3 );
