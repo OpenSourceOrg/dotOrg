@@ -2142,6 +2142,9 @@
 .editor-styles-wrapper .post-type-archive-sc_event .sc_event_details {
   margin-bottom: 26px;
 }
+.editor-styles-wrapper .post-type-archive-sc_event .sc_event_details .sc_event_details_inner .sc-add-to-calendar-list a {
+  padding: 5px 25px 5px 36px;
+}
 .editor-styles-wrapper .post-type-archive-sc_event .page-header .wp-block-cover {
   min-height: 180px;
   margin-left: 50%;
@@ -2152,6 +2155,7 @@
 }
 .editor-styles-wrapper .post-type-archive-sc_event article.type-sc_event {
   margin-bottom: 66px;
+  width: 100%;
 }
 .editor-styles-wrapper .post-type-archive-sc_event .pagination {
   box-sizing: content-box;
@@ -2256,7 +2260,7 @@
 }
 @media only screen and (max-width: 960px) {
   .editor-styles-wrapper .single-sc_event .content.has_no_sidebar .content--page article:not(.archive) .entry-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
   }
 }
 .editor-styles-wrapper .single-sc_event .content.has_no_sidebar .content--page article:not(.archive) .entry-content > * {
@@ -2345,6 +2349,12 @@
   padding: 0;
   max-width: min(100% - 80px, 1318px) !important;
   margin: auto;
+}
+.editor-styles-wrapper .single-sc_event .sc_event_details {
+  margin-bottom: 26px;
+}
+.editor-styles-wrapper .single-sc_event .sc_event_details .sc_event_details_inner .sc-add-to-calendar-list a {
+  padding: 5px 25px 5px 36px;
 }
 @media only screen and (max-width: 650px) {
   .editor-styles-wrapper #sc-event-ticketing-modal .container.modal-body .row:first-child {
