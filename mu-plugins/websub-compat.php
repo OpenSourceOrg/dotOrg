@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return array $links Array of filtered Feed URLs.
  */
-function websub_compat( $links ) {
+function websub_compat( array $links ) {
 	if ( ! $links || ! is_array( $links ) ) {
 		return $links;
 	}
