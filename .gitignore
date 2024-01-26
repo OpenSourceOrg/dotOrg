@@ -18,6 +18,7 @@ mu-plugins/*
 !mu-plugins/mu-autoloader.php
 !mu-plugins/osi-event-list
 !mu-plugins/osi-sponsors-list
+!websub-compat.php
 
 themes/*
 !themes/osi
