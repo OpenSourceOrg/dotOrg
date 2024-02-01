@@ -15,7 +15,7 @@ if ( ! isset( $page_title ) ) {
 
 ?>
 
-<?php if ( has_post_thumbnail() ) : ?>
+<?php if ( has_post_thumbnail() && 'post' !== get_post_type( $post ) ) : ?>
 	<header class="entry-header cover--header">
 		<div class="wp-block-cover alignfull">
 			<img class="wp-block-cover__image-background" alt="" src="<?php the_post_thumbnail_url(); ?>" data-object-fit="cover"/>
@@ -25,9 +25,8 @@ if ( ! isset( $page_title ) ) {
 	</header>
 <?php else : ?>
 	<header class="entry-header cover--header no-thumbnail">
-		<div class="wp-block-cover alignfull has-neutral-dark-background-color has-background-dim-100 has-background-dim">
+		<div class="wp-block-cover alignfull has-neutral-white-background-color">
 			<div class="wp-block-cover__inner-container">
-				<?php echo ( ! empty( $page_title ) && ! is_singular( 'sc_event' ) ) ? '<h1 class="entry-title page--title">' . esc_html( $page_title ) . '</h1>' : ''; ?>
 				<?php osi_the_page_dates(); ?>
 			</div>
 		</div>
