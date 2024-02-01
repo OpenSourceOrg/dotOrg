@@ -27,7 +27,7 @@
 	</div><!-- .entry-content -->
 	<section id="pre-footer">
 		<?php get_template_part( 'template-parts/nav-postname-pager' ); ?>
-		<?php //get_template_part( 'template-parts/email-block' ); ?>
+		<?php get_template_part( 'template-parts/email-block' ); ?>
 	</section>
 
 </article><!-- #post-<?php the_ID(); ?> -->
