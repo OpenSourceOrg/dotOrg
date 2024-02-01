@@ -25,7 +25,7 @@ if ( ! isset( $page_title ) ) {
 	</header>
 <?php else : ?>
 	<header class="entry-header cover--header no-thumbnail">
-		<div class="wp-block-cover alignfull has-neutral-white-background-color">
+		<div class="wp-block-cover alignfull">
 			<div class="wp-block-cover__inner-container">
 				<?php osi_the_page_dates(); ?>
 			</div>
