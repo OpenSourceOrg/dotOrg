@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: WebSub Backwards Compatibility
+ * Plugin Description: Still send pings for the old `blog.opensource.org` Feed-URLs.
  * Version: 1.0.0
  * Author: WordPress.com Special Projects
  * Author URI: https://wpspecialprojects.wordpress.com/
