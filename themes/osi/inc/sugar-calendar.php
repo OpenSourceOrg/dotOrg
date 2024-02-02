@@ -8,13 +8,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Sugar_Calendar\AddOn\Ticketing\Common\Functions as Functions;
+use Sugar_Calendar\AddOn\Ticketing\Frontend\Single as Single;
+
 /**
  * Add date & time details to event contents.
  * A modified version of the function sc_add_date_time_details() of the plugin Sugar Calendar.
  *
- * @param int $post_id
+ * @param integer $post_id   Post ID.
+ * @param boolean $show_time Show time.
+ *
+ * @return void
  */
-function osi_add_date_time_details( $post_id = 0, $show_time = true ) {
+function osi_add_date_time_details( int $post_id = 0, bool $show_time = true ) {
 
 	// Support 1.x
 	$event      = sugar_calendar_get_event_by_object( $post_id );
@@ -158,11 +164,11 @@ add_action( 'sc_event_details', 'osi_add_date_time_details', 20 );
 /**
  * Display ticketing information.
  *
- * @param int $post_id
+ * @return void
  */
 function osi_maybe_display_ticketing() {
+	remove_action( 'sc_after_event_content', 'Sugar_Calendar\AddOn\Ticketing\Frontend\Single\display' );
 	if ( ! is_single() ) {
-		remove_action( 'sc_after_event_content', 'Sugar_Calendar\AddOn\Ticketing\Frontend\Single\display' );
 		remove_action( 'sc_event_details', 'Sugar_Calendar\AddOn\Events\URLs\Theme\Singular\display' );
 	}
 }
@@ -171,12 +177,32 @@ add_action( 'wp', 'osi_maybe_display_ticketing' );
 /**
  * Add the registration button after the content in the event listing page.
  *
- * @param int $post_id
+ * @param integer $post_id The ID of the post.
+ *
  * @return void
  */
-function osi_register_button_after_content( $post_id ) {
+function osi_register_button_after_content( int $post_id ) {
 
+	// For single posts, if ticket is priced at $0.0, display 'Free Event'.
+	// And Button text 'Get a ticket' -> 'Register'
 	if ( is_single() ) {
+		// Capture current sugar-calendar output
+		ob_start();
+
+		Single\display( $post_id );
+
+		$event_tickets_html = ob_get_clean();
+
+		// translators: %s is a placeholder for the currency amount.
+		$price_html = sprintf( esc_html__( '%s Per Ticket', 'sc-event-ticketing' ), Functions\currency_filter( 0.0 ) );
+
+		// Replace amount with "Free Event"
+		if ( false !== strpos( $event_tickets_html, $price_html ) ) {
+			$event_tickets_html = str_replace( $price_html, esc_html__( 'Free Event', 'osi' ), $event_tickets_html );
+		}
+
+		echo $event_tickets_html; // phpcs:ignore WordPress.Security.EscapeOutput
+
 		return;
 	}
 
@@ -208,11 +234,11 @@ add_action( 'sc_after_event_content', 'osi_register_button_after_content' );
 /**
  * Check if the event is past.
  *
- * @param integer $post_id
+ * @param integer $post_id Post ID.
+ *
  * @return boolean
  */
-function osi_is_past_event( $post_id ) {
-
+function osi_is_past_event( int $post_id ) {
 	$is_past_event = false;
 
 	$event = sugar_calendar_get_event_by_object( $post_id );
@@ -230,16 +256,16 @@ function osi_is_past_event( $post_id ) {
 	}
 
 	return $is_past_event;
-
 }
 
 /**
  * Add location details to event contents.
  *
- * @param int $post_id
+ * @param integer $post_id Post ID.
+ *
+ * @return void
  */
-function osi_add_location_details( $post_id = 0 ) {
-
+function osi_add_location_details( int $post_id = 0 ) {
 	$location = sugar_calendar_get_event_by_object( $post_id, 'post' )->location;
 
 	// Maybe add location
@@ -261,15 +287,42 @@ add_action( 'sc_event_details', 'osi_add_location_details' );
 /**
  * Add the purchase button to the event details.
  *
- * @param string $button_html
- * @param object $event
+ * @param string $button_html Button HTML.
+ * @param object $event       Event object.
+ *
  * @return string
  */
-function osi_purchase_button_html( $button_html, $event ) {
+function osi_purchase_button_html( string $button_html, object $event ) {
 
-	$button_html = str_replace( 'Add to Cart', 'Get a ticket', $button_html );
+	// Get the ticket price.
+	$ticket_price = get_event_meta( $event->id, 'ticket_price', true );
+
+	// If the price is $0.0, Button text should be replace by 'Register'.
+	if ( 0.0 === (float) $ticket_price ) {
+		$button_html = str_replace( 'Add to Cart', __( 'Register', 'osi' ), $button_html );
+	}
+
+	$button_html = str_replace( 'Add to Cart', __( 'Get a ticket', 'osi' ), $button_html );
 
 	return $button_html;
-
 }
 add_filter( 'sc_et_purchase_button_html', 'osi_purchase_button_html', 10, 2 );
+
+/**
+ * Generates default event metadata if ticket price is empty.
+ *
+ * @param mixed   $value     The value of the metadata.
+ * @param integer $object_id The ID of the object.
+ * @param string  $meta_key  The key of the metadata.
+ *
+ * @return mixed The modified or original value.
+ */
+function osi_default_event_metadata( mixed $value, int $object_id, string $meta_key ) {
+	if ( 'ticket_price' === $meta_key && '' === $value ) {
+		$value = 0.0;
+	}
+
+	return $value;
+}
+
+add_filter( 'default_sc_event_metadata', 'osi_default_event_metadata', 20, 3 );
