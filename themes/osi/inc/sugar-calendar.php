@@ -309,6 +309,29 @@ function osi_purchase_button_html( string $button_html, object $event ) {
 add_filter( 'sc_et_purchase_button_html', 'osi_purchase_button_html', 10, 2 );
 
 /**
+ * Modify the events archive query.
+ * Set the default display to upcoming events in an ascending order.
+ *
+ * @return void
+ */
+function osi_modify_events_archive() {
+	// Bail if in admin
+	if ( is_admin() ) {
+		return;
+	}
+
+	// Get post types
+	$pts = sugar_calendar_allowed_post_types();
+
+	// Only proceed if an Event post type
+	if ( is_post_type_archive( $pts ) && ! isset( $_GET['event-display'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+		wp_safe_redirect( '/events/?event-display=upcoming' );
+	}
+}
+
+add_action( 'template_redirect', 'osi_modify_events_archive' );
+
+/**
  * Generates default event metadata if ticket price is empty.
  *
  * @param mixed   $value     The value of the metadata.
