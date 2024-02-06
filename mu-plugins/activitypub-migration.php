@@ -7,7 +7,7 @@
  * Author URI: https://wpspecialprojects.wordpress.com/
  */
 
- if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
 
