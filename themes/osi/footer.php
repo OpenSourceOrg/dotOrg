@@ -9,6 +9,9 @@
  */
 
 $footerclass = is_active_sidebar( 'sidebar-footer' ) ? 'widgetized-footer footer--widgets' : 'standard-footer';
+if ( is_blog() ) :
+	get_template_part( 'template-parts/email-block' );
+endif;
 ?>
 
 		<footer id="colophon" class="footer site-footer" role="contentinfo">
