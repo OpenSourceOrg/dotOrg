@@ -35,6 +35,7 @@ get_header(); ?>
 							<?php get_template_part( 'template-parts/featured-image', 'medium' ); ?>
 							<section class="post--summary osi-list--post-content">
 								<header class="entry-header">
+								<?php echo wp_kses_post( osi_get_single_taxonomy_terms_links( $post, 'category' ) ); ?>
 									<?php
 									the_title( '<h2 class="post--title entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 									?>
@@ -55,6 +56,10 @@ get_header(); ?>
 										?>
 											<div class="post--byline entry-meta">
 												<?php osi_posted_on(); ?>
+												by 
+												<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" title="<?php echo esc_attr( get_the_author() ); ?>">
+													<?php the_author(); ?>
+												</a>
 											</div><!-- .entry-meta -->
 											<?php
 									endif;
