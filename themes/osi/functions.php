@@ -338,7 +338,7 @@ add_action( 'widgets_init', 'register_footer_above_sidebar' );
 
 add_action( 'pre_get_posts', 'osi_query_offset', 1 );
 function osi_query_offset( &$query ) {
-	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() ) {
+	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() || is_front_page() || is_archive() ) {
 		return;
 	}
 
@@ -359,7 +359,7 @@ function osi_query_offset( &$query ) {
 add_filter( 'found_posts', 'osi_adjust_offset_pagination', 1, 2 );
 function osi_adjust_offset_pagination( $found_posts, $query ) {
 	$offset = -1;
-	if ( $query->is_blog() && is_main_query() && ! is_admin() ) {
+	if ( $query->is_blog() && is_main_query() && ! is_admin() && ! $query->is_front_page() ) {
 		return $found_posts - $offset;
 	}
 	return $found_posts;
