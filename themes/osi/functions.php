@@ -338,7 +338,7 @@ add_action( 'widgets_init', 'register_footer_above_sidebar' );
 
 add_action( 'pre_get_posts', 'osi_query_offset', 1 );
 function osi_query_offset( &$query ) {
-	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() || is_front_page() || is_archive() ) {
+	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() || is_front_page() || is_archive() || is_404() ) {
 		return;
 	}
 
