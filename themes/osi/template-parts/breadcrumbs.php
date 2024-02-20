@@ -39,11 +39,17 @@
           $breadcrumb .= '<span class="current-category" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><meta property="position" content="' . esc_attr( $position ) . '"><span itemprop="name">' . esc_html( $current->name ) . '</span></span>';
         }
       
-        $home      = '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><meta itemprop="position" content="' . esc_attr( $position ) . '"><meta itemprop="position" content="0"><a href="' . esc_url( home_url( '/' ) ) . '" class="home-link" itemprop="item" rel="home"><span itemprop="name">' . esc_html__( 'Home', 'jetpack' ) . '</span></a></span>';
-        
+        $home = '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><meta itemprop="position" content="' . esc_attr( $position ) . '"><meta itemprop="position" content="0"><a href="' . esc_url( home_url( '/' ) ) . '" class="home-link" itemprop="item" rel="home"><span itemprop="name">' . esc_html__( 'Home', 'jetpack' ) . '</span></a></span>';
         if ( is_archive() ) {
-          $blog_base = '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><meta itemprop="position" content="' . esc_attr( $position ) . '"><meta itemprop="position" content="0"><a href="' . esc_url( '/news/' ) . '" class="home-link" itemprop="item" rel="home"><span itemprop="name">' . esc_html__( 'News', 'jetpack' ) . '</span></a></span>';
-          echo '<nav class="entry-breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">' . $home . $blog_base . $breadcrumb . '</nav>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+          $blog_base     = '';
+          $posts_page_id = get_option( 'page_for_posts' );
+
+          if ($posts_page_id) {
+            $posts_page_title     = get_the_title( $posts_page_id );
+            $posts_page_permalink = get_permalink( $posts_page_id );
+            $posts_page = '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><meta itemprop="position" content="' . esc_attr( $position ) . '"><meta itemprop="position" content="0"><a href="' . esc_url( $posts_page_permalink ) . '" class="home-link" itemprop="item" rel="home"><span itemprop="name">' . esc_html__( $posts_page_title ) . '</span></a></span>';
+          }
+          echo '<nav class="entry-breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">' . $home . $posts_page . $breadcrumb . '</nav>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         } else {
           echo '<nav class="entry-breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">' . $home . $breadcrumb . '</nav>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
