@@ -359,38 +359,13 @@ add_action( 'widgets_init', 'register_footer_above_sidebar' );
  * @return void
  */
 function osi_query_offset( WP_Query &$query ) {
-	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() || is_front_page() || is_archive() || is_404() ) {
+	if ( ! ( is_home() ) ) {
 		return;
 	}
-
-	$offset = -1;
-	$ppp    = get_option( 'posts_per_page' );
-
-	if ( $query->is_paged ) {
-		// Manually determine page query offset (offset + current page (minus one) x posts per page)
-		$page_offset = $offset + ( ( $query->query_vars['paged'] - 1 ) * $ppp );
-		// Apply adjust page offset
-		$query->set( 'offset', $page_offset );
+	if ( is_paged() ) {
+		$query->set( 'posts_per_page', 8 );
 	} else {
-		// This is the first page. Set a different number for posts per page
-		$query->set( 'posts_per_page', $offset + $ppp );
+		$query->set( 'posts_per_page', 9 );
 	}
 }
 add_action( 'pre_get_posts', 'osi_query_offset', 1 );
-
-/**
- * Adjust the pagination offset.
- *
- * @param integer  $found_posts The number of found posts.
- * @param WP_Query $query       WordPress Query object.
- *
- * @return integer Adjusted number of found posts.
- */
-function osi_adjust_offset_pagination( int $found_posts, WP_Query $query ) {
-	$offset = -1;
-	if ( $query->is_blog() && is_main_query() && ! is_admin() && ! $query->is_front_page() ) {
-		return $found_posts - $offset;
-	}
-	return $found_posts;
-}
-add_filter( 'found_posts', 'osi_adjust_offset_pagination', 1, 2 );
