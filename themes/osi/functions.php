@@ -355,9 +355,9 @@ add_action( 'widgets_init', 'register_footer_above_sidebar' );
  * Adjust the 'blog' (post archive) to show a different number of posts on the first page.
  *
  * @param WP_Query $query WordPress Query object.
+ *
  * @return void
  */
-add_action( 'pre_get_posts', 'osi_query_offset', 1 );
 function osi_query_offset( &$query ) {
 	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() || is_front_page() || is_archive() || is_404() ) {
 		return;
@@ -376,15 +376,16 @@ function osi_query_offset( &$query ) {
 		$query->set( 'posts_per_page', $offset + $ppp );
 	}
 }
+add_action( 'pre_get_posts', 'osi_query_offset', 1 );
 
 /**
  * Adjust the pagination offset.
  *
  * @param int      $found_posts The number of found posts.
  * @param WP_Query $query       WordPress Query object.
+ * 
  * @return int Adjusted number of found posts.
  */
-add_filter( 'found_posts', 'osi_adjust_offset_pagination', 1, 2 );
 function osi_adjust_offset_pagination( $found_posts, $query ) {
 	$offset = -1;
 	if ( $query->is_blog() && is_main_query() && ! is_admin() && ! $query->is_front_page() ) {
@@ -392,3 +393,4 @@ function osi_adjust_offset_pagination( $found_posts, $query ) {
 	}
 	return $found_posts;
 }
+add_filter( 'found_posts', 'osi_adjust_offset_pagination', 1, 2 );
