@@ -25,6 +25,7 @@ function activitypub_actor_migration( array $actor ) {
 
 	$host = wp_parse_url( get_home_url(), PHP_URL_HOST );
 	$id   = str_replace( $host, 'blog.' . $host, $actor['id'] );
+	$id   = str_replace( '/blog/', '/', $id );
 
 	$actor['alsoKnownAs'] = array( $id );
 	return $actor;
