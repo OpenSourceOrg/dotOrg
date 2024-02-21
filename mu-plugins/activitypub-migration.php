@@ -30,3 +30,4 @@ function activitypub_actor_migration( array $actor ) {
 	return $actor;
 }
 add_filter( 'activitypub_activity_user_object_array', 'activitypub_actor_migration' );
+add_filter( 'activitypub_activity_blog_user_object_array', 'activitypub_actor_migration' );
