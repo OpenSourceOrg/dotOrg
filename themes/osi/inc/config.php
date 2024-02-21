@@ -78,12 +78,7 @@ function osi_excerpt_length( $length ) {
 }
 
 function osi_excerpt_more( $more ) {
-
-	if ( is_post_type_archive( sugar_calendar_get_event_post_type_id() ) ) {
 		return '...';
-	}
-
-	return '... <a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Read More', 'osi' ) . '</a>';
 }
 add_filter( 'excerpt_length', 'osi_excerpt_length' );
 add_filter( 'excerpt_more', 'osi_excerpt_more' );

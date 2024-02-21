@@ -14,6 +14,8 @@ if ( ! function_exists( 'osi_setup' ) ) :
 	 * Note that this function is hooked into the after_setup_theme hook, which
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
+	 *
+	 * @return void
 	 */
 	function osi_setup() {
 		/*
@@ -114,6 +116,8 @@ add_action( 'after_setup_theme', 'osi_setup' );
 
 /**
  * Register sidebars and widgets
+ *
+ * @return void
  */
 function osi_widgets_init() {
 	// Sidebars
@@ -168,7 +172,8 @@ add_action( 'widgets_init', 'osi_widgets_init' );
  *
  * Priority 0 to make it available to lower priority callbacks.
  *
- * @global int $content_width
+ * @global int $content_width Content width to set.
+ * @return void
  */
 function osi_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'osi_content_width', 640 );
@@ -177,6 +182,8 @@ add_action( 'after_setup_theme', 'osi_content_width', 0 );
 
 /**
  * Add a reusable block admin menu link for easy administration.
+ *
+ * @return void
  */
 function osi_reusable_blocks_admin_menu(): void {
 	add_theme_page(
@@ -192,6 +199,8 @@ add_action( 'admin_menu', 'osi_reusable_blocks_admin_menu' );
 
 /**
  * Enqueue scripts and styles.
+ *
+ * @return void
  */
 function osi_scripts() {
 	wp_enqueue_style(
@@ -226,7 +235,11 @@ function osi_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'osi_scripts' );
 
-/** Frontend Inline Styles **/
+/**
+ * Add inline styles to the frontend.
+ *
+ * @return void
+ */
 function osi_inline_styles() {
 	wp_add_inline_style( 'osi-style', osi_palette_css() );
 	wp_add_inline_style( 'osi-style', osi_gradient_css() );
@@ -235,7 +248,11 @@ function osi_inline_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'osi_inline_styles', 100 ); // prioritize as last
 
-/** Block Editor Styles **/
+/**
+ * Add block editor assets.
+ *
+ * @return void
+ */
 function osi_add_block_editor_assets() {
 	wp_enqueue_style( 'editor-styles', get_template_directory_uri() . '/assets/css/editor-style.css', '', 1 );
 	wp_add_inline_style( 'editor-styles', osi_palette_css() );
@@ -316,9 +333,11 @@ require get_template_directory() . '/inc/sugar-calendar.php';
 
 /**
  * Register the "Footer - Above credits" sidebar.
+ *
+ * @return void
  */
 function register_footer_above_sidebar() {
-    register_sidebar(
+	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Footer - Above Credits', 'osi' ),
 			'id'            => 'footer-above-credits',
@@ -327,7 +346,51 @@ function register_footer_above_sidebar() {
 			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-    	)
+		)
 	);
 }
-add_action('widgets_init', 'register_footer_above_sidebar');
+add_action( 'widgets_init', 'register_footer_above_sidebar' );
+
+/**
+ * Adjust the 'blog' (post archive) to show a different number of posts on the first page.
+ *
+ * @param WP_Query $query WordPress Query object.
+ *
+ * @return void
+ */
+function osi_query_offset( WP_Query &$query ) {
+	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() || is_front_page() || is_archive() || is_404() ) {
+		return;
+	}
+
+	$offset = -1;
+	$ppp    = get_option( 'posts_per_page' );
+
+	if ( $query->is_paged ) {
+		// Manually determine page query offset (offset + current page (minus one) x posts per page)
+		$page_offset = $offset + ( ( $query->query_vars['paged'] - 1 ) * $ppp );
+		// Apply adjust page offset
+		$query->set( 'offset', $page_offset );
+	} else {
+		// This is the first page. Set a different number for posts per page
+		$query->set( 'posts_per_page', $offset + $ppp );
+	}
+}
+add_action( 'pre_get_posts', 'osi_query_offset', 1 );
+
+/**
+ * Adjust the pagination offset.
+ *
+ * @param integer  $found_posts The number of found posts.
+ * @param WP_Query $query       WordPress Query object.
+ *
+ * @return integer Adjusted number of found posts.
+ */
+function osi_adjust_offset_pagination( int $found_posts, WP_Query $query ) {
+	$offset = -1;
+	if ( $query->is_blog() && is_main_query() && ! is_admin() && ! $query->is_front_page() ) {
+		return $found_posts - $offset;
+	}
+	return $found_posts;
+}
+add_filter( 'found_posts', 'osi_adjust_offset_pagination', 1, 2 );
