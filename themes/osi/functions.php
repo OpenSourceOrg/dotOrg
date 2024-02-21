@@ -358,7 +358,7 @@ add_action( 'widgets_init', 'register_footer_above_sidebar' );
  *
  * @return void
  */
-function osi_query_offset( &$query ) {
+function osi_query_offset( WP_Query &$query ) {
 	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() || is_front_page() || is_archive() || is_404() ) {
 		return;
 	}
@@ -381,12 +381,12 @@ add_action( 'pre_get_posts', 'osi_query_offset', 1 );
 /**
  * Adjust the pagination offset.
  *
- * @param int      $found_posts The number of found posts.
+ * @param integer  $found_posts The number of found posts.
  * @param WP_Query $query       WordPress Query object.
- * 
- * @return int Adjusted number of found posts.
+ *
+ * @return integer Adjusted number of found posts.
  */
-function osi_adjust_offset_pagination( $found_posts, $query ) {
+function osi_adjust_offset_pagination( int $found_posts, WP_Query $query ) {
 	$offset = -1;
 	if ( $query->is_blog() && is_main_query() && ! is_admin() && ! $query->is_front_page() ) {
 		return $found_posts - $offset;
