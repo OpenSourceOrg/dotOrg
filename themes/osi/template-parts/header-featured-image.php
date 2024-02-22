@@ -1,7 +1,6 @@
 <?php
 
 if ( function_exists( 'Sugar_Calendar\AddOn\Ticketing\Settings\get_setting' ) ) {
-
 	$recepit_page_id = Sugar_Calendar\AddOn\Ticketing\Settings\get_setting( 'receipt_page' );
 
 	if ( get_the_ID() === absint( $recepit_page_id ) ) {
