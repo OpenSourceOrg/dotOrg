@@ -28,7 +28,7 @@ function osi_add_date_time_details( int $post_id = 0, bool $show_time = true ) {
 	$start_date = sc_get_event_date( $post_id );
 	$start_time = sc_get_event_start_time( $post_id );
 	$end_time   = sc_get_event_end_time( $post_id );
-	$recurring  = sc_is_recurring( $post_id ) ? sc_get_recurring_description( $post_id ) : '';
+	$recurring  = sc_is_recurring( $post_id ) ? wpsp_get_recurring_description( $post_id ) : '';
 
 	// Recurring description
 	if ( ! empty( $recurring ) ) : ?>
@@ -349,3 +349,124 @@ function osi_default_event_metadata( mixed $value, int $object_id, string $meta_
 }
 
 add_filter( 'default_sc_event_metadata', 'osi_default_event_metadata', 20, 3 );
+
+/**
+ * Team 51 Get the date of a recurring event
+ *
+ * @access      public
+ * @since       2.0.9
+ * @return      array
+ */
+function wpsp_get_recurring_description( $event_id = 0 ) {
+
+	// Default return value
+	$retval = '';
+
+	$recurring_schedule = get_post_meta( $event_id, 'sc_event_recurring', true );
+	$event_date_time    = get_post_meta( $event_id, 'sc_event_date_time', true );
+	$recur_until        = sc_get_recurring_stop_date( $event_id );
+	$date_format        = sc_get_date_format();
+
+	global $wpdb;
+
+	$query = $wpdb->prepare(
+		"SELECT recurrence_count, recurrence_interval FROM {$wpdb->prefix}sc_events WHERE object_id = %d",
+		$event_id
+	);
+
+	$results             = $wpdb->get_row($query);
+	$recurrence_count    = $results->recurrence_count - 1;
+	$recurrence_interval = $results->recurrence_interval;
+
+	if ( ! $recur_until ) {
+		$recurring_schedule_mod = substr( $recurring_schedule, 0, -2 ) . 's';
+		$recur_until            = wpsp_calc_recur_until( $recurrence_count, $recurrence_interval, $event_date_time, $recurring_schedule_mod );
+	}
+
+	switch ( $recurring_schedule ) {
+
+		case 'weekly':
+
+			if ( isset( $format[ 'weekly' ] ) ) {
+				$retval = $format[ 'weekly' ];
+			} else {
+				$weekly_interval = $recurrence_interval > 1 ? wpsp_ordinal( $recurrence_interval) : '';
+
+				$retval = sprintf( __( 'Starts %s then every %s %s until %s', 'sugar-calendar' ),
+
+					// @todo needs time zone support
+					date_i18n( $date_format, $event_date_time ),
+					$weekly_interval,
+					date_i18n( 'l', $event_date_time ),
+					date_i18n( $date_format, $recur_until ) );
+			}
+			break;
+
+		case 'monthly':
+
+			if ( isset( $format[ 'monthly' ] ) ) {
+				$retval = $format[ 'monthly' ];
+			} else {
+				$monthly_interval = $recurrence_interval > 1 ? wpsp_ordinal( $recurrence_interval) : '';
+
+				$retval = sprintf( __( 'Starts %s then every %s month on the %s, until %s', 'sugar-calendar' ),
+
+					// @todo needs time zone support
+					date_i18n( $date_format, $event_date_time ),
+					$monthly_interval,
+					date_i18n( 'jS', $event_date_time ),
+					date_i18n( $date_format, $recur_until ) );
+			}
+			break;
+
+		case 'yearly':
+
+			if ( isset( $format[ 'yearly' ] ) ) {
+				$retval = $format[ 'yearly' ];
+			} else {
+				$yearly_interval = $recurrence_interval > 1 ? wpsp_ordinal( $recurrence_interval) : '';
+
+				$retval = sprintf( __( 'Starts %s then every %s year on the %s of %s, until %s', 'sugar-calendar' ),
+
+					// @todo needs time zone support
+					date_i18n( $date_format, $event_date_time ),
+					$yearly_interval,
+					date_i18n( 'jS', $event_date_time ),
+					date_i18n( 'F', $event_date_time ),
+					date_i18n( $date_format, $recur_until ) );
+			}
+			break;
+	}
+
+	// Return the formatted recurring description
+	return $retval;
+}
+
+/**
+ * Get the ordinal of a number
+ * 
+ * @param  int $number The number to convert
+ * @return string       The ordinal
+ */
+function wpsp_ordinal( $number ) {
+    $ends = ['th','st','nd','rd','th','th','th','th','th','th'];
+    if ( ( ( $number % 100 ) >= 11 ) && ( ( $number % 100 ) <= 13 ) )
+        return $number. 'th';
+    else
+        return $number. $ends[$number % 10];
+}
+
+/**
+ * Calculate the recurring until date
+ * 
+ * @param  int $recurrence_count    The number of recurrences
+ * @param  int $recurrence_interval The interval between recurrences
+ * @param  int $event_date_time     The start date of the event
+ * @param  string $recurring_schedule The recurring schedule
+ * @return int 	The recurring until date
+ */
+function wpsp_calc_recur_until( $recurrence_count, $recurrence_interval, $event_date_time, $recurring_schedule ) {
+	$recur_until = strtotime( '+' . $recurrence_count * $recurrence_interval . ' ' . $recurring_schedule, $event_date_time );
+	return $recur_until;
+}
+ 
