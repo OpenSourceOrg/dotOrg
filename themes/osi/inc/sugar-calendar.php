@@ -357,7 +357,7 @@ add_filter( 'default_sc_event_metadata', 'osi_default_event_metadata', 20, 3 );
  *
  * @return mixed
  */
-function osi_event_construct( $event ) {
+function osi_event_construct( mixed $event ) {
 	// Get post types
 	$pts = sugar_calendar_allowed_post_types();
 
