@@ -266,15 +266,15 @@ function osi_is_past_event( int $post_id ) {
  * @return void
  */
 function osi_add_location_details( int $post_id = 0 ) {
-	$location = sugar_calendar_get_event_by_object( $post_id, 'post' )->location;
+	$event = sugar_calendar_get_event_by_object( $post_id, 'post' );
 
 	// Maybe add location
-	if ( ! empty( $location ) ) :
+	if ( ! empty( $event->location ) && $event->url !== $event->location ) :
 		?>
 
 		<div class="sc_event_location">
 
-			<?php echo esc_html( $location ); ?>
+			<?php echo esc_html( $event->location ); ?>
 
 		</div>
 
@@ -349,3 +349,31 @@ function osi_default_event_metadata( mixed $value, int $object_id, string $meta_
 }
 
 add_filter( 'default_sc_event_metadata', 'osi_default_event_metadata', 20, 3 );
+
+/**
+ * Add Event Location in presence of Event URL.
+ *
+ * @param mixed $event The event to construct.
+ *
+ * @return mixed
+ */
+function osi_event_construct( $event ) {
+	// Get post types
+	$pts = sugar_calendar_allowed_post_types();
+
+	// Only for Single and Archive Pages.
+	if ( ! is_single() && ! is_post_type_archive( $pts ) && ! empty( $event ) && $event->exists() ) {
+		return $event;
+	}
+
+	$event_url      = get_event_meta( $event->id, 'url', true );
+	$event_location = get_event_meta( $event->id, 'location', true );
+
+	if ( empty( $event_location ) && ! empty( $event_url ) ) {
+		$event->location = $event_url;
+	}
+
+	return $event;
+}
+
+add_filter( 'sugar_calendar_event_construct', 'osi_event_construct', 9 );
