@@ -8,6 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! class_exists( 'Sugar_Calendar\\Requirements_Check' ) ) {
+	exit; 
+}
+
 use Sugar_Calendar\AddOn\Ticketing\Common\Functions as Functions;
 use Sugar_Calendar\AddOn\Ticketing\Frontend\Single as Single;
 

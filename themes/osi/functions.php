@@ -329,8 +329,9 @@ require get_template_directory() . '/inc/class-svg.php';
 /**
  * Load the Sugar Calendar compatibility file.
  */
-require get_template_directory() . '/inc/sugar-calendar.php';
-
+if ( class_exists( 'Sugar_Calendar\\Requirements_Check' ) ) {
+	require get_template_directory() . '/inc/sugar-calendar.php';
+}
 /**
  * Register the "Footer - Above credits" sidebar.
  *
