@@ -13,7 +13,12 @@
 	<?php get_template_part( 'template-parts/header-featured-image' ); ?>
 
 	<div class="entry-content post--content">
-		<?php if ( get_post_type() !== sugar_calendar_get_event_post_type_id() ) { ?>
+		<?php 
+		$sugar_cal_post_type_id = 'placeholder';
+		if ( class_exists( 'Sugar_Calendar\\Requirements_Check' ) ) {
+			$sugar_cal_post_type_id = sugar_calendar_get_event_post_type_id();
+		}
+		if ( $sugar_cal_post_type_id !== get_post_type() ) { ?>
 
 			<div class="entry-meta post--byline">
 				<?php osi_posted_on(); ?>
