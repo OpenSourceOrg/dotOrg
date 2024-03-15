@@ -337,7 +337,6 @@ add_action( 'widgets_init', 'register_footer_above_sidebar' );
 /**
  * Adjust the 'news' (post archive) to show 1 fewer posts on the first page, for symmetry
  */
-
 add_action( 'pre_get_posts', 'osi_query_offset', 1 );
 function osi_query_offset( &$query ) {
 	if ( ! ( $query->is_blog() || is_main_query() ) || is_admin() ) {
