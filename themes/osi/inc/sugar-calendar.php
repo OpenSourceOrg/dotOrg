@@ -3,6 +3,7 @@
  * Sugar Calendar Compatibility File.
  */
 
+ 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

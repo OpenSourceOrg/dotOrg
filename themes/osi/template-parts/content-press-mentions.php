@@ -15,7 +15,6 @@
 	<div class="entry-content post--content">
 		<?php 
 		$sugar_cal_post_type_id = 'placeholder';
-		
 		if ( class_exists( 'Sugar_Calendar\\Requirements_Check' ) ) {
 			$sugar_cal_post_type_id = sugar_calendar_get_event_post_type_id();
 		}

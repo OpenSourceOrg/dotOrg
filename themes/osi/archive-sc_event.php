@@ -7,6 +7,7 @@
  * @package osi
  */
 
+ 
 if ( ! class_exists( 'Sugar_Calendar\\Requirements_Check' ) ) {
 	add_action('init', 
 		function() {
