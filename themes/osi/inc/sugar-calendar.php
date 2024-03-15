@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Exit if Sugar Calendar isn't active
 if ( ! class_exists( 'Sugar_Calendar\\Requirements_Check' ) ) {
 	exit; 
 }
