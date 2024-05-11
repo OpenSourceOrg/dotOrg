@@ -207,62 +207,62 @@
   font-family: "Font Awesome 5 Pro";
   font-weight: 300;
 }
-.single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper footer .comments .alignfull {
+.single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-license .editor-styles-wrapper footer .comments .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper footer .comments .alignfull {
   margin-left: -16px;
   margin-right: -16px;
   max-width: none;
   width: calc(100% + (2 * 16px));
 }
-.single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull .content--inner, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper footer .comments .alignfull .content--inner {
+.single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull .content--inner, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull .content--inner, .single-license .editor-styles-wrapper footer .comments .alignfull .content--inner, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull .content--inner, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper footer .comments .alignfull .content--inner {
   padding-left: 16px;
   padding-right: 16px;
   margin: 0 auto;
   max-width: 1180px;
 }
 @media only screen and (min-width: 600px) {
-  .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper footer .comments .alignfull {
+  .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-license .editor-styles-wrapper footer .comments .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper footer .comments .alignfull {
     margin-left: -2rem;
     margin-right: -2rem;
     width: calc(100% + 4rem);
   }
-  .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull .content--inner, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper footer .comments .alignfull .content--inner {
+  .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull .content--inner, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull .content--inner, .single-license .editor-styles-wrapper footer .comments .alignfull .content--inner, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull .content--inner, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper footer .comments .alignfull .content--inner {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 @media only screen and (min-width: 782px) {
-  .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper footer .comments .alignfull {
+  .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-license .editor-styles-wrapper footer .comments .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper footer .comments .alignfull {
     margin-left: -48px;
     margin-right: -48px;
     width: calc(100% + (2 * 48px));
   }
-  .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull .content--inner, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper footer .comments .alignfull .content--inner {
+  .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull .content--inner, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull .content--inner, .single-license .editor-styles-wrapper footer .comments .alignfull .content--inner, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull .content--inner, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull .content--inner, .single-post .editor-styles-wrapper footer .comments .alignfull .content--inner {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 @media only screen and (min-width: 1016px) {
-  .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper footer .comments .alignfull {
+  .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-license .editor-styles-wrapper footer .comments .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignfull, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignfull, .single-post .editor-styles-wrapper footer .comments .alignfull {
     margin-left: calc(-50vw + ( 920px ) / 2);
     margin-right: calc(-50vw + ( 920px ) / 2);
     width: 100vw;
   }
 }
-.single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper footer .comments .alignwide {
+.single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide, .single-license .editor-styles-wrapper footer .comments .alignwide, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper footer .comments .alignwide {
   margin-left: -16px;
   margin-right: -16px;
   max-width: 920px;
   width: calc(100% + (2 * 16px));
 }
 @media only screen and (min-width: 600px) {
-  .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper footer .comments .alignwide {
+  .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide, .single-license .editor-styles-wrapper footer .comments .alignwide, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper footer .comments .alignwide {
     margin-left: -2rem;
     margin-right: -2rem;
     width: calc(100% + 4rem);
   }
 }
 @media only screen and (min-width: 782px) {
-  .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper footer .comments .alignwide {
+  .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide, .single-license .editor-styles-wrapper footer .comments .alignwide, .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide, .single-post .editor-styles-wrapper footer .comments .alignwide {
     margin-left: -48px;
     margin-right: -48px;
     width: calc(100% + (2 * 48px));
@@ -875,6 +875,12 @@
   max-width: 920px !important;
 }
 .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide.email-block, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide.email-block, .single-post .editor-styles-wrapper footer .comments .alignwide.email-block {
+  max-width: none !important;
+}
+.single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive), .single-license .editor-styles-wrapper .content.has_no_sidebar .comments, .single-license .editor-styles-wrapper footer .content--page article:not(.archive), .single-license .editor-styles-wrapper footer .comments {
+  max-width: 920px !important;
+}
+.single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide.email-block, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide.email-block, .single-license .editor-styles-wrapper footer .comments .alignwide.email-block {
   max-width: none !important;
 }
 .editor-styles-wrapper .alignfull {
@@ -2453,7 +2459,11 @@
 .editor-styles-wrapper .single-license .entry-content {
   margin-left: auto;
   margin-right: auto;
-  max-width: 730px;
+  max-width: 920px;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
 }
 .editor-styles-wrapper .single-license .page--title {
   margin-bottom: 18px !important;
@@ -2514,6 +2524,11 @@
 @media only screen and (max-width: 600px) {
   .editor-styles-wrapper .license-content {
     margin-right: -16px;
+  }
+}
+@media only screen and (max-width: 782px) {
+  .editor-styles-wrapper .license-content {
+    flex-direction: column;
   }
 }
 .editor-styles-wrapper .license-steward-link {
