@@ -20,6 +20,7 @@ mu-plugins/*
 !mu-plugins/osi-event-list
 !mu-plugins/osi-sponsors-list
 !websub-compat.php
+!mu-plugins/osi-events-manager-tweaks
 
 themes/*
 !themes/osi
