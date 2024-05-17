@@ -4691,6 +4691,36 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
   margin-bottom: 2.5em;
 }
 
+/*
+* Events Manager
+* - Booking's Submit Button
+*   -- Feels very nasty, but I had to add !important, as the plugin's CSS is also using !important!
+*/
+.em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit {
+  color: var(--wp--custom--button--color--text) !important;
+  background-color: var(--wp--custom--button--color--background) !important;
+  border: var(--wp--custom--button--border--width) var(--wp--custom--button--border--style) var(--wp--custom--button--border--color) !important;
+  border-radius: var(--wp--custom--button--border--radius) !important;
+  display: inline-block !important;
+  font-family: var(--wp--custom--button--typography--font-family) !important;
+  font-size: var(--wp--custom--button--typography--font-size) !important;
+  -webkit-font-smoothing: auto !important;
+  font-weight: var(--wp--custom--button--typography--font-weight) !important;
+  height: auto !important;
+  padding: var(--wp--custom--button--spacing--padding--top) var(--wp--custom--button--spacing--padding--right) var(--wp--custom--button--spacing--padding--bottom) var(--wp--custom--button--spacing--padding--left) !important;
+  text-decoration: none !important;
+  transition: all 0.3s !important;
+  width: auto !important;
+}
+.em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit:hover, .em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit:focus {
+  background-color: var(--wp--custom--button--hover--color--background) !important;
+  border-color: var(--wp--custom--button--hover--border--color) !important;
+  border-width: var(--wp--custom--button--border--width) !important;
+  color: var(--wp--custom--button--hover--color--text) !important;
+  text-decoration: none !important;
+  transition: all 0.3s !important;
+}
+
 /*--------------------------------------------------------------
 # 08 Overrides
 --------------------------------------------------------------*/
