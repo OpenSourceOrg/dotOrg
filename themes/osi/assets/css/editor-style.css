@@ -2502,8 +2502,6 @@
   }
   .editor-styles-wrapper .single-event .entry-header .wp-block-cover.alignfull {
     padding: 0;
-    margin: 0;
-    min-height: auto;
   }
 }
 .editor-styles-wrapper .header-main-small {
@@ -2511,6 +2509,7 @@
 }
 .editor-styles-wrapper .single-event .entry-header .wp-block-cover {
   aspect-ratio: 16/9;
+  min-height: auto;
 }
 .editor-styles-wrapper .single-license .entry-content {
   margin-left: auto;
