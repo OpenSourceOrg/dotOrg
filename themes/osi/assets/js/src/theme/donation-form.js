@@ -1,4 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
+function waitForElement(selector, callback) {
+    if (document.querySelector(selector)) {
+        callback();
+    } else {
+        setTimeout(function() {
+            waitForElement(selector, callback);
+        }, 100);
+    }
+}
+
+waitForElement("#remoteForm-form-ContributionPage7", function() {
     const form = document.getElementById('remoteForm-form-ContributionPage7');
     const firstName = document.getElementById('first_name').closest('.form-group');
     const lastName = document.getElementById('last_name').closest('.form-group');
