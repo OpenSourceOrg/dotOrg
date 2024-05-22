@@ -9,3 +9,4 @@ import './sidebar-nav.js';
 import './skip-link-focus-fix.js';
 import './search-toggle.js';
 import './license-header-wrap.js';
+import './donation-form.js';
