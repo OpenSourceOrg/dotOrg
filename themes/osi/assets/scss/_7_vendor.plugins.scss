@@ -58,6 +58,7 @@ form.wp-block-jetpack-contact-form {
 * Events Manager
 * - Booking's Submit Button
 *   -- Feels very nasty, but I had to add !important, as the plugin's CSS is also using !important!
+* - Mobile Styling
 */
 
 .em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit {
@@ -84,4 +85,39 @@ form.wp-block-jetpack-contact-form {
         text-decoration: none !important;
         transition: all 0.3s !important;
     }
+}
+
+/* Specific styling for mobile devices */
+@media only screen and (max-width: 768px) {
+    /* Hide large header and show small header on mobile */
+    .header-main {
+        display: none;
+    }
+    .header-main-small {
+        display: block !important;
+    }
+
+    /* Adjust featured image size on mobile devices */
+    .single-event .wp-block-cover__image-background {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* Ensure the cover container does not add extra padding or margins */
+    .single-event .entry-header .wp-block-cover.alignfull {
+        padding: 0;
+        margin: 0;
+        min-height: auto;
+    }
+}
+
+/* Ensures the small header is hidden on larger screens */
+.header-main-small {
+    display: none;
+}
+
+/* Adjust the aspect ratio of the cover image */
+.single-event .entry-header .wp-block-cover {
+    aspect-ratio: 16 / 9;
 }
