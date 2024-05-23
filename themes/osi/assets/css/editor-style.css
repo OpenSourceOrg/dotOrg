@@ -68,6 +68,15 @@
    Event Single Page
    */
   /* Creative Commons Custom Icon */
+  /*
+  * Events Manager
+  * - Booking's Submit Button
+  *   -- Feels very nasty, but I had to add !important, as the plugin's CSS is also using !important!
+  * - Mobile Styling
+  */
+  /* Specific styling for mobile devices */
+  /* Ensures the small header is hidden on larger screens */
+  /* Adjust the aspect ratio of the cover image */
   /* 08. OVERRIDES */
   /* Block Editor Styling
 
@@ -2449,6 +2458,54 @@
 }
 .editor-styles-wrapper .wp-block-coblocks-posts__item {
   margin-bottom: 2.5em;
+}
+.editor-styles-wrapper .em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit {
+  color: var(--wp--custom--button--color--text) !important;
+  background-color: var(--wp--custom--button--color--background) !important;
+  border: var(--wp--custom--button--border--width) var(--wp--custom--button--border--style) var(--wp--custom--button--border--color) !important;
+  border-radius: var(--wp--custom--button--border--radius) !important;
+  display: inline-block !important;
+  font-family: var(--wp--custom--button--typography--font-family) !important;
+  font-size: var(--wp--custom--button--typography--font-size) !important;
+  -webkit-font-smoothing: auto !important;
+  font-weight: var(--wp--custom--button--typography--font-weight) !important;
+  height: auto !important;
+  padding: var(--wp--custom--button--spacing--padding--top) var(--wp--custom--button--spacing--padding--right) var(--wp--custom--button--spacing--padding--bottom) var(--wp--custom--button--spacing--padding--left) !important;
+  text-decoration: none !important;
+  transition: all 0.3s !important;
+  width: auto !important;
+}
+.editor-styles-wrapper .em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit:hover, .editor-styles-wrapper .em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit:focus {
+  background-color: var(--wp--custom--button--hover--color--background) !important;
+  border-color: var(--wp--custom--button--hover--border--color) !important;
+  border-width: var(--wp--custom--button--border--width) !important;
+  color: var(--wp--custom--button--hover--color--text) !important;
+  text-decoration: none !important;
+  transition: all 0.3s !important;
+}
+@media only screen and (max-width: 768px) {
+  .editor-styles-wrapper {
+    /* Adjust featured image size on mobile devices */
+    /* Ensure the cover container does not add extra padding or margins */
+  }
+  .editor-styles-wrapper .header-main-small {
+    display: block !important;
+  }
+  .editor-styles-wrapper .single-event .wp-block-cover__image-background {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .editor-styles-wrapper .single-event .entry-header .wp-block-cover.alignfull {
+    padding: 0;
+  }
+}
+.editor-styles-wrapper .header-main-small {
+  display: none;
+}
+.editor-styles-wrapper .single-event .entry-header .wp-block-cover {
+  aspect-ratio: 16/9;
+  min-height: auto;
 }
 .editor-styles-wrapper .single-license .entry-content {
   margin-left: auto;
