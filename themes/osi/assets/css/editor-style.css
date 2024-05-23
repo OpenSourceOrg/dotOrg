@@ -2485,12 +2485,8 @@
 }
 @media only screen and (max-width: 768px) {
   .editor-styles-wrapper {
-    /* Hide large header and show small header on mobile */
     /* Adjust featured image size on mobile devices */
     /* Ensure the cover container does not add extra padding or margins */
-  }
-  .editor-styles-wrapper .header-main {
-    display: none;
   }
   .editor-styles-wrapper .header-main-small {
     display: block !important;
