@@ -48,9 +48,9 @@
 					?>
 				</nav><!-- #site-navigation -->
 				<section class="open-search-wrapper">
-					<button aria-label="Open Search" id="openSearch" class="open-search open-button">
+					<a aria-label="Open Search" class="open-search open-button jetpack-search-filter__link" href="#">
 						<?php OSI\SVG::the_svg( 'search' ); ?>
-					</button>
+					</a>
 				</section>
 				<section class="open-button-wrapper">
 						<button aria-label="Open Menu" id="openMainMenu" class="open-main-menu open-button">
@@ -62,4 +62,3 @@
 				</section>
 			</div>
 		</header><!-- #masthead -->
-		<?php get_template_part( 'template-parts/header', 'search' ); ?>
