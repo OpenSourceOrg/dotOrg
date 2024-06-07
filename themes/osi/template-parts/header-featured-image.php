@@ -21,7 +21,7 @@ if ( ! isset( $page_title ) ) {
 			</div>
 		</div>
 	</header>
-<?php } elseif ( ! has_post_thumbnail() && ! in_array( get_post_type( $post ), array( 'post', 'event' ), true ) ) { ?>
+<?php } elseif ( ! has_post_thumbnail() && ! in_array( get_post_type( $post ), array( 'post', 'event', 'page' ), true ) ) { ?>
 	<header class="entry-header cover--header no-thumbnail">
 		<div class="wp-block-cover alignfull">
 			<div class="wp-block-cover__inner-container">
