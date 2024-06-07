@@ -19,9 +19,12 @@ get_header(); ?>
 	<main class="content--body <?php echo esc_attr( osi_main_class() ); ?>" role="main">
 
 		<section class="content--page" id="content-page">
-			<?php get_template_part( 'template-parts/breadcrumbs' ); ?>
-
 			<?php
+			if ( 'event' === get_post_type() ) {
+				get_template_part( 'template-parts/breadcrumbs-sc_event' );
+			} else {
+				get_template_part( 'template-parts/breadcrumbs' );
+			}
 			while ( have_posts() ) :
 				the_post();
 
