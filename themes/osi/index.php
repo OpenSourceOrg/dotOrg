@@ -22,8 +22,12 @@ get_header(); ?>
 	if ( have_posts() ) :
 		?>
 		<section class="content--page" id="content-page">
-			<?php get_template_part( 'template-parts/breadcrumbs' ); ?>
-				<?php
+			<?php
+				if ( 'event' === get_post_type() ) {
+					get_template_part( 'template-parts/breadcrumbs-sc_event' );
+				} else {
+					get_template_part( 'template-parts/breadcrumbs' );
+				}
 				$count = 0;
 				/* Start the Loop */
 				while ( have_posts() ) :
