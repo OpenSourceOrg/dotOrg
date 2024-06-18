@@ -14,8 +14,12 @@ if ( ! function_exists( 'osi_posted_on' ) ) :
 	function osi_posted_on( $format = '' ) {
 
 		$time_string = '<time class="byline--date entry-date published" datetime="%1$s">%2$s</time>';
-		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="byline--date entry-date published updated" datetime="%3$s">%4$s</time>';
+		
+		// Don't display the updated date for blog posts.
+		if ( 'post' !== get_post_type() ) {
+			if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+				$time_string .= '<time class="byline--date entry-date published updated" datetime="%3$s">%4$s</time>';
+			}
 		}
 
 		$time_string = sprintf(
