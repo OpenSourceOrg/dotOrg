@@ -90,9 +90,6 @@ form.wp-block-jetpack-contact-form {
 /* Specific styling for mobile devices */
 @media only screen and (max-width: 768px) {
     /* Hide large header and show small header on mobile */
-    .header-main {
-        display: none;
-    }
     .header-main-small {
         display: block !important;
     }
