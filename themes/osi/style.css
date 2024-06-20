@@ -1660,9 +1660,6 @@ nav a:hover {
   padding: 2.1rem 0;
   transition: all 0.8s ease;
 }
-.header-main-small .nav-main {
-  padding: 0;
-}
 .nav-main ul {
   list-style: none;
 }
@@ -1713,7 +1710,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     margin-top: 0;
     max-height: 0;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     transition: all 0.3s;
@@ -2089,9 +2086,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 }
 
 @media only screen and (max-width: 1200px) {
-  .header-main-small {
-    pointer-events: none;
-  }
   .header-main-small .header--blog-name img {
     max-height: 67.19px;
   }
@@ -2160,7 +2154,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
 }
 .open-button-wrapper {
-  position: absolute;
+  position: fixed;
   top: 7px;
   width: 100%;
 }
@@ -4724,9 +4718,6 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
 /* Specific styling for mobile devices */
 @media only screen and (max-width: 768px) {
   /* Hide large header and show small header on mobile */
-  .header-main {
-    display: none;
-  }
   .header-main-small {
     display: block !important;
   }
