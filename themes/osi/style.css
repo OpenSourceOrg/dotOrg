@@ -2011,6 +2011,10 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   color: inherit;
 }
 
+.admin-bar .header-main.header-main-small {
+  top: 46px;
+}
+
 .header--inner {
   padding: 0;
   position: static;
@@ -2154,9 +2158,16 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
 }
 .open-button-wrapper {
-  position: fixed;
+  position: absolute;
   top: 7px;
   width: 100%;
+}
+
+.open-the-menu .open-button-wrapper {
+  position: fixed;
+}
+.open-the-menu .admin-bar .open-button-wrapper {
+  top: 46px;
 }
 
 .open-button:not(.open-search) {
