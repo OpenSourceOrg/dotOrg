@@ -108,8 +108,6 @@
 
 @media only screen and (max-width: #{$break-nav}) {
 	.header-main-small {
-		pointer-events: none;
-
 		.header--blog-name img {
 			max-height: 67.19px;
 		}
