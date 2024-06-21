@@ -6,6 +6,17 @@
     width: 100%;
 }
 
+.open-the-menu {
+  .open-button-wrapper {
+    position: fixed;
+  }
+  .admin-bar {
+    .open-button-wrapper {
+      top: 46px;
+    }
+  }
+}
+
   .open-button:not(.open-search) {
       @include drop-shadow($x-axis: 0, $y-axis: 0px, $blur: 0, $alpha: 0);
       background: none;
