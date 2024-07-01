@@ -1261,7 +1261,6 @@
 }
 .editor-styles-wrapper .post .post--content {
   background-color: var(--wp--preset--color--neutral-white);
-  margin-top: -350px;
   max-width: 920px;
   margin-left: auto;
   margin-right: auto;
