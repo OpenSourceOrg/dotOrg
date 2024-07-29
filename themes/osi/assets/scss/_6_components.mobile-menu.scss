@@ -1,9 +1,17 @@
-.open-button-wrapper {
-    position: absolute;
-    // top: $quicklinksTop; // height of quicklinks
-    // top: 0;
-		top: 7px;
-    width: 100%;
+.site-header {
+  .open-button-wrapper {
+      position: absolute;
+      // top: $quicklinksTop; // height of quicklinks
+      // top: 0;
+      top: 35px;
+      right: 16px;
+  }
+
+  &.header-main-small {
+    .open-button-wrapper {
+        top: 25px;
+    }
+  }
 }
 
 .open-the-menu {
