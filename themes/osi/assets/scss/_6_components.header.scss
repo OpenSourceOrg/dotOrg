@@ -11,7 +11,10 @@
 }
 .admin-bar {
     .header-main.header-main-small {
-        top: 46px;
+        top: 32px;
+        @media only screen and (max-width: 782px) {
+            top: 46px;
+        }
     }
 
 }

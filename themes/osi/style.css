@@ -2006,7 +2006,12 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 }
 
 .admin-bar .header-main.header-main-small {
-  top: 46px;
+  top: 32px;
+}
+@media only screen and (max-width: 782px) {
+  .admin-bar .header-main.header-main-small {
+    top: 46px;
+  }
 }
 
 .header-main .header--inner {
