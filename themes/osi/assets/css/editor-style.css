@@ -75,7 +75,6 @@
   * - Mobile Styling
   */
   /* Specific styling for mobile devices */
-  /* Ensures the small header is hidden on larger screens */
   /* Adjust the aspect ratio of the cover image */
   /* 08. OVERRIDES */
   /* Block Editor Styling
@@ -2498,9 +2497,6 @@
   .editor-styles-wrapper .single-event .entry-header .wp-block-cover.alignfull {
     padding: 0;
   }
-}
-.editor-styles-wrapper .header-main-small {
-  display: none;
 }
 .editor-styles-wrapper .single-event .entry-header .wp-block-cover {
   aspect-ratio: 16/9;
