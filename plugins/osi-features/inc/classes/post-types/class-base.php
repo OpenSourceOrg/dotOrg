@@ -79,6 +79,10 @@ abstract class Base {
 			'has_archive'   => true,
 			'menu_position' => 6,
 			'supports'      => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ],
+			'rewrite'            => array(
+				'slug'       => $this->get_slug(),
+				'with_front' => false,
+			)
 		];
 
 	}

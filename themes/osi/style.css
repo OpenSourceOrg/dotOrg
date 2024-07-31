@@ -1660,9 +1660,6 @@ nav a:hover {
   padding: 2.1rem 0;
   transition: all 0.8s ease;
 }
-.header-main-small .nav-main {
-  padding: 0;
-}
 .nav-main ul {
   list-style: none;
 }
@@ -1683,7 +1680,7 @@ nav a:hover {
 }
 
 .nav-mobile--menu {
-  padding: 1em;
+  padding: 3em 1em;
   margin-top: 1em;
   text-align: right;
 }
@@ -1713,7 +1710,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     margin-top: 0;
     max-height: 0;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     transition: all 0.3s;
@@ -2014,17 +2011,74 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   color: inherit;
 }
 
-.header--inner {
-  padding: 0;
+.admin-bar .header-main.header-main-small {
+  top: 32px;
+}
+@media only screen and (max-width: 782px) {
+  .admin-bar .header-main.header-main-small {
+    top: 46px;
+  }
+}
+
+.header-main .header--inner {
   position: static;
   opacity: 1;
   transition: all 0.3s;
   z-index: 999;
+  height: 125px;
+  display: flex;
+  align-items: center;
 }
 @media only screen and (max-width: 1200px) {
-  .header--inner {
+  .header-main .header--inner {
     background: #fff;
+    padding: 16px;
   }
+}
+@media only screen and (max-width: 600px) {
+  .header-main .header--inner {
+    padding: 8px 16px;
+  }
+}
+.header-main .header--inner .header--blog-name {
+  box-sizing: border-box;
+  max-width: calc(100% - 130px);
+  max-height: 110px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.header-main .header--inner .header--blog-name a {
+  color: var(--wp--preset--color--neutral-darkest);
+  display: block;
+  font-weight: bold;
+  line-height: 1;
+  text-decoration: none;
+  transition: none;
+}
+.header-main .header--inner .header--blog-name a:hover, .header-main .header--inner .header--blog-name a:focus {
+  text-decoration: none;
+}
+.header-main .header--inner .header--blog-name img {
+  max-width: 300px;
+  height: auto;
+  width: 100%;
+  transform: translateZ(0);
+  transition: all 0.3s;
+}
+.header-main .header--inner .header--blog-name .hide-mobile {
+  display: none;
+}
+.header-main .header--inner .header--blog-name .header-logo-mobile {
+  display: block;
+}
+.header-main.header-main-small .header--inner {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  max-height: 100px;
+}
+.header-main.header-main-small .header--inner .header--blog-name a img {
+  max-height: 60px;
 }
 
 .header--quicklinks {
@@ -2038,35 +2092,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 
 .header--quicklinks-inner {
   position: relative;
-}
-
-.header--blog-name {
-  box-sizing: border-box;
-  height: 100%;
-}
-.header--blog-name a {
-  color: var(--wp--preset--color--neutral-darkest);
-  display: inline-block;
-  font-weight: bold;
-  line-height: 1;
-  text-decoration: none;
-  height: 100%;
-  transition: none;
-}
-.header--blog-name a:hover, .header--blog-name a:focus {
-  text-decoration: none;
-}
-.header--blog-name img {
-  max-height: 5.4em;
-  width: auto;
-  margin: 0 10px 0 auto;
-  transform: translateZ(0);
-}
-.header--blog-name .hide-mobile {
-  display: none;
-}
-.header--blog-name .header-logo-mobile {
-  display: block;
 }
 
 .header--extra-text {
@@ -2089,42 +2114,25 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 }
 
 @media only screen and (max-width: 1200px) {
-  .header-main-small {
-    pointer-events: none;
-  }
   .header-main-small .header--blog-name img {
     max-height: 67.19px;
   }
 }
 @media only screen and (min-width: 1200px) {
   .header--inner, .header--quicklinks-inner {
-    *zoom: 1;
     padding-left: 48px;
     padding-right: 48px;
     padding-top: 1em;
   }
-  .header--inner:before, .header--inner:after, .header--quicklinks-inner:before, .header--quicklinks-inner:after {
-    display: table;
-    content: "";
-  }
-  .header--inner:after, .header--quicklinks-inner:after {
-    clear: both;
-  }
   .header--inner {
     border: 0;
     position: relative;
-  }
-  .header--blog-name .header-logo {
-    display: inline-block;
   }
   .header--blog-name .hide-mobile {
     display: inline-block;
   }
   .header--blog-name .header-logo-mobile {
     display: none;
-  }
-  .header--blog-name img {
-    margin-top: -16px;
   }
   .header--extra-text {
     text-align: right;
@@ -2134,10 +2142,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
   .header-main-small {
     background-color: var(--wp--preset--color--neutral-white);
-  }
-  .header-main-small .header--blog-name {
-    display: none;
-    opacity: 0;
   }
   .header-main-small .nav-main {
     height: auto;
@@ -2155,14 +2159,21 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     display: flex;
     align-items: center;
   }
-  .header-main-small .header--blog-name img {
-    margin-top: -16px;
-  }
 }
-.open-button-wrapper {
+.site-header .open-button-wrapper {
   position: absolute;
-  top: 7px;
-  width: 100%;
+  top: 35px;
+  right: 16px;
+}
+.site-header.header-main-small .open-button-wrapper {
+  top: 25px;
+}
+
+.open-the-menu .open-button-wrapper {
+  position: fixed;
+}
+.open-the-menu .admin-bar .open-button-wrapper {
+  top: 46px;
 }
 
 .open-button:not(.open-search) {
@@ -2710,9 +2721,12 @@ body.option-round .open-button:not(.open-search) {
 @media only screen and (max-width: 1200px) {
   .header-main .open-search-wrapper {
     position: absolute;
-    top: 7px;
-    right: 50px;
+    top: 40px;
+    right: 70px;
   }
+}
+.header-main.header-main-small .open-search-wrapper {
+  top: 30px;
 }
 .header-main .open-search {
   background: none;
@@ -2938,7 +2952,6 @@ body.option-round .open-button:not(.open-search) {
 
 .post .post--content {
   background-color: var(--wp--preset--color--neutral-white);
-  margin-top: -350px;
   max-width: 920px;
   margin-left: auto;
   margin-right: auto;
@@ -4689,6 +4702,59 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
 
 .wp-block-coblocks-posts__item {
   margin-bottom: 2.5em;
+}
+
+/*
+* Events Manager
+* - Booking's Submit Button
+*   -- Feels very nasty, but I had to add !important, as the plugin's CSS is also using !important!
+* - Mobile Styling
+*/
+.em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit {
+  color: var(--wp--custom--button--color--text) !important;
+  background-color: var(--wp--custom--button--color--background) !important;
+  border: var(--wp--custom--button--border--width) var(--wp--custom--button--border--style) var(--wp--custom--button--border--color) !important;
+  border-radius: var(--wp--custom--button--border--radius) !important;
+  display: inline-block !important;
+  font-family: var(--wp--custom--button--typography--font-family) !important;
+  font-size: var(--wp--custom--button--typography--font-size) !important;
+  -webkit-font-smoothing: auto !important;
+  font-weight: var(--wp--custom--button--typography--font-weight) !important;
+  height: auto !important;
+  padding: var(--wp--custom--button--spacing--padding--top) var(--wp--custom--button--spacing--padding--right) var(--wp--custom--button--spacing--padding--bottom) var(--wp--custom--button--spacing--padding--left) !important;
+  text-decoration: none !important;
+  transition: all 0.3s !important;
+  width: auto !important;
+}
+.em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit:hover, .em-booking-form-section-confirm .em-booking-form-buttons input[type=submit].em-form-submit:focus {
+  background-color: var(--wp--custom--button--hover--color--background) !important;
+  border-color: var(--wp--custom--button--hover--border--color) !important;
+  border-width: var(--wp--custom--button--border--width) !important;
+  color: var(--wp--custom--button--hover--color--text) !important;
+  text-decoration: none !important;
+  transition: all 0.3s !important;
+}
+
+/* Specific styling for mobile devices */
+@media only screen and (max-width: 768px) {
+  .header-main-small {
+    display: block !important;
+  }
+  /* Adjust featured image size on mobile devices */
+  .single-event .wp-block-cover__image-background {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  /* Ensure the cover container does not add extra padding or margins */
+  .single-event .entry-header .wp-block-cover.alignfull {
+    padding: 0;
+  }
+}
+/* Adjust the aspect ratio of the cover image */
+.single-event .entry-header .wp-block-cover {
+  aspect-ratio: 16/9;
+  min-height: auto;
 }
 
 /*--------------------------------------------------------------

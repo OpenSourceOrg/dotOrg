@@ -7,14 +7,11 @@
  * @package osi
  */
 
- 
 if ( ! class_exists( 'Sugar_Calendar\\Requirements_Check' ) ) {
-	add_action('init', 
-		function() {
-			wp_safe_redirect( home_url() );
-			exit; 
-		}
-	);
+	add_action('init', function() {
+		wp_safe_redirect( home_url() );
+		exit; 
+	});
 }
 
 $display_type         = isset( $_GET['event-display'] ) ? sanitize_text_field( wp_unslash( $_GET['event-display'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended

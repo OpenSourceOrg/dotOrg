@@ -62,7 +62,7 @@ class Post_Type_Press_Mentions extends Base {
 			'has_archive'   => true,
 			'menu_position' => 6,
 			'supports'      => [ 'title', 'author', 'excerpt' ],
-			'rewrite'       => [ 'slug' => 'press-mentions' ]
+			'rewrite'       => [ 'slug' => 'press-mentions', 'with_front' => false ]
 		];
 
 	}
