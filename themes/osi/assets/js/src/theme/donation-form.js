@@ -1,15 +1,11 @@
-function waitForElement(selector, callback) {
-    if (document.querySelector(selector)) {
-        callback();
-    } else {
-        setTimeout(function() {
-            waitForElement(selector, callback);
-        }, 100);
-    }
-}
+function osiFormInit(id) {
+    const formId = id.id;
+    /*if (formId !== 17) {
+        console.error("Form ID is not 17. This script is only for form ID 17.");
+        return;
+    }*/
 
-waitForElement("#remoteForm-form-ContributionPage7", function() {
-    const form = document.getElementById('remoteForm-form-ContributionPage7');
+    const form = document.getElementById('remoteForm-form-ContributionPage' + formId);
     const firstName = document.getElementById('first_name').closest('.form-group');
     const lastName = document.getElementById('last_name').closest('.form-group');
     const email = document.getElementById('email-primary').closest('.form-group');
@@ -20,6 +16,7 @@ waitForElement("#remoteForm-form-ContributionPage7", function() {
 	const submitButton = document.getElementById('remoteform-submit');
     const amountSection = document.querySelector('label.rf-label').parentNode;
     const radioInputs = document.querySelectorAll('.form-check-input:not([value="54"])'); // Exclude the OSI membership checkbox
+    const alert = document.querySelector('.alert-warning');
 
     // Create new div for grid layout and set it up for CSS Grid
     const gridContainer = document.createElement('div');
@@ -35,6 +32,9 @@ waitForElement("#remoteForm-form-ContributionPage7", function() {
     const newDiv = document.createElement('div');
     newDiv.style.display = 'none'; // Initially hidden
     newDiv.append(firstName, lastName, email, creditCardNumber, cvv, expMonth, expYear, submitButton);
+    if (alert) {
+        newDiv.appendChild(alert);
+    }
     form.insertBefore(newDiv, amountSection.nextSibling);
 
     // Modify amounts display
@@ -82,4 +82,25 @@ waitForElement("#remoteForm-form-ContributionPage7", function() {
         }
     });
     form.appendChild(donateButton);
-});
+}
+
+function customFieldCreation(key, def, type, createFieldFunc, wrapFieldFunc) {
+    var field = createFieldFunc(key, def, type);
+    if (field === null) {
+        return null;
+    }
+
+    if (key === 'credit_card_number' || key === 'cvv2' || key === 'credit_card_exp_date_M' || key === 'credit_card_exp_date_Y') {
+        // return null;
+    }
+    
+
+
+    return wrapFieldFunc(key, def, field);
+}
+
+function customSubmitData(data) {
+    // Display the data that will be submitted
+    console.log(data);
+    return data;
+}
