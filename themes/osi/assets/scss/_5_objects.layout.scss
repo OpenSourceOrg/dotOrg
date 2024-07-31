@@ -88,6 +88,22 @@
 			}
 		}
 	}
+
+	.single-license & {
+		.content--page article:not(.archive), .comments {
+			max-width: $postMax !important;
+
+			.alignwide {
+				@extend %alignwide;
+			}
+			.alignfull {
+				@extend %alignfull;
+			}
+			.alignwide.email-block {
+				max-width: none !important;
+			}
+		}
+	}
 }
 
 .alignfull {
