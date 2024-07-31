@@ -3,14 +3,14 @@
  * Sugar Calendar Compatibility File.
  */
 
- 
+
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 if ( ! class_exists( 'Sugar_Calendar\\Requirements_Check' ) ) {
-	exit; 
+	exit;
 }
 
 use Sugar_Calendar\AddOn\Ticketing\Common\Functions as Functions;
