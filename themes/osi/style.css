@@ -2062,7 +2062,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 .header-main .header--inner .header--blog-name img {
   max-width: 300px;
   height: auto;
-  width: 100%;
+  width: auto;
   transform: translateZ(0);
   transition: all 0.3s;
 }
