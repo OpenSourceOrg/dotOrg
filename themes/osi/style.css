@@ -2060,6 +2060,11 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   transform: translateZ(0);
   transition: all 0.3s;
 }
+@media only screen and (max-width: 600px) {
+  .header-main .header--inner .header--blog-name img {
+    max-width: 180px;
+  }
+}
 .header-main .header--inner .header--blog-name .hide-mobile {
   display: none;
 }
