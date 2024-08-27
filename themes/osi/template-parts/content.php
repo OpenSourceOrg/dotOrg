@@ -39,6 +39,14 @@
 
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
+	<?php 
+	//If comments are open or we have at least one comment, load up the comment template.
+	if ( 'board-member' === get_post_type() || 'post' === get_post_type() ) :
+		if ( comments_open() || get_comments_number() ) :
+			comments_template();
+		endif;
+	endif;
+	?>
 	<section id="pre-footer">
 		<?php get_template_part( 'template-parts/nav-postname-pager' ); ?>
 	</section>
