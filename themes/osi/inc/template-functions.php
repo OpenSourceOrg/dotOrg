@@ -228,7 +228,7 @@ function osi_the_page_dates() {
  *
  * @return string The processed content.
  */
-function osi_the_content( $content ) {
+function osi_the_content( string $content ) {
 	if ( ! em_is_event_rsvpable() ) {
 		// Instantiate the processor.
 		$processor = new \WP_HTML_Tag_Processor( $content );
