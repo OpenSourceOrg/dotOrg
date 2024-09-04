@@ -3491,6 +3491,25 @@ article.archive {
     width: calc(100% - 5rem);
   }
 }
+/* Discourse comments link */
+.wpdc-join-discussion {
+  max-width: 730px;
+  background-color: #f2f3f2;
+  border: 1px solid #3ea638;
+  padding: 24px;
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+@media only screen and (min-width: 782px) {
+  .wpdc-join-discussion {
+    margin-left: 48px;
+  }
+}
+.wpdc-join-discussion h3 {
+  font-weight: 700;
+}
+
 .nav-pager {
   clear: both;
   overflow: auto;
