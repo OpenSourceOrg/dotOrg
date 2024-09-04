@@ -220,3 +220,42 @@ function osi_the_page_dates() {
 		}
 	}
 }
+
+/**
+ * Force external links to open in new tab.
+ *
+ * @param string $content The content to process.
+ *
+ * @return string The processed content.
+ */
+function osi_the_content( $content ) {
+	if ( ! em_is_event_rsvpable() ) {
+		// Instantiate the processor.
+		$processor = new \WP_HTML_Tag_Processor( $content );
+
+		// Get the domain of the site without scheme.
+		$site_domain = wp_parse_url( site_url(), PHP_URL_HOST );
+
+		// Loop through all the A tags and parse href to see if it's an external link.
+		while ( $processor->next_tag( 'A' ) ) {
+			$href        = $processor->get_attribute( 'href' );
+			$root_domain = wp_parse_url( $href, PHP_URL_HOST );
+
+			// If root domain is null, it's an internal link (no host), skip.
+			if ( null === $root_domain ) {
+				continue;
+			}
+
+			// If the root domain is not the same as the site domain, it's an external link.
+			if ( $root_domain !== $site_domain ) {
+				$processor->set_attribute( 'target', '_blank' );
+			}
+		}
+
+		return $processor->get_updated_html();
+	}
+
+	return $content;
+}
+
+add_filter( 'the_content', 'osi_the_content' );
