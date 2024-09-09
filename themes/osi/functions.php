@@ -164,6 +164,18 @@ function osi_widgets_init() {
 			'after_title'   => '</h3>',
 		)
 	);
+
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'License Sidebar', 'osi' ),
+			'id'            => 'license-sidebar',
+			'description'   => esc_html__( 'Add widgets here to appear in your sidebar on License posts.', 'osi' ),
+			'before_widget' => '<section class="widget wp-block-column %1$s %2$s"><div class="widget-inner">',
+			'after_widget'  => '</div></section>',
+			'before_title'  => '<h3>',
+			'after_title'   => '</h3>',
+		)
+	);
 }
 add_action( 'widgets_init', 'osi_widgets_init' );
 

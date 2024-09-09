@@ -4,8 +4,13 @@
     width: $sidebarWidthSmall;
 
     .wp-block-column {
-			margin-left: 0;
-		}
+		margin-left: 0;
+	}
+
+    .license-sidebar {
+        width: 100%;
+        position: relative;
+    }
 }
 
 @media only screen and (max-width: #{$break-medium}) {
@@ -34,6 +39,16 @@
             right: 0;
             left: 40%;
         }
+    }
+
+    .license-sidebar {
+        position: relative;
+        top: 0px!important;
+        background-color: unset;
+        height: unset;
+        left: unset;
+        right: unset;
+        box-sizing: content-box;
     }
 }
 
@@ -103,6 +118,11 @@
     .sidebar--rightcol {
         display: none;
         margin-top: 0;
+    }
+
+    .license-sidebar {
+        width: 100%;
+        position: relative;
     }
 
 }
