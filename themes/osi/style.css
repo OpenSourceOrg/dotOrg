@@ -2560,6 +2560,7 @@ body.option-round .open-button:not(.open-search) {
     height: unset;
     left: unset;
     right: unset;
+    box-sizing: content-box;
   }
 }
 @media only screen and (max-width: 600px) {
