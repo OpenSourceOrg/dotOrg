@@ -88,15 +88,6 @@ nav {
 	margin-left: auto;
 	padding: 2.1rem 0;
 	transition: all 0.8s ease;
-	// position: absolute;
-	// right: 100%;
-	// top: 0;
-	// // @include transition(all .8s);
-	// width: 80%;
-
-	.header-main-small & {
-		padding: 0;
-	}
 
 	ul {
 		list-style: none;
@@ -124,7 +115,7 @@ nav {
 
 // Main Menu Mobile
 .nav-mobile--menu {
-	padding: 1em;
+	padding: 3em 1em;
 	margin-top: 1em;
 	text-align: right;
 }
@@ -167,7 +158,7 @@ footer {
 		margin-top: $quicklinksTop; // quicklinks header height
 		max-height: 0;
 		overflow: hidden;
-    	position: absolute;
+    	position: fixed;
 		right: 0;
 		top: 0;
     	transition: all .3s;

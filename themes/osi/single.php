@@ -13,21 +13,16 @@ get_header(); ?>
 
 	<main class="content--body <?php echo esc_attr( osi_main_class() ); ?>" role="main">
 		<section class="content--page" id="content-page">
-		<?php get_template_part( 'template-parts/breadcrumbs' ); ?>
-
 			<?php
+			if ( 'event' === get_post_type() ) {
+				get_template_part( 'template-parts/breadcrumbs-sc_event' );
+			} else {
+				get_template_part( 'template-parts/breadcrumbs' );
+			}
+
 			while ( have_posts() ) :
 				the_post();
-
 				get_template_part( 'template-parts/content', get_post_type() );
-
-				//If comments are open or we have at least one comment, load up the comment template.
-				if ( 'board-member' === get_post_type() || 'post' === get_post_type() ) :
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
-				endif;
-
 			endwhile; // End of the loop.
 			?>
 		</section>

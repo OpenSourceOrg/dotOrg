@@ -39,6 +39,11 @@
 
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
+	<?php 
+	if ( 'board-member' === get_post_type() || 'post' === get_post_type() ) :
+			comments_template();
+	endif;
+	?>
 	<section id="pre-footer">
 		<?php get_template_part( 'template-parts/nav-postname-pager' ); ?>
 	</section>
