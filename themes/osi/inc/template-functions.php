@@ -229,7 +229,8 @@ function osi_the_page_dates() {
  * @return string The processed content.
  */
 function osi_force_content_links_new_tab( string $content ) {
-	if ( ! em_is_event_rsvpable() ) {
+	// Ensure Events Manager plugin is active and functionality for RSVPable events exists.
+	if ( function_exists( 'em_is_event_rsvpable' ) && ! em_is_event_rsvpable() ) {
 		// Instantiate the processor.
 		$processor = new \WP_HTML_Tag_Processor( $content );
 
@@ -252,7 +253,7 @@ function osi_force_content_links_new_tab( string $content ) {
 			}
 		}
 
-		return $processor->get_updated_html();
+		$content = $processor->get_updated_html();
 	}
 
 	return $content;
