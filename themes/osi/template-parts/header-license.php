@@ -2,7 +2,7 @@
 	<div class="wp-block-cover alignfull has-neutral-dark-background-color has-background-dim-100 has-background-dim">
 		<div class="wp-block-cover__inner-container">
 			<div class="wp-block-columns">
-				<div class="wp-block-column" style="flex-basis: 80%">
+				<div class="wp-block-column" style="flex-basis: 70%">
 					<span class="pill-taxonomy">
 						<?php
 						/**
@@ -77,7 +77,7 @@
 						</div>
 					<?php endif; ?>
 				</div>
-				<div class="wp-block-column" style="flex-basis: 20%; text-align: center;">
+				<div class="wp-block-column" style="flex-basis: 30%; text-align: center;">
 					<img width="200" src="/wp-content/themes/osi/assets/img/osi-badge-light.svg" alt="<?php esc_html_e( 'Open Source Initiative Approved License', 'osi' ); ?>">
 				</div>
 			</div>
