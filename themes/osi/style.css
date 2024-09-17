@@ -1191,7 +1191,7 @@ body > .wrapper:after {
   max-width: none !important;
 }
 .single-license .content.has_no_sidebar .content--page article:not(.archive), .single-license .content.has_no_sidebar .comments, .single-license footer .content--page article:not(.archive), .single-license footer .comments {
-  max-width: 920px !important;
+  max-width: 1180px !important;
 }
 .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-license .content.has_no_sidebar .comments .alignwide.email-block, .single-license footer .content--page article:not(.archive) .alignwide.email-block, .single-license footer .comments .alignwide.email-block {
   max-width: none !important;
@@ -4783,14 +4783,22 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
 .single-license .entry-content {
   margin-left: auto;
   margin-right: auto;
-  max-width: 920px;
+  max-width: 1180px;
   flex-grow: 1;
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  row-gap: 20px;
+  column-gap: 60px;
 }
 .single-license .page--title {
   margin-bottom: 18px !important;
+}
+.single-license .cover--header .wp-block-cover {
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw !important;
+  margin-right: unset !important;
+  width: 100vw !important;
 }
 @media only screen and (min-width: 782px) {
   .single-license .cover--header .wp-block-cover {
