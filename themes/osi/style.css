@@ -1196,6 +1196,13 @@ body > .wrapper:after {
 .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-license .content.has_no_sidebar .comments .alignwide.email-block, .single-license footer .content--page article:not(.archive) .alignwide.email-block, .single-license footer .comments .alignwide.email-block {
   max-width: none !important;
 }
+.single-license .content.has_no_sidebar .license-comments, .single-license footer .license-comments {
+  background: #f0E68C;
+  padding: 2rem;
+}
+.single-license .content.has_no_sidebar .license-comments .wp-block-heading, .single-license footer .license-comments .wp-block-heading {
+  margin-top: 0;
+}
 
 .alignfull {
   margin-bottom: 0 !important;
