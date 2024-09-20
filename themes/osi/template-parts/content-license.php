@@ -14,6 +14,16 @@
 	<div class="entry-content post--content license-content">
 		<div>
 			<?php the_content(); ?>
+			
+			<hr />
+			<div class="license-comments">
+				<?php
+				if ( osi_field_check( 'comments' ) ) :
+					echo wp_kses_post( '<h2 class="wp-block-heading" id="license-comments">' . __( 'Comments', 'osi' ) . '</h2>' );
+					osi_the_valid_field( 'comments' );
+				endif;
+				?>
+			</div>
 		</div>
 		
 		<aside class="sidebar content--sidebar license-sidebar <?php echo esc_attr( osi_sidebar_class() ); ?>" role="complementary">

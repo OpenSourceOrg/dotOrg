@@ -891,6 +891,16 @@
 .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide.email-block, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide.email-block, .single-license .editor-styles-wrapper footer .comments .alignwide.email-block {
   max-width: none !important;
 }
+.single-license .editor-styles-wrapper .content.has_no_sidebar .license-comments, .single-license .editor-styles-wrapper footer .license-comments {
+  background: #f0E68C;
+  padding: 2rem;
+}
+.single-license .editor-styles-wrapper .content.has_no_sidebar .license-comments .wp-block-heading, .single-license .editor-styles-wrapper footer .license-comments .wp-block-heading {
+  margin-top: 0;
+}
+.single-license .editor-styles-wrapper .content.has_no_sidebar .license-comments:not(:has(h2)):not(:has(.wp-block-heading)), .single-license .editor-styles-wrapper footer .license-comments:not(:has(h2)):not(:has(.wp-block-heading)) {
+  background: none;
+}
 .editor-styles-wrapper .alignfull {
   margin-bottom: 0 !important;
 }

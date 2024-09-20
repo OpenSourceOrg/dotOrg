@@ -103,6 +103,19 @@
 				max-width: none !important;
 			}
 		}
+
+		.license-comments {
+			background: #f0E68C;
+			padding: 2rem;
+
+			.wp-block-heading {
+				margin-top: 0;
+			}
+
+			&:not(:has(h2)):not(:has(.wp-block-heading)) {
+				background: none;
+			}
+		}
 	}
 }
 
