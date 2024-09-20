@@ -898,6 +898,9 @@
 .single-license .editor-styles-wrapper .content.has_no_sidebar .license-comments .wp-block-heading, .single-license .editor-styles-wrapper footer .license-comments .wp-block-heading {
   margin-top: 0;
 }
+.single-license .editor-styles-wrapper .content.has_no_sidebar .license-comments:not(:has(h2)):not(:has(.wp-block-heading)), .single-license .editor-styles-wrapper footer .license-comments:not(:has(h2)):not(:has(.wp-block-heading)) {
+  background: none;
+}
 .editor-styles-wrapper .alignfull {
   margin-bottom: 0 !important;
 }
