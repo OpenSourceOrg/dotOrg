@@ -411,8 +411,9 @@ add_filter( 'found_posts', 'osi_adjust_offset_pagination', 1, 2 );
 /**
  * Trim the Discourse comment body to 50 words.
  *
- * @param string $comment_body
- * @return void
+ * @param string  $comment_body The comment body.
+ * 
+ * @return string The trimmed comment body.
  */
 function osi_wpdc_comment_body( $comment_body ) {
 	$trimmed_comment_body = wp_trim_words( $comment_body, 50, '(...)' );
