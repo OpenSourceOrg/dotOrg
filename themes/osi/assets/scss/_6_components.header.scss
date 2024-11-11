@@ -62,9 +62,18 @@
                 // all logos
                 max-width: 300px;
                 height: auto;
+<<<<<<< HEAD
                 width: 100%;
                 transform: translateZ(0); // chrome blurry fix
                 transition: all .3s;
+=======
+                width: auto;
+                transform: translateZ(0); // chrome blurry fix
+                transition: all .3s;
+                @media only screen and (max-width: #{$break-small}) {
+                    max-width: 180px;
+                }
+>>>>>>> origin/develop
             }
 
             .hide-mobile {

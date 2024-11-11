@@ -91,7 +91,11 @@
 
 	.single-license & {
 		.content--page article:not(.archive), .comments {
+<<<<<<< HEAD
 			max-width: $postMax !important;
+=======
+			max-width: $boxedMax !important;
+>>>>>>> origin/develop
 
 			.alignwide {
 				@extend %alignwide;

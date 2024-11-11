@@ -4,15 +4,34 @@
 	.entry-content {
 		margin-left: auto;
 		margin-right: auto;
+<<<<<<< HEAD
 		max-width: $postMax;
 		flex-grow: 1;
 		display: flex;
 		align-items: flex-start;
 		gap: 20px;
+=======
+		max-width: $boxedMax;
+		flex-grow: 1;
+		display: flex;
+		align-items: flex-start;
+		row-gap: 20px;
+		column-gap: 60px;
+>>>>>>> origin/develop
 	}
 
 	.page--title {
 		margin-bottom: 18px !important;
+	}
+
+	.cover--header {
+		.wp-block-cover {
+			left: 50%;
+			right: 50%;
+			margin-left: -50vw!important;
+			margin-right: unset!important;
+			width: 100vw!important;
+		}
 	}
 
 	@media only screen and (min-width: $break-medium) {

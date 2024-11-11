@@ -353,12 +353,14 @@ bh_unicode_properties.cache
 GitHub.sublime-settings
 
 ### VisualStudioCode ###
+.vscode/
 .vscode/*
-!.vscode/settings.json
+.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+themes/osi/.vscode/settings.json
 
 # Local History for Visual Studio Code
 .history/

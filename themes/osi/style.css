@@ -1191,7 +1191,11 @@ body > .wrapper:after {
   max-width: none !important;
 }
 .single-license .content.has_no_sidebar .content--page article:not(.archive), .single-license .content.has_no_sidebar .comments, .single-license footer .content--page article:not(.archive), .single-license footer .comments {
+<<<<<<< HEAD
   max-width: 920px !important;
+=======
+  max-width: 1180px !important;
+>>>>>>> origin/develop
 }
 .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-license .content.has_no_sidebar .comments .alignwide.email-block, .single-license footer .content--page article:not(.archive) .alignwide.email-block, .single-license footer .comments .alignwide.email-block {
   max-width: none !important;
@@ -2072,10 +2076,22 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 .header-main .header--inner .header--blog-name img {
   max-width: 300px;
   height: auto;
+<<<<<<< HEAD
   width: 100%;
   transform: translateZ(0);
   transition: all 0.3s;
 }
+=======
+  width: auto;
+  transform: translateZ(0);
+  transition: all 0.3s;
+}
+@media only screen and (max-width: 600px) {
+  .header-main .header--inner .header--blog-name img {
+    max-width: 180px;
+  }
+}
+>>>>>>> origin/develop
 .header-main .header--inner .header--blog-name .hide-mobile {
   display: none;
 }
@@ -4793,14 +4809,30 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
 .single-license .entry-content {
   margin-left: auto;
   margin-right: auto;
+<<<<<<< HEAD
   max-width: 920px;
   flex-grow: 1;
   display: flex;
   align-items: flex-start;
   gap: 20px;
+=======
+  max-width: 1180px;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+  row-gap: 20px;
+  column-gap: 60px;
+>>>>>>> origin/develop
 }
 .single-license .page--title {
   margin-bottom: 18px !important;
+}
+.single-license .cover--header .wp-block-cover {
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw !important;
+  margin-right: unset !important;
+  width: 100vw !important;
 }
 @media only screen and (min-width: 782px) {
   .single-license .cover--header .wp-block-cover {
