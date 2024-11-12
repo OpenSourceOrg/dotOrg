@@ -376,6 +376,11 @@ function osi_query_offset( WP_Query &$query ) {
 		return;
 	}
 
+	// If this is a page and its not set as the page for posts, return.
+	if ( (int) get_option( 'page_for_posts' ) !== (int) get_queried_object_id() ) {
+		return;
+	}
+
 	$offset = -1;
 	$ppp    = get_option( 'posts_per_page' );
 
