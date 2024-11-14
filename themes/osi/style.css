@@ -1184,6 +1184,17 @@ body > .wrapper:after {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+.page-template-template-no-header-wide .content.has_no_sidebar .content--page article:not(.archive),
+.page-template-template-no-header-wide .content.has_no_sidebar .comments,
+.page-template-template-no-header-wide .content.has_no_sidebar .archive-press-mentions,
+.page-template-template-no-header-wide footer .content--page article:not(.archive), footer .comments,
+.page-template-template-no-header-wide footer .archive-press-mentions {
+	max-width: inherit !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
 .single-post .content.has_no_sidebar .content--page article:not(.archive), .single-post .content.has_no_sidebar .comments, .single-post footer .content--page article:not(.archive), .single-post footer .comments {
   max-width: 920px !important;
 }
