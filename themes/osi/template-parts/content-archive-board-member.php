@@ -8,7 +8,7 @@
  */
 
 ?>
-<?php $content_size = ( 'post' !== get_post_type() && !is_search() ) ? 'three-column' : 'two-column'; ?>
+<?php $content_size = ( 'post' !== get_post_type() && ! is_search() ) ? 'three-column' : 'two-column'; ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'archive wp-block-column ' . $content_size ); ?>>
 	<?php get_template_part( 'template-parts/featured-image', 'cropped' ); ?>
 	<section class="post--summary osi-list--post-content">
@@ -33,12 +33,12 @@
 					</span>
 				<?php endif; ?>
 			</p>
-			<?php if( osi_field_check( 'current_term_start_date' ) ) : ?>
+			<?php if ( osi_field_check( 'current_term_start_date' ) ) : ?>
 				<p class="member-dates">
-					<?php 
+					<?php
 					echo __( 'Current Term:', 'osi' ) . ' ';
 					osi_the_valid_date_field( 'current_term_start_date', 'M Y' );
-					if( osi_field_check( 'current_term_end_date' ) ) :
+					if ( osi_field_check( 'current_term_end_date' ) ) :
 						echo ' ' . __( 'to', 'osi' ) . ' ';
 						osi_the_valid_date_field( 'current_term_end_date', 'M Y' );
 					endif;
