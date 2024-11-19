@@ -20,14 +20,19 @@
 		</header><!-- .entry-header -->
 
 		<div class="entry-content post--summary">
-			<?php if( osi_field_check( 'pronouns' ) ) : ?>
-				<p class="member-pronouns"><?php osi_the_valid_field( 'pronouns' ); ?>
-				<?php if( osi_field_check( 'board_position' ) ) : ?>
+		<p class="member-details">
+				<?php if ( osi_field_check( 'pronouns' ) ) : ?>
+					<span class="member-pronouns">
+						<?php osi_the_valid_field( 'pronouns' ); ?>
+					</span>
+				<?php endif; ?>
+
+				<?php if ( osi_field_check( 'board_position' ) ) : ?>
 					<span class="member-position">
 						<?php osi_the_valid_field( 'board_position' ); ?>
 					</span>
 				<?php endif; ?>
-			<?php endif; ?>
+			</p>
 			<?php if( osi_field_check( 'current_term_start_date' ) ) : ?>
 				<p class="member-dates">
 					<?php 
