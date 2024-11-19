@@ -36,10 +36,10 @@
 			<?php if ( osi_field_check( 'current_term_start_date' ) ) : ?>
 				<p class="member-dates">
 					<?php
-					echo __( 'Current Term:', 'osi' ) . ' ';
+					echo esc_html__( 'Current Term:', 'osi' ) . ' ';
 					osi_the_valid_date_field( 'current_term_start_date', 'M Y' );
 					if ( osi_field_check( 'current_term_end_date' ) ) :
-						echo ' ' . __( 'to', 'osi' ) . ' ';
+						echo ' ' . esc_html__( 'to', 'osi' ) . ' ';
 						osi_the_valid_date_field( 'current_term_end_date', 'M Y' );
 					endif;
 					?>
