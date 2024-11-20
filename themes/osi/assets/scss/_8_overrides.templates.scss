@@ -1,25 +1,38 @@
 // Licenses
 .single-license {
-    .entry-content {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: $postMax;
-        flex-grow: 1;
-        display: flex;
-        align-items: flex-start;
-        gap: 20px;
-    }
-    .page--title {
-        margin-bottom: 18px !important;
-    }
-    @media only screen and (min-width: $break-medium) {
-        .cover--header {
-            .wp-block-cover {
-                padding-top: $maxPadding;
-                padding-bottom: $maxPadding;
-            }
-        }
-    }
+	.entry-content {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: $boxedMax;
+		flex-grow: 1;
+		display: flex;
+		align-items: flex-start;
+		row-gap: 20px;
+		column-gap: 60px;
+	}
+
+	.page--title {
+		margin-bottom: 18px !important;
+	}
+
+	.cover--header {
+		.wp-block-cover {
+			left: 50%;
+			right: 50%;
+			margin-left: -50vw!important;
+			margin-right: unset!important;
+			width: 100vw!important;
+		}
+	}
+
+	@media only screen and (min-width: $break-medium) {
+		.cover--header {
+			.wp-block-cover {
+				padding-top: $maxPadding;
+				padding-bottom: $maxPadding;
+			}
+		}
+	}
 }
 
 .license-steward {
