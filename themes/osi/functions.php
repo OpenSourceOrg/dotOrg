@@ -376,6 +376,11 @@ function osi_query_offset( WP_Query &$query ) {
 		return;
 	}
 
+	// If this is a page and its not set as the page for posts, return.
+	if ( (int) get_option( 'page_for_posts' ) !== (int) get_queried_object_id() ) {
+		return;
+	}
+
 	$offset = -1;
 	$ppp    = get_option( 'posts_per_page' );
 
@@ -407,3 +412,16 @@ function osi_adjust_offset_pagination( int $found_posts, WP_Query $query ) {
 	return $found_posts;
 }
 add_filter( 'found_posts', 'osi_adjust_offset_pagination', 1, 2 );
+
+/**
+ * Trim the Discourse comment body to 50 words.
+ *
+ * @param string $comment_body The comment body.
+ *
+ * @return string The trimmed comment body.
+ */
+function osi_wpdc_comment_body( string $comment_body ) {
+	$trimmed_comment_body = wp_trim_words( $comment_body, 50, '(...)' );
+	return $trimmed_comment_body;
+}
+add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
