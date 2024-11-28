@@ -1179,6 +1179,12 @@ body > .wrapper:after {
   text-align: inherit;
 }
 
+.page-template-template-no-header-wide .content.has_no_sidebar .content--page article:not(.archive), .page-template-template-no-header-wide .content.has_no_sidebar .comments, .page-template-template-no-header-wide .content.has_no_sidebar .archive-press-mentions, .page-template-template-no-header-wide footer .content--page article:not(.archive), .page-template-template-no-header-wide footer .comments, .page-template-template-no-header-wide footer .archive-press-mentions {
+  max-width: inherit !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .content.has_no_sidebar .content--page article:not(.archive), .content.has_no_sidebar .comments, .content.has_no_sidebar .archive-press-mentions, footer .content--page article:not(.archive), footer .comments, footer .archive-press-mentions {
   max-width: 730px !important;
   margin-left: auto !important;
