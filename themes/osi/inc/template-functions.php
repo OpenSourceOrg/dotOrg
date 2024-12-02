@@ -216,7 +216,7 @@ function osi_the_page_dates() {
 
 		if ( strtotime( $created ) < strtotime( $max_date ) ) {
 			// Post was created before the 'max date'.
-			echo sprintf( '<h4 class="page_dates">Page created on %1$s | Last modified on %2$s</h4>', esc_html( $created ), esc_html( $modified ) );
+			printf( '<h4 class="page_dates">Page created on %1$s | Last modified on %2$s</h4>', esc_html( $created ), esc_html( $modified ) );
 		}
 	}
 }
@@ -260,3 +260,60 @@ function osi_force_content_links_new_tab( string $content ) {
 }
 
 add_filter( 'the_content', 'osi_force_content_links_new_tab' );
+/**
+ * Render callback for the supporters shortcode.
+ *
+ * @param array $args The shortcode arguments.
+ *
+ * @return void
+ */
+function osi_supporters_shortcode_renderer( array $args = array() ) {
+
+	$per_page = isset( $args['limit'] ) ? $args['limit'] : -1;
+
+	// Override the main query for this specific case
+	query_posts(
+		array(
+			'post_type'      => 'supporter',
+			'posts_per_page' => $per_page,
+			'orderby'        => 'title',
+			'order'          => 'ASC',
+		)
+	);
+
+	$output = '<div class="supporters-container">';
+
+	if ( have_posts() ) {
+		while ( have_posts() ) {
+			the_post();
+
+			// Fetch ACF fields
+			$name         = get_field( 'name' );
+			$organization = get_field( 'organization' );
+			$quote        = get_field( 'quote' );
+			$link         = get_field( 'link' );
+
+			$output .= '<div class="supporter">';
+			$output .= '<div class="supporter_info">';
+			$output .= '<p><strong>' . esc_html( $name ) . '</strong><br />';
+
+			// Check if the link field exists and is not empty
+			if ( $link ) {
+				$output .= '<em><a class="supporter_info_link" href="' . esc_url( $link ) . '" target="_blank">' . esc_html( $organization ) . '</a></em><br />';
+			} else {
+				$output .= '<em>' . esc_html( $organization ) . '</em><br />';
+			}
+
+			if ( $quote ) {
+				$output .= '&quot;' . esc_html( $quote ) . '&quot;';
+			}
+			$output .= '</div>';
+			$output .= '</div>';
+		}
+		wp_reset_query(); // Reset the query to the original
+	}
+
+	$output .= '</div>';
+	return $output;
+}
+add_shortcode( 'display_supporters', 'osi_supporters_shortcode_renderer' );
