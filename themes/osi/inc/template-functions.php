@@ -167,9 +167,7 @@ function osi_inline_media_styles() {
  * @return boolean
  */
 if ( ! function_exists( 'is_license_search' ) ) {
-
 	function is_license_search() {
-
 		if ( ! isset( $_REQUEST['ls'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return false;
 		}
@@ -184,9 +182,7 @@ if ( ! function_exists( 'is_license_search' ) ) {
  * @return string
  */
 if ( ! function_exists( 'get_license_search_query' ) ) {
-
 	function get_license_search_query() {
-
 		$query = isset( $_REQUEST['ls'] ) ? $_REQUEST['ls'] : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		$query = sanitize_text_field( $query );
@@ -196,17 +192,31 @@ if ( ! function_exists( 'get_license_search_query' ) ) {
 }
 
 
-// Meta Block Field Filter Date
-add_filter( 'meta_field_block_get_block_content', 'osi_filter_meta_block_date_output', 10, 4 );
+/**
+ * Meta Block Field Filter Date
+ * 
+ * @param string $content The content of the block.
+ * @param array  $attributes The attributes of the block.
+ * @param array  $block The block.
+ * @param int    $post_id The post ID.
+ * 
+ * @return string
+ */
 function osi_filter_meta_block_date_output( $content, $attributes, $block, $post_id ) {
 	if ( is_numeric( $content ) && 8 === strlen( $content ) ) {
 		$content = DateTime::createFromFormat( 'Ymd', $content )->format( 'M Y' );
 	}
 	return $content;
 }
+add_filter( 'meta_field_block_get_block_content', 'osi_filter_meta_block_date_output', 10, 4 );
 
-// Order Press Mentions by Publication Date
-add_action( 'pre_get_posts', 'osi_press_mentions_by_publication_date' );
+/**
+ * Order Press Mentions by Publication Date
+ * 
+ * @param WP_Query $query The WP_Query instance (passed by reference).
+ * 
+ * @return WP_Query
+ */
 function osi_press_mentions_by_publication_date( $query ) {
 	if ( ! is_admin() && $query->is_main_query() ) {
 		if ( is_post_type_archive( 'press-mentions' ) ) {
@@ -226,6 +236,7 @@ function osi_press_mentions_by_publication_date( $query ) {
 	}
 	return $query;
 }
+add_action( 'pre_get_posts', 'osi_press_mentions_by_publication_date' );
 
 /**
  * Renders the "Created" and "Last modified" string for a page.
@@ -290,10 +301,9 @@ add_filter( 'the_content', 'osi_force_content_links_new_tab' );
  *
  * @param array $args The shortcode arguments.
  *
- * @return void
+ * @return string
  */
-function osi_supporters_shortcode_renderer( array $args = array() ) {
-
+function osi_supporters_shortcode_renderer( array $args = array() ): string {
 	$per_page = isset( $args['limit'] ) ? $args['limit'] : -1;
 
 	// Override the main query for this specific case
