@@ -9,6 +9,7 @@
  * Adds custom classes to the array of body classes.
  *
  * @param array $classes Classes for the body element.
+ *
  * @return array
  */
 function osi_body_classes( $classes ) {
@@ -31,6 +32,8 @@ add_filter( 'body_class', 'osi_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
+ *
+ * @return void
  */
 function osi_pingback_header() {
 	if ( is_singular() && pings_open() ) {
@@ -41,9 +44,11 @@ add_action( 'wp_head', 'osi_pingback_header' );
 
 
 /**
-* Gets rid of current_page_parent class mistakenly being applied to Blog pages while on Custom Post Types
-* via https://wordpress.org/support/topic/post-type-and-its-children-show-blog-as-the-current_page_parent
-*/
+ * Gets rid of current_page_parent class mistakenly being applied to Blog pages while on Custom Post Types
+ * via https://wordpress.org/support/topic/post-type-and-its-children-show-blog-as-the-current_page_parent
+ *
+ * @return boolean
+ */
 function is_blog() {
 	global $post;
 	$posttype = get_post_type( $post );
@@ -70,6 +75,12 @@ add_filter( 'nav_menu_css_class', 'fix_blog_link_on_cpt', 10, 3 );
  * Use <figure> and <figcaption>
  *
  * @link http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
+ *
+ * @param string $output The caption output. Default empty.
+ * @param array  $attr   Attributes of the caption shortcode.
+ * @param string $content The image element output.
+ *
+ * @return string
  */
 function osi_caption( $output, $attr, $content ) {
 	if ( is_feed() ) {
@@ -105,8 +116,12 @@ add_filter( 'img_caption_shortcode', 'osi_caption', 10, 3 );
 
 
 /**
-* remove width attribute of thumbnails
-*/
+ * remove width attribute of thumbnails
+ *
+ * @param string $html The HTML content.
+ *
+ * @return string
+ */
 function osi_remove_width_attribute( $html ) {
 	$html = preg_replace( '/(width|height)="\d*"\s/', '', $html );
 	return $html;
@@ -115,9 +130,13 @@ add_filter( 'post_thumbnail_html', 'osi_remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'osi_remove_width_attribute', 10 );
 
 /**
-* From http://wordpress.stackexchange.com/questions/115368/overide-gallery-default-link-to-settings
-* Default image links in gallery (not the same as image_default_link_type)
-*/
+ * From http://wordpress.stackexchange.com/questions/115368/overide-gallery-default-link-to-settings
+ * Default image links in gallery (not the same as image_default_link_type)
+ *
+ * @param array $settings
+ *
+ * @return array
+ */
 function osi_gallery_default_type_set_link( $settings ) {
 		$settings['galleryDefaults']['link'] = 'file';
 		return $settings;
@@ -126,14 +145,16 @@ add_filter( 'media_view_settings', 'osi_gallery_default_type_set_link' );
 
 
 /**
-* Remove the overly opinionated gallery styles
-*/
+ * Remove the overly opinionated gallery styles
+ */
 add_filter( 'use_default_gallery_style', '__return_false' );
 
 
 /**
-* Inline Media Default assert_options
-*/
+ * Inline Media Default assert_options
+ *
+ * @return string
+ */
 function osi_inline_media_styles() {
 	$styles = '';
 	if ( get_custom_header() ) {
@@ -144,6 +165,8 @@ function osi_inline_media_styles() {
 
 /**
  * Check if we're on the license search page
+ *
+ * @return boolean
  */
 if ( ! function_exists( 'is_license_search' ) ) {
 
@@ -159,6 +182,8 @@ if ( ! function_exists( 'is_license_search' ) ) {
 
 /**
  * Get the license search query
+ *
+ * @return string
  */
 if ( ! function_exists( 'get_license_search_query' ) ) {
 
@@ -205,9 +230,10 @@ function osi_press_mentions_by_publication_date( $query ) {
 }
 
 /**
-* Renders the "Created" and "Last modified" string for a page.
-*/
-
+ * Renders the "Created" and "Last modified" string for a page.
+ *
+ * @return void
+ */
 function osi_the_page_dates() {
 	if ( is_page() && ! is_home() && ! is_front_page() ) {
 		$max_date = '2023-02-01'; // February 1, 2023
@@ -311,7 +337,7 @@ function osi_supporters_shortcode_renderer( array $args = array() ) {
 			$output .= '</div>';
 			$output .= '</div>';
 		}
-		wp_reset_query(); // Reset the query to the original
+		wp_reset_postdata();
 	}
 
 	$output .= '</div>';
