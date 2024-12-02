@@ -260,6 +260,7 @@ function osi_force_content_links_new_tab( string $content ) {
 }
 
 add_filter( 'the_content', 'osi_force_content_links_new_tab' );
+
 /**
  * Render callback for the supporters shortcode.
  *
