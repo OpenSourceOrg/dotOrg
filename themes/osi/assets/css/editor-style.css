@@ -753,6 +753,13 @@
   mask-repeat: no-repeat;
   z-index: -1;
 }
+@media print {
+  .editor-styles-wrapper body > .wrapper::after {
+    content: none !important;
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
 .editor-styles-wrapper .content {
   padding: 0;
   padding-top: 65px;

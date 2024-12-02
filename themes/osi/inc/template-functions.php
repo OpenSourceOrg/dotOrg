@@ -9,9 +9,10 @@
  * Adds custom classes to the array of body classes.
  *
  * @param array $classes Classes for the body element.
+ *
  * @return array
  */
-function osi_body_classes( $classes ) {
+function osi_body_classes( array $classes ) {
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';
@@ -31,6 +32,8 @@ add_filter( 'body_class', 'osi_body_classes' );
 
 /**
  * Add a pingback url auto-discovery header for singularly identifiable articles.
+ *
+ * @return void
  */
 function osi_pingback_header() {
 	if ( is_singular() && pings_open() ) {
@@ -41,16 +44,27 @@ add_action( 'wp_head', 'osi_pingback_header' );
 
 
 /**
-* Gets rid of current_page_parent class mistakenly being applied to Blog pages while on Custom Post Types
-* via https://wordpress.org/support/topic/post-type-and-its-children-show-blog-as-the-current_page_parent
-*/
+ * Gets rid of current_page_parent class mistakenly being applied to Blog pages while on Custom Post Types
+ * via https://wordpress.org/support/topic/post-type-and-its-children-show-blog-as-the-current_page_parent
+ *
+ * @return boolean
+ */
 function is_blog() {
 	global $post;
 	$posttype = get_post_type( $post );
 	return ( ( 'post' === $posttype ) && ( is_home() || is_single() || is_archive() || is_category() || is_tag() || is_author() ) ) ? true : false;
 }
 
-function fix_blog_link_on_cpt( $classes, $item, $args ) {
+/**
+ * Fixes blog link for cpt.
+ *
+ * @param array  $classes The classes.
+ * @param object $item    The link item.
+ * @param array  $args    Additional args.
+ *
+ * @return array
+ */
+function fix_blog_link_on_cpt( $classes, $item, $args ) { //phpcs:ignore
 	if ( ! is_blog() ) {
 		$blog_page_id = intval( get_option( 'page_for_posts' ) );
 
@@ -70,8 +84,14 @@ add_filter( 'nav_menu_css_class', 'fix_blog_link_on_cpt', 10, 3 );
  * Use <figure> and <figcaption>
  *
  * @link http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
+ *
+ * @param string $output  The caption output. Default empty.
+ * @param array  $attr    Attributes of the caption shortcode.
+ * @param string $content The image element output.
+ *
+ * @return string
  */
-function osi_caption( $output, $attr, $content ) {
+function osi_caption( $output, $attr, $content ) { //phpcs:ignore
 	if ( is_feed() ) {
 		return $output;
 	}
@@ -105,9 +125,13 @@ add_filter( 'img_caption_shortcode', 'osi_caption', 10, 3 );
 
 
 /**
-* remove width attribute of thumbnails
-*/
-function osi_remove_width_attribute( $html ) {
+ * Remove width attribute of thumbnails.
+ *
+ * @param string $html The HTML content.
+ *
+ * @return string
+ */
+function osi_remove_width_attribute( string $html ): string {
 	$html = preg_replace( '/(width|height)="\d*"\s/', '', $html );
 	return $html;
 }
@@ -115,25 +139,29 @@ add_filter( 'post_thumbnail_html', 'osi_remove_width_attribute', 10 );
 add_filter( 'image_send_to_editor', 'osi_remove_width_attribute', 10 );
 
 /**
-* From http://wordpress.stackexchange.com/questions/115368/overide-gallery-default-link-to-settings
-* Default image links in gallery (not the same as image_default_link_type)
-*/
-function osi_gallery_default_type_set_link( $settings ) {
+ * From http://wordpress.stackexchange.com/questions/115368/overide-gallery-default-link-to-settings
+ * Default image links in gallery (not the same as image_default_link_type)
+ *
+ * @param array $settings The settings array.
+ *
+ * @return array
+ */
+function osi_gallery_default_type_set_link( array $settings ): array {
 		$settings['galleryDefaults']['link'] = 'file';
 		return $settings;
 }
 add_filter( 'media_view_settings', 'osi_gallery_default_type_set_link' );
 
-
 /**
-* Remove the overly opinionated gallery styles
-*/
+ * Remove the overly opinionated gallery styles
+ */
 add_filter( 'use_default_gallery_style', '__return_false' );
 
-
 /**
-* Inline Media Default assert_options
-*/
+ * Inline Media Default assert_options
+ *
+ * @return string
+ */
 function osi_inline_media_styles() {
 	$styles = '';
 	if ( get_custom_header() ) {
@@ -142,13 +170,13 @@ function osi_inline_media_styles() {
 	return $styles;
 }
 
-/**
- * Check if we're on the license search page
- */
 if ( ! function_exists( 'is_license_search' ) ) {
-
+	/**
+	 * Check if we're on the license search page
+	 *
+	 * @return boolean
+	 */
 	function is_license_search() {
-
 		if ( ! isset( $_REQUEST['ls'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return false;
 		}
@@ -157,13 +185,14 @@ if ( ! function_exists( 'is_license_search' ) ) {
 	}
 }
 
-/**
- * Get the license search query
- */
+
 if ( ! function_exists( 'get_license_search_query' ) ) {
-
+	/**
+	 * Get the license search query
+	 *
+	 * @return string
+	 */
 	function get_license_search_query() {
-
 		$query = isset( $_REQUEST['ls'] ) ? $_REQUEST['ls'] : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 		$query = sanitize_text_field( $query );
@@ -173,18 +202,32 @@ if ( ! function_exists( 'get_license_search_query' ) ) {
 }
 
 
-// Meta Block Field Filter Date
-add_filter( 'meta_field_block_get_block_content', 'osi_filter_meta_block_date_output', 10, 4 );
-function osi_filter_meta_block_date_output( $content, $attributes, $block, $post_id ) {
+/**
+ * Meta Block Field Filter Date
+ *
+ * @param string  $content    The content of the block.
+ * @param array   $attributes The attributes of the block.
+ * @param array   $block      The block.
+ * @param integer $post_id    The post ID.
+ *
+ * @return string
+ */
+function osi_filter_meta_block_date_output( string $content, array $attributes, $block, $post_id ) { //phpcs:ignore
 	if ( is_numeric( $content ) && 8 === strlen( $content ) ) {
 		$content = DateTime::createFromFormat( 'Ymd', $content )->format( 'M Y' );
 	}
 	return $content;
 }
+add_filter( 'meta_field_block_get_block_content', 'osi_filter_meta_block_date_output', 10, 4 );
 
-// Order Press Mentions by Publication Date
-add_action( 'pre_get_posts', 'osi_press_mentions_by_publication_date' );
-function osi_press_mentions_by_publication_date( $query ) {
+/**
+ * Order Press Mentions by Publication Date
+ *
+ * @param WP_Query $query The WP_Query instance (passed by reference).
+ *
+ * @return WP_Query
+ */
+function osi_press_mentions_by_publication_date( WP_Query $query ) {
 	if ( ! is_admin() && $query->is_main_query() ) {
 		if ( is_post_type_archive( 'press-mentions' ) ) {
 			$query->set( 'meta_key', 'date_of_publication' );
@@ -203,11 +246,13 @@ function osi_press_mentions_by_publication_date( $query ) {
 	}
 	return $query;
 }
+add_action( 'pre_get_posts', 'osi_press_mentions_by_publication_date' );
 
 /**
-* Renders the "Created" and "Last modified" string for a page.
-*/
-
+ * Renders the "Created" and "Last modified" string for a page.
+ *
+ * @return void
+ */
 function osi_the_page_dates() {
 	if ( is_page() && ! is_home() && ! is_front_page() ) {
 		$max_date = '2023-02-01'; // February 1, 2023
@@ -216,7 +261,7 @@ function osi_the_page_dates() {
 
 		if ( strtotime( $created ) < strtotime( $max_date ) ) {
 			// Post was created before the 'max date'.
-			echo sprintf( '<h4 class="page_dates">Page created on %1$s | Last modified on %2$s</h4>', esc_html( $created ), esc_html( $modified ) );
+			printf( '<h4 class="page_dates">Page created on %1$s | Last modified on %2$s</h4>', esc_html( $created ), esc_html( $modified ) );
 		}
 	}
 }
@@ -260,3 +305,60 @@ function osi_force_content_links_new_tab( string $content ) {
 }
 
 add_filter( 'the_content', 'osi_force_content_links_new_tab' );
+
+/**
+ * Render callback for the supporters shortcode.
+ *
+ * @param array $args The shortcode arguments.
+ *
+ * @return string
+ */
+function osi_supporters_shortcode_renderer( array $args = array() ): string {
+	$per_page = isset( $args['limit'] ) ? $args['limit'] : -1;
+
+	// Override the main query for this specific case
+	query_posts( // phpcs:ignore
+		array(
+			'post_type'      => 'supporter',
+			'posts_per_page' => $per_page,
+			'orderby'        => 'title',
+			'order'          => 'ASC',
+		)
+	);
+
+	$output = '<div class="supporters-container">';
+
+	if ( have_posts() ) {
+		while ( have_posts() ) {
+			the_post();
+
+			// Fetch ACF fields
+			$name         = get_field( 'name' );
+			$organization = get_field( 'organization' );
+			$quote        = get_field( 'quote' );
+			$link         = get_field( 'link' );
+
+			$output .= '<div class="supporter">';
+			$output .= '<div class="supporter_info">';
+			$output .= '<p><strong>' . esc_html( $name ) . '</strong><br />';
+
+			// Check if the link field exists and is not empty
+			if ( $link ) {
+				$output .= '<em><a class="supporter_info_link" href="' . esc_url( $link ) . '" target="_blank">' . esc_html( $organization ) . '</a></em><br />';
+			} else {
+				$output .= '<em>' . esc_html( $organization ) . '</em><br />';
+			}
+
+			if ( $quote ) {
+				$output .= '&quot;' . esc_html( $quote ) . '&quot;';
+			}
+			$output .= '</div>';
+			$output .= '</div>';
+		}
+		wp_reset_postdata();
+	}
+
+	$output .= '</div>';
+	return $output;
+}
+add_shortcode( 'display_supporters', 'osi_supporters_shortcode_renderer' );
