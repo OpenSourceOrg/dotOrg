@@ -893,7 +893,7 @@
   max-width: none !important;
 }
 .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive), .single-license .editor-styles-wrapper .content.has_no_sidebar .comments, .single-license .editor-styles-wrapper footer .content--page article:not(.archive), .single-license .editor-styles-wrapper footer .comments {
-  max-width: 920px !important;
+  max-width: 1180px !important;
 }
 .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide.email-block, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide.email-block, .single-license .editor-styles-wrapper footer .comments .alignwide.email-block {
   max-width: none !important;
@@ -2528,14 +2528,22 @@
 .editor-styles-wrapper .single-license .entry-content {
   margin-left: auto;
   margin-right: auto;
-  max-width: 920px;
+  max-width: 1180px;
   flex-grow: 1;
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  row-gap: 20px;
+  column-gap: 60px;
 }
 .editor-styles-wrapper .single-license .page--title {
   margin-bottom: 18px !important;
+}
+.editor-styles-wrapper .single-license .cover--header .wp-block-cover {
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw !important;
+  margin-right: unset !important;
+  width: 100vw !important;
 }
 @media only screen and (min-width: 782px) {
   .editor-styles-wrapper .single-license .cover--header .wp-block-cover {
@@ -2570,7 +2578,8 @@
   border-left: 1px solid var(--wp--preset--color--neutral-white);
   padding-left: 10px;
 }
-.editor-styles-wrapper .license-meta span + span.wrapped { /* First item on a new row */
+.editor-styles-wrapper .license-meta span + span.wrapped {
+  /* First item on a new row */
   border: none;
   padding: 0;
 }
@@ -2617,7 +2626,8 @@
 .editor-styles-wrapper .license-table .license-table--title {
   font-weight: var(--wp--custom--typography--body--font-weight-bold);
 }
-.editor-styles-wrapper .license-table .license-table--title, .editor-styles-wrapper .license-table #license-header-title {
+.editor-styles-wrapper .license-table .license-table--title,
+.editor-styles-wrapper .license-table #license-header-title {
   min-width: 50%;
 }
 @media only screen and (max-width: 600px) {
@@ -2634,7 +2644,8 @@
     overflow-x: auto;
     white-space: nowrap;
   }
-  .editor-styles-wrapper .license-table .license-table--title, .editor-styles-wrapper .license-table #license-header-title {
+  .editor-styles-wrapper .license-table .license-table--title,
+  .editor-styles-wrapper .license-table #license-header-title {
     min-width: 250px;
     word-wrap: break-word;
     white-space: normal;
@@ -2655,51 +2666,75 @@
 }
 @media only screen and (min-width: 1180px) {
   .editor-styles-wrapper .page-template-template-license-archive .content.has_no_sidebar .content--page article .alignfull {
-    margin-left: calc(-1 * (100vw - 1084px ) / 2);
-    margin-right: calc(-1 * (100vw - 1084px ) / 2);
+    margin-left: calc(-1 * (100vw - 1084px) / 2);
+    margin-right: calc(-1 * (100vw - 1084px) / 2);
     width: 100vw;
   }
 }
 @media only screen and (min-width: 1440px) {
   .editor-styles-wrapper .page-template-template-license-archive .content.has_no_sidebar .content--page article .alignfull {
-    margin-left: calc(-1 * (1440px - 1084px ) / 2);
-    margin-right: calc(-1 * (1440px - 1084px ) / 2);
+    margin-left: calc(-1 * (1440px - 1084px) / 2);
+    margin-right: calc(-1 * (1440px - 1084px) / 2);
     width: 1440px;
   }
 }
-.editor-styles-wrapper .single-board-member .post--thumbnail.cropped, .editor-styles-wrapper .post-type-archive-board-member .post--thumbnail.cropped, .editor-styles-wrapper .page-template-template-board-archive .post--thumbnail.cropped, .editor-styles-wrapper .tax-taxonomy-status .post--thumbnail.cropped, .editor-styles-wrapper .tax-taxonomy-seat-type .post--thumbnail.cropped {
+.editor-styles-wrapper .single-board-member .post--thumbnail.cropped,
+.editor-styles-wrapper .post-type-archive-board-member .post--thumbnail.cropped,
+.editor-styles-wrapper .page-template-template-board-archive .post--thumbnail.cropped,
+.editor-styles-wrapper .tax-taxonomy-status .post--thumbnail.cropped,
+.editor-styles-wrapper .tax-taxonomy-seat-type .post--thumbnail.cropped {
   padding-bottom: 70%;
   margin-bottom: 1em;
 }
-.editor-styles-wrapper .single-board-member .post--summary h2, .editor-styles-wrapper .post-type-archive-board-member .post--summary h2, .editor-styles-wrapper .page-template-template-board-archive .post--summary h2, .editor-styles-wrapper .tax-taxonomy-status .post--summary h2, .editor-styles-wrapper .tax-taxonomy-seat-type .post--summary h2 {
+.editor-styles-wrapper .single-board-member .post--summary h2,
+.editor-styles-wrapper .post-type-archive-board-member .post--summary h2,
+.editor-styles-wrapper .page-template-template-board-archive .post--summary h2,
+.editor-styles-wrapper .tax-taxonomy-status .post--summary h2,
+.editor-styles-wrapper .tax-taxonomy-seat-type .post--summary h2 {
   margin-bottom: 12px !important;
   margin-top: 0;
 }
-.editor-styles-wrapper .single-board-member .post--summary p, .editor-styles-wrapper .post-type-archive-board-member .post--summary p, .editor-styles-wrapper .page-template-template-board-archive .post--summary p, .editor-styles-wrapper .tax-taxonomy-status .post--summary p, .editor-styles-wrapper .tax-taxonomy-seat-type .post--summary p {
+.editor-styles-wrapper .single-board-member .post--summary p,
+.editor-styles-wrapper .post-type-archive-board-member .post--summary p,
+.editor-styles-wrapper .page-template-template-board-archive .post--summary p,
+.editor-styles-wrapper .tax-taxonomy-status .post--summary p,
+.editor-styles-wrapper .tax-taxonomy-seat-type .post--summary p {
   margin-bottom: 4px !important;
   margin-top: 0;
 }
 @media only screen and (min-width: 782px) {
-  .editor-styles-wrapper .single-board-member .cover--header .wp-block-cover, .editor-styles-wrapper .post-type-archive-board-member .cover--header .wp-block-cover, .editor-styles-wrapper .page-template-template-board-archive .cover--header .wp-block-cover, .editor-styles-wrapper .tax-taxonomy-status .cover--header .wp-block-cover, .editor-styles-wrapper .tax-taxonomy-seat-type .cover--header .wp-block-cover {
+  .editor-styles-wrapper .single-board-member .cover--header .wp-block-cover,
+  .editor-styles-wrapper .post-type-archive-board-member .cover--header .wp-block-cover,
+  .editor-styles-wrapper .page-template-template-board-archive .cover--header .wp-block-cover,
+  .editor-styles-wrapper .tax-taxonomy-status .cover--header .wp-block-cover,
+  .editor-styles-wrapper .tax-taxonomy-seat-type .cover--header .wp-block-cover {
     padding-top: 75px;
     padding-bottom: 75px;
   }
-  .editor-styles-wrapper .single-board-member .cover--header .wp-block-columns, .editor-styles-wrapper .post-type-archive-board-member .cover--header .wp-block-columns, .editor-styles-wrapper .page-template-template-board-archive .cover--header .wp-block-columns, .editor-styles-wrapper .tax-taxonomy-status .cover--header .wp-block-columns, .editor-styles-wrapper .tax-taxonomy-seat-type .cover--header .wp-block-columns {
+  .editor-styles-wrapper .single-board-member .cover--header .wp-block-columns,
+  .editor-styles-wrapper .post-type-archive-board-member .cover--header .wp-block-columns,
+  .editor-styles-wrapper .page-template-template-board-archive .cover--header .wp-block-columns,
+  .editor-styles-wrapper .tax-taxonomy-status .cover--header .wp-block-columns,
+  .editor-styles-wrapper .tax-taxonomy-seat-type .cover--header .wp-block-columns {
     gap: 100px;
   }
 }
-.editor-styles-wrapper .post-type-archive-board-member .member-dates, .editor-styles-wrapper .page-template-template-board-archive .member-dates, .editor-styles-wrapper .tax-taxonomy-status .member-dates, .editor-styles-wrapper .tax-taxonomy-seat-type .member-dates {
+.editor-styles-wrapper .post-type-archive-board-member .member-dates,
+.editor-styles-wrapper .page-template-template-board-archive .member-dates,
+.editor-styles-wrapper .tax-taxonomy-status .member-dates,
+.editor-styles-wrapper .tax-taxonomy-seat-type .member-dates {
   font-style: italic;
 }
-.editor-styles-wrapper .member-seat, .editor-styles-wrapper .member-dates {
+.editor-styles-wrapper .member-seat,
+.editor-styles-wrapper .member-dates {
   display: block;
 }
-.editor-styles-wrapper .member-position {
+.editor-styles-wrapper .member-details span:nth-child(2) {
   border-left: 1px solid var(--wp--preset--color--neutral-darkest);
   margin-left: 10px;
   padding-left: 10px;
 }
-.wp-block-cover .editor-styles-wrapper .member-position {
+.wp-block-cover .editor-styles-wrapper .member-details span:nth-child(2) {
   border-color: var(--wp--preset--color--neutral-white);
 }
 .editor-styles-wrapper .wp-block {
