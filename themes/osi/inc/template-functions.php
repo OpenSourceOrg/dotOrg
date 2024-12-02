@@ -143,12 +143,10 @@ function osi_gallery_default_type_set_link( $settings ) {
 }
 add_filter( 'media_view_settings', 'osi_gallery_default_type_set_link' );
 
-
 /**
  * Remove the overly opinionated gallery styles
  */
 add_filter( 'use_default_gallery_style', '__return_false' );
-
 
 /**
  * Inline Media Default assert_options
