@@ -1,4 +1,4 @@
-body > .wrapper {
+body>.wrapper {
     background: transparent;
     font-size: $textFontSize;
     min-height: 100%;
@@ -8,9 +8,8 @@ body > .wrapper {
     position: relative;
     @include multi-transition('margin-left .2s ease-out, margin-right .2s ease-out, left .2s ease-out');
     z-index: 1;
-
     &:after {
-      content: '';
+        content: '';
         background-color: $Nlightest;
         position: absolute;
         width: 100vw;
@@ -23,106 +22,95 @@ body > .wrapper {
         mask-repeat: no-repeat;
         z-index: -1;
     }
-
 }
 
+@media print {
+    // Ensure the background is not printed
+    body>.wrapper::after {
+        content: none !important;
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
 
 .content {
     padding: 0;
     // padding: 0 $smallPadding; // for a boxed width background with sidebar only
     padding-top: $paddingTopMobile; // for fixed-position header, adjust to match header size
-
-    @media only screen and ( max-width: 1200px ) {
+    @media only screen and ( max-width: 1200px) {
         padding-top: 0;
     }
-
     &.inner-padding {
         padding: 0 $smallPadding;
     }
-
     .content-full .content--page {
         max-width: $boxedMax; // for a boxed width background with no sidebar
         padding: 0 $smallPadding; // for a boxed width background with no sidebar
     }
-
     .content--page.no-title {
-      padding-bottom: 0 !important;
-      padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
     }
-
     .content--inner {
-      max-width: $boxedMax; // for a boxed width background with no sidebar
+        max-width: $boxedMax; // for a boxed width background with no sidebar
     }
-
     &.has_sidebar {
-      max-width: $boxedMax; // for a boxed width background with sidebar only
-      padding: $paddingTopMobile $smallPadding 0 $smallPadding; // for a boxed width background with sidebar only
-
-      .content--inner {
-        max-width: none;
-      }
+        max-width: $boxedMax; // for a boxed width background with sidebar only
+        padding: $paddingTopMobile $smallPadding 0 $smallPadding; // for a boxed width background with sidebar only
+        .content--inner {
+            max-width: none;
+        }
     }
 }
 
 @media only screen and (min-width: #{$break-small}) {
-  .content {
-      &.inner-padding {
-          padding: 0 $midPadding;
-      }
-
-      .content-full .content--page {
-          padding: 0 $midPadding; // for a boxed width background with no sidebar
-          margin: 0 auto;
-      }
-
-      &.has_sidebar {
-        padding: $paddingTopMobile $midPadding 0 $midPadding; // for a boxed width background with sidebar only
-      }
-  }
+    .content {
+        &.inner-padding {
+            padding: 0 $midPadding;
+        }
+        .content-full .content--page {
+            padding: 0 $midPadding; // for a boxed width background with no sidebar
+            margin: 0 auto;
+        }
+        &.has_sidebar {
+            padding: $paddingTopMobile $midPadding 0 $midPadding; // for a boxed width background with sidebar only
+        }
+    }
 }
 
 @media only screen and (min-width: #{$break-nav}) {
-
-    .content{
+    .content {
         //padding-bottom:100px; // to account for position absolute footer
         // padding-top: $paddingTop; // for fixed-position header, adjust to match header size
-
-        .content-full .content--page{
+        .content-full .content--page {
             padding: 0 $maxPadding; // for a boxed width background with no sidebar
         }
-
         .content--page.no-title {
-          padding-top: 0;
+            padding-top: 0;
         }
-
         &.has_sidebar {
-          padding: $paddingTop $maxPadding 0 $maxPadding; // for a boxed width background with sidebar only
+            padding: $paddingTop $maxPadding 0 $maxPadding; // for a boxed width background with sidebar only
         }
-
     }
 }
 
 @media only screen and (min-width: #{$break-xlarge}) {
-
     .content {
         //padding-bottom: 150px; // to account for position absolute footer
     }
-
     .content-main {
         padding-right: 1em;
-        @include pinkgrid($colspan:9, $padside:3%);
-        @include pinkrow($rowitems:2)
+        @include pinkgrid($colspan: 9, $padside: 3%);
+        @include pinkrow($rowitems: 2)
     }
 }
 
 @media only screen and (min-width: #{$break-wide}) {
     .content {
         margin: 0 auto;
-       // padding-top: $paddingTop; // for fixed-position header, adjust to match header size
+        // padding-top: $paddingTop; // for fixed-position header, adjust to match header size
     }
-
     .content--inner {
-      margin: 0 auto;
+        margin: 0 auto;
     }
-
 }

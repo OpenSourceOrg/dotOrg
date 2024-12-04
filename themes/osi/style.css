@@ -1055,6 +1055,13 @@ body > .wrapper:after {
   z-index: -1;
 }
 
+@media print {
+  body > .wrapper::after {
+    content: none !important;
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
 .content {
   padding: 0;
   padding-top: 65px;
