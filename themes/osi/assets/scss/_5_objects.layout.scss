@@ -57,6 +57,14 @@
 	}
 }
 
+.page-template-template-no-header-wide .content.has_no_sidebar, .page-template-template-no-header-wide footer{
+	.content--page article:not(.archive), .comments, .archive-press-mentions {
+		max-width: inherit !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+}
+
 .content.has_no_sidebar, footer {
 	.alignwide {
 		// @extend %alignwide;
