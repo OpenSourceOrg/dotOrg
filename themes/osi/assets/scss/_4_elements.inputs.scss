@@ -7,6 +7,10 @@ form {
   max-width: $contentMax;
 }
 
+.page-template-template-no-header-wide form {
+	max-width: $boxedMax
+}
+
 input[type="text"],
 input[type="date"],
 input[type="time"],
