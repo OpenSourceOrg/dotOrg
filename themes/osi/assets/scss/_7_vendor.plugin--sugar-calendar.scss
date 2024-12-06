@@ -133,6 +133,13 @@
 	}
 }
 
+
+.page-template-template-no-header-wide .post-type-archive-sc_event {
+	#content-page {
+		max-width: $boxedMax;
+	}
+}
+
 #sc-event-ticketing-buy-button,
 #sc-event-ticketing-purchase {
 

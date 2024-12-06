@@ -1408,6 +1408,9 @@
 .wp-block-cover .editor-styles-wrapper .page--title {
   margin-bottom: 0 !important;
 }
+.editor-styles-wrapper .page-template-template-no-header-wide .press-mentions-header.wp-block-cover .wp-block-cover__inner-container {
+  max-width: 1180px;
+}
 .editor-styles-wrapper .press-mentions-header.wp-block-cover {
   align-items: flex-start;
   color: var(--wp--preset--color--neutral-white);
@@ -2237,6 +2240,9 @@
 }
 .editor-styles-wrapper .post-type-archive-sc_event .upcoming-past-buttons .wp-block-button:not(.active) a {
   font-weight: 400;
+}
+.editor-styles-wrapper .page-template-template-no-header-wide .post-type-archive-sc_event #content-page {
+  max-width: 1180px;
 }
 .editor-styles-wrapper #sc-event-ticketing-buy-button,
 .editor-styles-wrapper #sc-event-ticketing-purchase {

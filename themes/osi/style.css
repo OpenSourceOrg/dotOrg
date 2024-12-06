@@ -904,6 +904,10 @@ form {
   max-width: 730px;
 }
 
+.page-template-template-no-header-wide form {
+  max-width: 1180px;
+}
+
 input[type=checkbox],
 input[type=radio] {
   margin: 0.25em 0.5em 0.25em 0;
@@ -3106,6 +3110,10 @@ body.option-round .open-button:not(.open-search) {
   margin-bottom: 0 !important;
 }
 
+.page-template-template-no-header-wide .press-mentions-header.wp-block-cover .wp-block-cover__inner-container {
+  max-width: 1180px;
+}
+
 .press-mentions-header.wp-block-cover {
   align-items: flex-start;
   color: var(--wp--preset--color--neutral-white);
@@ -3165,6 +3173,9 @@ article.archive {
 
 .post--content > p, .wp-block-group p, .post--content > h1, .wp-block-group h1, .post--content > h2, .wp-block-group h2, .post--content > h3, .wp-block-group h3, .post--content > h4, .wp-block-group h4, .post--content > h5, .wp-block-group h5, .post--content > h6, .wp-block-group h6, .post--content > blockquote, .post--content > .wp-block-pullquote, .post--content > .wp-block-quote, .wp-block-group blockquote, .wp-block-group .wp-block-pullquote, .wp-block-group .wp-block-quote, .post--content > ol, .wp-block-group ol, .post--content > ul, .wp-block-group ul, .post--content > dl, .wp-block-group dl, .post--content > address, .wp-block-group address {
   max-width: 730px;
+}
+.page-template-template-no-header-wide .post--content > p, .page-template-template-no-header-wide .wp-block-group > p, .page-template-template-no-header-wide .post--content > h1, .page-template-template-no-header-wide .wp-block-group > h1, .page-template-template-no-header-wide .post--content > h2, .page-template-template-no-header-wide .wp-block-group > h2, .page-template-template-no-header-wide .post--content > h3, .page-template-template-no-header-wide .wp-block-group > h3, .page-template-template-no-header-wide .post--content > h4, .page-template-template-no-header-wide .wp-block-group > h4, .page-template-template-no-header-wide .post--content > h5, .page-template-template-no-header-wide .wp-block-group > h5, .page-template-template-no-header-wide .post--content > h6, .page-template-template-no-header-wide .wp-block-group > h6, .page-template-template-no-header-wide .post--content > blockquote, .page-template-template-no-header-wide .post--content > .wp-block-pullquote, .page-template-template-no-header-wide .post--content > .wp-block-quote, .page-template-template-no-header-wide .wp-block-group > blockquote, .page-template-template-no-header-wide .wp-block-group > .wp-block-pullquote, .page-template-template-no-header-wide .wp-block-group > .wp-block-quote, .page-template-template-no-header-wide .post--content > ol, .page-template-template-no-header-wide .wp-block-group > ol, .page-template-template-no-header-wide .post--content > ul, .page-template-template-no-header-wide .wp-block-group > ul, .page-template-template-no-header-wide .post--content > dl, .page-template-template-no-header-wide .wp-block-group > dl, .page-template-template-no-header-wide .post--content > address, .page-template-template-no-header-wide .wp-block-group > address {
+  max-width: 1180px;
 }
 .footer p, .footer h1, .footer h2, .footer h3, .footer h4, .footer h5, .footer h6, .footer blockquote, .footer .wp-block-pullquote, .footer .wp-block-quote, .footer ol, .footer ul, .footer dl, .footer address {
   max-width: none !important;
@@ -4486,6 +4497,10 @@ hr.wp-block-separator {
 }
 .post-type-archive-sc_event .upcoming-past-buttons .wp-block-button:not(.active) a {
   font-weight: 400;
+}
+
+.page-template-template-no-header-wide .post-type-archive-sc_event #content-page {
+  max-width: 1180px;
 }
 
 #sc-event-ticketing-buy-button,
