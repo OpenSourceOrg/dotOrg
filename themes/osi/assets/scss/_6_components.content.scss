@@ -13,6 +13,10 @@ p, h1, h2, h3, h4, h5, h6, blockquote, ol, ul, dl, address {
 		max-width: $contentMax;
 	}
 
+	.page-template-template-no-header-wide .post--content > &, .page-template-template-no-header-wide .wp-block-group > & {
+			max-width: $boxedMax;
+	}
+
 	.footer & {
 		max-width: none !important;
 	}
