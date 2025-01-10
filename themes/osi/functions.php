@@ -429,7 +429,7 @@ add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
 // trying to get an idea of what errors are happening
 ini_set('display_errors', 1); // Enable error display
-ini_set('display_startup_errors', 1); // Show startup errors
+add_filter('wpcf7_debug', '__return_true');
 error_reporting(E_ALL); // Report all PHP errors
 
 /**
