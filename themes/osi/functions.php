@@ -439,7 +439,7 @@ error_reporting(E_ALL); // Report all PHP errors
  */
 add_action('wpcf7_before_send_mail', 'save_form_data_to_cpt');
 function save_form_data_to_cpt($contact_form) {
-    $submission = WPF7_Submission::get_instance();
+    $submission = WPCF7_Submission::get_instance();
     if ($submission) {
         $data = $submission->get_posted_data();
         
@@ -450,5 +450,7 @@ function save_form_data_to_cpt($contact_form) {
         ));
         update_field('name', $data['your-name'], $post_id);
 		update_field('organization', $data['your-org'], $post_id);
-    }
+    } else {
+		error_log('WPCF7_Submission instance is null.');
+	}
 }
