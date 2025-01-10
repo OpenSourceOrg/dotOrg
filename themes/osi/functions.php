@@ -446,7 +446,7 @@ function save_form_data_to_cpt($contact_form) {
         $post_id = wp_insert_post(array(
             'post_title' => $data['your-name'],
             'post_type' => 'supporter',
-            'post_status' => 'draft'
+            'post_status' => 'pending'
         ));
         update_field('name', $data['your-name'], $post_id);
 		update_field('organization', $data['your-org'], $post_id);
