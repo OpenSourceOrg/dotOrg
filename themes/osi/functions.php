@@ -450,6 +450,7 @@ function save_form_data_to_cpt($contact_form) {
         ));
         update_field('name', $data['your-name'], $post_id);
 		update_field('organization', $data['your-org'], $post_id);
+		update_field('endorsement_type', $data['your-endorsementg'], $post_id);
 		update_field('quote', $data['your-message'], $post_id);
     } else {
 		error_log('WPCF7_Submission instance is null.');
