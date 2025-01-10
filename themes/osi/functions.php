@@ -427,10 +427,14 @@ function osi_wpdc_comment_body( string $comment_body ) {
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
 
+// trying to get an idea of what errors are happening
+ini_set('display_errors', 1); // Enable error display
+ini_set('display_startup_errors', 1); // Show startup errors
+error_reporting(E_ALL); // Report all PHP errors
 
 /**
  * 
- * Create a new Supporter CPT.
+ * Create a new Supporter CPT, based on Contact Forms 7.
  * 
  */
 add_action('wpcf7_before_send_mail', 'save_form_data_to_cpt');
