@@ -428,13 +428,13 @@ add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
 
 // trying to get an idea of what errors are happening
-ini_set('display_errors', 1); // Enable error display
-add_filter('wpcf7_debug', '__return_true');
-error_reporting(E_ALL); // Report all PHP errors
+// ini_set('display_errors', 1); // Enable error display
+// add_filter('wpcf7_debug', '__return_true');
+// error_reporting(E_ALL); // Report all PHP errors
 
 /**
  * 
- * Create a new Supporter CPT, based on Contact Forms 7.
+ * Create a new Supporter in ACF, based on Contact Forms 7.
  * 
  */
 add_action('wpcf7_before_send_mail', 'save_form_data_to_cpt');
@@ -450,6 +450,7 @@ function save_form_data_to_cpt($contact_form) {
         ));
         update_field('name', $data['your-name'], $post_id);
 		update_field('organization', $data['your-org'], $post_id);
+		update_field('quote', $data['your-message'], $post_id);
     } else {
 		error_log('WPCF7_Submission instance is null.');
 	}
