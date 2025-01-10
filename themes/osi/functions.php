@@ -425,3 +425,26 @@ function osi_wpdc_comment_body( string $comment_body ) {
 	return $trimmed_comment_body;
 }
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
+
+
+
+/**
+ * 
+ * Create a new Supporter CPT.
+ * 
+ */
+add_action('wpcf7_before_send_mail', 'save_form_data_to_cpt');
+function save_form_data_to_cpt($contact_form) {
+    $submission = WPF7_Submission::get_instance();
+    if ($submission) {
+        $data = $submission->get_posted_data();
+        
+        $post_id = wp_insert_post(array(
+            'post_title' => $data['your-name'],
+            'post_type' => 'supporter',
+            'post_status' => 'draft'
+        ));
+        update_field('name', $data['your-name'], $post_id);
+		update_field('organization', $data['your-org'], $post_id);
+    }
+}
