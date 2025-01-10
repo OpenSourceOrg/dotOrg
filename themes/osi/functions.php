@@ -426,15 +426,9 @@ function osi_wpdc_comment_body( string $comment_body ) {
 }
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
-
-// trying to get an idea of what errors are happening
-// ini_set('display_errors', 1); // Enable error display
-// add_filter('wpcf7_debug', '__return_true');
-// error_reporting(E_ALL); // Report all PHP errors
-
 /**
  * 
- * Create a new Supporter in ACF, based on Contact Forms 7.
+ * Create a new Supporter in ACF, based on a Contact Forms 7 submission.
  * 
  */
 add_action('wpcf7_before_send_mail', 'save_form_data_to_cpt');
