@@ -433,20 +433,20 @@ add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
  */
 add_action('wpcf7_before_send_mail', 'save_form_data_to_cpt');
 function save_form_data_to_cpt($contact_form) {
-    $submission = WPCF7_Submission::get_instance();
-    if ($submission) {
-        $data = $submission->get_posted_data();
-        
-        $post_id = wp_insert_post(array(
-            'post_title' => $data['your-name'],
-            'post_type' => 'supporter',
-            'post_status' => 'pending'
-        ));
-        update_field('name', $data['your-name'], $post_id);
+	$submission = WPCF7_Submission::get_instance();
+	if ($submission) {
+		$data = $submission->get_posted_data();
+
+		$post_id = wp_insert_post(array(
+			'post_title' => $data['your-name'],
+			'post_type' => 'supporter',
+			'post_status' => 'pending'
+		));
+		update_field('name', $data['your-name'], $post_id);
 		update_field('organization', $data['your-org'], $post_id);
 		update_field('endorsement_type', $data['your-endorsement'], $post_id);
 		update_field('quote', $data['your-message'], $post_id);
-    } else {
+	} else {
 		error_log('WPCF7_Submission instance is null.');
 	}
 }
