@@ -427,26 +427,37 @@ function osi_wpdc_comment_body( string $comment_body ) {
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
 /**
- * 
  * Create a new Supporter in ACF, based on a Contact Forms 7 submission.
- * 
  */
-add_action('wpcf7_before_send_mail', 'save_form_data_to_cpt');
-function save_form_data_to_cpt($contact_form) {
-	$submission = WPCF7_Submission::get_instance();
-	if ($submission) {
-		$data = $submission->get_posted_data();
 
-		$post_id = wp_insert_post(array(
-			'post_title' => $data['your-name'],
-			'post_type' => 'supporter',
-			'post_status' => 'pending'
-		));
-		update_field('name', $data['your-name'], $post_id);
-		update_field('organization', $data['your-org'], $post_id);
-		update_field('endorsement_type', $data['your-endorsement'], $post_id);
-		update_field('quote', $data['your-message'], $post_id);
-	} else {
-		error_log('WPCF7_Submission instance is null.');
-	}
+add_action( 'wpcf7_before_send_mail', 'save_form_data_to_cpt' );
+
+/**
+ * Save form data to a custom post type.
+ *
+ * @param WPCF7_ContactForm $contact_form The Contact Form 7 instance.
+ */
+function save_form_data_to_cpt( $contact_form ) {
+    $submission = WPCF7_Submission::get_instance();
+
+    if ( $submission ) {
+        $data = $submission->get_posted_data();
+
+        $post_id = wp_insert_post(
+            array(
+                'post_title'  => $data['your-name'],
+                'post_type'   => 'supporter',
+                'post_status' => 'pending',
+            )
+        );
+
+        if ( $post_id ) {
+            update_field( 'name', $data['your-name'], $post_id );
+            update_field( 'organization', $data['your-org'], $post_id );
+            update_field( 'endorsement_type', $data['your-endorsement'], $post_id );
+            update_field( 'quote', $data['your-message'], $post_id );
+        } else {
+            error_log( 'Failed to insert post for supporter.' );
+        }
+    }
 }
