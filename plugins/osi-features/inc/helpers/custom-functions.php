@@ -169,3 +169,4 @@ function osi_is_mobile( $kind = 'any', $return_matched_agent = false ) {
 
 	return false;
 }
+
