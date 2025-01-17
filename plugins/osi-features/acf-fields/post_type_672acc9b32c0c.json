@@ -75,7 +75,7 @@
     "rewrite": {
         "permalink_rewrite": "custom_permalink",
         "slug": "supporter",
-        "with_front": "1",
+        "with_front": "0",
         "feeds": "0",
         "pages": "1"
     },
