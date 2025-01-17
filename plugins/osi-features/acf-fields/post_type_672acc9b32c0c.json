@@ -75,7 +75,7 @@
     "rewrite": {
         "permalink_rewrite": "custom_permalink",
         "slug": "supporter",
-        "with_front": "0",
+        "with_front": "1",
         "feeds": "0",
         "pages": "1"
     },
@@ -85,5 +85,5 @@
     "delete_with_user": false,
     "register_meta_box_cb": "",
     "enter_title_here": "",
-    "modified": 1737124331
+    "modified": 1734435097
 }

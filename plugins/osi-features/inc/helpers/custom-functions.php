@@ -37,7 +37,7 @@ function osi_get_cache_key( $unique = '' ) {
 function osi_get_cached_posts( $args ) {
 
 	if ( empty( $args ) || ! is_array( $args ) ) {
-		return array();
+		return [];
 	}
 
 	$args['suppress_filters'] = false;
@@ -47,9 +47,9 @@ function osi_get_cached_posts( $args ) {
 	$cache_key = osi_get_cache_key( $args );
 
 	$cache  = new \Osi\Features\Inc\Cache( $cache_key );
-	$result = $cache->expires_in( $expires_in )->updates_with( 'get_posts', array( $args ) )->get();
+	$result = $cache->expires_in( $expires_in )->updates_with( 'get_posts', [ $args ] )->get();
 
-	return ( ! empty( $result ) && is_array( $result ) ) ? $result : array();
+	return ( ! empty( $result ) && is_array( $result ) ) ? $result : [];
 }
 
 /**
@@ -60,7 +60,7 @@ function osi_get_cached_posts( $args ) {
  *
  * @return string Template markup.
  */
-function osi_get_template_content( $slug, $vars = array() ) {
+function osi_get_template_content( $slug, $vars = [] ) {
 
 	ob_start();
 
@@ -69,18 +69,19 @@ function osi_get_template_content( $slug, $vars = array() ) {
 	$markup = ob_get_clean();
 
 	return $markup;
+
 }
 
 /**
  * Get plugin template.
  *
- * @param string  $template  Name or path of the template within /templates folder without php extension.
- * @param array   $variables pass an array of variables you want to use in template.
- * @param boolean $echo      Whether to echo out the template content or not.
+ * @param string $template  Name or path of the template within /templates folder without php extension.
+ * @param array  $variables pass an array of variables you want to use in template.
+ * @param bool   $echo      Whether to echo out the template content or not.
  *
  * @return string|void Template markup.
  */
-function osi_template( $template, $variables = array(), $echo = false ) {
+function osi_template( $template, $variables = [], $echo = false ) {
 
 	$template_file = sprintf( '%1$s/templates/%2$s.php', OSI_PATH, $template );
 
@@ -103,27 +104,31 @@ function osi_template( $template, $variables = array(), $echo = false ) {
 	}
 
 	echo $markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Output escaped already in template.
+
 }
 
 /**
  * Get data file content from '/data' directory.
  *
- * @param  string $slug    file Data file name without '.php' extention.
- * @param  array  $default Default value to return if file not found.
+ * @param  string $slug file Data file name without '.php' extention.
+ * @param  array  $default   Default value to return if file not found.
  *
  * @return mixed Data file content.
  */
-function osi_get_data( $slug, $default = array() ) {
+function osi_get_data( $slug, $default = [] ) {
 
 	$data_file = sprintf( OSI_PATH . '/inc/data/%s.php', $slug );
 
 	if ( file_exists( $data_file ) ) {
+
 		$file_content = require $data_file; // phpcs:ignore WordPressVIPMinimum.Files.IncludingFile.UsingVariable
 
 		return $file_content;
+
 	}
 
 	return $default;
+
 }
 
 /**
@@ -134,7 +139,7 @@ function osi_get_data( $slug, $default = array() ) {
  * @see https://make.wordpress.org/core/2020/07/24/new-wp_get_environment_type-function-in-wordpress-5-5/
  * @see https://lobby.vip.wordpress.com/2020/08/20/environment-type-support/
  *
- * @return boolean Return true if it's production else return false.
+ * @return bool Return true if it's production else return false.
  */
 function osi_is_production() {
 
@@ -143,16 +148,17 @@ function osi_is_production() {
 	}
 
 	return false;
+
 }
 
 /**
  * Determine if the current User Agent matches the passed $kind
  *
- * @param string  $kind                 Category of mobile device to check for.
- *                                      Either: any, dumb, smart.
- * @param boolean $return_matched_agent Boolean indicating if the UA should be returned.
+ * @param string $kind                 Category of mobile device to check for.
+ *                                     Either: any, dumb, smart.
+ * @param bool   $return_matched_agent Boolean indicating if the UA should be returned.
  *
- * @return boolean|string Boolean indicating if current UA matches $kind. If
+ * @return bool|string Boolean indicating if current UA matches $kind. If
  *                     $return_matched_agent is true, returns the UA string
  */
 function osi_is_mobile( $kind = 'any', $return_matched_agent = false ) {
