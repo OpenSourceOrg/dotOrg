@@ -425,3 +425,39 @@ function osi_wpdc_comment_body( string $comment_body ) {
 	return $trimmed_comment_body;
 }
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
+
+/**
+ * Save form data to a custom post type.
+ *
+ * @param WPCF7_ContactForm $contact_form The Contact Form 7 instance.
+ *
+ * @return void
+ */
+function osi_save_form_data_to_cpt( WPCF7_ContactForm $contact_form ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
+	$submission = WPCF7_Submission::get_instance();
+
+	if ( $submission ) {
+		$data = $submission->get_posted_data();
+
+		$post_id = wp_insert_post(
+			array(
+				'post_title'  => $data['your-name'],
+				'post_type'   => 'supporter',
+				'post_status' => 'pending',
+			)
+		);
+
+		// If we have a wp_error, abort.
+		if ( is_wp_error( $post_id ) ) {
+			return;
+		}
+
+		if ( $post_id ) {
+			update_field( 'name', $data['your-name'], $post_id );
+			update_field( 'organization', $data['your-org'], $post_id );
+			update_field( 'endorsement_type', $data['your-endorsement'], $post_id );
+			update_field( 'quote', $data['your-message'], $post_id );
+		}
+	}
+}
+add_action( 'wpcf7_before_send_mail', 'osi_save_form_data_to_cpt' );
