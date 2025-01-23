@@ -454,20 +454,46 @@ function save_form_data_to_cpt($contact_form) {
 
 
 
-
 function osi_register_block_template() {
-    $post_type = 'page'; // Apply to the "page" post type
+    $post_type = 'page'; // Assign the template to pages
     $template_slug = 'ai-template';
-    $template_file = 'templates/ai-template.html'; // Path to your block template file
+    $template_file = 'templates/ai-template.html';
 
     // Register the block template
     register_block_template(
         $post_type,
         [
-            'title' => __('AI Template', 'osi'),
+            'title' => __('AI Template new', 'osi'),
             'slug'  => $template_slug,
             'path'  => get_theme_file_path($template_file),
         ]
     );
+
+    // Enqueue styles conditionally
+    add_action('wp_enqueue_scripts', function () use ($template_slug) {
+        if (get_page_template_slug() === 'templates/ai-template.html') {
+            // Font Awesome
+            wp_enqueue_style('fontawesome', 'https://opensourceorg.github.io/ai/assets/css/plugins/fontawesome-6.css', [], null);
+
+            // Swiper
+            wp_enqueue_style('swiper', 'https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css', [], null);
+
+            // Unicons
+            wp_enqueue_style('unicons', 'https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css', [], null);
+
+            // Metismenu
+            wp_enqueue_style('metismenu', 'https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css', [], null);
+
+            // Animate CSS
+            wp_enqueue_style('animate', 'https://opensourceorg.github.io/ai/assets/css/vendor/animate.css', [], null);
+
+            // Bootstrap
+            wp_enqueue_style('bootstrap', 'https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css', [], null);
+
+            // Custom Style
+            wp_enqueue_style('custom-style', 'https://opensourceorg.github.io/ai/assets/css/style.css', [], null);
+        }
+    });
 }
 add_action('init', 'osi_register_block_template');
+
