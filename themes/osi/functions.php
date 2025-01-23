@@ -450,3 +450,24 @@ function save_form_data_to_cpt($contact_form) {
 		error_log('WPCF7_Submission instance is null.');
 	}
 }
+
+
+
+
+
+function osi_register_block_template() {
+    $post_type = 'page'; // Apply to the "page" post type
+    $template_slug = 'ai-template';
+    $template_file = 'templates/ai-template.html'; // Path to your block template file
+
+    // Register the block template
+    register_block_template(
+        $post_type,
+        [
+            'title' => __('AI Template', 'osi'),
+            'slug'  => $template_slug,
+            'path'  => get_theme_file_path($template_file),
+        ]
+    );
+}
+add_action('init', 'osi_register_block_template');
