@@ -1009,7 +1009,6 @@ Template Name: /ai/ template
                             <a href="#"><img src="https://i0.wp.com/opensource.org/wp-content/uploads/2024/05/Logo-2B-SMALL-Gold-Blue.png?resize=768%2C150&ssl=1" alt="brand_start"></a>
                             <a href="#"><img src="https://i0.wp.com/opensource.org/wp-content/uploads/2024/08/cisco.png?w=640&ssl=1" alt="brand_start"></a>
                             <a href="#"><img src="https://i0.wp.com/opensource.org/wp-content/uploads/2024/08/google-open-source.png?w=640&ssl=1" alt="brand_start"></a>
-                            <a href="#"><img src="https://i0.wp.com/opensource.org/wp-content/uploads/2024/08/meli.png?w=640&ssl=1" alt="brand_start"></a>
                         </div>
                     </div>
                 </div>
