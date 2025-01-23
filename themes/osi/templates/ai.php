@@ -117,21 +117,23 @@ Template Name: /ai/ template
                                         <li>
                                             <a class="nav-link" href="https://go.opensource.org/osaid-latest">DEFINITION</a>
                                         </li>
-
                                         <li>
                                             <a class="nav-link" href="https://opensource.org/ai/process">PROCESS</a>
                                         </li>
                                         <li>
-                                            <a class="nav-link" href="https://hackmd.io/@opensourceinitiative/osaid-faq" target="_blank">FAQS</a>
+                                            <a class="nav-link" href="https://opensource.org/ai/timeline">TIMELINE</a>
                                         </li>
                                         <li>
-                                            <a class="nav-link" href="https://opensource.org/ai/forums">FORUMS</a>
+                                            <a class="nav-link" href="https://opensource.org/ai/faq">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="https://opensource.org/ai/endorsements">ENDORSEMENTS</a>
                                         </li>
                                     </ul>
                                 </nav>
                             </div>
                             <div class="actions-area">
-                                <a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read the latest draft</a>
+                                <a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read version 1.0</a>
                             </div>
                         </div>
                     </div>
