@@ -16,40 +16,38 @@ function register_osi_patterns() {
             'description' => __('Reusable header for AI template.', 'osi'),
             'categories'  => ['ai'],
             'content'     => <<<HTML
-            <!-- wp:group {"align":"full"} -->
+            <!-- wp:group {"align":"full","className":"header-header-two"} -->
             <div class="wp-block-group alignfull header-header-two">
-                <!-- wp:html -->
-                <div class="header-two-solari header-top">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="header-top-m">
-                                    <div class="left">
-                                        <nav>
-                                            <ul>
-                                                <li><a href="https://opensource.org/about">About</a></li>
-                                                <li><a href="https://opensource.org/osd">Open Source Definition</a></li>
-                                                <li><a href="https://opensource.org/licenses">Licenses</a></li>
-                                                <li><a href="https://opensource.org/blog">Blog</a></li>
-                                                <li><a href="https://opensource.org/programs">Programs</a></li>
-                                                <li><a href="https://members.opensource.org/join/">Join</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                    <div class="right">
-                                        <ul class="social-header-top-h2">
-                                            <li><a href="https://go.opensource.org/mastodon"><i class="fa-brands fa-mastodon"></i></a></li>
-                                            <li><a href="https://bsky.app/profile/opensource.org"><i class="fa-brands fa-bluesky"></i></a></li>
-                                            <li><a href="https://www.linkedin.com/company/open-source-initiative-osi-"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                            <li><a href="https://www.reddit.com/user/opensourceinitiative/"><i class="fa-brands fa-reddit"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- wp:columns {"className":"header-top"} -->
+                <div class="wp-block-columns header-top">
+                    <!-- wp:column -->
+                    <div class="wp-block-column">
+                        <!-- wp:navigation {"orientation":"horizontal"} -->
+                        <ul class="wp-block-navigation">
+                            <!-- wp:navigation-link {"label":"About","url":"https://opensource.org/about"} /-->
+                            <!-- wp:navigation-link {"label":"Open Source Definition","url":"https://opensource.org/osd"} /-->
+                            <!-- wp:navigation-link {"label":"Licenses","url":"https://opensource.org/licenses"} /-->
+                            <!-- wp:navigation-link {"label":"Blog","url":"https://opensource.org/blog"} /-->
+                            <!-- wp:navigation-link {"label":"Programs","url":"https://opensource.org/programs"} /-->
+                            <!-- wp:navigation-link {"label":"Join","url":"https://members.opensource.org/join/"} /-->
+                        </ul>
+                        <!-- /wp:navigation -->
                     </div>
+                    <!-- /wp:column -->
+                    <!-- wp:column -->
+                    <div class="wp-block-column">
+                        <!-- wp:social-links {"iconColor":"primary","iconBackgroundColor":"background","className":"social-header-top-h2"} -->
+                        <ul class="wp-block-social-links social-header-top-h2">
+                            <!-- wp:social-link {"url":"https://go.opensource.org/mastodon","service":"mastodon"} /-->
+                            <!-- wp:social-link {"url":"https://bsky.app/profile/opensource.org","service":"bluesky"} /-->
+                            <!-- wp:social-link {"url":"https://www.linkedin.com/company/open-source-initiative-osi-","service":"linkedin"} /-->
+                            <!-- wp:social-link {"url":"https://www.reddit.com/user/opensourceinitiative/","service":"reddit"} /-->
+                        </ul>
+                        <!-- /wp:social-links -->
+                    </div>
+                    <!-- /wp:column -->
                 </div>
-                <!-- /wp:html -->
+                <!-- /wp:columns -->
             </div>
             <!-- /wp:group -->
             HTML,
