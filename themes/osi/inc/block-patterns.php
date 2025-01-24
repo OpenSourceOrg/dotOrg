@@ -1,12 +1,20 @@
 <?php
 add_filter('block_editor_rest_api_preload_paths', '__return_empty_array');
 
+add_action('init', function () {
+    register_block_pattern_category(
+        'ai', // Unique slug for the category
+        ['label' => __('AI', 'osi')] // Category label (visible in the editor)
+    );
+});
+
 function register_osi_patterns() {
     register_block_pattern(
         'osi/ai-header',
         [
             'title'       => __('AI Header', 'osi'),
             'description' => __('Reusable header for AI template.', 'osi'),
+            'categories'  => ['ai'],
             'content'     => <<<HTML
             <!-- wp:group {"align":"full"} -->
             <div class="wp-block-group alignfull header-header-two">
