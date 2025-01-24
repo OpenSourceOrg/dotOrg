@@ -1535,6 +1535,3 @@ Template Name: /ai/ template
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
     <!-- header style two End -->
-
-<?php get_footer(); ?>
-
