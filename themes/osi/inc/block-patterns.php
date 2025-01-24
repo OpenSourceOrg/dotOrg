@@ -4,44 +4,43 @@ function register_osi_patterns() {
         'osi/ai-header',
         [
             'title'       => __('AI Header', 'osi'),
-            'description' => __('Reusable header for the AI template.', 'osi'),
-            'content'     => '<!-- wp:group {"align":"full"} -->
-                <div class="wp-block-group alignfull header-header-two">
-                    <div class="header-two-solari header-top">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="header-top-m">
-                                        <div class="left">
-                                            <nav>
-                                                <ul>
-                                                    <li><a href="https://opensource.org/about">About</a></li>
-                                                    <li><a href="https://opensource.org/osd">Open Source Definition</a></li>
-                                                    <li><a href="https://opensource.org/licenses">Licenses</a></li>
-                                                    <li><a href="https://opensource.org/blog">Blog</a></li>
-                                                    <li><a href="https://opensource.org/programs">Programs</a></li>
-                                                    <li><a href="https://members.opensource.org/join/">Join</a></li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <div class="right">
-                                            <div class="social-header-top-h2">
-                                                <span>Follow us:</span>
-                                                <ul>
-                                                    <li><a href="https://go.opensource.org/mastodon"><i class="fa-brands fa-mastodon"></i></a></li>
-                                                    <li><a href="https://bsky.app/profile/opensource.org"><i class="fa-brands fa-bluesky"></i></a></li>
-                                                    <li><a href="https://www.linkedin.com/company/open-source-initiative-osi-"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                                    <li><a href="https://www.reddit.com/user/opensourceinitiative/"><i class="fa-brands fa-reddit"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+            'description' => __('Reusable header for AI template.', 'osi'),
+            'content'     => <<<HTML
+            <!-- wp:group {"align":"full"} -->
+            <div class="wp-block-group alignfull header-header-two">
+                <div class="header-two-solari header-top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="header-top-m">
+                                    <div class="left">
+                                        <nav>
+                                            <ul>
+                                                <li><a href="https://opensource.org/about">About</a></li>
+                                                <li><a href="https://opensource.org/osd">Open Source Definition</a></li>
+                                                <li><a href="https://opensource.org/licenses">Licenses</a></li>
+                                                <li><a href="https://opensource.org/blog">Blog</a></li>
+                                                <li><a href="https://opensource.org/programs">Programs</a></li>
+                                                <li><a href="https://members.opensource.org/join/">Join</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <div class="right">
+                                        <ul class="social-header-top-h2">
+                                            <li><a href="https://go.opensource.org/mastodon"><i class="fa-brands fa-mastodon"></i></a></li>
+                                            <li><a href="https://bsky.app/profile/opensource.org"><i class="fa-brands fa-bluesky"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/company/open-source-initiative-osi-"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                            <li><a href="https://www.reddit.com/user/opensourceinitiative/"><i class="fa-brands fa-reddit"></i></a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /wp:group -->',
+            </div>
+            <!-- /wp:group -->
+            HTML,
         ]
     );
 
