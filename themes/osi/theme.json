@@ -436,6 +436,17 @@
 			}
 		}
 	},
-	"templateParts": [],
+	"templateParts": [
+    {
+        "name": "ai-header",
+        "title": "AI Header",
+        "area": "header"
+    },
+    {
+        "name": "ai-footer",
+        "title": "AI Footer",
+        "area": "footer"
+    }
+	],
 	"customTemplates": []
 }
