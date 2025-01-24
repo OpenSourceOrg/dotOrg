@@ -6,10 +6,12 @@ function register_osi_patterns() {
             'title'       => __('AI Header', 'osi'),
             'description' => __('Reusable header for AI template.', 'osi'),
             'content'     => '<!-- wp:group {"align":"full"} -->
-            <div class="wp-block-group alignfull">
-                <p>AI Header Content Here</p>
-            </div>
-            <!-- /wp:group -->',
+                <div class="wp-block-group alignfull">
+                    <!-- wp:paragraph {"align":"center"} -->
+                    <p class="has-text-align-center">AI Header Content Here</p>
+                    <!-- /wp:paragraph -->
+                </div>
+                <!-- /wp:group -->',
         ]
     );
 
