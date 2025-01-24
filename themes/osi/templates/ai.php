@@ -1,5 +1,9 @@
-<!doctype html>
-<html lang="en-US">
+<?php
+/*
+Template Name: /ai/ template
+*/
+?>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +29,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://opensourceorg.github.io/ai/assets/images/fav.png">
     <script defer data-domain="opensource.org" src="https://plausible.io/js/script.js"></script>
     <!-- fontawesome css -->
-    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/fontawesome-6.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <!-- fontawesome css -->
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css">
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css">
@@ -34,7 +38,7 @@
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css">
     <!-- Custom css -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/style.css">
 
     <!-- HTML Meta Tags -->
     <title>The Open Source AI Definition — by The Open Source Initiative</title>
@@ -99,22 +103,22 @@
                                     <span>Follow us:</span>
                                     <ul>
                                         <li>
-                                            <a href="https://go.opensource.org/mastodon">
+                                            <a href="https://go.opensource.org/mastodon" target="_blank">
                                                 <i class="fa-brands fa-mastodon"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://twitter.com/OpenSourceOrg">
-                                                <i class="fa-brands fa-twitter"></i>
+                                            <a href="https://bsky.app/profile/opensource.org" target="_blank">
+                                                <i class="fa-brands fa-bluesky"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-">
+                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
                                                 <i class="fa-brands fa-linkedin-in"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.reddit.com/user/opensourceinitiative/">
+                                            <a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank">
                                                 <i class="fa-brands fa-reddit"></i>
                                             </a>
                                         </li>
@@ -143,7 +147,7 @@
                                         <li><a class="nav-link" href="https://go.opensource.org/osaid-latest">DEFINITION</a></li>
                                         <li><a class="nav-link" href="https://opensource.org/ai/process">PROCESS</a></li>
                                         <li><a class="nav-link" href="https://opensource.org/ai/timeline">TIMELINE</a></li>
-                                        <li><a class="nav-link" href="https://opensource.org/ai/faqs" target="_blank">FAQS</a></li>
+                                        <li><a class="nav-link" href="https://opensource.org/ai/faq" target="_blank">FAQ</a></li>
                                         <li><a class="nav-link" href="https://opensource.org/ai/endorsements">ENDORSEMENTS</a></li>
                                         <li><a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read version 1.0</a></li>
                                     </ul>
@@ -328,6 +332,29 @@
         </div>
     </div>
     <!-- rts faq area end -->
+
+    <!-- rts project details area start -->
+    <div class="rts-project-details-area  rts-section-gapBottom">
+        <div class="container" style="background:#fff; border-radius: 20px; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03)">
+            <div class="row">
+                <div class="col-lg-4">
+                    <a href="https://opensource.org/data-governance-open-source-ai"><img src="https://opensourceorg.github.io/ai/assets/images/data-whitepaper-cover.png" class="imgbw"></a>
+                </div>
+                <div class="col-lg-8 pr--30">
+                    <div class="portfolio-disc-content" style="margin-top: 0">
+                        <div class="title-area">
+                            <h4 class="title">Read the Whitepaper</h4>
+                        </div>
+                        <p class="disc">
+                            The Open Source Initiative and Open Future have taken a significant step toward addressing this challenge by releasing this white paper. The document is the culmination of a global co-design process, enriched by insights from a vibrant two-day workshop held in Paris in October 2024.<br /><br />
+                            <a href="https://opensource.org/data-governance-open-source-ai" class="rts-btn btn-primary">Read the whitepaper</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rts project details area end -->
     
     <!-- rts service area start -->
     <div class="rts-service-area">
@@ -346,7 +373,7 @@
                     <!-- single service -->
                     <div class="rts-single-service-solar-energy">
                         <div class="icon">
-                            <i class="fa-brands fa-osi" style="font-size:70px;"></i>
+                            <i class="fa-brands fa-solid fa-osi" style="font-size:70px;"></i>
                         </div>
                         <h3 class="h3titles">Open Source Frontier</h3>
                         <p class="disc">The traditional view of Open Source code and licenses when applied to AI components are not sufficient to guarantee the freedoms to use, study, share and modify the systems.</p>
@@ -357,7 +384,7 @@
                     <!-- single service -->
                     <div class="rts-single-service-solar-energy">
                         <div class="icon">
-                            <i class="fa-light fa-building-columns" style="font-size:60px;"></i>
+                            <i class="fa-solid fa-building-columns" style="font-size:60px;"></i>
                         </div>
                         <h3 class="h3titles">Informing Regulators</h3>
                         <p class="disc">Government regulations have begun in Europe, the United States, and elsewhere. Communities need a common understanding to educate policy makers.</p>
@@ -368,7 +395,7 @@
                     <!-- single service -->
                     <div class="rts-single-service-solar-energy">
                         <div class="icon">
-                            <i class="fa-light fa-hands-bubbles" style="font-size:50px;"></i>
+                            <i class="fa-solid fa-hands-bubbles" style="font-size:50px;"></i>
                         </div>
                         <h3 class="h3titles">Combat Openwashing</h3>
                         <p class="disc">Companies are calling AI systems “open source” even though their licenses contain restrictions that go against the accepted principles and freedoms of open source.</p>
@@ -564,6 +591,33 @@
                                     <div class="rts-solar-single-product-one">
                                         <a class="thumbnail">
                                             <img src="https://opensourceorg.github.io/ai/assets/images/supporters/swh.png" alt="Software Heritage">
+                                        </a>
+                                    </div>
+                                    <!-- single product area end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <!-- single product area start -->
+                                    <div class="rts-solar-single-product-one">
+                                        <a class="thumbnail">
+                                            <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2024/11/cnll.png" alt="CNLL">
+                                        </a>
+                                    </div>
+                                    <!-- single product area end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <!-- single product area start -->
+                                    <div class="rts-solar-single-product-one">
+                                        <a class="thumbnail">
+                                            <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2024/11/abilian.png" alt="abilian">
+                                        </a>
+                                    </div>
+                                    <!-- single product area end -->
+                                </div>
+                                <div class="swiper-slide">
+                                    <!-- single product area start -->
+                                    <div class="rts-solar-single-product-one">
+                                        <a class="thumbnail">
+                                            <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2025/01/ow2.png" alt="OW2">
                                         </a>
                                     </div>
                                     <!-- single product area end -->
@@ -783,7 +837,7 @@
                         <img src="https://opensourceorg.github.io/ai/assets/images/stef-talk.png" alt="Co-design process" class="imgbw">
                         <div class="small-bottom-right bg_image">
                             <h4 class="title">
-                                The OSAID co-design process is open to everyone interested in <a href="https://discuss.opensource.org/faq" target="_blank" style="color: var(--color-primary);">collaborating</a>.
+                                The OSAID co-design process was open to everyone interested in <a href="https://discuss.opensource.org/faq" target="_blank" style="color: var(--color-primary);">collaborating</a>.
                             </h4>
                         </div>
                     </div>
@@ -796,32 +850,12 @@
                         <p class="disc">
                             There are many ways to get involved:
                             <ul>
-                                <li>Join the <a target="_blank" href="https://discuss.opensource.org/t/definition-validation-seeking-volunteers/320">working groups</a>: be part of a team to evaluate various models against the OSAID.</li>
-                                
-                                
-                                
-                                <li>Join the <a target="_blank" href="https://discuss.opensource.org/">forum</a>: support and comment on the releases, record your approval or concerns to new and existing threads.</li>
-                                
-                                
-                                
-                                <li>Comment on <a href="https://go.opensource.org/osaid-latest">version 1.0</a>: provide feedback on the latest version of the document directly.</li>
-                                
-                                
-                                
-                                <li>Follow the <a href="https://opensource.org/blog/author/mia-lykoulund">weekly recaps</a>: subscribe to our newsletter and blog to be kept up-to-date.</li>
-                                
-                                
-                                
-                                <li>Watch the <a href="https://opensource.org/ai/townhalls">town hall</a> recordings to learn more about the process.</li>
-                                
-                                
-                                
-                                <li>Join the <a href="https://opensource.org/events">workshops and scheduled conferences</a>: meet the OSI and other participants at in person events around the world.</li>
-                                
-                                
-                                
                                 <li><a href="https://opensource.org/ai/endorsements">Endorse the Open Source AI Definition</a>: have your organization appended to list of supporters of version 1.0.</li>
-                                </ul>
+                                <li>Join the <a target="_blank" href="https://discuss.opensource.org/">forum</a>: support and comment on the releases, record your approval or concerns to new and existing threads.</li>
+                                <li>Subscribe to <a href="https://opensource.org/newsletter">our newsletter</a> and read <a href="https://opensource.org/blog">our blog</a> to be kept up-to-date.</li>
+                                <li>Watch the <a href="https://opensource.org/ai/townhalls">town hall</a> recordings to learn more about the process.</li>
+                                <li>Join the <a href="https://opensource.org/events">workshops and scheduled conferences</a>: meet the OSI and other participants at in person events around the world.</li>
+                            </ul>
                         </p>
                     </div>
                 </div>
@@ -1137,7 +1171,7 @@
                         <a href="https://opensource.org/ai/timeline" class="main">TIMELINE</a>
                     </li>
                     <li>
-                        <a href="https://opensource.org/ai/faqs" class="main">FAQS</a>
+                        <a href="https://opensource.org/ai/faq" class="main">FAQ</a>
                     </li>
                     <li>
                         <a href="https://opensource.org/ai/endorsements" class="main">ENDORSEMENTS</a>
@@ -1156,8 +1190,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/OpenSourceOrg" target="_blank">
-                            <i class="fa-brands fa-twitter"></i>
+                        <a href="https://bsky.app/profile/opensource.org" target="_blank">
+                            <i class="fa-brands fa-bluesky"></i>
                         </a>
                     </li>
                     <li>
@@ -1236,22 +1270,22 @@
                                 <div class="rts-social-style-one">
                                     <ul>
                                         <li>
-                                            <a href="https://go.opensource.org/mastodon">
+                                            <a href="https://go.opensource.org/mastodon" target="_blank">
                                                 <i class="fa-brands fa-mastodon"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://twitter.com/OpenSourceOrg">
-                                                <i class="fa-brands fa-twitter"></i>
+                                            <a href="https://bsky.app/profile/opensource.org" target="_blank">
+                                                <i class="fa-brands fa-bluesky"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-">
+                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
                                                 <i class="fa-brands fa-linkedin-in"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.reddit.com/user/opensourceinitiative/">
+                                            <a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank">
                                                 <i class="fa-brands fa-reddit"></i>
                                             </a>
                                         </li>
@@ -1277,22 +1311,22 @@
                                 <div class="rts-social-style-one">
                                     <ul>
                                         <li>
-                                            <a href="https://go.opensource.org/mastodon">
+                                            <a href="https://go.opensource.org/mastodon" target="_blank">
                                                 <i class="fa-brands fa-mastodon"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://twitter.com/OpenSourceOrg">
-                                                <i class="fa-brands fa-twitter"></i>
+                                            <a href="https://bsky.app/profile/opensource.org" target="_blank">
+                                                <i class="fa-brands fa-bluesky"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-">
+                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
                                                 <i class="fa-brands fa-linkedin-in"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.reddit.com/user/opensourceinitiative/">
+                                            <a href="https://www.reddit.com/user/opensourceinitiative/ target="_blank"">
                                                 <i class="fa-brands fa-reddit"></i>
                                             </a>
                                         </li>
@@ -1499,8 +1533,8 @@
     <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/jquery-timepicker.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js"></script>
-
     <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
     <!-- header style two End -->
-</body>
-</html>
+	</div>
+
+
