@@ -1,24 +1,5 @@
 <?php
-function disable_block_validation() {
-    // Disables the strict block validation.
-    add_filter('block_editor_rest_api_preload_paths', function ($preload_paths) {
-        return $preload_paths;
-    });
-
-    // Allows invalid block content.
-    add_filter('rest_request_before_callbacks', function ($response) {
-        return $response;
-    });
-
-    // Ensures blocks render even if invalid.
-    add_filter('rest_request_after_callbacks', function ($response) {
-        return $response;
-    });
-
-    // Disable block validation in the REST API.
-    add_filter('block_editor_rest_api_preload_paths', '__return_empty_array');
-}
-add_action('init', 'disable_block_validation');
+add_filter('block_editor_rest_api_preload_paths', '__return_empty_array');
 
 function register_osi_patterns() {
     register_block_pattern(
@@ -29,6 +10,7 @@ function register_osi_patterns() {
             'content'     => <<<HTML
             <!-- wp:group {"align":"full"} -->
             <div class="wp-block-group alignfull header-header-two">
+                <!-- wp:html -->
                 <div class="header-two-solari header-top">
                     <div class="container">
                         <div class="row">
@@ -59,6 +41,7 @@ function register_osi_patterns() {
                         </div>
                     </div>
                 </div>
+                <!-- /wp:html -->
             </div>
             <!-- /wp:group -->
             HTML,
