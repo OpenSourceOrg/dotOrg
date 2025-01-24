@@ -1,3 +1,4 @@
+<?php
 function register_osi_patterns() {
     register_block_pattern(
         'osi/ai-header',
