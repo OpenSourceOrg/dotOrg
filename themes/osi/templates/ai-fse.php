@@ -1,9 +1,12 @@
 <?php
 /*
-Template Name: /ai/ template
+Template Name: AI Landing Page with FSE
+Description: Custom landing page template with Full Site Editing (FSE) capabilities, integrating custom blocks and patterns.
 */
-?>
 
+?>
+<!doctype html>
+<html lang="en-US">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,3 +68,334 @@ Template Name: /ai/ template
         wp_admin_bar_render();
     }
     ?>
+
+<body <?php body_class(); ?>>
+    <?php wp_body_open(); ?>
+
+    <!-- Top Navbar -->
+    <header class="header-header-two">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-top-m">
+                            <div class="left">
+                                <?php
+                                wp_nav_menu([
+                                    'theme_location' => 'header-menu',
+                                    'menu_class' => 'header-nav main-nav-one',
+                                    'container' => 'nav'
+                                ]);
+                                ?>
+                            </div>
+                            <div class="right">
+                                <div class="social-header-top-h2">
+                                    <span>Follow us:</span>
+                                    <ul>
+                                        <li><a href="https://go.opensource.org/mastodon" target="_blank"><i class="fa-brands fa-mastodon"></i></a></li>
+                                        <li><a href="https://bsky.app/profile/opensource.org" target="_blank"><i class="fa-brands fa-bluesky"></i></a></li>
+                                        <li><a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                        <li><a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank"><i class="fa-brands fa-reddit"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Gutenberg content will be inserted here -->
+        
+    </main>
+
+    <!-- Footer style two -->
+    <!-- rts footer area one start -->
+    <div class="rts-footer-one footer-bg-one ">
+        <div class="container">
+            <div class="row g-0 bg-cta-footer-one">
+                <div class="col-lg-12">
+                    <div class="bg-cta-footer-one wrapper">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                                <img src="https://opensourceorg.github.io/ai/assets/images/osi-horizontal-white.svg" alt="logo">
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                                <a href="https://opensource.org/join/" class="rts-btn btn-primary" id="join_us">Join us</a>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                                <div class="rts-social-style-one">
+                                    <ul>
+                                        <li>
+                                            <a href="https://go.opensource.org/mastodon" target="_blank">
+                                                <i class="fa-brands fa-mastodon"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://bsky.app/profile/opensource.org" target="_blank">
+                                                <i class="fa-brands fa-bluesky"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
+                                                <i class="fa-brands fa-linkedin-in"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank">
+                                                <i class="fa-brands fa-reddit"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row pt--90 pb--85 pb_sm--40">
+                <div class="col-lg-12">
+                    <div class="single-footer-one-wrapper">
+                        <div class="single-footer-component first">
+                            <div class="title-area">
+                                <h5 class="title">The Open Source Initiative</h5>
+                            </div>
+                            <div class="body">
+                                <p class="disc">
+                                    The OSI is the authority that defines Open Source, recognized globally by individuals, companies, and by public institutions.
+                                </p>
+                                <div class="rts-social-style-one">
+                                    <ul>
+                                        <li>
+                                            <a href="https://go.opensource.org/mastodon" target="_blank">
+                                                <i class="fa-brands fa-mastodon"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://bsky.app/profile/opensource.org" target="_blank">
+                                                <i class="fa-brands fa-bluesky"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
+                                                <i class="fa-brands fa-linkedin-in"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.reddit.com/user/opensourceinitiative/ target="_blank"">
+                                                <i class="fa-brands fa-reddit"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-footer-component">
+                            <div class="title-area">
+                                <h5 class="title">About</h5>
+                            </div>
+                            <div class="body">
+                                <div class="pages-footer">
+                                    <ul>
+                                        <li>
+                                            <a href="https://opensource.org/about">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>About Us</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/about/team">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Our team</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/associations">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Associations</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/sponsors">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Sponsors</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/articles-of-incorporation">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Articles of Incorporation</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/bylaws">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Bylaws</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/history">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>History</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/trademark-guidelines">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Trademark Guidelines</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-footer-component">
+                            <div class="title-area">
+                                <h5 class="title">Licenses</h5>
+                            </div>
+                            <div class="body">
+                                <div class="pages-footer">
+                                    <ul>
+                                        <li>
+                                            <a href="https://opensource.org/osd">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Open Source Definition</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/licenses">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Licenses</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/licenses/review-process">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>License Review Process</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/osr">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Open Standards Requirement for Software</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="single-footer-component">
+                            <div class="title-area">
+                                <h5 class="title">Board</h5>
+                            </div>
+                            <div class="body">
+                                <div class="pages-footer">
+                                    <ul>
+                                        <li>
+                                            <a href="https://opensource.org/about/board-of-directors">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Board of Directors</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/minutes">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Minutes</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/about/board-of-directors/elections">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Elections</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/organization">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Organization & Operations</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/conflict_of_interest_policy">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Conflict of Interest Policy</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://opensource.org/board/board-member-agreement">
+                                                <i class="fa-regular fa-chevron-right"></i>
+                                                <p>Board member agreement</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pb--20 pt--20 border-top-copyright">
+                <div class="col-lg-12">
+                    <!-- copyright area start -->
+                    <div class="copyright-area-one text-center">
+                        <div class="left">
+                            <p style="text-align:left">The content on this website, of which Opensource.org is the author, is licensed under a&nbsp;<a href="https://web.archive.org/web/20230202005829/https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br><br>Opensource.org is not the author of any of the licenses reproduced on this site. Questions about the copyright in a license should be directed to the license steward.<br />Read our <a href="https://opensource.org/privacy">Privacy Policy</a>.<br /><br />
+                            </p>
+                        </div>
+                        <!-- <div class="right">
+                        <ul>
+                            <li><a href="#">Terms & conditions</a></li>
+                            <li><a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div> -->
+                    </div>
+                    <!-- copyright area end -->
+                </div>
+            </div>
+        </div>
+        <div class="footer-one-left-right-image">
+            <img class="one" src="https://opensourceorg.github.io/ai/assets/images/footer/08.png" alt="">
+            <img class="two" src="https://opensourceorg.github.io/ai/assets/images/footer/09.png" alt="">
+        </div>
+    </div>
+
+    <!-- Footer style two End -->
+
+    <!-- header style two -->
+
+    <div class="progress-wrap">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;"></path>
+        </svg>
+    </div>
+
+    <div id="anywhere-home" class="">
+    </div>
+
+
+    <!-- jquery js -->
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/jquery.min.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/metismenu.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waypoint.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waw.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/gsap.min.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-text.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/contact.form.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/jquery-timepicker.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
+    <!-- header style two End -->
+</body>
+</html>
