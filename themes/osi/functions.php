@@ -496,20 +496,3 @@ function osi_register_block_template() {
     });
 }
 add_action('init', 'osi_register_block_template');
-
-
-function register_custom_blocks() {
-    // Register the block editor script
-    wp_register_script(
-        'custom-blocks-js',
-        get_template_directory_uri() . '/blocks/about-area/index.js', // Path to your block's JavaScript file
-        ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components'],  // Dependencies
-        filemtime(get_template_directory() . '/blocks/about-area/index.js') // Versioning
-    );
-
-    // Register the block
-    register_block_type('custom/about-area', [
-        'editor_script' => 'custom-blocks-js',
-    ]);
-}
-add_action('init', 'register_custom_blocks');

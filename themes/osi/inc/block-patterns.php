@@ -8,130 +8,77 @@ add_action('init', function () {
     );
 });
 
-function register_osi_patterns() {
+function register_about_area_pattern() {
     register_block_pattern(
-        'osi/ai-header',
+        'custom/about-area',
         [
-            'title'       => __('AI Header', 'osi'),
-            'description' => __('Reusable header for AI template.', 'osi'),
+            'title'       => __('About Area', 'your-text-domain'),
+            'description' => __('A reusable section with tabs and custom content.', 'your-text-domain'),
             'categories'  => ['ai'],
-            'content'     => <<<HTML
-            <!-- wp:group {"align":"full","className":"header-header-two"} -->
-            <div class="wp-block-group alignfull header-header-two">
-                <!-- wp:columns {"className":"header-top"} -->
-                <div class="wp-block-columns header-top">
-                    <!-- wp:column -->
-                    <div class="wp-block-column">
-                        <!-- wp:navigation {"orientation":"horizontal"} -->
-                        <ul class="wp-block-navigation">
-                            <!-- wp:navigation-link {"label":"About","url":"https://opensource.org/about"} /-->
-                            <!-- wp:navigation-link {"label":"Open Source Definition","url":"https://opensource.org/osd"} /-->
-                            <!-- wp:navigation-link {"label":"Licenses","url":"https://opensource.org/licenses"} /-->
-                            <!-- wp:navigation-link {"label":"Blog","url":"https://opensource.org/blog"} /-->
-                            <!-- wp:navigation-link {"label":"Programs","url":"https://opensource.org/programs"} /-->
-                            <!-- wp:navigation-link {"label":"Join","url":"https://members.opensource.org/join/"} /-->
-                        </ul>
-                        <!-- /wp:navigation -->
-                    </div>
-                    <!-- /wp:column -->
-                    <!-- wp:column -->
-                    <div class="wp-block-column">
-                        <!-- wp:social-links {"iconColor":"primary","iconBackgroundColor":"background","className":"social-header-top-h2"} -->
-                        <ul class="wp-block-social-links social-header-top-h2">
-                            <!-- wp:social-link {"url":"https://go.opensource.org/mastodon","service":"mastodon"} /-->
-                            <!-- wp:social-link {"url":"https://bsky.app/profile/opensource.org","service":"bluesky"} /-->
-                            <!-- wp:social-link {"url":"https://www.linkedin.com/company/open-source-initiative-osi-","service":"linkedin"} /-->
-                            <!-- wp:social-link {"url":"https://www.reddit.com/user/opensourceinitiative/","service":"reddit"} /-->
-                        </ul>
-                        <!-- /wp:social-links -->
-                    </div>
-                    <!-- /wp:column -->
-                </div>
-                <!-- /wp:columns -->
-            </div>
-            <!-- /wp:group -->
-            HTML,
-        ]
-    );
-
-    register_block_pattern(
-        'osi/ai-banner',
-        [
-            'title'       => __('AI Banner', 'osi'),
-            'description' => __('Reusable banner for the AI template.', 'osi'),
-            'content'     => '<!-- wp:group {"align":"full"} -->
-                <div class="wp-block-group alignfull banner-area-start">
+            'content'     => '
+                <!-- rts about area start -->
+                <div class="rts-about-area rts-section-gap">
                     <div class="container">
                         <div class="row align-items-center">
-                            <div class="col-lg-12">
-                                <div class="banner-solar-energy-inner">
-                                    <h1 class="title">The Open Source AI Definition 1.0</h1>
-                                    <p class="disc">We have released the first stable version of the Definition.</p>
-                                    <div class="button-area">
-                                        <a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary bg-w">Read version 1.0</a>
+                            <div class="col-lg-7 mt_md--30 mt_sm--40">
+                                <div class="about-right-content-area-solar-energy">
+                                    <div class="title-area-left">
+                                        <h2 class="title skew-up">What\'s Open Source AI?</h2>
+                                        <p>Following the same idea behind Open Source Software,<br />an Open Source AI is a system made available under terms that grant users the freedoms to:</p>
+                                    </div>
+                                    <ul class="nav custom-nav-soalr-about nav-pills" id="pills-tab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="pills-use-tab" data-bs-toggle="pill" data-bs-target="#pills-use" type="button" role="tab" aria-controls="pills-use" aria-selected="true">Use</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="pills-study-tab" data-bs-toggle="pill" data-bs-target="#pills-study" type="button" role="tab" aria-controls="pills-study" aria-selected="false">Study</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="pills-modify-tab" data-bs-toggle="pill" data-bs-target="#pills-modify" type="button" role="tab" aria-controls="pills-modify" aria-selected="false">Modify</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="pills-share-tab" data-bs-toggle="pill" data-bs-target="#pills-share" type="button" role="tab" aria-controls="pills-share" aria-selected="false">Share</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="pills-tabContent">
+                                        <div class="tab-pane fade show active" id="pills-use" role="tabpanel" aria-labelledby="pills-use-tab">
+                                            <div class="single-about-content-solar">
+                                                <p class="disc">
+                                                    <strong>Use the system for any purpose and<br />without having to ask for permission.</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-study" role="tabpanel" aria-labelledby="pills-study-tab">
+                                            <div class="single-about-content-solar">
+                                                <p class="disc">
+                                                    <strong>Study how the system works and<br />understand how its results were created.</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-modify" role="tabpanel" aria-labelledby="pills-modify-tab">
+                                            <div class="single-about-content-solar">
+                                                <p class="disc">
+                                                    <strong>Modify the system for any purpose,<br />including to change its output.</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-share" role="tabpanel" aria-labelledby="pills-share-tab">
+                                            <div class="single-about-content-solar">
+                                                <p class="disc">
+                                                    <strong>Share the system for others to use with<br />or without modifications, for any purpose.</strong>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p>Precondition to exercise these freedoms is to have access to<br />the preferred form to make modifications to the system, and to the means to use it.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /wp:group -->',
-        ]
-    );
-
-    register_block_pattern(
-        'osi/ai-about',
-        [
-            'title'       => __('AI About Section', 'osi'),
-            'description' => __('What is Open Source AI?', 'osi'),
-            'content'     => '<!-- wp:group {"align":"full"} -->
-                <div class="wp-block-group alignfull rts-about-area">
-                    <div class="container">
-                        <h2>What\'s Open Source AI?</h2>
-                        <p>
-                            Following the same idea behind Open Source Software, Open Source AI is a system made available under terms that grant users the freedoms to:
-                        </p>
-                        <ul>
-                            <li>Use the system for any purpose</li>
-                            <li>Study how the system works</li>
-                            <li>Modify the system for any purpose</li>
-                            <li>Share the system with others</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /wp:group -->',
-        ]
-    );
-
-    register_block_pattern(
-        'osi/ai-footer',
-        [
-            'title'       => __('AI Footer', 'osi'),
-            'description' => __('Reusable footer for the AI template.', 'osi'),
-            'content'     => '<!-- wp:group {"align":"full"} -->
-                <div class="wp-block-group alignfull rts-footer-one footer-bg-one">
-                    <div class="container">
-                        <div class="row g-0 bg-cta-footer-one">
-                            <div class="col-lg-3">
-                                <img src="https://opensourceorg.github.io/ai/assets/images/osi-horizontal-white.svg" alt="logo">
-                            </div>
-                            <div class="col-lg-3">
-                                <a href="https://opensource.org/join/" class="rts-btn btn-primary">Join Us</a>
-                            </div>
-                            <div class="col-lg-3">
-                                <ul>
-                                    <li><a href="https://go.opensource.org/mastodon"><i class="fa-brands fa-mastodon"></i></a></li>
-                                    <li><a href="https://bsky.app/profile/opensource.org"><i class="fa-brands fa-bluesky"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/company/open-source-initiative-osi-"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                    <li><a href="https://www.reddit.com/user/opensourceinitiative/"><i class="fa-brands fa-reddit"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p>&copy; ' . date('Y') . ' The Open Source Initiative. All Rights Reserved.</p>
-                    </div>
-                </div>
-                <!-- /wp:group -->',
+                <!-- rts about area end -->
+            ',
         ]
     );
 }
-add_action('init', 'register_osi_patterns');
+add_action('init', 'register_about_area_pattern');
