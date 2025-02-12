@@ -476,9 +476,9 @@ function osi_save_supporter_form_data_to_cpt( array $form_data ): void {
 /**
  * Handle the supporter form spam status change.
  *
- * @param string $new_status The new status.
- * @param string $old_status The old status.
- * @param WP_Post $post The post object.
+ * @param string  $new_status The new status.
+ * @param string  $old_status The old status.
+ * @param WP_Post $post       The post object.
  *
  * @return void
  */
