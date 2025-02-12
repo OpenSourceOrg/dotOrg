@@ -427,37 +427,83 @@ function osi_wpdc_comment_body( string $comment_body ) {
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
 /**
- * Save form data to a custom post type.
+ * Process the supporter form submission.
  *
  * @param WPCF7_ContactForm $contact_form The Contact Form 7 instance.
  *
  * @return void
  */
-function osi_save_form_data_to_cpt( WPCF7_ContactForm $contact_form ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
+function osi_handle_support_form_submission( WPCF7_ContactForm $contact_form ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
 	$submission = WPCF7_Submission::get_instance();
 
 	if ( $submission ) {
 		$data = $submission->get_posted_data();
 
-		$post_id = wp_insert_post(
-			array(
-				'post_title'  => $data['your-name'],
-				'post_type'   => 'supporter',
-				'post_status' => 'pending',
-			)
-		);
+		osi_save_supporter_form_data_to_cpt( $data );
+	}
+}
+add_action( 'wpcf7_before_send_mail', 'osi_handle_support_form_submission' );
 
-		// If we have a wp_error, abort.
-		if ( is_wp_error( $post_id ) ) {
+/**
+ * Save supporter form data to a custom post type.
+ *
+ * @param array $form_data The form data.
+ *
+ * @return void
+ */
+function osi_save_supporter_form_data_to_cpt( array $form_data ): void {
+	$post_id = wp_insert_post(
+		array(
+			'post_title'  => $form_data['your-name'],
+			'post_type'   => 'supporter',
+			'post_status' => 'pending',
+		)
+	);
+
+	// If we have a wp_error, abort.
+	if ( is_wp_error( $post_id ) ) {
+		return;
+	}
+
+	if ( $post_id ) {
+		update_field( 'name', $form_data['your-name'], $post_id );
+		update_field( 'organization', $form_data['your-org'], $post_id );
+		update_field( 'endorsement_type', $form_data['your-endorsement'], $post_id );
+		update_field( 'quote', $form_data['your-message'], $post_id );
+	}
+}
+
+/**
+ * Handle the supporter form spam status change.
+ *
+ * @param string  $new_status The new status.
+ * @param string  $old_status The old status.
+ * @param WP_Post $post       The post object.
+ *
+ * @return void
+ */
+function osi_handle_supporter_form_flamingo_spam_status_change( string $new_status, string $old_status, WP_Post $post ): void {
+	if ( 'flamingo_inbound' !== get_post_type( $post ) ) {
+		return;
+	}
+
+	if ( 'flamingo-spam' === $old_status && 'publish' === $new_status ) {
+		$term_obj_list = get_the_terms( $post->ID, 'flamingo_inbound_channel' );
+
+		if ( empty( $term_obj_list ) || is_wp_error( $term_obj_list ) || 'OSAID Endorsement' !== $term_obj_list[0]->name ) {
 			return;
 		}
 
-		if ( $post_id ) {
-			update_field( 'name', $data['your-name'], $post_id );
-			update_field( 'organization', $data['your-org'], $post_id );
-			update_field( 'endorsement_type', $data['your-endorsement'], $post_id );
-			update_field( 'quote', $data['your-message'], $post_id );
+		$form_data = array(
+			'your-name'        => get_post_meta( $post->ID, '_field_your-name', true ),
+			'your-org'         => get_post_meta( $post->ID, '_field_your-org', true ),
+			'your-endorsement' => get_post_meta( $post->ID, '_field_your-endorsement', true ),
+			'your-message'     => get_post_meta( $post->ID, '_field_your-message', true ),
+		);
+
+		if ( ! empty( $form_data['your-name'] ) ) {
+			osi_save_supporter_form_data_to_cpt( $form_data );
 		}
 	}
 }
-add_action( 'wpcf7_before_send_mail', 'osi_save_form_data_to_cpt' );
+add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_status_change', 10, 3 );
