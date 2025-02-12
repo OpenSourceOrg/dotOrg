@@ -488,6 +488,12 @@ function osi_handle_supporter_form_flamingo_spam_status_change( string $new_stat
 	}
 
 	if ( 'flamingo-spam' === $old_status && 'publish' === $new_status ) {
+		$term_obj_list = get_the_terms( $post->ID, 'flamingo_inbound_channel' );
+
+		if ( empty( $term_obj_list ) || is_wp_error( $term_obj_list ) || 'OSAID Endorsement' !== $term_obj_list[0]->name ) {
+			return;
+		}
+
 		$form_data = array(
 			'your-name'        => get_post_meta( $post->ID, '_field_your-name', true ),
 			'your-org'         => get_post_meta( $post->ID, '_field_your-org', true ),
