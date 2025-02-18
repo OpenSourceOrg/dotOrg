@@ -36,7 +36,6 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <!-- fontawesome css -->
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css">
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css">
-    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css">
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/vendor/animate.css">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css">
@@ -474,15 +473,8 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <script src="https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/metismenu.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waypoint.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waw.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/gsap.min.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-text.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/contact.form.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/jquery-timepicker.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
 </body>
