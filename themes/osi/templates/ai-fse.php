@@ -194,7 +194,6 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <!-- Main Content -->
     <main id="main-content">
         <!-- Gutenberg content will be inserted here -->
-        hola
     </main>
 
     <!-- Footer style two -->
