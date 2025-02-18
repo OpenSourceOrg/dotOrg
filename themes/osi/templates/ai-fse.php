@@ -72,7 +72,8 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
 
-    <div class="header-header-two">
+    
+    <header class="header-header-two">
                         <!-- header- solaric two -->
                         <div class="header-two-solari header-top">
                             <div class="container">
@@ -172,7 +173,7 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
                             </div>
                         </div>
                         <!-- header man end -->
-                    </div>
+</header>
 
     <!-- Main Content -->
     <main id="main-content">
