@@ -45,13 +45,13 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 
     <!-- HTML Meta Tags -->
     <title>The Open Source AI Definition — by The Open Source Initiative</title>
-    <meta name="description" content="A multi-stakeholder process to define an “Open Source AI”.">
+    <meta name="description" content="A multi-stakeholder process to define an "Open Source AI".">
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://opensource.org/ai">
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Open Source AI Definition — by The Open Source Initiative">
-    <meta property="og:description" content="A multi-stakeholder process to define an “Open Source AI”.">
+    <meta property="og:description" content="A multi-stakeholder process to define an "Open Source AI".">
     <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/759f678a-a340-4fac-8bdd-39d58948634c.jpg?token=fe76lJQvzFTfnaf2xyh8RPjclyoht-lgyebYn-C4BiY&height=1158&width=1200&expires=33265055152">
 
     <!-- Twitter Meta Tags -->
@@ -59,7 +59,7 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <meta property="twitter:domain" content="opensource.org">
     <meta property="twitter:url" content="https://opensource.org/ai">
     <meta name="twitter:title" content="The Open Source AI Definition — by The Open Source Initiative">
-    <meta name="twitter:description" content="A multi-stakeholder process to define an “Open Source AI”.">
+    <meta name="twitter:description" content="A multi-stakeholder process to define an "Open Source AI".">
     <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/759f678a-a340-4fac-8bdd-39d58948634c.jpg?token=fe76lJQvzFTfnaf2xyh8RPjclyoht-lgyebYn-C4BiY&height=1158&width=1200&expires=33265055152">
    
 </head>
@@ -74,111 +74,127 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 
     
     <header class="header-header-two">
-                        <!-- header- solaric two -->
-                        <div class="header-two-solari header-top">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="header-top-m">
-                                            <div class="left">
-                                                <div class="header-nav main-nav-one">
-                                                    <nav>
-                                                        <ul>
-                                                            <li>
-                                                                <a class="nav-link-green" href="https://opensource.org/about">About</a>
-                                                            </li>
-                    
-                                                            <li>
-                                                                <a class="nav-link-green" href="https://opensource.org/osd">Open Source Definition</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="nav-link-green" href="https://opensource.org/licenses">Licenses</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="nav-link-green" href="https://opensource.org/blog">Blog</a>
-                                                            </li>
-                                                            <li><a class="nav-link-green" href="https://opensource.org/programs">Programs</a></li>
-                                                            <li><a class="nav-link-green" href="https://members.opensource.org/join/">Join</a></li>
-                                                        </ul>
-                                                    </nav>
-                                                </div>
-                                            </div>
-                                            <div class="right">
-                                                <div class="social-header-top-h2">
-                                                    <span>Follow us:</span>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="https://go.opensource.org/mastodon" target="_blank">
-                                                                <i class="fa-brands fa-mastodon"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://bsky.app/profile/opensource.org" target="_blank">
-                                                                <i class="fa-brands fa-bluesky"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
-                                                                <i class="fa-brands fa-linkedin-in"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank">
-                                                                <i class="fa-brands fa-reddit"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+        <!-- header- solaric two -->
+        <div class="header-two-solari header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header-top-m">
+                            <div class="left">
+                                <div class="header-nav main-nav-one">
+                                    <nav>
+                                        <ul>
+                                            <li>
+                                                <a class="nav-link-green" href="https://opensource.org/about">About</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link-green" href="https://opensource.org/osd">Open Source Definition</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link-green" href="https://opensource.org/licenses">Licenses</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link-green" href="https://opensource.org/blog">Blog</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link-green" href="https://opensource.org/programs">Programs</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link-green" href="https://members.opensource.org/join/">Join</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
-                        </div>
-                        <!-- header- solaric two end -->
-                        <!-- header man start -->
-                        <div class="header-main-h2  header--sticky">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="main-haeder-wrapper-h2">
-                                            <a href="https://opensource.org/" class="logo-area">
-                                                <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2023/03/cropped-OSI-horizontal-large.png?fit=640%2C229&amp;ssl=1" alt="Open Source Initiative" style="width:50%">
+                            <div class="right">
+                                <div class="social-header-top-h2">
+                                    <span>Follow us:</span>
+                                    <ul>
+                                        <li>
+                                            <a href="https://go.opensource.org/mastodon" target="_blank">
+                                                <i class="fa-brands fa-mastodon"></i>
                                             </a>
-                                        
-                                            <div class="header-nav main-nav-one" id="nav-links">
-                                                <nav>
-                                                    <ul>
-                                                        <li><a class="nav-link" href="https://go.opensource.org/osaid-latest">DEFINITION</a></li>
-                                                        <li><a class="nav-link" href="https://opensource.org/ai/process">PROCESS</a></li>
-                                                        <li><a class="nav-link" href="https://opensource.org/ai/timeline">TIMELINE</a></li>
-                                                        <li><a class="nav-link" href="https://opensource.org/ai/faq" target="_blank">FAQ</a></li>
-                                                        <li><a class="nav-link" href="https://opensource.org/ai/endorsements">ENDORSEMENTS</a></li>
-                                                        <li><a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read version 1.0</a></li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                            <div class="actions-area">
-                                                <div class="menu-btn" id="menu-btn">
-                                                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <rect y="14" width="20" height="2" fill="#4AAB3D"></rect>
-                                                        <rect y="7" width="20" height="2" fill="#4AAB3D"></rect>
-                                                        <rect width="20" height="2" fill="#4AAB3D"></rect>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        </li>
+                                        <li>
+                                            <a href="https://bsky.app/profile/opensource.org" target="_blank">
+                                                <i class="fa-brands fa-bluesky"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
+                                                <i class="fa-brands fa-linkedin-in"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank">
+                                                <i class="fa-brands fa-reddit"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <!-- header man end -->
-</header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header- solaric two end -->
+        
+        <!-- header main start -->
+        <div class="header-main-h2 header--sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="main-haeder-wrapper-h2">
+                            <a href="https://opensource.org/" class="logo-area">
+                                <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2023/03/cropped-OSI-horizontal-large.png?fit=640%2C229&amp;ssl=1" alt="Open Source Initiative" style="width:50%">
+                            </a>
+                            <div class="header-nav main-nav-one" id="nav-links">
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a class="nav-link" href="https://go.opensource.org/osaid-latest">DEFINITION</a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="https://opensource.org/ai/process">PROCESS</a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="https://opensource.org/ai/timeline">TIMELINE</a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="https://opensource.org/ai/faq" target="_blank">FAQ</a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" href="https://opensource.org/ai/endorsements">ENDORSEMENTS</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read version 1.0</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="actions-area">
+                                <div class="menu-btn" id="menu-btn">
+                                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect y="14" width="20" height="2" fill="#4AAB3D"></rect>
+                                        <rect y="7" width="20" height="2" fill="#4AAB3D"></rect>
+                                        <rect width="20" height="2" fill="#4AAB3D"></rect>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header main end -->
+    </header>
+
 
     <!-- Main Content -->
     <main id="main-content">
         <!-- Gutenberg content will be inserted here -->
-        
+        hola
     </main>
 
     <!-- Footer style two -->
