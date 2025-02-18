@@ -443,7 +443,7 @@ function osi_register_block_template() {
 
     // Enqueue styles conditionally
     add_action('wp_enqueue_scripts', function () use ($template_slug) {
-        if (get_page_template_slug() === 'templates/ai-template.html') {
+        if (get_page_template_slug() === 'templates/ai-template.html' || get_page_template_slug() === 'templates/ai-fse.php') {
             // Font Awesome - Updated to latest version
             wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
             
@@ -557,3 +557,54 @@ function osi_handle_supporter_form_flamingo_spam_status_change( string $new_stat
 	}
 }
 add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_status_change', 10, 3 );
+
+function enqueue_ai_template_assets() {
+    // Debug: Check if function is running
+    echo "<script>console.log('Enqueue function running');</script>";
+    
+    // Debug: Check template condition
+    echo "<script>console.log('Current template: " . get_page_template_slug() . "');</script>";
+    
+    // Only load on AI template page
+    if (is_page_template('templates/ai-fse.php')) {
+        echo "<script>console.log('Template condition met');</script>";
+        
+        // FontAwesome
+        wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
+        
+        // Other CSS files
+        wp_enqueue_style('swiper', get_template_directory_uri() . '/assets/css/plugins/swiper.css', array(), '1.0.0');
+        wp_enqueue_style('unicons', get_template_directory_uri() . '/assets/css/plugins/unicons.css', array(), '1.0.0');
+        wp_enqueue_style('metismenu', get_template_directory_uri() . '/assets/css/plugins/metismenu.css', array(), '1.0.0');
+        wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/vendor/animate.css', array(), '1.0.0');
+        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/vendor/bootstrap.min.css', array(), '1.0.0');
+        wp_enqueue_style('ai-custom', get_template_directory_uri() . '/assets/css/style.css', array('bootstrap'), '1.0.0');
+        
+        // JavaScript files
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jqueryui', 'https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('counter-up', 'https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('swiper-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('metismenu-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/metismenu.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('waypoint', 'https://opensourceorg.github.io/ai/assets/js/vendor/waypoint.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('waw', 'https://opensourceorg.github.io/ai/assets/js/vendor/waw.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('gsap', 'https://opensourceorg.github.io/ai/assets/js/plugins/gsap.min.js', array(), '1.0.0', true);
+        wp_enqueue_script('scrolltrigger', 'https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js', array('gsap'), '1.0.0', true);
+        wp_enqueue_script('split-text', 'https://opensourceorg.github.io/ai/assets/js/vendor/split-text.js', array('gsap'), '1.0.0', true);
+        wp_enqueue_script('contact-form', 'https://opensourceorg.github.io/ai/assets/js/vendor/contact.form.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('split-type', 'https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js', array(), '1.0.0', true);
+        wp_enqueue_script('jquery-timepicker', 'https://opensourceorg.github.io/ai/assets/js/plugins/jquery-timepicker.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('bootstrap-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js', array('jquery'), '1.0.0', true);
+        wp_enqueue_script('ai-main', 'https://opensourceorg.github.io/ai/assets/js/main.js', array('jquery', 'bootstrap-js'), '1.0.0', true);
+    } else {
+        echo "<script>console.log('Template condition not met');</script>";
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_ai_template_assets');
+
+// Add this function to check if the template is being used
+function check_template_usage($template) {
+    echo "<script>console.log('Template being used: " . $template . "');</script>";
+    return $template;
+}
+add_filter('template_include', 'check_template_usage');
