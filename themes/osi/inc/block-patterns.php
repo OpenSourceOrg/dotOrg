@@ -265,7 +265,7 @@ function osi_register_why_ai_definition_pattern() {
                                 <!-- single why -->
                                 <div class="rts-single-service-solar-energy">
                                     <div class="icon">
-                                        hola
+                                        <i class="fa-solid fa-building-columns" style="font-size:60px;"></i>
                                     </div>
                                     <h3 class="h3titles">Informing Regulators</h3>
                                     <p class="disc">Government regulations have begun in Europe, the United States, and elsewhere. Communities need a common understanding to educate policy makers.</p>
@@ -1127,3 +1127,17 @@ function osi_register_navbar_pattern() {
     );
 }
 add_action('init', 'osi_register_navbar_pattern');
+
+
+function allow_font_awesome_icons($tags) {
+    $tags['i'] = array(
+        'class' => true,
+        'style' => true
+    );
+    $tags['span'] = array(
+        'class' => true,
+        'style' => true
+    );
+    return $tags;
+}
+add_filter('wp_kses_allowed_html', 'allow_font_awesome_icons', 10, 2);
