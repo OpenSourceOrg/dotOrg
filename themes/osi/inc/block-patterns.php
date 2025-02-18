@@ -1016,7 +1016,7 @@ add_action('init', 'osi_register_brand_pattern');
 
 function osi_register_navbar_pattern() {
     register_block_pattern(
-        'custom/brand-area',
+        'custom/navbar-area',
         [
             'title'       => __('Navbar', 'osi'),
             'description' => __('A section displaying top navigation bar.', 'osi'),
