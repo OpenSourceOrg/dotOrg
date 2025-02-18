@@ -15,9 +15,7 @@ function osi_register_about_area_pattern() {
             'title'       => __('About Area', 'osi'),
             'description' => __('A reusable section with tabs and custom content.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
-    <!-- wp:html -->
+            'content'     => '
                 <!-- rts about area start -->
                 <div class="rts-about-area rts-section-gap">
                     <div class="container">
@@ -79,10 +77,7 @@ function osi_register_about_area_pattern() {
                     </div>
                 </div>
                 <!-- rts about area end -->
- <!-- /wp:html -->
-</div>
-<!-- /wp:group -->
-',
+            ',
         ]
     );
 }
@@ -94,9 +89,8 @@ function osi_register_banner_area_pattern() {
         [
             'title'       => __('Banner Area', 'osi'),
             'description' => __('A banner section with a title, description, and button.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+			'categories'  => ['ai'],
+            'content'     => '
                 <!-- banner area start -->
                 <div class="banner-area-start banner-solar-energy-bg bg_image">
                     <div class="container">
@@ -120,8 +114,7 @@ function osi_register_banner_area_pattern() {
                     </div>
                 </div>
                 <!-- banner area end -->
-</div>
-<!-- /wp:group -->',
+            ',
         ]
     );
 }
@@ -133,9 +126,8 @@ function osi_register_benefits_area_pattern() {
         [
             'title'       => __('Benefits Area', 'osi'),
             'description' => __('A section highlighting the benefits of Open Source AI with an accordion and image.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+			'categories'  => ['ai'],
+            'content'     => '
                 <!-- benefits area start -->
                 <div class="faq-section-start-solar rts-section-gapBottom">
                     <div class="container">
@@ -192,8 +184,7 @@ function osi_register_benefits_area_pattern() {
                     </div>
                 </div>
                 <!-- benefits area end -->
-</div>
-<!-- /wp:group -->',
+            ',
         ]
     );
 }
@@ -206,8 +197,7 @@ function osi_register_whitepaper_pattern() {
             'title'       => __('Whitepaper', 'osi'),
             'description' => __('A section highlighting the Data Governance whitepaper.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+            'content'     => '
                 <!-- whitepaper area start -->
                 <div class="rts-project-details-area rts-section-gapBottom">
                     <div class="container" style="background:#fff; border-radius: 20px; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03)">
@@ -233,8 +223,7 @@ function osi_register_whitepaper_pattern() {
                     </div>
                 </div>
                 <!-- whitepaper area end -->
-</div>
-<!-- /wp:group -->',
+            ',
         ]
     );
 }
@@ -247,103 +236,58 @@ function osi_register_why_ai_definition_pattern() {
             'title'       => __('Why Open Source AI Needs a Definition', 'osi'),
             'description' => __('A section explaining why Open Source AI needs a definition, with three key reasons.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
-    <!-- wp:group {"className":"rts-service-area"} -->
-    <div class="wp-block-group rts-service-area">
-        <!-- wp:group {"className":"container"} -->
-        <div class="wp-block-group container">
-            <!-- wp:group {"className":"row"} -->
-            <div class="wp-block-group row">
-                <!-- wp:group {"className":"col-lg-12"} -->
-                <div class="wp-block-group col-lg-12">
-                    <!-- wp:group {"className":"title-area-center"} -->
-                    <div class="wp-block-group title-area-center">
-                        <!-- wp:heading {"className":"title skew-up"} -->
-                        <h2 class="wp-block-heading title skew-up">Why Open Source AI needs a definition?</h2>
-                        <!-- /wp:heading -->
-                    </div>
-                    <!-- /wp:group -->
-                </div>
-                <!-- /wp:group -->
-            </div>
-            <!-- /wp:group -->
-
-            <!-- wp:group {"className":"row g-24 mt--30"} -->
-            <div class="wp-block-group row g-24 mt--30">
-                <!-- wp:group {"className":"col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12"} -->
-                <div class="wp-block-group col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <!-- wp:group {"className":"rts-single-service-solar-energy"} -->
-                    <div class="wp-block-group rts-single-service-solar-energy">
-                        <!-- wp:group {"className":"icon"} -->
-                        <div class="wp-block-group icon">
-                            <!-- wp:html -->
-                            <i class="fa-brands fa-solid fa-osi" style="font-size:70px;"></i>
-                            <!-- /wp:html -->
+            'content'     => '
+                <!-- why area start -->
+                <div class="rts-service-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="title-area-center">
+                                    <h2 class="title skew-up">
+                                        Why Open Source AI needs a definition?
+                                    </h2>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /wp:group -->
-                        <!-- wp:heading {"level":3,"className":"h3titles"} -->
-                        <h3 class="wp-block-heading h3titles">Open Source Frontier</h3>
-                        <!-- /wp:heading -->
-                        <!-- wp:paragraph {"className":"disc"} -->
-                        <p class="disc">The traditional view of Open Source code and licenses when applied to AI components are not sufficient to guarantee the freedoms to use, study, share and modify the systems.</p>
-                        <!-- /wp:paragraph -->
-                    </div>
-                    <!-- /wp:group -->
-                </div>
-                <!-- /wp:group -->
-
-                <!-- wp:group {"className":"col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12"} -->
-                <div class="wp-block-group col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <!-- wp:group {"className":"rts-single-service-solar-energy"} -->
-                    <div class="wp-block-group rts-single-service-solar-energy">
-                        <!-- wp:group {"className":"icon"} -->
-                        <div class="wp-block-group icon">
-                            <!-- wp:html -->
-                            <i class="fa-solid fa-building-columns" style="font-size:60px;"></i>
-                            <!-- /wp:html -->
+                        <div class="row g-24 mt--30">
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                                <!-- single why -->
+                                <div class="rts-single-service-solar-energy">
+                                    <div class="icon">
+                                        <i class="fa-brands fa-solid fa-osi" style="font-size:70px;"></i>
+                                    </div>
+                                    <h3 class="h3titles">Open Source Frontier</h3>
+                                    <p class="disc">The traditional view of Open Source code and licenses when applied to AI components are not sufficient to guarantee the freedoms to use, study, share and modify the systems.</p>
+                                </div>
+                                <!-- single why end -->
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                                <!-- single why -->
+                                <div class="rts-single-service-solar-energy">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-building-columns" style="font-size:60px;"></i>
+                                    </div>
+                                    <h3 class="h3titles">Informing Regulators</h3>
+                                    <p class="disc">Government regulations have begun in Europe, the United States, and elsewhere. Communities need a common understanding to educate policy makers.</p>
+                                </div>
+                                <!-- single why end -->
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                                <!-- single why -->
+                                <div class="rts-single-service-solar-energy">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-hands-bubbles" style="font-size:50px;"></i>
+                                    </div>
+                                    <h3 class="h3titles">Combat Openwashing</h3>
+                                    <p class="disc">Companies are calling AI systems “Open Source” even though their licenses contain restrictions that go against the accepted principles and freedoms of Open Source.</p>
+                                </div>
+                                <!-- single why end -->
+                            </div>
                         </div>
-                        <!-- /wp:group -->
-                        <!-- wp:heading {"level":3,"className":"h3titles"} -->
-                        <h3 class="wp-block-heading h3titles">Informing Regulators</h3>
-                        <!-- /wp:heading -->
-                        <!-- wp:paragraph {"className":"disc"} -->
-                        <p class="disc">Government regulations have begun in Europe, the United States, and elsewhere. Communities need a common understanding to educate policy makers.</p>
-                        <!-- /wp:paragraph -->
                     </div>
-                    <!-- /wp:group -->
                 </div>
-                <!-- /wp:group -->
-
-                <!-- wp:group {"className":"col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12"} -->
-                <div class="wp-block-group col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                    <!-- wp:group {"className":"rts-single-service-solar-energy"} -->
-                    <div class="wp-block-group rts-single-service-solar-energy">
-                        <!-- wp:group {"className":"icon"} -->
-                        <div class="wp-block-group icon">
-                            <!-- wp:html -->
-                            <i class="fa-solid fa-hands-bubbles" style="font-size:50px;"></i>
-                            <!-- /wp:html -->
-                        </div>
-                        <!-- /wp:group -->
-                        <!-- wp:heading {"level":3,"className":"h3titles"} -->
-                        <h3 class="wp-block-heading h3titles">Combat Openwashing</h3>
-                        <!-- /wp:heading -->
-                        <!-- wp:paragraph {"className":"disc"} -->
-                        <p class="disc">Companies are calling AI systems "Open Source" even though their licenses contain restrictions that go against the accepted principles and freedoms of Open Source.</p>
-                        <!-- /wp:paragraph -->
-                    </div>
-                    <!-- /wp:group -->
-                </div>
-                <!-- /wp:group -->
-            </div>
-            <!-- /wp:group -->
-        </div>
-        <!-- /wp:group -->
-    </div>
-    <!-- /wp:group -->
-</div>
-<!-- /wp:group -->'
+                <!-- why area end -->
+            ',
         ]
     );
 }
@@ -356,8 +300,7 @@ function osi_register_endorsements_area_pattern() {
             'title'       => __('Endorsements Area', 'osi'),
             'description' => __('A section showcasing endorsements with a title, button, and carousel of logos.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+            'content'     => '
                 <!-- endorsements area start -->
                 <div class="rts-Product-area rts-section-gap">
                     <div class="container">
@@ -454,8 +397,7 @@ function osi_register_endorsements_area_pattern() {
                     </div>
                 </div>
                 <!-- endorsements area end -->
-</div>
-<!-- /wp:group -->',
+            ',
         ]
     );
 }
@@ -465,11 +407,10 @@ function osi_register_stats_area_pattern() {
     register_block_pattern(
         'custom/stats-area',
         [
-            'title'       => __('stats Area', 'osi'),
+            'title'       => __('Stats Area', 'osi'),
             'description' => __('A section displaying key statistics in a structured grid.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+            'content'     => '
                 <!-- stats -->
                 <div class="rts-funfact fun-fact-bg rts-section-gapBottom">
                     <div class="container">
@@ -552,8 +493,7 @@ function osi_register_stats_area_pattern() {
                     </div>
                 </div>
                 <!-- stats end -->
-</div>
-<!-- /wp:group -->',
+            ',
         ]
     );
 }
@@ -566,8 +506,7 @@ function osi_register_process_area_pattern() {
             'title'       => __('Process Section', 'osi'),
             'description' => __('A section displaying the co-design and research process, along with endorsements.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+            'content'     => '
                 <!-- process -->
                 <div class="rts-awesome-funfacts-area bg-awesome-feedback">
                     <div class="container-75">
@@ -623,8 +562,7 @@ function osi_register_process_area_pattern() {
                     </div>
                 </div>
                 <!-- process end -->
-</div>
-<!-- /wp:group -->',
+            ',
         ]
     );
 }
@@ -638,8 +576,7 @@ function osi_register_osaid_compliant_systems_pattern() {
             'title'       => __('OSAID Compliant Systems', 'osi'),
             'description' => __('A section listing AI systems that comply with the Open Source AI Definition.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+            'content'     => '
                 <!-- osaid compliant systems area start -->
                 <div class="rts-service-area rts-section-gapTop">
                     <div class="container">
@@ -664,8 +601,7 @@ function osi_register_osaid_compliant_systems_pattern() {
                     </div>
                 </div>
                 <!-- osaid compliant systems area end -->
-</div>
-<!-- /wp:group -->',
+            ',
         ]
     );
 }
@@ -678,8 +614,7 @@ function register_how_to_participate_pattern() {
             'title'       => __('How to Participate', 'osi'),
             'description' => __('A section explaining how users can get involved with Open Source AI.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+            'content'     => '
                 <!-- how to participate -->
                 <div class="rts-about-style-four rts-section-gap bg-about-h4 rts-section-gapBottom">
                     <div class="container">
@@ -715,8 +650,7 @@ function register_how_to_participate_pattern() {
                     </div>
                 </div>
                 <!-- how to participate end -->
-</div>
-<!-- /wp:group -->',
+            ',
         ]
     );
 }
@@ -729,8 +663,7 @@ function osi_register_governance_pattern() {
             'title'       => __('Governance', 'osi'),
             'description' => __('A section explaining the governance of the Open Source AI Definition.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+            'content'     => '
                 <!-- rts governance area start -->
                 <div class="rts-project-details-area">
                     <div class="container">
@@ -752,8 +685,7 @@ function osi_register_governance_pattern() {
                     </div>
                 </div>
                 <!-- rts governance area end -->
-</div>
-<!-- /wp:group -->',
+            ',
         ]
     );
 }
@@ -788,7 +720,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "LLM360 finds that OSI\'s Open Source AI definition is a meaningful, reasonable, and holistic standard which will have positive reverberations throughout the community. The definition clarifies the unique challenges surrounding open source AI including the expectations for disseminating code, data, and accessibility requirements. This definition propels the open source ecosystem and aligns with LLM360\'s mission for community owned AI. Our team is thrilled and excited to fully support OSI\'s efforts on advancing the Open Source AI definition."
+                                            "LLM360 finds that OSI’s Open Source AI definition is a meaningful, reasonable, and holistic standard which will have positive reverberations throughout the community. The definition clarifies the unique challenges surrounding open source AI including the expectations for disseminating code, data, and accessibility requirements. This definition propels the open source ecosystem and aligns with LLM360’s mission for community owned AI. Our team is thrilled and excited to fully support OSI’s efforts on advancing the Open Source AI definition."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Hector Zhengzhong Liu, LLM360</p>
@@ -813,6 +745,209 @@ function osi_register_quotes_pattern() {
                                     </div>
                                 </div>
                                 <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/arun-gupta.jpg" alt="Arun Gupta" style="width:200px";>
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            “Facilitating an Open ecosystem is an important part of our approach at Intel. An open approach to AI can foster greater collaboration across the community, drive innovation and enhance transparency. We applaud OSI’s efforts to expand their definition to include AI models and datasets. OSI’s creation of a first revision of the definition, can help industry continue to evolve and iterate.”
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Arun Gupta, Vice President and General Manager, Open Ecosystem, Intel</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/liv-marte.jpeg" alt="Liv Marte Kristiansen Nordhaug" style="width:200px";>
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "We welcome OSI\'s stewardship of the complex process of defining open source AI. The Digital Public Goods Alliance secretariat will build on this foundational work as we update the DPG Standard as it relates to AI as a category of DPGs"
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Liv Marte Kristiansen Nordhaug, CEO of the Digital Public Goods Alliance</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/aviya-skowron.jpeg" alt="Aviya Skowron" style="width:200px";>
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "Transparency is at the core of EleutherAI’s non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Aviya Skowron, Head of Policy and Ethics at Eleuther AI</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/aviya-skowron.jpeg" alt="Aviya Skowron" style="width:200px";>
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "The Common Crawl Foundation fully supports the Open Source AI Definition as a crucial step in setting clear standards for open and transparent AI development.  This definition will help ensure AI develops responsibly, staying open and accessible to everyone."
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Thom Vaughan, Principal Technologist, Common Crawl Foundation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/stella-biderman.jpeg" alt="Stella Biderman" style="width:200px";>
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "Transparency is at the core of EleutherAI’s non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Stella Biderman, AI and NLP Researcher, EleutherAI</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/alan-clark.jpg" alt="Alan Clark">
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "SUSE applauds the progress made by the Open Source Initiative and its Open Source AI Definition. The efforts are culminating in a very thorough definition, which is important for the quickly evolving AI landscape and the role of open source within it. We commend the process OSI is utilizing to arrive at the definition and the adherence to the open source methodologies. Clarity and consensus drive collaboration, and we believe this definition will drive open source AI forward."
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Alan Clark, Office Of The CTO, SUSE</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/yann-lechelle.jpeg" alt="Yann Lechelle" style="width: 200px">
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "I endorse! We need common vocabulary to define what is open is what isn\'t. This is a solid framework that doesn\'t give a blank check to those who are lightly claiming to be providing open source AI (even if they desperately wish to be qualified as such), and reversely, the framework is open to initiatives that introduce gradients of open source on the various components that make an AI system, and recognizes efforts in opening-up all or some of the components. After all, "AI" is a derivative of software, complete with data, code and artefacts. There is no reason a derivative system should be classified under the foundational definition of "open source" and at the same time, AI systems are becoming so powerful at capturing intelligence away from humans that we need to qualify their degree of openness. Hats off to all involved for producing such an important piece of work."
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Yann Lechelle, Co-founder CEO @ :probabl.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/mark-collier.jpeg" alt="Mark Collier" style="width: 200px">
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "This effort you and OSI team have been driving is really important and I’m a believer that time is becoming of the essence. Inevitably it will need to evolve but putting a stamp on it soon is important. We have to define what open source means in the context of AI models in order to preserve the permissionless innovation aspect that created so much value with open source software licenses. The definition is both pragmatic and challenging, and is an excellent first step in a fast-moving area."
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Mark Collier, Chief Operating Officer at OpenStack Foundation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/seo-young-isabelle-hwang.jpeg" alt="Seo-Young Isabelle Hwang" style="width: 200px">
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "The codesign process allowed me to see first hand the thought process of people all over the world about what is open source AI. It may never be possible for all the people to agree on the definition. But It is a wonderful start and I think everyone will agree that the open discussions, seminars, townhall meetings, follow up surveys, emails are all very effective and "democratic" :-)"
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Victor Lu, Independent Consultant</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+																	   <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="" alt="" style="width: 200px">
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "Software Heritage is committed to preserving and making accessible the invaluable human knowledge embedded in software source code. We believe that AI systems trained on this vast repository should be freely available to all, with as little restrictions as possible.<br />Users of OSAID-compliant AI systems trained on Software Heritage data will enjoy full transparency on how they were built. By endorsing OSAID, we aim to promote transparency and reproducibility within the AI industry. We\'ve been involved and vocal in shaping OSAID 1.0 and look forward to collaborating on further iterations of it, as the practice of developing AI systems from open data sets evolves."
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Stefano Zacchiroli, co-founder and CSO of Software Heritage</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/shuji-sado.jpeg" alt="Shuji Sado">
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "Open Source Group Japan commends OSI for its leadership in navigating the complex process of defining Open Source AI, and we fully support the Open Source AI Definition (OSAID) as a key standard for open and transparent AI systems. The field of AI is evolving rapidly, and the need for a clear and consistent definition of Open Source AI has never been more critical. OSI\'s OSAID marks a crucial milestone toward a future where collaboration and openness are the norms in AI development. We anticipate that this will drive innovation, transparency, and the ethical development of AI systems."
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Shuji Sado, Chairman, Open Source Group Japan</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- quotes end -->
+                            </div>
+                            <div class="swiper-slide">
+                                <!-- quotes -->
+                                <div class="rts-single-feedback-solar-energy">
+                                    <!-- <div class="client-image">
+                                        <img src="https://opensourceorg.github.io/ai/assets/images/supporters/oscar-mullin.jpeg" alt="Oscar Mullin" style="width: 200px">
+                                    </div> -->
+                                    <div class="content">
+                                        <p class="para">
+                                            "Open Source generative AI models are one of the keys to the advancement of the field. By enabling a community of developers and researchers to collaborate and evolve these models in a responsible way, we can greatly benefit a wide range of applications."
+                                        </p>
+                                        <div class="cottom-review-area">
+                                            <p>Oscar Mullin, VP of Technology - Cloud Services, Data & AI at MercadoLibre</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                                 <!-- quotes end -->
@@ -865,7 +1000,7 @@ function osi_register_brand_pattern() {
                                 </div>
                             </div>
                             <br />
-                            <p>OSI\'s efforts wouldn\'t be possible without the support of our sponsors and thousands of individual members.<br />
+                            <p>OSI’s efforts wouldn’t be possible without the support of our sponsors and thousands of individual members.<br />
                                 <strong><a href="https://opensource.org/sponsors">Become a sponsor</a></strong> or <strong><a href="http://members.opensource.org/join#join">join us today!</a></strong>
                             </p>
                         </div>
@@ -877,122 +1012,6 @@ function osi_register_brand_pattern() {
     );
 }
 add_action('init', 'osi_register_brand_pattern');
-
-
-function osi_register_navbar_pattern() {
-    register_block_pattern(
-        'custom/navbar-area',
-        [
-            'title'       => __('Navbar', 'osi'),
-            'description' => __('A section displaying top navigation bar.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
-                <div class="header-header-two">
-                        <!-- header- solaric two -->
-                        <div class="header-two-solari header-top">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="header-top-m">
-                                            <div class="left">
-                                                <div class="header-nav main-nav-one">
-                                                    <nav>
-                                                        <ul>
-                                                            <li>
-                                                                <a class="nav-link-green" href="https://opensource.org/about">About</a>
-                                                            </li>
-                    
-                                                            <li>
-                                                                <a class="nav-link-green" href="https://opensource.org/osd">Open Source Definition</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="nav-link-green" href="https://opensource.org/licenses">Licenses</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="nav-link-green" href="https://opensource.org/blog">Blog</a>
-                                                            </li>
-                                                            <li><a class="nav-link-green" href="https://opensource.org/programs">Programs</a></li>
-                                                            <li><a class="nav-link-green" href="https://members.opensource.org/join/">Join</a></li>
-                                                        </ul>
-                                                    </nav>
-                                                </div>
-                                            </div>
-                                            <div class="right">
-                                                <div class="social-header-top-h2">
-                                                    <span>Follow us:</span>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="https://go.opensource.org/mastodon" target="_blank">
-                                                                <i class="fa-brands fa-mastodon"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://bsky.app/profile/opensource.org" target="_blank">
-                                                                <i class="fa-brands fa-bluesky"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
-                                                                <i class="fa-brands fa-linkedin-in"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank">
-                                                                <i class="fa-brands fa-reddit"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- header- solaric two end -->
-                        <!-- header man start -->
-                        <div class="header-main-h2  header--sticky">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="main-haeder-wrapper-h2">
-                                            <a href="https://opensource.org/" class="logo-area">
-                                                <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2023/03/cropped-OSI-horizontal-large.png?fit=640%2C229&amp;ssl=1" alt="Open Source Initiative" style="width:50%">
-                                            </a>
-                                        
-                                            <div class="header-nav main-nav-one" id="nav-links">
-                                                <nav>
-                                                    <ul>
-                                                        <li><a class="nav-link" href="https://go.opensource.org/osaid-latest">DEFINITION</a></li>
-                                                        <li><a class="nav-link" href="https://opensource.org/ai/process">PROCESS</a></li>
-                                                        <li><a class="nav-link" href="https://opensource.org/ai/timeline">TIMELINE</a></li>
-                                                        <li><a class="nav-link" href="https://opensource.org/ai/faq" target="_blank">FAQ</a></li>
-                                                        <li><a class="nav-link" href="https://opensource.org/ai/endorsements">ENDORSEMENTS</a></li>
-                                                        <li><a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read version 1.0</a></li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                            <div class="actions-area">
-                                                <div class="menu-btn" id="menu-btn">
-                                                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <rect y="14" width="20" height="2" fill="#4AAB3D"></rect>
-                                                        <rect y="7" width="20" height="2" fill="#4AAB3D"></rect>
-                                                        <rect width="20" height="2" fill="#4AAB3D"></rect>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- header man end -->
-                    </div>',
-        ]
-    );
-}
-add_action('init', 'osi_register_navbar_pattern');
-
 
 function allow_font_awesome_icons($tags) {
     $tags['i'] = array(
