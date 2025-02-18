@@ -17,6 +17,7 @@ function osi_register_about_area_pattern() {
             'categories'  => ['ai'],
             'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group">
+    <!-- wp:html -->
                 <!-- rts about area start -->
                 <div class="rts-about-area rts-section-gap">
                     <div class="container">
@@ -78,8 +79,10 @@ function osi_register_about_area_pattern() {
                     </div>
                 </div>
                 <!-- rts about area end -->
+ <!-- /wp:html -->
 </div>
-<!-- /wp:group -->',
+<!-- /wp:group -->
+',
         ]
     );
 }

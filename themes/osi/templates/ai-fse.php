@@ -31,17 +31,6 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <!-- favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="https://opensourceorg.github.io/ai/assets/images/fav.png">
     <script defer data-domain="opensource.org" src="https://plausible.io/js/script.js"></script>
-    <!-- fontawesome css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <!-- fontawesome css -->
-    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css">
-    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css">
-    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css">
-    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/vendor/animate.css">
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css">
-    <!-- Custom css -->
-    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/style.css">
 
     <!-- HTML Meta Tags -->
     <title>The Open Source AI Definition — by The Open Source Initiative</title>
@@ -69,7 +58,7 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     }
     ?>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> style="background: rgb(246, 247, 249);">
     <?php wp_body_open(); ?>
 
     
