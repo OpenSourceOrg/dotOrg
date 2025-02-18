@@ -473,12 +473,14 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/jquery.min.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/metismenu.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waw.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/metismenu.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waypoint.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/gsap.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waw.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/gsap.min.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-text.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
 </body>
