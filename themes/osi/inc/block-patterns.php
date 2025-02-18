@@ -759,7 +759,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Coming up with the proper open-source definition is challenging given restrictions on data, but I'm glad to see that the OSI v1.0 definition requires at least that the complete code for data processing (the primary driver of model quality) be open-source.  The devil is in the details, so I'm sure we'll have more to say once we have concrete examples of people trying to apply this Definition to their models."
+                                            "Coming up with the proper open-source definition is challenging given restrictions on data, but I\'m glad to see that the OSI v1.0 definition requires at least that the complete code for data processing (the primary driver of model quality) be open-source.  The devil is in the details, so I\'m sure we'll have more to say once we have concrete examples of people trying to apply this Definition to their models."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Percy Liang, Director of Center for Research on Foundation Models, Stanford University</p>
@@ -895,7 +895,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "This effort you and OSI team have been driving is really important and I'm a believer that time is becoming of the essence. Inevitably it will need to evolve but putting a stamp on it soon is important. We have to define what open source means in the context of AI models in order to preserve the permissionless innovation aspect that created so much value with open source software licenses. The definition is both pragmatic and challenging, and is an excellent first step in a fast-moving area."
+                                            "This effort you and OSI team have been driving is really important and I\'m a believer that time is becoming of the essence. Inevitably it will need to evolve but putting a stamp on it soon is important. We have to define what open source means in the context of AI models in order to preserve the permissionless innovation aspect that created so much value with open source software licenses. The definition is both pragmatic and challenging, and is an excellent first step in a fast-moving area."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Mark Collier, Chief Operating Officer at OpenStack Foundation</p>
