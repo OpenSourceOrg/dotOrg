@@ -1127,17 +1127,3 @@ function osi_register_navbar_pattern() {
     );
 }
 add_action('init', 'osi_register_navbar_pattern');
-
-
-function allow_font_awesome_icons($tags) {
-    $tags['i'] = array(
-        'class' => true,
-        'style' => true
-    );
-    $tags['span'] = array(
-        'class' => true,
-        'style' => true
-    );
-    return $tags;
-}
-add_filter('wp_kses_allowed_html', 'allow_font_awesome_icons', 10, 2);

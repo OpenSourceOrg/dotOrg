@@ -551,36 +551,54 @@ function osi_handle_supporter_form_flamingo_spam_status_change( string $new_stat
 }
 add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_status_change', 10, 3 );
 
-function enqueue_ai_template_assets() {
-    // Only load on AI template page
-    if (is_page_template('templates/ai-fse.php')) {
-        // FontAwesome
-        wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css', array(), null);
-        
-        // Other CSS files
-        wp_enqueue_style('swiper', 'https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css', array(), null);
-        wp_enqueue_style('unicons', 'https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css', array(), null);
-        wp_enqueue_style('metismenu', 'https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css', array(), null);
-        wp_enqueue_style('animate', 'https://opensourceorg.github.io/ai/assets/css/vendor/animate.css', array(), null);
-        wp_enqueue_style('bootstrap', 'https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css', array(), null);
-        wp_enqueue_style('ai-custom', 'https://opensourceorg.github.io/ai/assets/css/style.css', array(), null);
-        
-        // JavaScript files
-        wp_enqueue_script('jquery');  // WordPress core jQuery
-        wp_enqueue_script('jqueryui', 'https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js', array('jquery'), null, true);
-        wp_enqueue_script('counter-up', 'https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js', array('jquery'), null, true);
-        wp_enqueue_script('swiper-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js', array('jquery'), null, true);
-        wp_enqueue_script('metismenu-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/metismenu.js', array('jquery'), null, true);
-        wp_enqueue_script('waypoint', 'https://opensourceorg.github.io/ai/assets/js/vendor/waypoint.js', array('jquery'), null, true);
-        wp_enqueue_script('waw', 'https://opensourceorg.github.io/ai/assets/js/vendor/waw.js', array('jquery'), null, true);
-        wp_enqueue_script('gsap', 'https://opensourceorg.github.io/ai/assets/js/plugins/gsap.min.js', array(), null, true);
-        wp_enqueue_script('scrolltrigger', 'https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js', array('gsap'), null, true);
-        wp_enqueue_script('split-text', 'https://opensourceorg.github.io/ai/assets/js/vendor/split-text.js', array('gsap'), null, true);
-        wp_enqueue_script('contact-form', 'https://opensourceorg.github.io/ai/assets/js/vendor/contact.form.js', array('jquery'), null, true);
-        wp_enqueue_script('split-type', 'https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js', array(), null, true);
-        wp_enqueue_script('jquery-timepicker', 'https://opensourceorg.github.io/ai/assets/js/plugins/jquery-timepicker.js', array('jquery'), null, true);
-        wp_enqueue_script('bootstrap-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js', array('jquery'), null, true);
-        wp_enqueue_script('ai-main', 'https://opensourceorg.github.io/ai/assets/js/main.js', array('jquery'), null, true);
+/**
+ * Allow Font Awesome icons in Gutenberg blocks
+ */
+function allow_font_awesome_icons($allowed_html) {
+    // If the allowed_html array doesn't exist, create it
+    if (!is_array($allowed_html)) {
+        $allowed_html = array();
     }
+
+    // Add specific Font Awesome support
+    $allowed_html['i'] = array(
+        'class'     => true,
+        'style'     => true,
+        'aria-hidden' => true,
+    );
+    
+    // Add support for div containers
+    $allowed_html['div'] = array(
+        'class'     => true,
+        'style'     => true,
+    );
+
+    return $allowed_html;
 }
-add_action('wp_enqueue_scripts', 'enqueue_ai_template_assets');
+add_filter('wp_kses_allowed_html', 'allow_font_awesome_icons', 99, 1);
+
+/**
+ * Allow Font Awesome classes in Gutenberg blocks
+ */
+function allow_fa_classes_in_blocks($block_content, $block) {
+    // Remove wp_kses filtering for blocks that might contain Font Awesome icons
+    if (isset($block['blockName']) && (
+        strpos($block['blockName'], 'core/html') !== false ||
+        strpos($block['blockName'], 'core/paragraph') !== false ||
+        strpos($block['blockName'], 'core/group') !== false
+    )) {
+        remove_filter('the_content', 'wp_kses_post');
+    }
+    
+    return $block_content;
+}
+add_filter('render_block', 'allow_fa_classes_in_blocks', 10, 2);
+
+/**
+ * Add Font Awesome to allowed protocols
+ */
+function add_fa_to_allowed_protocols($protocols) {
+    $protocols[] = 'data-fa';
+    return $protocols;
+}
+add_filter('kses_allowed_protocols', 'add_fa_to_allowed_protocols');
