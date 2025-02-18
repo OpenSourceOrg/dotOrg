@@ -562,11 +562,14 @@ function enqueue_ai_template_assets() {
     // Debug: Check if function is running
     echo "<script>console.log('Enqueue function running');</script>";
     
-    // Debug: Check template condition
-    echo "<script>console.log('Current template: " . get_page_template_slug() . "');</script>";
+    // Get the template slug and full path
+    $template_slug = get_page_template_slug();
+    $template_path = get_template_directory() . '/' . $template_slug;
+    echo "<script>console.log('Template slug: " . $template_slug . "');</script>";
+    echo "<script>console.log('Template path: " . $template_path . "');</script>";
     
-    // Only load on AI template page
-    if (is_page_template('templates/ai-fse.php')) {
+    // Check if either the template slug contains our template name or if it's the full path
+    if (strpos($template_slug, 'ai-fse.php') !== false) {
         echo "<script>console.log('Template condition met');</script>";
         
         // FontAwesome
@@ -580,7 +583,7 @@ function enqueue_ai_template_assets() {
         wp_enqueue_style('bootstrap', 'https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css', array(), '1.0.0');
         wp_enqueue_style('ai-custom', 'https://opensourceorg.github.io/ai/assets/css/style.css', array('bootstrap'), '1.0.0');
         
-        // JavaScript files
+        // JavaScript files with proper dependencies
         wp_enqueue_script('jquery');
         wp_enqueue_script('jqueryui', 'https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js', array('jquery'), '1.0.0', true);
         wp_enqueue_script('counter-up', 'https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js', array('jquery'), '1.0.0', true);
