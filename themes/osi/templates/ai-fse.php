@@ -14,31 +14,11 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 
 	
     <?php
-    if ( is_user_logged_in() ) {
-        wp_enqueue_style('admin-bar');
-        wp_enqueue_script('admin-bar');
-     	wp_print_styles('admin-bar');
-	}
-
-    wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css', [], null);
-
-    // Swiper
-    wp_enqueue_style('swiper', 'https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css', [], null);
-
-    // Unicons
-    wp_enqueue_style('unicons', 'https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css', [], null);
-
-    // Metismenu
-    wp_enqueue_style('metismenu', 'https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css', [], null);
-
-    // Animate CSS
-    wp_enqueue_style('animate', 'https://opensourceorg.github.io/ai/assets/css/vendor/animate.css', [], null);
-
-    // Bootstrap
-    wp_enqueue_style('bootstrap', 'https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css', [], null);
-
-    // Custom Style
-    wp_enqueue_style('custom-style', 'https://opensourceorg.github.io/ai/assets/css/style.css', [], null);
+        if ( is_user_logged_in() ) {
+            wp_enqueue_style('admin-bar');
+            wp_enqueue_script('admin-bar');
+            wp_print_styles('admin-bar');
+        }
     ?>
 	
 	
@@ -476,24 +456,5 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 
     <div id="anywhere-home" class="">
     </div>
-
-
-    <!-- jquery js -->
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/jquery.min.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/metismenu.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waypoint.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waw.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/gsap.min.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-text.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/contact.form.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/jquery-timepicker.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
-    <!-- header style two End -->
 </body>
 </html>
