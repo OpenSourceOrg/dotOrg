@@ -193,7 +193,12 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Gutenberg content will be inserted here -->
+        <?php 
+        while ( have_posts() ) :
+            the_post();
+            the_content();
+        endwhile;
+        ?>
     </main>
 
     <!-- Footer style two -->
