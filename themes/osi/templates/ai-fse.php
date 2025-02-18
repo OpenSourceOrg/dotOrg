@@ -36,6 +36,7 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <!-- fontawesome css -->
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css">
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css">
+    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css">
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/vendor/animate.css">
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css">
@@ -44,13 +45,13 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 
     <!-- HTML Meta Tags -->
     <title>The Open Source AI Definition — by The Open Source Initiative</title>
-    <meta name="description" content="A multi-stakeholder process to define an "Open Source AI".">
+    <meta name='description' content='A multi-stakeholder process to define an "Open Source AI".'>
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://opensource.org/ai">
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Open Source AI Definition — by The Open Source Initiative">
-    <meta property="og:description" content="A multi-stakeholder process to define an "Open Source AI".">
+    <meta property='og:description' content='A multi-stakeholder process to define an "Open Source AI".'>
     <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/759f678a-a340-4fac-8bdd-39d58948634c.jpg?token=fe76lJQvzFTfnaf2xyh8RPjclyoht-lgyebYn-C4BiY&height=1158&width=1200&expires=33265055152">
 
     <!-- Twitter Meta Tags -->
@@ -58,7 +59,7 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <meta property="twitter:domain" content="opensource.org">
     <meta property="twitter:url" content="https://opensource.org/ai">
     <meta name="twitter:title" content="The Open Source AI Definition — by The Open Source Initiative">
-    <meta name="twitter:description" content="A multi-stakeholder process to define an "Open Source AI".">
+    <meta name='twitter:description' content='A multi-stakeholder process to define an "Open Source AI".'>
     <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/759f678a-a340-4fac-8bdd-39d58948634c.jpg?token=fe76lJQvzFTfnaf2xyh8RPjclyoht-lgyebYn-C4BiY&height=1158&width=1200&expires=33265055152">
    
 </head>
@@ -473,8 +474,8 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <script src="https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waw.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js"></script>
-    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-text.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
 </body>
