@@ -742,7 +742,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "LLM360 finds that OSI's Open Source AI definition is a meaningful, reasonable, and holistic standard which will have positive reverberations throughout the community. The definition clarifies the unique challenges surrounding open source AI including the expectations for disseminating code, data, and accessibility requirements. This definition propels the open source ecosystem and aligns with LLM360's mission for community owned AI. Our team is thrilled and excited to fully support OSI's efforts on advancing the Open Source AI definition."
+                                            "LLM360 finds that OSI\'s Open Source AI definition is a meaningful, reasonable, and holistic standard which will have positive reverberations throughout the community. The definition clarifies the unique challenges surrounding open source AI including the expectations for disseminating code, data, and accessibility requirements. This definition propels the open source ecosystem and aligns with LLM360's mission for community owned AI. Our team is thrilled and excited to fully support OSI's efforts on advancing the Open Source AI definition."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Hector Zhengzhong Liu, LLM360</p>
