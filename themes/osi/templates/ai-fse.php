@@ -72,6 +72,108 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
 
+    <div class="header-header-two">
+                        <!-- header- solaric two -->
+                        <div class="header-two-solari header-top">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="header-top-m">
+                                            <div class="left">
+                                                <div class="header-nav main-nav-one">
+                                                    <nav>
+                                                        <ul>
+                                                            <li>
+                                                                <a class="nav-link-green" href="https://opensource.org/about">About</a>
+                                                            </li>
+                    
+                                                            <li>
+                                                                <a class="nav-link-green" href="https://opensource.org/osd">Open Source Definition</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="nav-link-green" href="https://opensource.org/licenses">Licenses</a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="nav-link-green" href="https://opensource.org/blog">Blog</a>
+                                                            </li>
+                                                            <li><a class="nav-link-green" href="https://opensource.org/programs">Programs</a></li>
+                                                            <li><a class="nav-link-green" href="https://members.opensource.org/join/">Join</a></li>
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <div class="social-header-top-h2">
+                                                    <span>Follow us:</span>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="https://go.opensource.org/mastodon" target="_blank">
+                                                                <i class="fa-brands fa-mastodon"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://bsky.app/profile/opensource.org" target="_blank">
+                                                                <i class="fa-brands fa-bluesky"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
+                                                                <i class="fa-brands fa-linkedin-in"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank">
+                                                                <i class="fa-brands fa-reddit"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- header- solaric two end -->
+                        <!-- header man start -->
+                        <div class="header-main-h2  header--sticky">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="main-haeder-wrapper-h2">
+                                            <a href="https://opensource.org/" class="logo-area">
+                                                <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2023/03/cropped-OSI-horizontal-large.png?fit=640%2C229&amp;ssl=1" alt="Open Source Initiative" style="width:50%">
+                                            </a>
+                                        
+                                            <div class="header-nav main-nav-one" id="nav-links">
+                                                <nav>
+                                                    <ul>
+                                                        <li><a class="nav-link" href="https://go.opensource.org/osaid-latest">DEFINITION</a></li>
+                                                        <li><a class="nav-link" href="https://opensource.org/ai/process">PROCESS</a></li>
+                                                        <li><a class="nav-link" href="https://opensource.org/ai/timeline">TIMELINE</a></li>
+                                                        <li><a class="nav-link" href="https://opensource.org/ai/faq" target="_blank">FAQ</a></li>
+                                                        <li><a class="nav-link" href="https://opensource.org/ai/endorsements">ENDORSEMENTS</a></li>
+                                                        <li><a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read version 1.0</a></li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                            <div class="actions-area">
+                                                <div class="menu-btn" id="menu-btn">
+                                                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect y="14" width="20" height="2" fill="#4AAB3D"></rect>
+                                                        <rect y="7" width="20" height="2" fill="#4AAB3D"></rect>
+                                                        <rect width="20" height="2" fill="#4AAB3D"></rect>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- header man end -->
+                    </div>
+
     <!-- Main Content -->
     <main id="main-content">
         <!-- Gutenberg content will be inserted here -->
