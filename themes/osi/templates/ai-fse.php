@@ -477,6 +477,7 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waw.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/vendor/waypoint.js"></script>
+    <script src="https://opensourceorg.github.io/ai/assets/js/vendor/gsap.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
