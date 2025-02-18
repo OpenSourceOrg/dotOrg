@@ -249,58 +249,101 @@ function osi_register_why_ai_definition_pattern() {
             'categories'  => ['ai'],
             'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group">
-                <!-- why area start -->
-                <div class="rts-service-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="title-area-center">
-                                    <h2 class="title skew-up">
-                                        Why Open Source AI needs a definition?
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row g-24 mt--30">
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                                <!-- single why -->
-                                <div class="rts-single-service-solar-energy">
-                                    <div class="icon">
-                                        <i class="fa-brands fa-solid fa-osi" style="font-size:70px;"></i>
-                                    </div>
-                                    <h3 class="h3titles">Open Source Frontier</h3>
-                                    <p class="disc">The traditional view of Open Source code and licenses when applied to AI components are not sufficient to guarantee the freedoms to use, study, share and modify the systems.</p>
-                                </div>
-                                <!-- single why end -->
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                                <!-- single why -->
-                                <div class="rts-single-service-solar-energy">
-                                    <div class="icon">
-                                        <i class="fa-solid fa-building-columns" style="font-size:60px;"></i>
-                                    </div>
-                                    <h3 class="h3titles">Informing Regulators</h3>
-                                    <p class="disc">Government regulations have begun in Europe, the United States, and elsewhere. Communities need a common understanding to educate policy makers.</p>
-                                </div>
-                                <!-- single why end -->
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                                <!-- single why -->
-                                <div class="rts-single-service-solar-energy">
-                                    <div class="icon">
-                                        <i class="fa-solid fa-hands-bubbles" style="font-size:50px;"></i>
-                                    </div>
-                                    <h3 class="h3titles">Combat Openwashing</h3>
-                                    <p class="disc">Companies are calling AI systems "Open Source" even though their licenses contain restrictions that go against the accepted principles and freedoms of Open Source.</p>
-                                </div>
-                                <!-- single why end -->
-                            </div>
-                        </div>
+    <!-- wp:group {"className":"rts-service-area"} -->
+    <div class="wp-block-group rts-service-area">
+        <!-- wp:group {"className":"container"} -->
+        <div class="wp-block-group container">
+            <!-- wp:group {"className":"row"} -->
+            <div class="wp-block-group row">
+                <!-- wp:group {"className":"col-lg-12"} -->
+                <div class="wp-block-group col-lg-12">
+                    <!-- wp:group {"className":"title-area-center"} -->
+                    <div class="wp-block-group title-area-center">
+                        <!-- wp:heading {"className":"title skew-up"} -->
+                        <h2 class="wp-block-heading title skew-up">Why Open Source AI needs a definition?</h2>
+                        <!-- /wp:heading -->
                     </div>
+                    <!-- /wp:group -->
                 </div>
-                <!-- why area end -->
+                <!-- /wp:group -->
+            </div>
+            <!-- /wp:group -->
+
+            <!-- wp:group {"className":"row g-24 mt--30"} -->
+            <div class="wp-block-group row g-24 mt--30">
+                <!-- wp:group {"className":"col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12"} -->
+                <div class="wp-block-group col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <!-- wp:group {"className":"rts-single-service-solar-energy"} -->
+                    <div class="wp-block-group rts-single-service-solar-energy">
+                        <!-- wp:group {"className":"icon"} -->
+                        <div class="wp-block-group icon">
+                            <!-- wp:html -->
+                            <i class="fa-brands fa-solid fa-osi" style="font-size:70px;"></i>
+                            <!-- /wp:html -->
+                        </div>
+                        <!-- /wp:group -->
+                        <!-- wp:heading {"level":3,"className":"h3titles"} -->
+                        <h3 class="wp-block-heading h3titles">Open Source Frontier</h3>
+                        <!-- /wp:heading -->
+                        <!-- wp:paragraph {"className":"disc"} -->
+                        <p class="disc">The traditional view of Open Source code and licenses when applied to AI components are not sufficient to guarantee the freedoms to use, study, share and modify the systems.</p>
+                        <!-- /wp:paragraph -->
+                    </div>
+                    <!-- /wp:group -->
+                </div>
+                <!-- /wp:group -->
+
+                <!-- wp:group {"className":"col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12"} -->
+                <div class="wp-block-group col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <!-- wp:group {"className":"rts-single-service-solar-energy"} -->
+                    <div class="wp-block-group rts-single-service-solar-energy">
+                        <!-- wp:group {"className":"icon"} -->
+                        <div class="wp-block-group icon">
+                            <!-- wp:html -->
+                            <i class="fa-solid fa-building-columns" style="font-size:60px;"></i>
+                            <!-- /wp:html -->
+                        </div>
+                        <!-- /wp:group -->
+                        <!-- wp:heading {"level":3,"className":"h3titles"} -->
+                        <h3 class="wp-block-heading h3titles">Informing Regulators</h3>
+                        <!-- /wp:heading -->
+                        <!-- wp:paragraph {"className":"disc"} -->
+                        <p class="disc">Government regulations have begun in Europe, the United States, and elsewhere. Communities need a common understanding to educate policy makers.</p>
+                        <!-- /wp:paragraph -->
+                    </div>
+                    <!-- /wp:group -->
+                </div>
+                <!-- /wp:group -->
+
+                <!-- wp:group {"className":"col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12"} -->
+                <div class="wp-block-group col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <!-- wp:group {"className":"rts-single-service-solar-energy"} -->
+                    <div class="wp-block-group rts-single-service-solar-energy">
+                        <!-- wp:group {"className":"icon"} -->
+                        <div class="wp-block-group icon">
+                            <!-- wp:html -->
+                            <i class="fa-solid fa-hands-bubbles" style="font-size:50px;"></i>
+                            <!-- /wp:html -->
+                        </div>
+                        <!-- /wp:group -->
+                        <!-- wp:heading {"level":3,"className":"h3titles"} -->
+                        <h3 class="wp-block-heading h3titles">Combat Openwashing</h3>
+                        <!-- /wp:heading -->
+                        <!-- wp:paragraph {"className":"disc"} -->
+                        <p class="disc">Companies are calling AI systems "Open Source" even though their licenses contain restrictions that go against the accepted principles and freedoms of Open Source.</p>
+                        <!-- /wp:paragraph -->
+                    </div>
+                    <!-- /wp:group -->
+                </div>
+                <!-- /wp:group -->
+            </div>
+            <!-- /wp:group -->
+        </div>
+        <!-- /wp:group -->
+    </div>
+    <!-- /wp:group -->
 </div>
-<!-- /wp:group -->',
+<!-- /wp:group -->'
         ]
     );
 }
