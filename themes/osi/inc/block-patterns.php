@@ -419,7 +419,7 @@ function osi_register_stats_area_pattern() {
     register_block_pattern(
         'custom/stats-area',
         [
-            'title'       => __('Stats Area', 'osi'),
+            'title'       => __('stats Area', 'osi'),
             'description' => __('A section displaying key statistics in a structured grid.', 'osi'),
             'categories'  => ['ai'],
             'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
@@ -742,7 +742,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "LLM360 finds that OSI\'s Open Source AI definition is a meaningful, reasonable, and holistic standard which will have positive reverberations throughout the community. The definition clarifies the unique challenges surrounding open source AI including the expectations for disseminating code, data, and accessibility requirements. This definition propels the open source ecosystem and aligns with LLM360's mission for community owned AI. Our team is thrilled and excited to fully support OSI's efforts on advancing the Open Source AI definition."
+                                            "LLM360 finds that OSI\'s Open Source AI definition is a meaningful, reasonable, and holistic standard which will have positive reverberations throughout the community. The definition clarifies the unique challenges surrounding open source AI including the expectations for disseminating code, data, and accessibility requirements. This definition propels the open source ecosystem and aligns with LLM360\'s mission for community owned AI. Our team is thrilled and excited to fully support OSI\'s efforts on advancing the Open Source AI definition."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Hector Zhengzhong Liu, LLM360</p>
@@ -776,7 +776,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Facilitating an Open ecosystem is an important part of our approach at Intel. An open approach to AI can foster greater collaboration across the community, drive innovation and enhance transparency. We applaud OSI's efforts to expand their definition to include AI models and datasets. OSI's creation of a first revision of the definition, can help industry continue to evolve and iterate.
+                                            "Facilitating an Open ecosystem is an important part of our approach at Intel. An open approach to AI can foster greater collaboration across the community, drive innovation and enhance transparency. We applaud OSI\'s efforts to expand their definition to include AI models and datasets. OSI\'s creation of a first revision of the definition, can help industry continue to evolve and iterate.
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Arun Gupta, Vice President and General Manager, Open Ecosystem, Intel</p>
@@ -793,7 +793,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "We welcome OSI's stewardship of the complex process of defining open source AI. The Digital Public Goods Alliance secretariat will build on this foundational work as we update the DPG Standard as it relates to AI as a category of DPGs"
+                                            "We welcome OSI\'s stewardship of the complex process of defining open source AI. The Digital Public Goods Alliance secretariat will build on this foundational work as we update the DPG Standard as it relates to AI as a category of DPGs"
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Liv Marte Kristiansen Nordhaug, CEO of the Digital Public Goods Alliance</p>
@@ -810,7 +810,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Transparency is at the core of EleutherAI's non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
+                                            "Transparency is at the core of EleutherAI\'s non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Aviya Skowron, Head of Policy and Ethics at Eleuther AI</p>
@@ -844,7 +844,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Transparency is at the core of EleutherAI's non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
+                                            "Transparency is at the core of EleutherAI\'s non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Stella Biderman, AI and NLP Researcher, EleutherAI</p>
@@ -946,7 +946,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Open Source Group Japan commends OSI for its leadership in navigating the complex process of defining Open Source AI, and we fully support the Open Source AI Definition (OSAID) as a key standard for open and transparent AI systems. The field of AI is evolving rapidly, and the need for a clear and consistent definition of Open Source AI has never been more critical. OSI's OSAID marks a crucial milestone toward a future where collaboration and openness are the norms in AI development. We anticipate that this will drive innovation, transparency, and the ethical development of AI systems."
+                                            "Open Source Group Japan commends OSI for its leadership in navigating the complex process of defining Open Source AI, and we fully support the Open Source AI Definition (OSAID) as a key standard for open and transparent AI systems. The field of AI is evolving rapidly, and the need for a clear and consistent definition of Open Source AI has never been more critical. OSI\'s OSAID marks a crucial milestone toward a future where collaboration and openness are the norms in AI development. We anticipate that this will drive innovation, transparency, and the ethical development of AI systems."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Shuji Sado, Chairman, Open Source Group Japan</p>
@@ -1022,7 +1022,7 @@ function osi_register_brand_pattern() {
                                 </div>
                             </div>
                             <br />
-                            <p>OSI's efforts wouldn't be possible without the support of our sponsors and thousands of individual members.<br />
+                            <p>OSI\'s efforts wouldn\'t be possible without the support of our sponsors and thousands of individual members.<br />
                                 <strong><a href="https://opensource.org/sponsors">Become a sponsor</a></strong> or <strong><a href="http://members.opensource.org/join#join">join us today!</a></strong>
                             </p>
                         </div>
