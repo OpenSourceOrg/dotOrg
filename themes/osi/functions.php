@@ -573,12 +573,12 @@ function enqueue_ai_template_assets() {
         wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
         
         // Other CSS files
-        wp_enqueue_style('swiper', get_template_directory_uri() . '/assets/css/plugins/swiper.css', array(), '1.0.0');
-        wp_enqueue_style('unicons', get_template_directory_uri() . '/assets/css/plugins/unicons.css', array(), '1.0.0');
-        wp_enqueue_style('metismenu', get_template_directory_uri() . '/assets/css/plugins/metismenu.css', array(), '1.0.0');
-        wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/vendor/animate.css', array(), '1.0.0');
-        wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/vendor/bootstrap.min.css', array(), '1.0.0');
-        wp_enqueue_style('ai-custom', get_template_directory_uri() . '/assets/css/style.css', array('bootstrap'), '1.0.0');
+        wp_enqueue_style('swiper', 'https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css', array(), '1.0.0');
+        wp_enqueue_style('unicons', 'https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css', array(), '1.0.0');
+        wp_enqueue_style('metismenu', 'https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css', array(), '1.0.0');
+        wp_enqueue_style('animate', 'https://opensourceorg.github.io/ai/assets/css/vendor/animate.css', array(), '1.0.0');
+        wp_enqueue_style('bootstrap', 'https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css', array(), '1.0.0');
+        wp_enqueue_style('ai-custom', 'https://opensourceorg.github.io/ai/assets/css/style.css', array('bootstrap'), '1.0.0');
         
         // JavaScript files
         wp_enqueue_script('jquery');
