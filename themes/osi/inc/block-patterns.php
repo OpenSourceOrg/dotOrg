@@ -15,7 +15,8 @@ function osi_register_about_area_pattern() {
             'title'       => __('About Area', 'osi'),
             'description' => __('A reusable section with tabs and custom content.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- rts about area start -->
                 <div class="rts-about-area rts-section-gap">
                     <div class="container">
@@ -77,7 +78,8 @@ function osi_register_about_area_pattern() {
                     </div>
                 </div>
                 <!-- rts about area end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -89,8 +91,9 @@ function osi_register_banner_area_pattern() {
         [
             'title'       => __('Banner Area', 'osi'),
             'description' => __('A banner section with a title, description, and button.', 'osi'),
-			'categories'  => ['ai'],
-            'content'     => '
+            'categories'  => ['ai'],
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- banner area start -->
                 <div class="banner-area-start banner-solar-energy-bg bg_image">
                     <div class="container">
@@ -114,7 +117,8 @@ function osi_register_banner_area_pattern() {
                     </div>
                 </div>
                 <!-- banner area end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -126,8 +130,9 @@ function osi_register_benefits_area_pattern() {
         [
             'title'       => __('Benefits Area', 'osi'),
             'description' => __('A section highlighting the benefits of Open Source AI with an accordion and image.', 'osi'),
-			'categories'  => ['ai'],
-            'content'     => '
+            'categories'  => ['ai'],
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- benefits area start -->
                 <div class="faq-section-start-solar rts-section-gapBottom">
                     <div class="container">
@@ -184,7 +189,8 @@ function osi_register_benefits_area_pattern() {
                     </div>
                 </div>
                 <!-- benefits area end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -197,7 +203,8 @@ function osi_register_whitepaper_pattern() {
             'title'       => __('Whitepaper', 'osi'),
             'description' => __('A section highlighting the Data Governance whitepaper.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- whitepaper area start -->
                 <div class="rts-project-details-area rts-section-gapBottom">
                     <div class="container" style="background:#fff; border-radius: 20px; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03)">
@@ -223,7 +230,8 @@ function osi_register_whitepaper_pattern() {
                     </div>
                 </div>
                 <!-- whitepaper area end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -236,7 +244,8 @@ function osi_register_why_ai_definition_pattern() {
             'title'       => __('Why Open Source AI Needs a Definition', 'osi'),
             'description' => __('A section explaining why Open Source AI needs a definition, with three key reasons.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- why area start -->
                 <div class="rts-service-area">
                     <div class="container">
@@ -279,7 +288,7 @@ function osi_register_why_ai_definition_pattern() {
                                         <i class="fa-solid fa-hands-bubbles" style="font-size:50px;"></i>
                                     </div>
                                     <h3 class="h3titles">Combat Openwashing</h3>
-                                    <p class="disc">Companies are calling AI systems “Open Source” even though their licenses contain restrictions that go against the accepted principles and freedoms of Open Source.</p>
+                                    <p class="disc">Companies are calling AI systems "Open Source" even though their licenses contain restrictions that go against the accepted principles and freedoms of Open Source.</p>
                                 </div>
                                 <!-- single why end -->
                             </div>
@@ -287,7 +296,8 @@ function osi_register_why_ai_definition_pattern() {
                     </div>
                 </div>
                 <!-- why area end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -300,7 +310,8 @@ function osi_register_endorsements_area_pattern() {
             'title'       => __('Endorsements Area', 'osi'),
             'description' => __('A section showcasing endorsements with a title, button, and carousel of logos.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- endorsements area start -->
                 <div class="rts-Product-area rts-section-gap">
                     <div class="container">
@@ -397,7 +408,8 @@ function osi_register_endorsements_area_pattern() {
                     </div>
                 </div>
                 <!-- endorsements area end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -410,7 +422,8 @@ function osi_register_stats_area_pattern() {
             'title'       => __('Stats Area', 'osi'),
             'description' => __('A section displaying key statistics in a structured grid.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- stats -->
                 <div class="rts-funfact fun-fact-bg rts-section-gapBottom">
                     <div class="container">
@@ -493,7 +506,8 @@ function osi_register_stats_area_pattern() {
                     </div>
                 </div>
                 <!-- stats end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -506,7 +520,8 @@ function osi_register_process_area_pattern() {
             'title'       => __('Process Section', 'osi'),
             'description' => __('A section displaying the co-design and research process, along with endorsements.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- process -->
                 <div class="rts-awesome-funfacts-area bg-awesome-feedback">
                     <div class="container-75">
@@ -562,7 +577,8 @@ function osi_register_process_area_pattern() {
                     </div>
                 </div>
                 <!-- process end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -576,7 +592,8 @@ function osi_register_osaid_compliant_systems_pattern() {
             'title'       => __('OSAID Compliant Systems', 'osi'),
             'description' => __('A section listing AI systems that comply with the Open Source AI Definition.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- osaid compliant systems area start -->
                 <div class="rts-service-area rts-section-gapTop">
                     <div class="container">
@@ -601,7 +618,8 @@ function osi_register_osaid_compliant_systems_pattern() {
                     </div>
                 </div>
                 <!-- osaid compliant systems area end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -614,7 +632,8 @@ function register_how_to_participate_pattern() {
             'title'       => __('How to Participate', 'osi'),
             'description' => __('A section explaining how users can get involved with Open Source AI.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- how to participate -->
                 <div class="rts-about-style-four rts-section-gap bg-about-h4 rts-section-gapBottom">
                     <div class="container">
@@ -650,7 +669,8 @@ function register_how_to_participate_pattern() {
                     </div>
                 </div>
                 <!-- how to participate end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -663,7 +683,8 @@ function osi_register_governance_pattern() {
             'title'       => __('Governance', 'osi'),
             'description' => __('A section explaining the governance of the Open Source AI Definition.', 'osi'),
             'categories'  => ['ai'],
-            'content'     => '
+            'content'     => '<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group">
                 <!-- rts governance area start -->
                 <div class="rts-project-details-area">
                     <div class="container">
@@ -685,7 +706,8 @@ function osi_register_governance_pattern() {
                     </div>
                 </div>
                 <!-- rts governance area end -->
-            ',
+</div>
+<!-- /wp:group -->',
         ]
     );
 }
@@ -720,7 +742,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "LLM360 finds that OSI’s Open Source AI definition is a meaningful, reasonable, and holistic standard which will have positive reverberations throughout the community. The definition clarifies the unique challenges surrounding open source AI including the expectations for disseminating code, data, and accessibility requirements. This definition propels the open source ecosystem and aligns with LLM360’s mission for community owned AI. Our team is thrilled and excited to fully support OSI’s efforts on advancing the Open Source AI definition."
+                                            "LLM360 finds that OSI's Open Source AI definition is a meaningful, reasonable, and holistic standard which will have positive reverberations throughout the community. The definition clarifies the unique challenges surrounding open source AI including the expectations for disseminating code, data, and accessibility requirements. This definition propels the open source ecosystem and aligns with LLM360's mission for community owned AI. Our team is thrilled and excited to fully support OSI's efforts on advancing the Open Source AI definition."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Hector Zhengzhong Liu, LLM360</p>
@@ -737,7 +759,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Coming up with the proper open-source definition is challenging given restrictions on data, but I\'m glad to see that the OSI v1.0 definition requires at least that the complete code for data processing (the primary driver of model quality) be open-source.  The devil is in the details, so I\'m sure we\'ll have more to say once we have concrete examples of people trying to apply this Definition to their models."
+                                            "Coming up with the proper open-source definition is challenging given restrictions on data, but I'm glad to see that the OSI v1.0 definition requires at least that the complete code for data processing (the primary driver of model quality) be open-source.  The devil is in the details, so I'm sure we'll have more to say once we have concrete examples of people trying to apply this Definition to their models."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Percy Liang, Director of Center for Research on Foundation Models, Stanford University</p>
@@ -754,7 +776,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            “Facilitating an Open ecosystem is an important part of our approach at Intel. An open approach to AI can foster greater collaboration across the community, drive innovation and enhance transparency. We applaud OSI’s efforts to expand their definition to include AI models and datasets. OSI’s creation of a first revision of the definition, can help industry continue to evolve and iterate.”
+                                            "Facilitating an Open ecosystem is an important part of our approach at Intel. An open approach to AI can foster greater collaboration across the community, drive innovation and enhance transparency. We applaud OSI's efforts to expand their definition to include AI models and datasets. OSI's creation of a first revision of the definition, can help industry continue to evolve and iterate.
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Arun Gupta, Vice President and General Manager, Open Ecosystem, Intel</p>
@@ -771,7 +793,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "We welcome OSI\'s stewardship of the complex process of defining open source AI. The Digital Public Goods Alliance secretariat will build on this foundational work as we update the DPG Standard as it relates to AI as a category of DPGs"
+                                            "We welcome OSI's stewardship of the complex process of defining open source AI. The Digital Public Goods Alliance secretariat will build on this foundational work as we update the DPG Standard as it relates to AI as a category of DPGs"
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Liv Marte Kristiansen Nordhaug, CEO of the Digital Public Goods Alliance</p>
@@ -788,10 +810,10 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Transparency is at the core of EleutherAI’s non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
+                                            "Transparency is at the core of EleutherAI's non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
                                         </p>
                                         <div class="cottom-review-area">
-                                            <p>Aviya Skowron, Head of Policy and Ethics at Eleuther AI</p>
+                                            <p>Aviya Skowron, Head of Policy and Ethics at Eleuther AI</p>
                                         </div>
                                     </div>
                                 </div>
@@ -805,7 +827,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "The Common Crawl Foundation fully supports the Open Source AI Definition as a crucial step in setting clear standards for open and transparent AI development.  This definition will help ensure AI develops responsibly, staying open and accessible to everyone."
+                                            "The Common Crawl Foundation fully supports the Open Source AI Definition as a crucial step in setting clear standards for open and transparent AI development.  This definition will help ensure AI develops responsibly, staying open and accessible to everyone."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Thom Vaughan, Principal Technologist, Common Crawl Foundation</p>
@@ -822,7 +844,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Transparency is at the core of EleutherAI’s non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
+                                            "Transparency is at the core of EleutherAI's non-profit mission. The Open Source AI Definition is a necessary step towards promoting the benefits of open source principles in the field of AI. We believe that this definition supports the needs of independent machine learning researchers and promotes greater transparency among the largest AI developers."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Stella Biderman, AI and NLP Researcher, EleutherAI</p>
@@ -856,7 +878,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "I endorse! We need common vocabulary to define what is open is what isn\'t. This is a solid framework that doesn\'t give a blank check to those who are lightly claiming to be providing open source AI (even if they desperately wish to be qualified as such), and reversely, the framework is open to initiatives that introduce gradients of open source on the various components that make an AI system, and recognizes efforts in opening-up all or some of the components. After all, "AI" is a derivative of software, complete with data, code and artefacts. There is no reason a derivative system should be classified under the foundational definition of "open source" and at the same time, AI systems are becoming so powerful at capturing intelligence away from humans that we need to qualify their degree of openness. Hats off to all involved for producing such an important piece of work."
+                                            "I endorse! We need common vocabulary to define what is open is what isn't. This is a solid framework that doesn't give a blank check to those who are lightly claiming to be providing open source AI (even if they desperately wish to be qualified as such), and reversely, the framework is open to initiatives that introduce gradients of open source on the various components that make an AI system, and recognizes efforts in opening-up all or some of the components. After all, "AI" is a derivative of software, complete with data, code and artefacts. There is no reason a derivative system should be classified under the foundational definition of "open source" and at the same time, AI systems are becoming so powerful at capturing intelligence away from humans that we need to qualify their degree of openness. Hats off to all involved for producing such an important piece of work."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Yann Lechelle, Co-founder CEO @ :probabl.</p>
@@ -873,7 +895,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "This effort you and OSI team have been driving is really important and I’m a believer that time is becoming of the essence. Inevitably it will need to evolve but putting a stamp on it soon is important. We have to define what open source means in the context of AI models in order to preserve the permissionless innovation aspect that created so much value with open source software licenses. The definition is both pragmatic and challenging, and is an excellent first step in a fast-moving area."
+                                            "This effort you and OSI team have been driving is really important and I'm a believer that time is becoming of the essence. Inevitably it will need to evolve but putting a stamp on it soon is important. We have to define what open source means in the context of AI models in order to preserve the permissionless innovation aspect that created so much value with open source software licenses. The definition is both pragmatic and challenging, and is an excellent first step in a fast-moving area."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Mark Collier, Chief Operating Officer at OpenStack Foundation</p>
@@ -907,7 +929,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Software Heritage is committed to preserving and making accessible the invaluable human knowledge embedded in software source code. We believe that AI systems trained on this vast repository should be freely available to all, with as little restrictions as possible.<br />Users of OSAID-compliant AI systems trained on Software Heritage data will enjoy full transparency on how they were built. By endorsing OSAID, we aim to promote transparency and reproducibility within the AI industry. We\'ve been involved and vocal in shaping OSAID 1.0 and look forward to collaborating on further iterations of it, as the practice of developing AI systems from open data sets evolves."
+                                            "Software Heritage is committed to preserving and making accessible the invaluable human knowledge embedded in software source code. We believe that AI systems trained on this vast repository should be freely available to all, with as little restrictions as possible.<br />Users of OSAID-compliant AI systems trained on Software Heritage data will enjoy full transparency on how they were built. By endorsing OSAID, we aim to promote transparency and reproducibility within the AI industry. We've been involved and vocal in shaping OSAID 1.0 and look forward to collaborating on further iterations of it, as the practice of developing AI systems from open data sets evolves."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Stefano Zacchiroli, co-founder and CSO of Software Heritage</p>
@@ -924,7 +946,7 @@ function osi_register_quotes_pattern() {
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-                                            "Open Source Group Japan commends OSI for its leadership in navigating the complex process of defining Open Source AI, and we fully support the Open Source AI Definition (OSAID) as a key standard for open and transparent AI systems. The field of AI is evolving rapidly, and the need for a clear and consistent definition of Open Source AI has never been more critical. OSI\'s OSAID marks a crucial milestone toward a future where collaboration and openness are the norms in AI development. We anticipate that this will drive innovation, transparency, and the ethical development of AI systems."
+                                            "Open Source Group Japan commends OSI for its leadership in navigating the complex process of defining Open Source AI, and we fully support the Open Source AI Definition (OSAID) as a key standard for open and transparent AI systems. The field of AI is evolving rapidly, and the need for a clear and consistent definition of Open Source AI has never been more critical. OSI's OSAID marks a crucial milestone toward a future where collaboration and openness are the norms in AI development. We anticipate that this will drive innovation, transparency, and the ethical development of AI systems."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Shuji Sado, Chairman, Open Source Group Japan</p>
@@ -1000,7 +1022,7 @@ function osi_register_brand_pattern() {
                                 </div>
                             </div>
                             <br />
-                            <p>OSI’s efforts wouldn’t be possible without the support of our sponsors and thousands of individual members.<br />
+                            <p>OSI's efforts wouldn't be possible without the support of our sponsors and thousands of individual members.<br />
                                 <strong><a href="https://opensource.org/sponsors">Become a sponsor</a></strong> or <strong><a href="http://members.opensource.org/join#join">join us today!</a></strong>
                             </p>
                         </div>
