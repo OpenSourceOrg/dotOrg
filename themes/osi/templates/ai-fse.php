@@ -72,40 +72,6 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
 
-    <!-- Top Navbar -->
-    <header class="header-header-two">
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header-top-m">
-                            <div class="left">
-                                <?php
-                                wp_nav_menu([
-                                    'theme_location' => 'header-menu',
-                                    'menu_class' => 'header-nav main-nav-one',
-                                    'container' => 'nav'
-                                ]);
-                                ?>
-                            </div>
-                            <div class="right">
-                                <div class="social-header-top-h2">
-                                    <span>Follow us:</span>
-                                    <ul>
-                                        <li><a href="https://go.opensource.org/mastodon" target="_blank"><i class="fa-brands fa-mastodon"></i></a></li>
-                                        <li><a href="https://bsky.app/profile/opensource.org" target="_blank"><i class="fa-brands fa-bluesky"></i></a></li>
-                                        <li><a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                                        <li><a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank"><i class="fa-brands fa-reddit"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <!-- Main Content -->
     <main id="main-content">
         <!-- Gutenberg content will be inserted here -->
