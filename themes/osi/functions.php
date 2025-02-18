@@ -443,7 +443,7 @@ function osi_register_block_template() {
 
     // Enqueue styles conditionally
     add_action('wp_enqueue_scripts', function () use ($template_slug) {
-        if (get_page_template_slug() === 'templates/ai-template.html' || get_page_template_slug() === 'templates/ai-fse.php'	) {
+        if (get_page_template_slug() === 'templates/ai-template.html') {
             // Font Awesome
             wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css', [], null);
 

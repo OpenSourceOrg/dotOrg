@@ -19,6 +19,26 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
         wp_enqueue_script('admin-bar');
      	wp_print_styles('admin-bar');
 	}
+
+    wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css', [], null);
+
+    // Swiper
+    wp_enqueue_style('swiper', 'https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css', [], null);
+
+    // Unicons
+    wp_enqueue_style('unicons', 'https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css', [], null);
+
+    // Metismenu
+    wp_enqueue_style('metismenu', 'https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css', [], null);
+
+    // Animate CSS
+    wp_enqueue_style('animate', 'https://opensourceorg.github.io/ai/assets/css/vendor/animate.css', [], null);
+
+    // Bootstrap
+    wp_enqueue_style('bootstrap', 'https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css', [], null);
+
+    // Custom Style
+    wp_enqueue_style('custom-style', 'https://opensourceorg.github.io/ai/assets/css/style.css', [], null);
     ?>
 	
 	
