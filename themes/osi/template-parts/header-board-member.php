@@ -67,8 +67,8 @@
 .member-image img.circular-image {
 	border-radius: 50%;
 	border: 4px solid #FFF;
-	width: 200px; /* adjust as needed */
-	height: 200px;
+	width: 300px; /* adjust as needed */
+	height: 300px;
 	object-fit: cover;
 }
 .member-position,
@@ -81,6 +81,5 @@
 .member-pronouns {
 	font-family: 'Space Mono', monospace;
 	display: inline-block;
-	margin-top: 0.5rem;
 }
 </style>
