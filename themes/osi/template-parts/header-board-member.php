@@ -3,7 +3,7 @@
 		<div class="wp-block-cover__inner-container">
 			<div class="wp-block-columns">
 				<!-- Left Column -->
-				<div class="wp-block-column">
+				<div class="wp-block-column" style="text-align: center;">
 					<?php if (has_post_thumbnail()) : ?>
 						<div class="member-image">
 							<?php the_post_thumbnail('full', array('class' => 'circular-image')); ?>
@@ -41,6 +41,13 @@
 					<span class="member-seat">
 						<?php echo __('Type of Seat', 'osi') . ': ' . wp_kses_post(osi_get_single_taxonomy_terms_links($post, 'taxonomy-seat-type')); ?>
 					</span>
+
+					<!-- Add back the term item -->
+					<?php if(osi_field_check('term_item')) : ?>
+						<span class="member-term-item">
+							<?php osi_the_valid_field('term_item'); ?>
+						</span>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -54,13 +61,14 @@
 .member-image img.circular-image {
 	border-radius: 50%;
 	border: 4px solid #FFF;
-	width: 300px;
-	height: 300px;
+	width: 200px; /* adjust as needed */
+	height: 200px;
 	object-fit: cover;
 }
 .member-position,
 .member-dates,
-.member-seat {
+.member-seat,
+.member-term-item {
 	display: block;
 	margin-bottom: 1rem;
 }
