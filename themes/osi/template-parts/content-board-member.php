@@ -1,68 +1,54 @@
 <?php
 /**
- * Template part for displaying board member post type content
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * Template for displaying a board member in a side-by-side layout.
  *
  * @package osi
  */
-
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="board-member-layout">
-		<!-- Include the header for the board member -->
-		<div class="left-column">
-			<?php get_template_part('template-parts/header-board-member'); ?>
+	<div class="board-member-wrapper">
+		<!-- Fixed Left Column: Header -->
+		<div class="board-member-header">
+			<?php get_template_part( 'template-parts/header-board-member' ); ?>
 		</div>
-
-		<!-- Right Column for the post content -->
-		<div class="right-column">
+		
+		<!-- Scrollable Right Column: Content -->
+		<div class="board-member-content">
 			<div class="entry-content post--content">
 				<?php the_content(); ?>
 			</div><!-- .entry-content -->
+			<section class="alignwide email-block">
+				<?php // Uncomment below if needed: get_template_part( 'template-parts/nav-postname-pager' ); ?>
+				<?php // Uncomment below if needed: get_template_part( 'template-parts/email-block' ); ?>
+			</section>
 		</div>
 	</div>
-</article><!-- #post-<?php the_ID(); ?> -->
+</article>
 
 <style>
-.board-member-layout {
-    display: flex;
+.board-member-wrapper {
+	display: flex;
 }
 
-.left-column {
-    flex: 0 0 30%; /* Fixed width of 30% */
-    padding: 20px; /* Optional padding */
-    text-align: center; /* Center content */
+/* Left Column: Fixed Header */
+.board-member-header {
+	width: 40%;               /* Adjust as needed (or use a fixed width, e.g., 350px) */
+	position: fixed;          /* Keeps the header fixed on the left */
+	top: 0;
+	left: 0;
+	bottom: 0;
+	overflow-y: auto;         /* In case header content overflows */
+	background-color: #fff;   /* Optional: ensures the content below doesn't show through */
+	padding: 20px;            /* Optional spacing */
+	box-sizing: border-box;
 }
 
-.right-column {
-    flex: 1; /* Takes the remaining space */
-    overflow-y: auto; /* Makes it scrollable if content overflows */
-    padding: 20px; /* Optional padding */
-}
-
-.member-image {
-    margin-bottom: 1.5rem;
-}
-
-.member-image img.circular-image {
-    border-radius: 50%;
-    border: 4px solid #FFF;
-    width: 300px; /* adjust as needed */
-    height: 300px;
-    object-fit: cover;
-}
-
-.member-position,
-.member-dates,
-.member-seat,
-.member-term-item {
-    display: block;
-    margin-bottom: 1rem;
-}
-
-.member-pronouns {
-    font-family: 'Space Mono', monospace;
-    display: inline-block;
+/* Right Column: Scrollable Content */
+.board-member-content {
+	margin-left: 40%;         /* Must match header width; if using fixed px for header, set this to same px value */
+	width: 60%;
+	padding: 20px;
+	overflow-y: auto;
+	box-sizing: border-box;
 }
 </style>
