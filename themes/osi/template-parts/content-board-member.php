@@ -1,7 +1,7 @@
 <?php
 /**
- * Template for displaying a board member in a side-by-side layout
- * where the left column (header) is sticky and only the right column scrolls.
+ * Template for displaying a board member in a side-by-side layout:
+ * Left column (header) is 30% wide and sticky; right column is 70% wide.
  *
  * @package osi
  */
@@ -9,12 +9,12 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="board-member-wrapper">
 		
-		<!-- Left Column: Sticky CPT Header -->
+		<!-- LEFT COLUMN: Sticky CPT Header (30% width) -->
 		<div class="board-member-header">
 			<?php get_template_part( 'template-parts/header-board-member' ); ?>
 		</div>
 		
-		<!-- Right Column: Scrollable Content -->
+		<!-- RIGHT COLUMN: Main Content (70% width, scrolls normally) -->
 		<div class="board-member-content">
 			<div class="entry-content post--content">
 				<?php the_content(); ?>
@@ -24,37 +24,34 @@
 				<?php // get_template_part( 'template-parts/nav-postname-pager' ); ?>
 				<?php // get_template_part( 'template-parts/email-block' ); ?>
 			</section>
-		</div>
+		</div><!-- .board-member-content -->
 	</div><!-- .board-member-wrapper -->
 </article>
 
 <style>
 /* 
-   1) We make a flex container for the two columns.
-   2) The left column is "sticky" so it stays pinned below the site header.
-   3) The right column scrolls normally.
+   The container for both columns:
+   - We use flex to lay out the left and right columns.
+   - We leave some gap if needed.
 */
-
 .board-member-wrapper {
 	display: flex;
-	align-items: flex-start; /* So columns top-align */
-	gap: 20px; /* optional spacing between columns */
+	align-items: flex-start; /* So columns align at the top */
+	gap: 0; /* adjust as desired */
 }
 
-/* LEFT COLUMN: Sticky */
+/* LEFT COLUMN: 30% width, sticky under the site header */
 .board-member-header {
-	position: sticky; 
-	top: 120px; /* adjust to your site header’s height */
-	flex-shrink: 0; /* so it doesn’t shrink */
-	width: 350px;    /* pick any suitable width */
-	background-color: #fff;
-	padding: 20px;
+	position: sticky;
+	top: 120px; /* match this to your site header height so there's no overlap */
+	width: 30%;
+	flex-shrink: 0; /* prevents the left column from shrinking */
 	box-sizing: border-box;
 }
 
-/* RIGHT COLUMN: Normal Flow, Fills Remaining Space */
+/* RIGHT COLUMN: 70% width, scrolls normally */
 .board-member-content {
-	flex: 1;
+	width: 70%;
 	padding: 20px;
 	box-sizing: border-box;
 }

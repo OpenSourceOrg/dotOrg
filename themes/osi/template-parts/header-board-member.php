@@ -1,12 +1,13 @@
 <?php
 /**
- * Template part for displaying board member header details.
+ * Template part for displaying board member header details in a single column.
  *
  * @package osi
  */
 ?>
 <header class="entry-header cover--header no-thumbnail">
-	<div class="wp-block-cover alignfull has-neutral-dark-background-color has-background-dim-100 has-background-dim">
+	<!-- Removed alignfull to prevent forced full width -->
+	<div class="wp-block-cover has-neutral-dark-background-color has-background-dim-100 has-background-dim">
 		<div class="wp-block-cover__inner-container">
 			<!-- SINGLE COLUMN for CPT Header Elements -->
 			<div class="cpt-header-single-column">
@@ -69,7 +70,7 @@
 </header>
 
 <style>
-/* Keep these existing styles: */
+/* Keep existing styles: */
 .member-image {
 	margin-bottom: 1.5rem;
 }
@@ -91,8 +92,7 @@
 	font-family: 'Space Mono', monospace;
 	display: inline-block;
 }
-
-/* Ensure each element in the header stacks vertically */
+/* Stack each element in the header vertically */
 .cpt-header-single-column > * {
 	display: block;
 	margin-bottom: 1rem;
