@@ -4,7 +4,7 @@
 			<div class="wp-block-columns">
 				<div class="wp-block-column three-column">
 					<?php get_template_part( 'template-parts/featured-image', 'cropped' ); ?>
-					<?php the_title( '<h1 class="h2">', '</h1>' ); ?>hola
+					<h1 class="h2"><?php the_title(); ?></h1>
 					<?php if( osi_field_check( 'pronouns' ) ) : ?>
 						<span class="member-pronouns"><?php osi_the_valid_field( 'pronouns' ); ?></span>
 					<?php endif; ?>
