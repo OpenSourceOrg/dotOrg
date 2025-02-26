@@ -1,7 +1,9 @@
 <?php
 /**
  * Template for displaying a board member in a side-by-side layout:
- * Left column (header) is 30% wide and sticky; right column is 70% wide.
+ *  - Left column (header) is 30% width, sticky under the site header.
+ *  - Right column (main content) is 70% width, scrolls normally.
+ *  - The wrapper spans 100% of the browser width.
  *
  * @package osi
  */
@@ -29,23 +31,24 @@
 </article>
 
 <style>
-/* 
-   The container for both columns:
-   - We use flex to lay out the left and right columns.
-   - We leave some gap if needed.
-*/
+/* Make the wrapper fill the entire screen width */
 .board-member-wrapper {
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: 0;
 	display: flex;
-	align-items: flex-start; /* So columns align at the top */
-	gap: 0; /* adjust as desired */
+	align-items: flex-start; /* top-align columns */
 }
 
 /* LEFT COLUMN: 30% width, sticky under the site header */
 .board-member-header {
 	position: sticky;
-	top: 120px; /* match this to your site header height so there's no overlap */
+	top: 120px; /* adjust to your site header height */
 	width: 30%;
-	flex-shrink: 0; /* prevents the left column from shrinking */
+	flex-shrink: 0; /* don't let the left column shrink */
+	background-color: #fff; /* optional if you need a background */
+	padding: 20px;
 	box-sizing: border-box;
 }
 
