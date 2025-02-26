@@ -24,6 +24,12 @@
 							<?php osi_the_valid_field('board_position'); ?>
 						</span>
 					<?php endif; ?>
+					<span class="pill-taxonomy">
+						<?php echo wp_kses_post( osi_get_single_taxonomy_terms_links( $post, 'taxonomy-status' ) ); ?>
+					</span>
+					<?php if( osi_field_check( 'proposed_by' ) ) : ?>
+						<p><?php echo __( 'Proposed by', 'osi' ); ?>: <span class="member-pronouns"><?php osi_the_valid_field( 'proposed_by' ); ?></span></p>
+					<?php endif; ?>
 
 					<?php if(osi_field_check('current_term_start_date')) : ?>
 						<span class="member-dates">
