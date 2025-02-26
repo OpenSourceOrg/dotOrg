@@ -1,9 +1,9 @@
 <header class="entry-header cover--header no-thumbnail">
 	<div class="wp-block-cover alignfull has-neutral-dark-background-color has-background-dim-100 has-background-dim">
 		<div class="wp-block-cover__inner-container">
-			<div class="wp-block-columns">
+			<div class="board-member-layout">
 				<!-- Left Column -->
-				<div class="wp-block-column" style="text-align: center;">
+				<div class="left-column">
 					<?php if (has_post_thumbnail()) : ?>
 						<div class="member-image">
 							<?php the_post_thumbnail('full', array('class' => 'circular-image')); ?>
@@ -18,7 +18,7 @@
 				</div>
 
 				<!-- Right Column -->
-				<div class="wp-block-column">
+				<div class="right-column">
 					<span class="pill-taxonomy">
 						<?php echo wp_kses_post( osi_get_single_taxonomy_terms_links( $post, 'taxonomy-status' ) ); ?>
 					</span>
@@ -61,9 +61,26 @@
 </header>
 
 <style>
+.board-member-layout {
+	display: flex;
+}
+
+.left-column {
+	flex: 0 0 30%; /* Fixed width of 30% */
+	padding: 20px; /* Optional padding */
+	text-align: center; /* Center content */
+}
+
+.right-column {
+	flex: 1; /* Takes the remaining space */
+	overflow-y: auto; /* Makes it scrollable if content overflows */
+	padding: 20px; /* Optional padding */
+}
+
 .member-image {
 	margin-bottom: 1.5rem;
 }
+
 .member-image img.circular-image {
 	border-radius: 50%;
 	border: 4px solid #FFF;
@@ -71,6 +88,7 @@
 	height: 300px;
 	object-fit: cover;
 }
+
 .member-position,
 .member-dates,
 .member-seat,
@@ -78,6 +96,7 @@
 	display: block;
 	margin-bottom: 1rem;
 }
+
 .member-pronouns {
 	font-family: 'Space Mono', monospace;
 	display: inline-block;
