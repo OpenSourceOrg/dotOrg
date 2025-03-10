@@ -4,19 +4,12 @@ Template Name: /ai/ template
 */
 ?>
 
-<<<<<<< HEAD
-<!doctype html>
-<html lang="en-US">
-=======
->>>>>>> develop-rm
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-<<<<<<< HEAD
-=======
-	
+
     <?php
     if ( is_user_logged_in() ) {
         wp_enqueue_style('admin-bar');
@@ -24,30 +17,19 @@ Template Name: /ai/ template
      	wp_print_styles('admin-bar');
 	}
     ?>
-	
-	
->>>>>>> develop-rm
+
+
 	<meta name='robots' content='max-image-preview:large' />
 	<link rel='dns-prefetch' href='//stats.wp.com' />
 	<link rel='dns-prefetch' href='//i0.wp.com' />
 	<link rel='dns-prefetch' href='//c0.wp.com' />
 	<link rel="alternate" type="application/rss+xml" title="Open Source Initiative &raquo; Feed" href="https://opensource.org/feed" />
-<<<<<<< HEAD
-	<link rel="alternate" type="application/rss+xml" title="Open Source Initiative &raquo; Comments Feed" href="https://opensource.org/comments/feed" />
-=======
->>>>>>> develop-rm
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="https://opensourceorg.github.io/ai/assets/images/fav.png">
     <script defer data-domain="opensource.org" src="https://plausible.io/js/script.js"></script>
-<<<<<<< HEAD
-    <script defer data-domain="opensourceorg.github.io/ai" src="https://plausible.io/js/script.js"></script>
-    <!-- fontawesome css -->
-    <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/fontawesome-6.css">
-=======
     <!-- fontawesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
->>>>>>> develop-rm
     <!-- fontawesome css -->
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css">
     <link rel="stylesheet" href="https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css">
@@ -60,21 +42,13 @@ Template Name: /ai/ template
 
     <!-- HTML Meta Tags -->
     <title>The Open Source AI Definition — by The Open Source Initiative</title>
-<<<<<<< HEAD
-    <meta name="description" content="We’re driving a multi-stakeholder process to define an “Open Source AI”.">
-=======
     <meta name="description" content="A multi-stakeholder process to define an “Open Source AI”.">
->>>>>>> develop-rm
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://opensource.org/ai">
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Open Source AI Definition — by The Open Source Initiative">
-<<<<<<< HEAD
-    <meta property="og:description" content="We’re driving a multi-stakeholder process to define an “Open Source AI”.">
-=======
     <meta property="og:description" content="A multi-stakeholder process to define an “Open Source AI”.">
->>>>>>> develop-rm
     <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/759f678a-a340-4fac-8bdd-39d58948634c.jpg?token=fe76lJQvzFTfnaf2xyh8RPjclyoht-lgyebYn-C4BiY&height=1158&width=1200&expires=33265055152">
 
     <!-- Twitter Meta Tags -->
@@ -82,18 +56,9 @@ Template Name: /ai/ template
     <meta property="twitter:domain" content="opensource.org">
     <meta property="twitter:url" content="https://opensource.org/ai">
     <meta name="twitter:title" content="The Open Source AI Definition — by The Open Source Initiative">
-<<<<<<< HEAD
-    <meta name="twitter:description" content="We’re driving a multi-stakeholder process to define an “Open Source AI”.">
-    <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/759f678a-a340-4fac-8bdd-39d58948634c.jpg?token=fe76lJQvzFTfnaf2xyh8RPjclyoht-lgyebYn-C4BiY&height=1158&width=1200&expires=33265055152">
-
-</head>
-
-
-<div class="solar-energy-home onepage">
-=======
     <meta name="twitter:description" content="A multi-stakeholder process to define an “Open Source AI”.">
     <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/759f678a-a340-4fac-8bdd-39d58948634c.jpg?token=fe76lJQvzFTfnaf2xyh8RPjclyoht-lgyebYn-C4BiY&height=1158&width=1200&expires=33265055152">
-   
+
 </head>
 <?php
     if ( is_user_logged_in() ) {
@@ -102,8 +67,7 @@ Template Name: /ai/ template
     ?>
 
 <body class="solar-energy-home onepage">
->>>>>>> develop-rm
-    
+
     <div class="header-header-two">
         <!-- header- solaric two -->
         <div class="header-two-solari header-top">
@@ -112,16 +76,13 @@ Template Name: /ai/ template
                     <div class="col-lg-12">
                         <div class="header-top-m">
                             <div class="left">
-<<<<<<< HEAD
-                                
-=======
                                 <div class="header-nav main-nav-one">
                                     <nav>
                                         <ul>
                                             <li>
                                                 <a class="nav-link-green" href="https://opensource.org/about">About</a>
                                             </li>
-    
+
                                             <li>
                                                 <a class="nav-link-green" href="https://opensource.org/osd">Open Source Definition</a>
                                             </li>
@@ -136,46 +97,28 @@ Template Name: /ai/ template
                                         </ul>
                                     </nav>
                                 </div>
->>>>>>> develop-rm
                             </div>
                             <div class="right">
                                 <div class="social-header-top-h2">
                                     <span>Follow us:</span>
                                     <ul>
                                         <li>
-<<<<<<< HEAD
-                                            <a href="https://social.opensource.org/@osi">
-=======
                                             <a href="https://go.opensource.org/mastodon" target="_blank">
->>>>>>> develop-rm
                                                 <i class="fa-brands fa-mastodon"></i>
                                             </a>
                                         </li>
                                         <li>
-<<<<<<< HEAD
-                                            <a href="https://twitter.com/OpenSourceOrg">
-                                                <i class="fa-brands fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-">
-=======
                                             <a href="https://bsky.app/profile/opensource.org" target="_blank">
                                                 <i class="fa-brands fa-bluesky"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
->>>>>>> develop-rm
                                                 <i class="fa-brands fa-linkedin-in"></i>
                                             </a>
                                         </li>
                                         <li>
-<<<<<<< HEAD
-                                            <a href="https://www.reddit.com/user/opensourceinitiative/">
-=======
                                             <a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank">
->>>>>>> develop-rm
                                                 <i class="fa-brands fa-reddit"></i>
                                             </a>
                                         </li>
@@ -194,32 +137,10 @@ Template Name: /ai/ template
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="main-haeder-wrapper-h2">
-<<<<<<< HEAD
-                            <a href="https://opensource.org/ai" class="logo-area">
-                                <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2023/03/cropped-OSI-horizontal-large.png?fit=640%2C229&ssl=1" alt="Open Source Initiative" style="width:50%">
-                            </a>
-
-                            <div class="header-nav main-nav-one">
-                                <nav>
-                                    <ul>
-                                        <li>
-                                            <a class="nav-link" href="https://go.opensource.org/osaid-latest">DEFINITION</a>
-                                        </li>
-
-                                        <li>
-                                            <a class="nav-link" href="https://opensource.org/ai/process">PROCESS</a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link" href="https://hackmd.io/@opensourceinitiative/osaid-faq" target="_blank">FAQS</a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link" href="https://opensource.org/ai/forums">FORUMS</a>
-                                        </li>
-=======
                             <a href="https://opensource.org/" class="logo-area">
                                 <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2023/03/cropped-OSI-horizontal-large.png?fit=640%2C229&ssl=1" alt="Open Source Initiative" style="width:50%">
                             </a>
-                        
+
                             <div class="header-nav main-nav-one" id="nav-links">
                                 <nav>
                                     <ul>
@@ -229,14 +150,10 @@ Template Name: /ai/ template
                                         <li><a class="nav-link" href="https://opensource.org/ai/faq" target="_blank">FAQ</a></li>
                                         <li><a class="nav-link" href="https://opensource.org/ai/endorsements">ENDORSEMENTS</a></li>
                                         <li><a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read version 1.0</a></li>
->>>>>>> develop-rm
                                     </ul>
                                 </nav>
                             </div>
                             <div class="actions-area">
-<<<<<<< HEAD
-                                <a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read the latest draft</a>
-=======
                                 <div class="menu-btn" id="menu-btn">
                                     <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect y="14" width="20" height="2" fill="#4AAB3D"></rect>
@@ -244,7 +161,6 @@ Template Name: /ai/ template
                                         <rect width="20" height="2" fill="#4AAB3D"></rect>
                                     </svg>
                                 </div>
->>>>>>> develop-rm
                             </div>
                         </div>
                     </div>
@@ -264,15 +180,6 @@ Template Name: /ai/ template
                         <div class="wrapper col-lg-7 mt_md--30 mt_sm--40">
                             <!-- Photo by <a href="https://unsplash.com/@billy_huy?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Billy Huynh</a> on <a href="https://unsplash.com/photos/blue-skies-filled-of-stars-W8KTS-mhFUE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a> -->
                             <h1 class="title skew-up">
-<<<<<<< HEAD
-                                THE OPEN SOURCE<br />AI DEFINITION
-                            </h1>
-                            <p class="disc skew-up">
-                                We’re driving a multi-stakeholder process to define<br />an “Open Source AI” and you can endorse the definition.
-                            </p>
-                            <div class="button-area ">
-                                <a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary bg-w">Read the latest draft</a>
-=======
                                 THE OPEN SOURCE<br />AI DEFINITION 1.0
                             </h1>
                             <p class="disc skew-up">
@@ -280,7 +187,6 @@ Template Name: /ai/ template
                             </p>
                             <div class="button-area ">
                                 <a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary bg-w">Read version 1.0</a>
->>>>>>> develop-rm
                             </div>
                         </div>
                     </div>
@@ -420,26 +326,12 @@ Template Name: /ai/ template
                         <div class="thumbnail-large-bottom">
                             <img src="https://opensourceorg.github.io/ai/assets/images/supporters/paris-workshop.jpg" alt="OSAID Paris Workshop" class="imgbw">
                         </div>
-<<<<<<< HEAD
-                        <div class="rts-about-left-image-area">
-                            <div class="thumbnail">
-                                <div class="small-image-area images" style="bottom:500px;width: 200px; right: -150px; text-align: left;">
-                                    <p style="top:200px;padding: 10px 10px 10px 0;font-size:13px;font-weight:300">
-                                        Data Workshop, Paris, October 2024
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-=======
->>>>>>> develop-rm
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- rts faq area end -->
-<<<<<<< HEAD
-=======
 
     <!-- rts project details area start -->
     <div class="rts-project-details-area  rts-section-gapBottom">
@@ -463,8 +355,7 @@ Template Name: /ai/ template
         </div>
     </div>
     <!-- rts project details area end -->
->>>>>>> develop-rm
-    
+
     <!-- rts service area start -->
     <div class="rts-service-area">
         <div class="container">
@@ -482,11 +373,7 @@ Template Name: /ai/ template
                     <!-- single service -->
                     <div class="rts-single-service-solar-energy">
                         <div class="icon">
-<<<<<<< HEAD
-                            <i class="fa-brands fa-osi" style="font-size:70px;"></i>
-=======
                             <i class="fa-brands fa-solid fa-osi" style="font-size:70px;"></i>
->>>>>>> develop-rm
                         </div>
                         <h3 class="h3titles">Open Source Frontier</h3>
                         <p class="disc">The traditional view of Open Source code and licenses when applied to AI components are not sufficient to guarantee the freedoms to use, study, share and modify the systems.</p>
@@ -497,17 +384,10 @@ Template Name: /ai/ template
                     <!-- single service -->
                     <div class="rts-single-service-solar-energy">
                         <div class="icon">
-<<<<<<< HEAD
-                            <i class="fa-light fa-building-columns" style="font-size:60px;"></i>
-                        </div>
-                        <h3 class="h3titles">Shaping Regulation</h3>
-                        <p class="disc">Government regulations have begun in Europe, the United States, and elsewhere. We have the opportunity to share these new policies and laws by defining Open Source AI.</p>
-=======
                             <i class="fa-solid fa-building-columns" style="font-size:60px;"></i>
                         </div>
                         <h3 class="h3titles">Informing Regulators</h3>
                         <p class="disc">Government regulations have begun in Europe, the United States, and elsewhere. Communities need a common understanding to educate policy makers.</p>
->>>>>>> develop-rm
                     </div>
                     <!-- single service end -->
                 </div>
@@ -515,18 +395,14 @@ Template Name: /ai/ template
                     <!-- single service -->
                     <div class="rts-single-service-solar-energy">
                         <div class="icon">
-<<<<<<< HEAD
-                            <i class="fa-light fa-hands-bubbles" style="font-size:50px;"></i>
-=======
                             <i class="fa-solid fa-hands-bubbles" style="font-size:50px;"></i>
->>>>>>> develop-rm
                         </div>
                         <h3 class="h3titles">Combat Openwashing</h3>
                         <p class="disc">Companies are calling AI systems “open source” even though their licenses contain restrictions that go against the accepted principles and freedoms of open source.</p>
                     </div>
                     <!-- single service end -->
                 </div>
-        
+
             </div>
         </div>
     </div>
@@ -598,8 +474,6 @@ Template Name: /ai/ template
                                     <!-- single product area start -->
                                     <div class="rts-solar-single-product-one">
                                         <a class="thumbnail">
-<<<<<<< HEAD
-=======
                                             <img src="https://opensourceorg.github.io/ai/assets/images/supporters/bloomberg.png" alt="Bloomberg Engineering">
                                         </a>
                                     </div>
@@ -609,7 +483,6 @@ Template Name: /ai/ template
                                     <!-- single product area start -->
                                     <div class="rts-solar-single-product-one">
                                         <a class="thumbnail">
->>>>>>> develop-rm
                                             <img src="https://opensourceorg.github.io/ai/assets/images/supporters/openinfra.png" alt="OpenInfra Foundation">
                                         </a>
                                     </div>
@@ -628,9 +501,6 @@ Template Name: /ai/ template
                                     <!-- single product area start -->
                                     <div class="rts-solar-single-product-one">
                                         <a class="thumbnail">
-<<<<<<< HEAD
-                                            <img src="https://opensourceorg.github.io/ai/assets/images/supporters/didun.png" alt="DIDUN">
-=======
                                             <img src="https://opensourceorg.github.io/ai/assets/images/supporters/common-crawl.png" alt="Common Crawl">
                                         </a>
                                     </div>
@@ -641,7 +511,6 @@ Template Name: /ai/ template
                                     <div class="rts-solar-single-product-one">
                                         <a class="thumbnail">
                                             <img src="https://opensourceorg.github.io/ai/assets/images/supporters/code-gouv-fr.png" alt="code.gov.fr">
->>>>>>> develop-rm
                                         </a>
                                     </div>
                                     <!-- single product area end -->
@@ -708,8 +577,6 @@ Template Name: /ai/ template
                                         </a>
                                     </div>
                                     <!-- single product area end -->
-<<<<<<< HEAD
-=======
                                 </div>																																<div class="swiper-slide">
                                     <!-- single product area start -->
                                     <div class="rts-solar-single-product-one">
@@ -754,7 +621,6 @@ Template Name: /ai/ template
                                         </a>
                                     </div>
                                     <!-- single product area end -->
->>>>>>> develop-rm
                                 </div>
                                 <div class="swiper-slide">
                                     <!-- single product area start -->
@@ -787,21 +653,14 @@ Template Name: /ai/ template
     <!-- funfact -->
     <div class="rts-funfact fun-fact-bg rts-section-gapBottom">
         <div class="container">
-<<<<<<< HEAD
-=======
             <h3>Overall process</h3>
->>>>>>> develop-rm
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <!-- single cpounter up area start -->
                     <div class="single-counter-up-start-solari">
                         <div class="bg-text"></div>
                         <div class="main-content">
-<<<<<<< HEAD
-                            <h2 class="title"><span class="counter">20</span></h2>
-=======
                             <h2 class="title"><span class="counter">20</span>+</h2>
->>>>>>> develop-rm
                             <p>Supporting Organizations</p>
                         </div>
                     </div>
@@ -840,8 +699,6 @@ Template Name: /ai/ template
                     </div>
                     <!-- single cpounter up area end -->
                 </div>
-<<<<<<< HEAD
-=======
                 <h3>Representation in the co-design process</h3>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <!-- single cpounter up area start -->
@@ -887,13 +744,12 @@ Template Name: /ai/ template
                     </div>
                     <!-- single cpounter up area end -->
                 </div>
->>>>>>> develop-rm
             </div>
         </div>
     </div>
     <!-- funfact end-->
 
-    
+
     <div class="rts-awesome-funfacts-area bg-awesome-feedback">
         <div class="container-75">
             <div class="row align-items-center">
@@ -904,11 +760,7 @@ Template Name: /ai/ template
                             <div class="wrapper">
                                 <h2>Co-design</h2>
                                 <h5 class="title skew-up">2023 - 2024</h5>
-<<<<<<< HEAD
-                                <p>A co-design expert introduced the creative methods that ensure decisions are made with the community. This exercise has resulted in a definition encompassing 17 AI components.</p>
-=======
                                 <p>In 2023, we started the <a href="https://opensource.org/ai/process" style="color: var(--color-primary);">co-design</a> process hosting several <a href="https://opensource.org/ai/timeline" style="color: var(--color-primary);">online and in-person activities</a> around the world.</p>
->>>>>>> develop-rm
                             </div>
                         </div>
                         <!-- single feedback area end -->
@@ -918,11 +770,7 @@ Template Name: /ai/ template
                                 <br /><br />
                                 <h2>Research</h2>
                                 <h5 class="title skew-up">2022 - 2023</h5>
-<<<<<<< HEAD
-                                <p>Alongside AI experts from various fields we produced a <a href="https://deepdive.opensource.org/podcast/" style="color: var(--color-primary);">podcast</a>, <a href="https://deepdive.opensource.org/panels/" style="color: var(--color-primary);">panels</a>, and a <a href="https://opensource.org/deepdive/webinars" style="color: var(--color-primary);">webinar</a>.</p>
-=======
                                 <p>Alongside AI experts from various fields we produced a <a href="https://deepdive.opensource.org/podcast/" style="color: var(--color-primary);">podcast</a>, <a href="https://deepdive.opensource.org/panels/" style="color: var(--color-primary);">panels</a>, and <a href="https://opensource.org/ai/webinars" style="color: var(--color-primary);">webinars</a>.</p>
->>>>>>> develop-rm
                             </div>
                         </div>
                         <!-- single feedback area end -->
@@ -941,11 +789,7 @@ Template Name: /ai/ template
                             </div>
                             <div class="awes-me-fun-f-content">
                                 <p class="disc skew-up">
-<<<<<<< HEAD
-                                    Late 2024 into 2025, the OSI is gathering endorsements from various individuals and organizations, including Mozilla, Suse, Eleuther AI, Ai2, Eclipse Foundation, and the OpenInfra Foundation, among many others.
-=======
                                     Late 2024 into 2025, the OSI is gathering <a href="https://opensource.org/ai/endorsements" style="color: var(--color-primary);">endorsements</a> from various individuals and organizations, including Mozilla, Suse, Eleuther AI, Ai2, Eclipse Foundation, and the OpenInfra Foundation, among many others.
->>>>>>> develop-rm
                                 </p>
                             </div>
                         </div>
@@ -960,8 +804,6 @@ Template Name: /ai/ template
         </div>
     </div>
 
-<<<<<<< HEAD
-=======
     <!-- rts service area start -->
     <div class="rts-service-area rts-section-gapTop">
         <div class="container">
@@ -980,13 +822,12 @@ Template Name: /ai/ template
                     <img src="https://opensourceorg.github.io/ai/assets/images/paris-session.jpg" style="border-radius:20px" class="imgbw">
                 </div>
             </div>
-           
-            
+
+
         </div>
     </div>
     <!-- rts service area end -->
 
->>>>>>> develop-rm
      <!-- rts about style four -->
      <div class="rts-about-style-four rts-section-gap bg-about-h4  rts-section-gapBottom">
         <div class="container">
@@ -996,11 +837,7 @@ Template Name: /ai/ template
                         <img src="https://opensourceorg.github.io/ai/assets/images/stef-talk.png" alt="Co-design process" class="imgbw">
                         <div class="small-bottom-right bg_image">
                             <h4 class="title">
-<<<<<<< HEAD
-                                The OSAID co-design process is open to everyone interested in <a href="https://discuss.opensource.org/t/faq" target="_blank" style="color: var(--color-primary);">collaborating</a>.
-=======
                                 The OSAID co-design process was open to everyone interested in <a href="https://discuss.opensource.org/faq" target="_blank" style="color: var(--color-primary);">collaborating</a>.
->>>>>>> develop-rm
                             </h4>
                         </div>
                     </div>
@@ -1013,41 +850,12 @@ Template Name: /ai/ template
                         <p class="disc">
                             There are many ways to get involved:
                             <ul>
-<<<<<<< HEAD
-                                <li>Join the <a target="_blank" href="https://discuss.opensource.org/t/definition-validation-seeking-volunteers/320">working groups</a>: be part of a team to evaluate various models against the OSAID.</li>
-                                
-                                
-                                
-                                <li>Join the <a target="_blank" href="https://discuss.opensource.org/">forum</a>: support and comment on the drafts, record your approval or concerns to new and existing threads.</li>
-                                
-                                
-                                
-                                <li>Comment on the <a href="https://go.opensource.org/osaid-latest">latest draft</a>: provide feedback on the latest draft document directly.</li>
-                                
-                                
-                                
-                                <li>Follow the <a href="https://opensource.org/blog/author/mia-lykoulund">weekly recaps</a>: subscribe to our newsletter and blog to be kept up-to-date.</li>
-                                
-                                
-                                
-                                <li>Join the <a href="https://opensource.org/ai/townhalls">town hall</a> meetings: participate in the online public town hall meetings to learn more and ask questions.</li>
-                                
-                                
-                                
-                                <li>Join the <a href="https://opensource.org/events">workshops and scheduled conferences</a>: meet the OSI and other participants at in person events around the world.</li>
-                                
-                                
-                                
-                                <li><a href="https://opensource.org/osaid-endorse">Endorse the Open Source AI Definition</a>: have your organization appended to the press release announcing Release Candidate 1.</li>
-                                </ul>
-=======
                                 <li><a href="https://opensource.org/ai/endorsements">Endorse the Open Source AI Definition</a>: have your organization appended to list of supporters of version 1.0.</li>
                                 <li>Join the <a target="_blank" href="https://discuss.opensource.org/">forum</a>: support and comment on the releases, record your approval or concerns to new and existing threads.</li>
                                 <li>Subscribe to <a href="https://opensource.org/newsletter">our newsletter</a> and read <a href="https://opensource.org/blog">our blog</a> to be kept up-to-date.</li>
                                 <li>Watch the <a href="https://opensource.org/ai/townhalls">town hall</a> recordings to learn more about the process.</li>
                                 <li>Join the <a href="https://opensource.org/events">workshops and scheduled conferences</a>: meet the OSI and other participants at in person events around the world.</li>
                             </ul>
->>>>>>> develop-rm
                         </p>
                     </div>
                 </div>
@@ -1077,14 +885,10 @@ Template Name: /ai/ template
         </div>
     </div>
     <!-- rts project details area end -->
-    
-<<<<<<< HEAD
 
-=======
-    
-    
->>>>>>> develop-rm
-    
+
+
+
     <!-- rts feedback area start -->
     <div class="rts-feedback-area-solar-energy rts-section-gap">
         <div class="container">
@@ -1289,8 +1093,6 @@ Template Name: /ai/ template
                                 </div>
                                 <!-- inglle cuystoners fededback end -->
                             </div>
-<<<<<<< HEAD
-=======
 																	   <div class="swiper-slide">
                                 <!-- inglle cuystoners fededback -->
                                 <div class="rts-single-feedback-solar-energy">
@@ -1308,7 +1110,6 @@ Template Name: /ai/ template
                                 </div>
                                 <!-- inglle cuystoners fededback end -->
                             </div>
->>>>>>> develop-rm
                             <div class="swiper-slide">
                                 <!-- inglle cuystoners fededback -->
                                 <div class="rts-single-feedback-solar-energy">
@@ -1317,17 +1118,10 @@ Template Name: /ai/ template
                                     </div> -->
                                     <div class="content">
                                         <p class="para">
-<<<<<<< HEAD
-                                            "The release of the RC version of the Open Source AI Definition will be the most significant milestone for OSI and the community since the release of the Open Source Definition in February 1998. This definition marks our transition from an era where Open Source was primarily focused on software programs to one that now includes data. OSI will face the challenging task of addressing various rights that are not covered by copyright-based intellectual property, and a very long and endless road awaits. However, OSI and its community will surely overcome this with strength and determination. We will continue to support the future of Open Source by dedicating ourselves to the success of OSI and OSAID."
-                                        </p>
-                                        <div class="cottom-review-area">
-                                            <p>Shuji Sado, Open Source Group Japan</p>
-=======
                                             "Open Source Group Japan commends OSI for its leadership in navigating the complex process of defining Open Source AI, and we fully support the Open Source AI Definition (OSAID) as a key standard for open and transparent AI systems. The field of AI is evolving rapidly, and the need for a clear and consistent definition of Open Source AI has never been more critical. OSI's OSAID marks a crucial milestone toward a future where collaboration and openness are the norms in AI development. We anticipate that this will drive innovation, transparency, and the ethical development of AI systems."
                                         </p>
                                         <div class="cottom-review-area">
                                             <p>Shuji Sado, Chairman, Open Source Group Japan</p>
->>>>>>> develop-rm
                                         </div>
                                     </div>
                                 </div>
@@ -1361,8 +1155,6 @@ Template Name: /ai/ template
     </div>
     <!-- rts feedback area end -->
 
-<<<<<<< HEAD
-=======
     <div id="side-bar" class="side-bar header-two">
         <button class="close-icon-menu"><i class="far fa-times"></i></button>
         <!-- mobile menu area start -->
@@ -1418,7 +1210,6 @@ Template Name: /ai/ template
         <!-- mobile menu area end -->
     </div>
 
->>>>>>> develop-rm
     <!-- rts brand area start -->
     <div class="rts-Product-area rts-section-gap" style="padding-bottom:50px">
         <div class="container">
@@ -1459,116 +1250,6 @@ Template Name: /ai/ template
     </div>
 
 
-<<<<<<< HEAD
-    <!-- header style two -->
-    <div id="side-bar" class="side-bar header-two">
-        <button class="close-icon-menu"><i class="far fa-times"></i></button>
-        <!-- inner menu area desktop start -->
-        <div class="inner-main-wrapper-desk">
-            <div class="thumbnail">
-            </div>
-            <div class="inner-content">
-            </div>
-        </div>
-        <!-- mobile menu area start -->
-        hola
-        <div class="mobile-menu-main">
-            <nav class="nav-main mainmenu-nav mt--30">
-                <ul class="mainmenu metismenu" id="mobile-menu-active">
-                    <li class="has-droupdown">
-                        <a href="#" class="main">Home</a>
-                        <ul class="submenu mm-collapse">
-                            <li><a href="#" class="tag">Multipage</a></li>
-                            <li><a class="mobile-menu-link" href="index.html">Home Page One</a></li>
-                            <li><a class="mobile-menu-link" href="index-two.html">Home page Two</a></li>
-                            <li><a class="mobile-menu-link" href="index-three.html">Home Page Three</a></li>
-                            <li><a class="mobile-menu-link" href="index-Four.html">Home Page Four</a></li>
-                            <li><a class="mobile-menu-link" href="index-Five.html">Home Page Five</a></li>
-                        </ul>
-                        <ul class="submenu mm-collapse">
-                            <li><a href="#" class="tag">Onepage</a></li>
-
-                            <li><a class="mobile-menu-link" href="one-page-one.html">Onepage One</a></li>
-                            <li><a class="mobile-menu-link" href="one-page-two.html">Onepage Two</a></li>
-                            <li><a class="mobile-menu-link" href="one-page-three.html">Onepage Three</a></li>
-                            <li><a class="mobile-menu-link" href="one-page-four.html">Onepage Four</a></li>
-                            <li><a class="mobile-menu-link" href="one-page-five.html">Onepage Five</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-droupdown">
-                        <a href="#" class="main">Pages</a>
-                        <ul class="submenu mm-collapse">
-                            <li><a href="aboutus.html">About Us</a></li>
-                            <li><a href="appoinment.html">Appoinment</a></li>
-                            <li><a href="team.html">Team</a></li>
-                            <li><a href="team-details.html">Team Details</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="faq.html">Faq</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-droupdown">
-                        <a href="#" class="main">Services</a>
-                        <ul class="submenu mm-collapse">
-                            <li><a class="mobile-menu-link" href="service.html">Service</a></li>
-                            <li><a class="mobile-menu-link" href="service-details.html">Service Details</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-droupdown">
-                        <a href="#" class="main">Portfolio</a>
-                        <ul class="submenu mm-collapse">
-                            <li><a class="mobile-menu-link" href="project.html">Project</a></li>
-                            <li><a class="mobile-menu-link" href="project-details.html">Project Details</a></li>
-                            <li class="has-droupdown third-lvl">
-                                <a class="main" href="#">Projects Details</a>
-                                <ul class="submenu-third-lvl mm-collapse">
-                                    <li><a href="project-details.html"></a>Project Details</li>
-                                    <li><a href="project-details-gallery.html"></a>Details Gallery</li>
-                                    <li><a href="project-details-vedio.html"></a>Details Vedio</li>
-                                    <li><a href="project-details-carousel.html"></a>Details Carousel</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="blog.html" class="main">Blog</a>
-                    </li>
-                    <li>
-                        <a href="contact.html" class="main">Contact Us</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="rts-social-style-one pl--20 mt--100">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- mobile menu area end -->
-    </div>
-    <!-- header style two End -->
-
-=======
->>>>>>> develop-rm
     <!-- Footer style two -->
     <!-- rts footer area one start -->
     <div class="rts-footer-one footer-bg-one ">
@@ -1589,39 +1270,22 @@ Template Name: /ai/ template
                                 <div class="rts-social-style-one">
                                     <ul>
                                         <li>
-<<<<<<< HEAD
-                                            <a href="https://social.opensource.org/@osi">
-=======
                                             <a href="https://go.opensource.org/mastodon" target="_blank">
->>>>>>> develop-rm
                                                 <i class="fa-brands fa-mastodon"></i>
                                             </a>
                                         </li>
                                         <li>
-<<<<<<< HEAD
-                                            <a href="https://twitter.com/OpenSourceOrg">
-                                                <i class="fa-brands fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-">
-=======
                                             <a href="https://bsky.app/profile/opensource.org" target="_blank">
                                                 <i class="fa-brands fa-bluesky"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
->>>>>>> develop-rm
                                                 <i class="fa-brands fa-linkedin-in"></i>
                                             </a>
                                         </li>
                                         <li>
-<<<<<<< HEAD
-                                            <a href="https://www.reddit.com/user/opensourceinitiative/">
-=======
                                             <a href="https://www.reddit.com/user/opensourceinitiative/" target="_blank">
->>>>>>> develop-rm
                                                 <i class="fa-brands fa-reddit"></i>
                                             </a>
                                         </li>
@@ -1647,39 +1311,22 @@ Template Name: /ai/ template
                                 <div class="rts-social-style-one">
                                     <ul>
                                         <li>
-<<<<<<< HEAD
-                                            <a href="https://social.opensource.org/@osi">
-=======
                                             <a href="https://go.opensource.org/mastodon" target="_blank">
->>>>>>> develop-rm
                                                 <i class="fa-brands fa-mastodon"></i>
                                             </a>
                                         </li>
                                         <li>
-<<<<<<< HEAD
-                                            <a href="https://twitter.com/OpenSourceOrg">
-                                                <i class="fa-brands fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.linkedin.com/company/open-source-initiative-osi-">
-=======
                                             <a href="https://bsky.app/profile/opensource.org" target="_blank">
                                                 <i class="fa-brands fa-bluesky"></i>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://www.linkedin.com/company/open-source-initiative-osi-" target="_blank">
->>>>>>> develop-rm
                                                 <i class="fa-brands fa-linkedin-in"></i>
                                             </a>
                                         </li>
                                         <li>
-<<<<<<< HEAD
-                                            <a href="https://www.reddit.com/user/opensourceinitiative/">
-=======
                                             <a href="https://www.reddit.com/user/opensourceinitiative/ target="_blank"">
->>>>>>> develop-rm
                                                 <i class="fa-brands fa-reddit"></i>
                                             </a>
                                         </li>
@@ -1781,7 +1428,7 @@ Template Name: /ai/ template
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="single-footer-component">
                             <div class="title-area">
                                 <h5 class="title">Board</h5>
@@ -1886,13 +1533,5 @@ Template Name: /ai/ template
     <script src="https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/jquery-timepicker.js"></script>
     <script src="https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js"></script>
-<<<<<<< HEAD
-    
-
     <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
     <!-- header style two End -->
-</div>
-=======
-    <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
-    <!-- header style two End -->
->>>>>>> develop-rm
