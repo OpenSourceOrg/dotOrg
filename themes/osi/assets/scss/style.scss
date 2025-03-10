@@ -20,6 +20,8 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Methodology from ITCSS http://www.creativebloq.com/web-design/manage-large-scale-web-projects-new-css-architecture-itcss-41514731
 
 */
+
+
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
@@ -33,9 +35,11 @@ Methodology from ITCSS http://www.creativebloq.com/web-design/manage-large-scale
 # Overrides
 --------------------------------------------------------------*/
 
+
 /*--------------------------------------------------------------
 # 01 Settings
 --------------------------------------------------------------*/
+
 @import "1_settings.breakpoints";
 @import "1_settings.colors";
 @import "1_settings.typography";
@@ -45,18 +49,21 @@ Methodology from ITCSS http://www.creativebloq.com/web-design/manage-large-scale
 /*--------------------------------------------------------------
 # 02 Tools
 --------------------------------------------------------------*/
+
 @import "pink-grid/pinkgrid";
 @import "2_tools.mixins";
 
 /*--------------------------------------------------------------
 # 03 Generic
 --------------------------------------------------------------*/
+
 @import "3_generic.normalize";
 @import "3_generic.placeholders";
 
 /*--------------------------------------------------------------
 # 04 Elements
 --------------------------------------------------------------*/
+
 @import "4_elements.global";
 @import "4_elements.typography";
 @import "4_elements.inputs";
@@ -66,6 +73,7 @@ Methodology from ITCSS http://www.creativebloq.com/web-design/manage-large-scale
 /*--------------------------------------------------------------
 # 05 Objects
 --------------------------------------------------------------*/
+
 @import "5_objects.structure";
 @import "5_objects.layout";
 @import "5_objects.inputs";
@@ -76,6 +84,7 @@ Methodology from ITCSS http://www.creativebloq.com/web-design/manage-large-scale
 /*--------------------------------------------------------------
 # 06 Components
 --------------------------------------------------------------*/
+
 @import "6_components.navigation";
 @import "6_components.navigation--subnav";
 @import "6_components.header";
@@ -95,10 +104,12 @@ Methodology from ITCSS http://www.creativebloq.com/web-design/manage-large-scale
 /*--------------------------------------------------------------
 # 07 Vendor
 --------------------------------------------------------------*/
+
 @import "7_vendor.plugins";
 
 /*--------------------------------------------------------------
 # 08 Overrides
 --------------------------------------------------------------*/
+
 @import "8_overrides.templates";
 @import "8_overrides.admin-bar";

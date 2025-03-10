@@ -9,7 +9,7 @@ Template Name: /ai/ template
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	
+
     <?php
     if ( is_user_logged_in() ) {
         wp_enqueue_style('admin-bar');
@@ -17,8 +17,8 @@ Template Name: /ai/ template
      	wp_print_styles('admin-bar');
 	}
     ?>
-	
-	
+
+
 	<meta name='robots' content='max-image-preview:large' />
 	<link rel='dns-prefetch' href='//stats.wp.com' />
 	<link rel='dns-prefetch' href='//i0.wp.com' />
@@ -58,7 +58,7 @@ Template Name: /ai/ template
     <meta name="twitter:title" content="The Open Source AI Definition — by The Open Source Initiative">
     <meta name="twitter:description" content="A multi-stakeholder process to define an “Open Source AI”.">
     <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/759f678a-a340-4fac-8bdd-39d58948634c.jpg?token=fe76lJQvzFTfnaf2xyh8RPjclyoht-lgyebYn-C4BiY&height=1158&width=1200&expires=33265055152">
-   
+
 </head>
 <?php
     if ( is_user_logged_in() ) {
@@ -67,7 +67,7 @@ Template Name: /ai/ template
     ?>
 
 <body class="solar-energy-home onepage">
-    
+
     <div class="header-header-two">
         <!-- header- solaric two -->
         <div class="header-two-solari header-top">
@@ -82,7 +82,7 @@ Template Name: /ai/ template
                                             <li>
                                                 <a class="nav-link-green" href="https://opensource.org/about">About</a>
                                             </li>
-    
+
                                             <li>
                                                 <a class="nav-link-green" href="https://opensource.org/osd">Open Source Definition</a>
                                             </li>
@@ -140,7 +140,7 @@ Template Name: /ai/ template
                             <a href="https://opensource.org/" class="logo-area">
                                 <img src="https://i0.wp.com/opensource.org/wp-content/uploads/2023/03/cropped-OSI-horizontal-large.png?fit=640%2C229&ssl=1" alt="Open Source Initiative" style="width:50%">
                             </a>
-                        
+
                             <div class="header-nav main-nav-one" id="nav-links">
                                 <nav>
                                     <ul>
@@ -355,7 +355,7 @@ Template Name: /ai/ template
         </div>
     </div>
     <!-- rts project details area end -->
-    
+
     <!-- rts service area start -->
     <div class="rts-service-area">
         <div class="container">
@@ -402,7 +402,7 @@ Template Name: /ai/ template
                     </div>
                     <!-- single service end -->
                 </div>
-        
+
             </div>
         </div>
     </div>
@@ -749,7 +749,7 @@ Template Name: /ai/ template
     </div>
     <!-- funfact end-->
 
-    
+
     <div class="rts-awesome-funfacts-area bg-awesome-feedback">
         <div class="container-75">
             <div class="row align-items-center">
@@ -822,8 +822,8 @@ Template Name: /ai/ template
                     <img src="https://opensourceorg.github.io/ai/assets/images/paris-session.jpg" style="border-radius:20px" class="imgbw">
                 </div>
             </div>
-           
-            
+
+
         </div>
     </div>
     <!-- rts service area end -->
@@ -885,10 +885,10 @@ Template Name: /ai/ template
         </div>
     </div>
     <!-- rts project details area end -->
-    
-    
-    
-    
+
+
+
+
     <!-- rts feedback area start -->
     <div class="rts-feedback-area-solar-energy rts-section-gap">
         <div class="container">
@@ -1428,7 +1428,7 @@ Template Name: /ai/ template
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="single-footer-component">
                             <div class="title-area">
                                 <h5 class="title">Board</h5>
