@@ -1,0 +1,31 @@
+{
+    "apiVersion": 2,
+    "name": "custom/about-area",
+    "title": "About Area",
+    "description": "A custom block for the about area with tabs.",
+    "category": "layout",
+    "icon": "admin-users",
+    "supports": {
+        "align": ["wide", "full"]
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "What's Open Source AI?"
+        },
+        "description": {
+            "type": "string",
+            "default": "Following the same idea behind Open Source Software, an Open Source AI is a system made available under terms that grant users the freedoms to:"
+        },
+        "tabs": {
+            "type": "array",
+            "default": [
+                { "label": "Use", "content": "Use the system for any purpose and without having to ask for permission." },
+                { "label": "Study", "content": "Study how the system works and understand how its results were created." },
+                { "label": "Modify", "content": "Modify the system for any purpose, including to change its output." },
+                { "label": "Share", "content": "Share the system for others to use with or without modifications, for any purpose." }
+            ]
+        }
+    },
+    "editorScript": "file:./index.js"
+}

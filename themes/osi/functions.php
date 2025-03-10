@@ -376,6 +376,11 @@ function osi_query_offset( WP_Query &$query ) {
 		return;
 	}
 
+	// If this is a page and its not set as the page for posts, return.
+	if ( (int) get_option( 'page_for_posts' ) !== (int) get_queried_object_id() ) {
+		return;
+	}
+
 	$offset = -1;
 	$ppp    = get_option( 'posts_per_page' );
 
@@ -421,7 +426,10 @@ function osi_wpdc_comment_body( string $comment_body ) {
 }
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop-rm
 function osi_register_block_template() {
     $post_type = 'page'; // Assign the template to pages
     $template_slug = 'ai-template';
@@ -442,7 +450,11 @@ function osi_register_block_template() {
         if (get_page_template_slug() === 'templates/ai-template.html' || get_page_template_slug() === 'templates/ai-fse.php') {
             // Font Awesome - Updated to latest version
             wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> develop-rm
             // Other CSS files
             wp_enqueue_style('swiper', 'https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css', array(), '1.0.0');
             wp_enqueue_style('unicons', 'https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css', array(), '1.0.0');
@@ -450,7 +462,11 @@ function osi_register_block_template() {
             wp_enqueue_style('animate', 'https://opensourceorg.github.io/ai/assets/css/vendor/animate.css', array(), '1.0.0');
             wp_enqueue_style('bootstrap', 'https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css', array(), '1.0.0');
             wp_enqueue_style('ai-custom', 'https://opensourceorg.github.io/ai/assets/css/style.css', array('bootstrap'), '1.0.0');
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> develop-rm
             // JavaScript files - with proper dependencies
             wp_enqueue_script('jquery');
             wp_enqueue_script('jqueryui', 'https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js', array('jquery'), '1.0.0', true);
@@ -552,6 +568,7 @@ function osi_handle_supporter_form_flamingo_spam_status_change( string $new_stat
 		}
 	}
 }
+<<<<<<< HEAD
 add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_status_change', 10, 3 );
 
 /**
@@ -563,3 +580,6 @@ function osi_register_ai_menu() {
 	register_nav_menu( 'ai', __( 'AI Menu', 'osi' ) );
 }
 add_action( 'after_setup_theme', 'osi_register_ai_menu' );
+=======
+add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_status_change', 10, 3 );
+>>>>>>> develop-rm

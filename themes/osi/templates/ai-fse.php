@@ -1,6 +1,10 @@
 <?php
 /*
+<<<<<<< HEAD
 Template Name: AI Landing Page with FSE (HTML ONLY)
+=======
+Template Name: AI Landing Page with FSE
+>>>>>>> develop-rm
 Template Post Type: page
 Description: Custom landing page template with Full Site Editing (FSE) capabilities, integrating custom blocks and patterns.
 */
@@ -13,7 +17,11 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> develop-rm
     <?php
         if ( is_user_logged_in() ) {
             wp_enqueue_style('admin-bar');
@@ -21,8 +29,13 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
             wp_print_styles('admin-bar');
         }
     ?>
+<<<<<<< HEAD
 
 
+=======
+	
+	
+>>>>>>> develop-rm
 	<meta name='robots' content='max-image-preview:large' />
 	<link rel='dns-prefetch' href='//stats.wp.com' />
 	<link rel='dns-prefetch' href='//i0.wp.com' />
@@ -61,7 +74,11 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
     <meta name="twitter:title" content="The Open Source AI Definition — by The Open Source Initiative">
     <meta name='twitter:description' content='A multi-stakeholder process to define an "Open Source AI".'>
     <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/759f678a-a340-4fac-8bdd-39d58948634c.jpg?token=fe76lJQvzFTfnaf2xyh8RPjclyoht-lgyebYn-C4BiY&height=1158&width=1200&expires=33265055152">
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> develop-rm
 </head>
 <?php
     if ( is_user_logged_in() ) {
@@ -72,7 +89,11 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 <body <?php body_class(); ?> style="background: rgb(246, 247, 249);">
     <?php wp_body_open(); ?>
 
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> develop-rm
     <header class="header-header-two">
         <!-- header- solaric two -->
         <div class="header-two-solari header-top">
@@ -139,7 +160,11 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
             </div>
         </div>
         <!-- header- solaric two end -->
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> develop-rm
         <!-- header main start -->
         <div class="header-main-h2 header--sticky">
             <div class="container">
@@ -193,7 +218,11 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
 
     <!-- Main Content -->
     <main id="main-content">
+<<<<<<< HEAD
         <?php
+=======
+        <?php 
+>>>>>>> develop-rm
         while ( have_posts() ) :
             the_post();
             the_content();
@@ -379,7 +408,11 @@ Description: Custom landing page template with Full Site Editing (FSE) capabilit
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> develop-rm
                         <div class="single-footer-component">
                             <div class="title-area">
                                 <h5 class="title">Board</h5>
