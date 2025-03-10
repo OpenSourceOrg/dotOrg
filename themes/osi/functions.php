@@ -420,3 +420,146 @@ function osi_wpdc_comment_body( string $comment_body ) {
 	return $trimmed_comment_body;
 }
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
+
+
+function osi_register_block_template() {
+    $post_type = 'page'; // Assign the template to pages
+    $template_slug = 'ai-template';
+    $template_file = 'templates/ai-template.html';
+
+    // Register the block template
+    register_block_template(
+        $post_type,
+        [
+            'title' => __('AI Template new', 'osi'),
+            'slug'  => $template_slug,
+            'path'  => get_theme_file_path($template_file),
+        ]
+    );
+
+    // Enqueue styles conditionally
+    add_action('wp_enqueue_scripts', function () use ($template_slug) {
+        if (get_page_template_slug() === 'templates/ai-template.html' || get_page_template_slug() === 'templates/ai-fse.php') {
+            // Font Awesome - Updated to latest version
+            wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1');
+
+            // Other CSS files
+            wp_enqueue_style('swiper', 'https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css', array(), '1.0.0');
+            wp_enqueue_style('unicons', 'https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css', array(), '1.0.0');
+            wp_enqueue_style('metismenu', 'https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css', array(), '1.0.0');
+            wp_enqueue_style('animate', 'https://opensourceorg.github.io/ai/assets/css/vendor/animate.css', array(), '1.0.0');
+            wp_enqueue_style('bootstrap', 'https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css', array(), '1.0.0');
+            wp_enqueue_style('ai-custom', 'https://opensourceorg.github.io/ai/assets/css/style.css', array('bootstrap'), '1.0.0');
+
+            // JavaScript files - with proper dependencies
+            wp_enqueue_script('jquery');
+            wp_enqueue_script('jqueryui', 'https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js', array('jquery'), '1.0.0', true);
+            wp_enqueue_script('counter-up', 'https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js', array('jquery'), '1.0.0', true);
+            wp_enqueue_script('swiper-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js', array('jquery'), '1.0.0', true);
+            wp_enqueue_script('metismenu-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/metismenu.js', array('jquery'), '1.0.0', true);
+            wp_enqueue_script('waypoint', 'https://opensourceorg.github.io/ai/assets/js/vendor/waypoint.js', array('jquery'), '1.0.0', true);
+            wp_enqueue_script('waw', 'https://opensourceorg.github.io/ai/assets/js/vendor/waw.js', array('jquery'), '1.0.0', true);
+            wp_enqueue_script('gsap', 'https://opensourceorg.github.io/ai/assets/js/plugins/gsap.min.js', array(), '1.0.0', true);
+            wp_enqueue_script('scrolltrigger', 'https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js', array('gsap'), '1.0.0', true);
+            wp_enqueue_script('split-text', 'https://opensourceorg.github.io/ai/assets/js/vendor/split-text.js', array('gsap'), '1.0.0', true);
+            wp_enqueue_script('contact-form', 'https://opensourceorg.github.io/ai/assets/js/vendor/contact.form.js', array('jquery'), '1.0.0', true);
+            wp_enqueue_script('split-type', 'https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js', array(), '1.0.0', true);
+            wp_enqueue_script('jquery-timepicker', 'https://opensourceorg.github.io/ai/assets/js/plugins/jquery-timepicker.js', array('jquery'), '1.0.0', true);
+            wp_enqueue_script('bootstrap-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js', array('jquery'), '1.0.0', true);
+            wp_enqueue_script('ai-main', 'https://opensourceorg.github.io/ai/assets/js/main.js', array('jquery', 'bootstrap-js'), '1.0.0', true);
+        }
+    });
+}
+add_action('init', 'osi_register_block_template');
+
+/**
+ * Process the supporter form submission.
+ *
+ * @param WPCF7_ContactForm $contact_form The Contact Form 7 instance.
+ *
+ * @return void
+ */
+function osi_handle_support_form_submission( WPCF7_ContactForm $contact_form ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
+	$submission = WPCF7_Submission::get_instance();
+
+	if ( $submission ) {
+		$data = $submission->get_posted_data();
+
+		osi_save_supporter_form_data_to_cpt( $data );
+	}
+}
+add_action( 'wpcf7_before_send_mail', 'osi_handle_support_form_submission' );
+
+/**
+ * Save supporter form data to a custom post type.
+ *
+ * @param array $form_data The form data.
+ *
+ * @return void
+ */
+function osi_save_supporter_form_data_to_cpt( array $form_data ): void {
+	$post_id = wp_insert_post(
+		array(
+			'post_title'  => $form_data['your-name'],
+			'post_type'   => 'supporter',
+			'post_status' => 'pending',
+		)
+	);
+
+	// If we have a wp_error, abort.
+	if ( is_wp_error( $post_id ) ) {
+		return;
+	}
+
+	if ( $post_id ) {
+		update_field( 'name', $form_data['your-name'], $post_id );
+		update_field( 'organization', $form_data['your-org'], $post_id );
+		update_field( 'endorsement_type', $form_data['your-endorsement'], $post_id );
+		update_field( 'quote', $form_data['your-message'], $post_id );
+	}
+}
+
+/**
+ * Handle the supporter form spam status change.
+ *
+ * @param string  $new_status The new status.
+ * @param string  $old_status The old status.
+ * @param WP_Post $post       The post object.
+ *
+ * @return void
+ */
+function osi_handle_supporter_form_flamingo_spam_status_change( string $new_status, string $old_status, WP_Post $post ): void {
+	if ( 'flamingo_inbound' !== get_post_type( $post ) ) {
+		return;
+	}
+
+	if ( 'flamingo-spam' === $old_status && 'publish' === $new_status ) {
+		$term_obj_list = get_the_terms( $post->ID, 'flamingo_inbound_channel' );
+
+		if ( empty( $term_obj_list ) || is_wp_error( $term_obj_list ) || 'OSAID Endorsement' !== $term_obj_list[0]->name ) {
+			return;
+		}
+
+		$form_data = array(
+			'your-name'        => get_post_meta( $post->ID, '_field_your-name', true ),
+			'your-org'         => get_post_meta( $post->ID, '_field_your-org', true ),
+			'your-endorsement' => get_post_meta( $post->ID, '_field_your-endorsement', true ),
+			'your-message'     => get_post_meta( $post->ID, '_field_your-message', true ),
+		);
+
+		if ( ! empty( $form_data['your-name'] ) ) {
+			osi_save_supporter_form_data_to_cpt( $form_data );
+		}
+	}
+}
+add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_status_change', 10, 3 );
+
+/**
+ * Register the AI menu.
+ *
+ * @return void
+ */
+function osi_register_ai_menu() {
+	register_nav_menu( 'ai', __( 'AI Menu', 'osi' ) );
+}
+add_action( 'after_setup_theme', 'osi_register_ai_menu' );

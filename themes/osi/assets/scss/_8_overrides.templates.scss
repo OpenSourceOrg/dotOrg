@@ -1,149 +1,130 @@
 // Licenses
-
 .single-license {
-	.entry-content {
-		margin-left: auto;
-		margin-right: auto;
-<<<<<<< HEAD
-		max-width: $postMax;
-		flex-grow: 1;
-		display: flex;
-		align-items: flex-start;
-		gap: 20px;
-=======
-		max-width: $boxedMax;
-		flex-grow: 1;
-		display: flex;
-		align-items: flex-start;
-		row-gap: 20px;
-		column-gap: 60px;
->>>>>>> origin/develop
-	}
-
-	.page--title {
-		margin-bottom: 18px !important;
-	}
-
-	.cover--header {
-		.wp-block-cover {
-			left: 50%;
-			right: 50%;
-			margin-left: -50vw!important;
-			margin-right: unset!important;
-			width: 100vw!important;
-		}
-	}
-
-	@media only screen and (min-width: $break-medium) {
-		.cover--header {
-			.wp-block-cover {
-				padding-top: $maxPadding;
-				padding-bottom: $maxPadding;
-			}
-		}
-	}
+    .entry-content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: $boxedMax;
+        flex-grow: 1;
+        display: flex;
+        align-items: flex-start;
+        row-gap: 20px;
+        column-gap: 60px;
+    }
+    .page--title {
+        margin-bottom: 18px !important;
+    }
+    .cover--header {
+        .wp-block-cover {
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw!important;
+            margin-right: unset!important;
+            width: 100vw!important;
+        }
+    }
+    @media only screen and (min-width: $break-medium) {
+        .cover--header {
+            .wp-block-cover {
+                padding-top: $maxPadding;
+                padding-bottom: $maxPadding;
+            }
+        }
+    }
 }
 
 .license-steward {
-	.post--metadata-group {
-		display: inline-block;
-	}
-	ul {
-		display: inline-block;
-		list-style: none;
-		margin: 0 0 0 .25em;
-		padding: 0;
-
-		li {
-			display: inline-block;
-			margin: 0;
-		}
-	}
+    .post--metadata-group {
+        display: inline-block;
+    }
+    ul {
+        display: inline-block;
+        list-style: none;
+        margin: 0 0 0 .25em;
+        padding: 0;
+        li {
+            display: inline-block;
+            margin: 0;
+        }
+    }
 }
 
 .license-meta {
-	display: flex;
-	flex-wrap: wrap;
-	column-gap: 10px;
-	row-gap: 0.4em;
-
-	max-width: 700px;
-
-	span {
-		line-height: 1.25em;
-	}
-
-	span + span {
-		border-left: 1px solid $Nwhite;
-		padding-left: 10px;
-
-		&.wrapped { /* First item on a new row */
-			border: none;
-			padding: 0;
-		}
-	}
-
-	.license-spdx {
-		flex-basis: 100%;
-		padding: 0;
-		border: none;
-	}
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 0.4em;
+    max-width: 700px;
+    span {
+        line-height: 1.25em;
+    }
+    span+span {
+        border-left: 1px solid $Nwhite;
+        padding-left: 10px;
+        &.wrapped {
+            /* First item on a new row */
+            border: none;
+            padding: 0;
+        }
+    }
+    .license-spdx {
+        flex-basis: 100%;
+        padding: 0;
+        border: none;
+    }
 }
-.license-steward-meta {
-	span + span {
-		border-left: 1px solid $Nwhite;
-		margin-left: 10px;
-		padding-left: 10px;
-	}
 
-	.license-steward-url {
-		border: none;
-		display: block;
-		margin: 0;
-		padding: 0;
-	}
+.license-steward-meta {
+    span+span {
+        border-left: 1px solid $Nwhite;
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+    .license-steward-url {
+        border: none;
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 .license-content {
-	@media only screen and (max-width: $break-small) {
-		margin-right: calc(-1 * $smallPadding);
-	}
-
-	@media only screen and (max-width: $break-medium) {
-		flex-direction: column;
-	}
+    @media only screen and (max-width: $break-small) {
+        margin-right: calc(-1 * $smallPadding);
+    }
+    @media only screen and (max-width: $break-medium) {
+        flex-direction: column;
+    }
 }
 
 .license-steward-link {
-	display: none;
+    display: none;
 }
 
 .tax-taxonomy-steward {
-	.toggleable-section {
-		display: none;
-	}
-	.license-steward-link {
-		display: block;
-		margin-bottom: 2em;
-	}
-
-	.term-item {
-		color: $Ndark;
-		pointer-events: none;
-	}
+    .toggleable-section {
+        display: none;
+    }
+    .license-steward-link {
+        display: block;
+        margin-bottom: 2em;
+    }
+    .term-item {
+        color: $Ndark;
+        pointer-events: none;
+    }
 }
 
 .license-table {
     .license-table--title {
         font-weight: $baseWeightBold;
-
     }
-    .license-table--title, #license-header-title {
+    .license-table--title,
+    #license-header-title {
         min-width: 50%;
     }
-	@media only screen and (max-width: $break-small) {
-		border-right: 0;
-	}
+    @media only screen and (max-width: $break-small) {
+        border-right: 0;
+    }
     @media only screen and (max-width: $break-small) {
         display: block;
         max-width: -moz-fit-content;
@@ -151,8 +132,8 @@
         margin: 0 auto;
         overflow-x: auto;
         white-space: nowrap;
-
-        .license-table--title, #license-header-title {
+        .license-table--title,
+        #license-header-title {
             min-width: 250px;
             word-wrap: break-word;
             white-space: normal;
@@ -161,84 +142,127 @@
 }
 
 .page-template-template-license-archive {
-	.content.has_no_sidebar .content--page article {
-		max-width: none !important;
-
-		.alignwide {
-			width: 100%;
-			margin-left: 0;
-			margin-right: 0;
-		}
-
-		.alignfull {
-			width: calc( 100% + (2 * #{$midPadding}) );
-			margin-left: -#{$midPadding};
- 			margin-right: -#{$midPadding};
-
-			 @media only screen and (min-width: #{$boxedMax}) {
-				margin-left: calc(-1 *(100vw - #{$boxedMax - 2 * $maxPadding} ) / 2);
-				margin-right: calc(-1 *(100vw - #{$boxedMax - 2 * $maxPadding } ) / 2);
-				width: 100vw;
-			}
-			@media only screen and (min-width: #{$wideMax}) {
-				margin-left: calc(-1 *(#{$wideMax} - #{$boxedMax - 2 * $maxPadding} ) / 2);
-				margin-right: calc(-1 *(#{$wideMax} - #{$boxedMax - 2 * $maxPadding} ) / 2);
-				width: $wideMax;
-			}
-		}
-	}
+    .content.has_no_sidebar .content--page article {
+        max-width: none !important;
+        .alignwide {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .alignfull {
+            width: calc( 100% + (2 * #{$midPadding}));
+            margin-left: -#{$midPadding};
+            margin-right: -#{$midPadding};
+            @media only screen and (min-width: #{$boxedMax}) {
+                margin-left: calc(-1 *(100vw - #{$boxedMax - 2 * $maxPadding}) / 2);
+                margin-right: calc(-1 *(100vw - #{$boxedMax - 2 * $maxPadding }) / 2);
+                width: 100vw;
+            }
+            @media only screen and (min-width: #{$wideMax}) {
+                margin-left: calc(-1 *(#{$wideMax} - #{$boxedMax - 2 * $maxPadding}) / 2);
+                margin-right: calc(-1 *(#{$wideMax} - #{$boxedMax - 2 * $maxPadding}) / 2);
+                width: $wideMax;
+            }
+        }
+    }
 }
 
 //Board Members
-
-.single-board-member, .post-type-archive-board-member, .page-template-template-board-archive, .tax-taxonomy-status, .tax-taxonomy-seat-type {
-
-	.post--thumbnail.cropped {
-		padding-bottom: 70%;
-		margin-bottom: 1em;
-	}
-
-	.post--summary {
-		h2 {
-			margin-bottom: 12px !important;
-			margin-top: 0;
-		}
-		p {
-			margin-bottom: 4px !important;
-			margin-top: 0;
-		}
-	}
-
-	@media only screen and (min-width: $break-medium) {
-		.cover--header {
-			.wp-block-cover {
-				padding-top: 75px;
-				padding-bottom: 75px;
-			}
-
-			.wp-block-columns {
-				gap: 100px;
-			}
-		}
-	}
+.single-board-member,
+.post-type-archive-board-member,
+.page-template-template-board-archive,
+.tax-taxonomy-status,
+.tax-taxonomy-seat-type {
+    .post--thumbnail.cropped {
+        padding-bottom: 70%;
+        margin-bottom: 1em;
+    }
+    .post--summary {
+        h2 {
+            margin-bottom: 12px !important;
+            margin-top: 0;
+        }
+        p {
+            margin-bottom: 4px !important;
+            margin-top: 0;
+        }
+    }
+    @media only screen and (min-width: $break-medium) {
+        .cover--header {
+            .wp-block-cover {
+                padding-top: 75px;
+                padding-bottom: 75px;
+            }
+            .wp-block-columns {
+                gap: 100px;
+            }
+        }
+    }
 }
 
-.post-type-archive-board-member, .page-template-template-board-archive, .tax-taxonomy-status, .tax-taxonomy-seat-type  {
-	.member-dates {
-		font-style: italic;
-	}
+.post-type-archive-board-member,
+.page-template-template-board-archive,
+.tax-taxonomy-status,
+.tax-taxonomy-seat-type {
+    .member-dates {
+        font-style: italic;
+    }
 }
 
-.member-seat, .member-dates {
-	display: block;
+.member-seat,
+.member-dates {
+    display: block;
 }
 
-.member-position {
-	border-left: 1px solid $Ndarkest;
-	margin-left: 10px;
-	padding-left: 10px;
+.member-details span:nth-child(2) {
+    border-left: 1px solid $Ndarkest;
+    margin-left: 10px;
+    padding-left: 10px;
+    .wp-block-cover & {
+        border-color: $Nwhite;
+    }
+}
 
-	.wp-block-cover & {
-		border-color: $Nwhite;
-	}
+// Overrides for the Full Width AI Template
+.content.ai-full-width .content--page {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    background-color: #f6f7f9;
+}
+
+.entry-content .wp-block-group>div,
+.entry-content .wp-block-group.osi-card {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content.ai-full-width h2.wp-block-heading {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 62px;
+    color: #1F1F25;
+    max-width: 1000px;
+}
+
+.content.ai-full-width h3.wp-block-heading {
+    font-size: 26px;
+    line-height: 54px;
+    margin: 0;
+}
+
+.content.ai-full-width .wp-block-group.small-round-details {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    h3 {
+        line-height: 32px !important;
+    }
+}
+
+.content.ai-full-width .entry-content>.wp-block-group {
+    margin-top: 100px;
+    margin-bottom: 100px;
 }

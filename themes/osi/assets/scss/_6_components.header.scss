@@ -1,14 +1,14 @@
 .header-main {
     // position:fixed; // for header scroll
-	position: sticky;
-	top: 0;
+    position: sticky;
+    top: 0;
     width: 100%;
-    z-index:999;
-
-	.button a {
-		color: inherit;
-	}
+    z-index: 999;
+    .button a {
+        color: inherit;
+    }
 }
+
 .admin-bar {
     .header-main.header-main-small {
         top: 32px;
@@ -16,26 +16,24 @@
             top: 46px;
         }
     }
-
 }
+
 .header-main {
     .header--inner {
         position: static;
         opacity: 1;
         transition: all .3s;
-        z-index:999;
+        z-index: 999;
         height: 125px;
         display: flex;
         align-items: center;
-
-        @media only screen and ( max-width: 1200px ) {
+        @media only screen and ( max-width: 1200px) {
             background: #fff;
             padding: 16px;
         }
         @media only screen and (max-width: #{$break-small}) {
             padding: 8px 16px;
         }
-
         .header--blog-name {
             box-sizing: border-box;
             max-width: calc(100% - 130px);
@@ -43,7 +41,6 @@
             height: 100%;
             display: flex;
             align-items: center;
-
             a {
                 color: $Ndarkest;
                 display: block;
@@ -51,47 +48,35 @@
                 line-height: 1;
                 text-decoration: none;
                 transition: none;
-
                 &:hover,
                 &:focus {
                     text-decoration: none;
                 }
             }
-
             img {
                 // all logos
                 max-width: 300px;
                 height: auto;
-<<<<<<< HEAD
-                width: 100%;
-                transform: translateZ(0); // chrome blurry fix
-                transition: all .3s;
-=======
                 width: auto;
                 transform: translateZ(0); // chrome blurry fix
                 transition: all .3s;
                 @media only screen and (max-width: #{$break-small}) {
                     max-width: 180px;
                 }
->>>>>>> origin/develop
             }
-
             .hide-mobile {
                 display: none;
             }
-
             .header-logo-mobile {
                 display: block;
             }
         }
     }
-
     &.header-main-small {
         .header--inner {
             padding-top: 16px;
             padding-bottom: 16px;
             max-height: 100px;
-
             .header--blog-name {
                 a {
                     img {
@@ -101,8 +86,6 @@
             }
         }
     }
-
-    
 }
 
 .header--quicklinks {
@@ -124,45 +107,39 @@
 }
 
 .header-main-small {
-
     .header--quicklinks {
         padding-top: 0;
         padding-bottom: 0;
         overflow: hidden;
         transition: all .3s;
     }
-
     .header--inner {
         // opacity: 0;
         overflow: hidden;
         transition: all .3s;
     }
-
-    .header--blog-name {
-
+    .header--blog-name {}
+    .header--extra-text {
+        display: none;
     }
-
-        .header--extra-text {
-            display: none;
-        }
 }
 
 @media only screen and (max-width: #{$break-nav}) {
-	.header-main-small {
-		.header--blog-name img {
-			max-height: 67.19px;
-		}
-	}
+    .header-main-small {
+        .header--blog-name img {
+            max-height: 67.19px;
+        }
+    }
 }
 
 @media only screen and (min-width: #{$break-nav}) {
-    .header--inner, .header--quicklinks-inner {
+    .header--inner,
+    .header--quicklinks-inner {
         // @include clearfix();
         padding-left: $maxPadding;
         padding-right: $maxPadding;
         padding-top: 1em;
     }
-
     .header--inner {
         border: 0;
         position: relative;
@@ -171,29 +148,24 @@
         .hide-mobile {
             display: inline-block;
         }
-
         .header-logo-mobile {
             display: none;
         }
     }
-
     .header--extra-text {
         text-align: right;
         float: right;
         clear: right;
         padding: 0;
     }
-
     .header-main-small {
         background-color: $Nwhite;
-
         .nav-main {
             height: auto;
             top: 0;
             // transition: all .2s;
             margin-top: 0;
-
-            .nav-main--menu > .menu-item > a {
+            .nav-main--menu>.menu-item>a {
                 padding-top: 0.6em;
                 padding-bottom: 0.5em;
                 transition: all .3s;
@@ -203,9 +175,10 @@
 }
 
 @media only screen and (min-width: #{$break-wide}) {
-    .header--inner, .header--quicklinks-inner {
+    .header--inner,
+    .header--quicklinks-inner {
         // @include center-block;
-		display: flex;
-		align-items: center;
+        display: flex;
+        align-items: center;
     }
 }

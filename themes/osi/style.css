@@ -359,138 +359,210 @@ input[type=reset]:focus {
   font-weight: 300;
 }
 
-.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .content.has_no_sidebar .comments .alignfull, .single-license footer .content--page article:not(.archive) .alignfull, .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .content.has_no_sidebar .comments .alignfull, .single-post footer .content--page article:not(.archive) .alignfull, .single-post footer .comments .alignfull {
+.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
+.single-license .content.has_no_sidebar .comments .alignfull,
+.single-license footer .content--page article:not(.archive) .alignfull,
+.single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
+.single-post .content.has_no_sidebar .comments .alignfull,
+.single-post footer .content--page article:not(.archive) .alignfull,
+.single-post footer .comments .alignfull {
   margin-left: -16px;
   margin-right: -16px;
   max-width: none;
   width: calc(100% + (2 * 16px));
 }
-.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-license .content.has_no_sidebar .comments .alignfull .content--inner, .single-license footer .content--page article:not(.archive) .alignfull .content--inner, .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .content.has_no_sidebar .comments .alignfull .content--inner, .single-post footer .content--page article:not(.archive) .alignfull .content--inner, .single-post footer .comments .alignfull .content--inner {
+.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
+.single-license .content.has_no_sidebar .comments .alignfull .content--inner,
+.single-license footer .content--page article:not(.archive) .alignfull .content--inner,
+.single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
+.single-post .content.has_no_sidebar .comments .alignfull .content--inner,
+.single-post footer .content--page article:not(.archive) .alignfull .content--inner,
+.single-post footer .comments .alignfull .content--inner {
   padding-left: 16px;
   padding-right: 16px;
   margin: 0 auto;
   max-width: 1180px;
 }
 @media only screen and (min-width: 600px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .content.has_no_sidebar .comments .alignfull, .single-license footer .content--page article:not(.archive) .alignfull, .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .content.has_no_sidebar .comments .alignfull, .single-post footer .content--page article:not(.archive) .alignfull, .single-post footer .comments .alignfull {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
+  .single-license .content.has_no_sidebar .comments .alignfull,
+  .single-license footer .content--page article:not(.archive) .alignfull,
+  .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
+  .single-post .content.has_no_sidebar .comments .alignfull,
+  .single-post footer .content--page article:not(.archive) .alignfull,
+  .single-post footer .comments .alignfull {
     margin-left: -2rem;
     margin-right: -2rem;
     width: calc(100% + 4rem);
   }
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-license .content.has_no_sidebar .comments .alignfull .content--inner, .single-license footer .content--page article:not(.archive) .alignfull .content--inner, .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .content.has_no_sidebar .comments .alignfull .content--inner, .single-post footer .content--page article:not(.archive) .alignfull .content--inner, .single-post footer .comments .alignfull .content--inner {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
+  .single-license .content.has_no_sidebar .comments .alignfull .content--inner,
+  .single-license footer .content--page article:not(.archive) .alignfull .content--inner,
+  .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
+  .single-post .content.has_no_sidebar .comments .alignfull .content--inner,
+  .single-post footer .content--page article:not(.archive) .alignfull .content--inner,
+  .single-post footer .comments .alignfull .content--inner {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 @media only screen and (min-width: 782px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .content.has_no_sidebar .comments .alignfull, .single-license footer .content--page article:not(.archive) .alignfull, .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .content.has_no_sidebar .comments .alignfull, .single-post footer .content--page article:not(.archive) .alignfull, .single-post footer .comments .alignfull {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
+  .single-license .content.has_no_sidebar .comments .alignfull,
+  .single-license footer .content--page article:not(.archive) .alignfull,
+  .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
+  .single-post .content.has_no_sidebar .comments .alignfull,
+  .single-post footer .content--page article:not(.archive) .alignfull,
+  .single-post footer .comments .alignfull {
     margin-left: -48px;
     margin-right: -48px;
     width: calc(100% + (2 * 48px));
   }
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-license .content.has_no_sidebar .comments .alignfull .content--inner, .single-license footer .content--page article:not(.archive) .alignfull .content--inner, .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .content.has_no_sidebar .comments .alignfull .content--inner, .single-post footer .content--page article:not(.archive) .alignfull .content--inner, .single-post footer .comments .alignfull .content--inner {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
+  .single-license .content.has_no_sidebar .comments .alignfull .content--inner,
+  .single-license footer .content--page article:not(.archive) .alignfull .content--inner,
+  .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
+  .single-post .content.has_no_sidebar .comments .alignfull .content--inner,
+  .single-post footer .content--page article:not(.archive) .alignfull .content--inner,
+  .single-post footer .comments .alignfull .content--inner {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 @media only screen and (min-width: 1016px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .content.has_no_sidebar .comments .alignfull, .single-license footer .content--page article:not(.archive) .alignfull, .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .content.has_no_sidebar .comments .alignfull, .single-post footer .content--page article:not(.archive) .alignfull, .single-post footer .comments .alignfull {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
+  .single-license .content.has_no_sidebar .comments .alignfull,
+  .single-license footer .content--page article:not(.archive) .alignfull,
+  .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
+  .single-post .content.has_no_sidebar .comments .alignfull,
+  .single-post footer .content--page article:not(.archive) .alignfull,
+  .single-post footer .comments .alignfull {
     margin-left: calc(-50vw + ( 920px ) / 2);
     margin-right: calc(-50vw + ( 920px ) / 2);
     width: 100vw;
   }
 }
 
-.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-license .content.has_no_sidebar .comments .alignwide, .single-license footer .content--page article:not(.archive) .alignwide, .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .content.has_no_sidebar .comments .alignwide, .single-post footer .content--page article:not(.archive) .alignwide, .single-post footer .comments .alignwide {
+.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
+.single-license .content.has_no_sidebar .comments .alignwide,
+.single-license footer .content--page article:not(.archive) .alignwide,
+.single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
+.single-post .content.has_no_sidebar .comments .alignwide,
+.single-post footer .content--page article:not(.archive) .alignwide,
+.single-post footer .comments .alignwide {
   margin-left: -16px;
   margin-right: -16px;
   max-width: 920px;
   width: calc(100% + (2 * 16px));
 }
 @media only screen and (min-width: 600px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-license .content.has_no_sidebar .comments .alignwide, .single-license footer .content--page article:not(.archive) .alignwide, .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .content.has_no_sidebar .comments .alignwide, .single-post footer .content--page article:not(.archive) .alignwide, .single-post footer .comments .alignwide {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
+  .single-license .content.has_no_sidebar .comments .alignwide,
+  .single-license footer .content--page article:not(.archive) .alignwide,
+  .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
+  .single-post .content.has_no_sidebar .comments .alignwide,
+  .single-post footer .content--page article:not(.archive) .alignwide,
+  .single-post footer .comments .alignwide {
     margin-left: -2rem;
     margin-right: -2rem;
     width: calc(100% + 4rem);
   }
 }
 @media only screen and (min-width: 782px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-license .content.has_no_sidebar .comments .alignwide, .single-license footer .content--page article:not(.archive) .alignwide, .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .content.has_no_sidebar .comments .alignwide, .single-post footer .content--page article:not(.archive) .alignwide, .single-post footer .comments .alignwide {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
+  .single-license .content.has_no_sidebar .comments .alignwide,
+  .single-license footer .content--page article:not(.archive) .alignwide,
+  .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
+  .single-post .content.has_no_sidebar .comments .alignwide,
+  .single-post footer .content--page article:not(.archive) .alignwide,
+  .single-post footer .comments .alignwide {
     margin-left: -48px;
     margin-right: -48px;
     width: calc(100% + (2 * 48px));
   }
 }
 
-.post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide, footer .alignwide {
+.post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide,
+footer .alignwide {
   max-width: 1180px;
   width: 100%;
 }
 @media only screen and (min-width: 600px) {
-  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide, footer .alignwide {
+  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide,
+  footer .alignwide {
     margin-left: -16px;
     margin-right: -16px;
     width: calc(100% + (2 * 16px ));
   }
 }
 @media only screen and (min-width: 874px) {
-  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide, footer .alignwide {
+  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide,
+  footer .alignwide {
     margin-left: calc(-1 * ((100vw - 3 * 48px) - 730px ) / 2);
     margin-right: calc(-1 * ((100vw - 3 * 48px) - 730px ) / 2);
     width: calc(100vw - 3 * 48px);
   }
 }
 @media only screen and (min-width: 1180px) {
-  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide, footer .alignwide {
+  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide,
+  footer .alignwide {
     margin-left: calc(-1 * ( (1180px - (2 * 48px) ) - 730px ) / 2);
     margin-right: calc(-1 * ( (1180px - (2 * 48px) ) - 730px ) / 2);
     width: calc( 1180px - (2 * 48px ) );
   }
 }
 
-.content.has_no_sidebar .alignfull, footer .alignfull {
+.content.has_no_sidebar .alignfull,
+footer .alignfull {
   margin-left: -16px;
   margin-right: -16px;
   max-width: 1440px;
   width: calc(100% + (2 * 16px));
 }
-.content.has_no_sidebar .alignfull .content--inner, footer .alignfull .content--inner {
+.content.has_no_sidebar .alignfull .content--inner,
+footer .alignfull .content--inner {
   padding-left: 16px;
   padding-right: 16px;
   margin: 0 auto;
   max-width: 1180px;
 }
 @media only screen and (min-width: 600px) {
-  .content.has_no_sidebar .alignfull, footer .alignfull {
+  .content.has_no_sidebar .alignfull,
+  footer .alignfull {
     margin-left: -2rem;
     margin-right: -2rem;
     width: calc(100% + 4rem);
   }
-  .content.has_no_sidebar .alignfull .content--inner, footer .alignfull .content--inner {
+  .content.has_no_sidebar .alignfull .content--inner,
+  footer .alignfull .content--inner {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 @media only screen and (min-width: 782px) {
-  .content.has_no_sidebar .alignfull, footer .alignfull {
+  .content.has_no_sidebar .alignfull,
+  footer .alignfull {
     margin-left: -3rem;
     margin-right: -3rem;
     width: calc(100% + 6rem);
   }
 }
 @media only screen and (min-width: 826px) {
-  .content.has_no_sidebar .alignfull, footer .alignfull {
+  .content.has_no_sidebar .alignfull,
+  footer .alignfull {
     margin-left: calc(-1 * (100vw - 730px ) / 2);
     margin-right: calc(-1 * (100vw - 730px ) / 2);
     width: 100vw;
   }
-  .content.has_no_sidebar .alignfull .content--inner, footer .alignfull .content--inner {
+  .content.has_no_sidebar .alignfull .content--inner,
+  footer .alignfull .content--inner {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 @media only screen and (min-width: 1440px) {
-  .content.has_no_sidebar .alignfull, footer .alignfull {
+  .content.has_no_sidebar .alignfull,
+  footer .alignfull {
     margin-left: calc(-1 * (1440px - 730px ) / 2);
     margin-right: calc(-1 * (1440px - 730px ) / 2);
     width: 1440px;
@@ -1179,35 +1251,51 @@ body > .wrapper:after {
   text-align: inherit;
 }
 
-.content.has_no_sidebar .content--page article:not(.archive), .content.has_no_sidebar .comments, .content.has_no_sidebar .archive-press-mentions, footer .content--page article:not(.archive), footer .comments, footer .archive-press-mentions {
+.content.has_no_sidebar .content--page article:not(.archive),
+.content.has_no_sidebar .comments,
+.content.has_no_sidebar .archive-press-mentions,
+footer .content--page article:not(.archive),
+footer .comments,
+footer .archive-press-mentions {
   max-width: 730px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
-.single-post .content.has_no_sidebar .content--page article:not(.archive), .single-post .content.has_no_sidebar .comments, .single-post footer .content--page article:not(.archive), .single-post footer .comments {
+.single-post .content.has_no_sidebar .content--page article:not(.archive),
+.single-post .content.has_no_sidebar .comments,
+.single-post footer .content--page article:not(.archive),
+.single-post footer .comments {
   max-width: 920px !important;
 }
-.single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-post .content.has_no_sidebar .comments .alignwide.email-block, .single-post footer .content--page article:not(.archive) .alignwide.email-block, .single-post footer .comments .alignwide.email-block {
+.single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block,
+.single-post .content.has_no_sidebar .comments .alignwide.email-block,
+.single-post footer .content--page article:not(.archive) .alignwide.email-block,
+.single-post footer .comments .alignwide.email-block {
   max-width: none !important;
 }
-.single-license .content.has_no_sidebar .content--page article:not(.archive), .single-license .content.has_no_sidebar .comments, .single-license footer .content--page article:not(.archive), .single-license footer .comments {
-<<<<<<< HEAD
-  max-width: 920px !important;
-=======
+.single-license .content.has_no_sidebar .content--page article:not(.archive),
+.single-license .content.has_no_sidebar .comments,
+.single-license footer .content--page article:not(.archive),
+.single-license footer .comments {
   max-width: 1180px !important;
->>>>>>> origin/develop
 }
-.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-license .content.has_no_sidebar .comments .alignwide.email-block, .single-license footer .content--page article:not(.archive) .alignwide.email-block, .single-license footer .comments .alignwide.email-block {
+.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block,
+.single-license .content.has_no_sidebar .comments .alignwide.email-block,
+.single-license footer .content--page article:not(.archive) .alignwide.email-block,
+.single-license footer .comments .alignwide.email-block {
   max-width: none !important;
 }
-.single-license .content.has_no_sidebar .license-comments, .single-license footer .license-comments {
+.single-license .content.has_no_sidebar .license-comments,
+.single-license footer .license-comments {
   background: #f0E68C;
   padding: 2rem;
 }
-.single-license .content.has_no_sidebar .license-comments .wp-block-heading, .single-license footer .license-comments .wp-block-heading {
+.single-license .content.has_no_sidebar .license-comments .wp-block-heading,
+.single-license footer .license-comments .wp-block-heading {
   margin-top: 0;
 }
-.single-license .content.has_no_sidebar .license-comments:not(:has(h2)):not(:has(.wp-block-heading)), .single-license footer .license-comments:not(:has(h2)):not(:has(.wp-block-heading)) {
+.single-license .content.has_no_sidebar .license-comments:not(:has(h2)):not(:has(.wp-block-heading)),
+.single-license footer .license-comments:not(:has(h2)):not(:has(.wp-block-heading)) {
   background: none;
 }
 
@@ -2076,12 +2164,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 .header-main .header--inner .header--blog-name img {
   max-width: 300px;
   height: auto;
-<<<<<<< HEAD
-  width: 100%;
-  transform: translateZ(0);
-  transition: all 0.3s;
-}
-=======
   width: auto;
   transform: translateZ(0);
   transition: all 0.3s;
@@ -2091,7 +2173,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     max-width: 180px;
   }
 }
->>>>>>> origin/develop
 .header-main .header--inner .header--blog-name .hide-mobile {
   display: none;
 }
@@ -2145,7 +2226,8 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
 }
 @media only screen and (min-width: 1200px) {
-  .header--inner, .header--quicklinks-inner {
+  .header--inner,
+  .header--quicklinks-inner {
     padding-left: 48px;
     padding-right: 48px;
     padding-top: 1em;
@@ -2181,7 +2263,8 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
 }
 @media only screen and (min-width: 1280px) {
-  .header--inner, .header--quicklinks-inner {
+  .header--inner,
+  .header--quicklinks-inner {
     display: flex;
     align-items: center;
   }
@@ -4809,20 +4892,12 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
 .single-license .entry-content {
   margin-left: auto;
   margin-right: auto;
-<<<<<<< HEAD
-  max-width: 920px;
-  flex-grow: 1;
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-=======
   max-width: 1180px;
   flex-grow: 1;
   display: flex;
   align-items: flex-start;
   row-gap: 20px;
   column-gap: 60px;
->>>>>>> origin/develop
 }
 .single-license .page--title {
   margin-bottom: 18px !important;
@@ -4869,7 +4944,8 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
   border-left: 1px solid var(--wp--preset--color--neutral-white);
   padding-left: 10px;
 }
-.license-meta span + span.wrapped { /* First item on a new row */
+.license-meta span + span.wrapped {
+  /* First item on a new row */
   border: none;
   padding: 0;
 }
@@ -4921,7 +4997,8 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
 .license-table .license-table--title {
   font-weight: var(--wp--custom--typography--body--font-weight-bold);
 }
-.license-table .license-table--title, .license-table #license-header-title {
+.license-table .license-table--title,
+.license-table #license-header-title {
   min-width: 50%;
 }
 @media only screen and (max-width: 600px) {
@@ -4938,7 +5015,8 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
     overflow-x: auto;
     white-space: nowrap;
   }
-  .license-table .license-table--title, .license-table #license-header-title {
+  .license-table .license-table--title,
+  .license-table #license-header-title {
     min-width: 250px;
     word-wrap: break-word;
     white-space: normal;
@@ -4960,56 +5038,123 @@ form.wp-block-jetpack-contact-form div.grunion-field-wrap {
 }
 @media only screen and (min-width: 1180px) {
   .page-template-template-license-archive .content.has_no_sidebar .content--page article .alignfull {
-    margin-left: calc(-1 * (100vw - 1084px ) / 2);
-    margin-right: calc(-1 * (100vw - 1084px ) / 2);
+    margin-left: calc(-1 * (100vw - 1084px) / 2);
+    margin-right: calc(-1 * (100vw - 1084px) / 2);
     width: 100vw;
   }
 }
 @media only screen and (min-width: 1440px) {
   .page-template-template-license-archive .content.has_no_sidebar .content--page article .alignfull {
-    margin-left: calc(-1 * (1440px - 1084px ) / 2);
-    margin-right: calc(-1 * (1440px - 1084px ) / 2);
+    margin-left: calc(-1 * (1440px - 1084px) / 2);
+    margin-right: calc(-1 * (1440px - 1084px) / 2);
     width: 1440px;
   }
 }
 
-.single-board-member .post--thumbnail.cropped, .post-type-archive-board-member .post--thumbnail.cropped, .page-template-template-board-archive .post--thumbnail.cropped, .tax-taxonomy-status .post--thumbnail.cropped, .tax-taxonomy-seat-type .post--thumbnail.cropped {
+.single-board-member .post--thumbnail.cropped,
+.post-type-archive-board-member .post--thumbnail.cropped,
+.page-template-template-board-archive .post--thumbnail.cropped,
+.tax-taxonomy-status .post--thumbnail.cropped,
+.tax-taxonomy-seat-type .post--thumbnail.cropped {
   padding-bottom: 70%;
   margin-bottom: 1em;
 }
-.single-board-member .post--summary h2, .post-type-archive-board-member .post--summary h2, .page-template-template-board-archive .post--summary h2, .tax-taxonomy-status .post--summary h2, .tax-taxonomy-seat-type .post--summary h2 {
+.single-board-member .post--summary h2,
+.post-type-archive-board-member .post--summary h2,
+.page-template-template-board-archive .post--summary h2,
+.tax-taxonomy-status .post--summary h2,
+.tax-taxonomy-seat-type .post--summary h2 {
   margin-bottom: 12px !important;
   margin-top: 0;
 }
-.single-board-member .post--summary p, .post-type-archive-board-member .post--summary p, .page-template-template-board-archive .post--summary p, .tax-taxonomy-status .post--summary p, .tax-taxonomy-seat-type .post--summary p {
+.single-board-member .post--summary p,
+.post-type-archive-board-member .post--summary p,
+.page-template-template-board-archive .post--summary p,
+.tax-taxonomy-status .post--summary p,
+.tax-taxonomy-seat-type .post--summary p {
   margin-bottom: 4px !important;
   margin-top: 0;
 }
 @media only screen and (min-width: 782px) {
-  .single-board-member .cover--header .wp-block-cover, .post-type-archive-board-member .cover--header .wp-block-cover, .page-template-template-board-archive .cover--header .wp-block-cover, .tax-taxonomy-status .cover--header .wp-block-cover, .tax-taxonomy-seat-type .cover--header .wp-block-cover {
+  .single-board-member .cover--header .wp-block-cover,
+  .post-type-archive-board-member .cover--header .wp-block-cover,
+  .page-template-template-board-archive .cover--header .wp-block-cover,
+  .tax-taxonomy-status .cover--header .wp-block-cover,
+  .tax-taxonomy-seat-type .cover--header .wp-block-cover {
     padding-top: 75px;
     padding-bottom: 75px;
   }
-  .single-board-member .cover--header .wp-block-columns, .post-type-archive-board-member .cover--header .wp-block-columns, .page-template-template-board-archive .cover--header .wp-block-columns, .tax-taxonomy-status .cover--header .wp-block-columns, .tax-taxonomy-seat-type .cover--header .wp-block-columns {
+  .single-board-member .cover--header .wp-block-columns,
+  .post-type-archive-board-member .cover--header .wp-block-columns,
+  .page-template-template-board-archive .cover--header .wp-block-columns,
+  .tax-taxonomy-status .cover--header .wp-block-columns,
+  .tax-taxonomy-seat-type .cover--header .wp-block-columns {
     gap: 100px;
   }
 }
 
-.post-type-archive-board-member .member-dates, .page-template-template-board-archive .member-dates, .tax-taxonomy-status .member-dates, .tax-taxonomy-seat-type .member-dates {
+.post-type-archive-board-member .member-dates,
+.page-template-template-board-archive .member-dates,
+.tax-taxonomy-status .member-dates,
+.tax-taxonomy-seat-type .member-dates {
   font-style: italic;
 }
 
-.member-seat, .member-dates {
+.member-seat,
+.member-dates {
   display: block;
 }
 
-.member-position {
+.member-details span:nth-child(2) {
   border-left: 1px solid var(--wp--preset--color--neutral-darkest);
   margin-left: 10px;
   padding-left: 10px;
 }
-.wp-block-cover .member-position {
+.wp-block-cover .member-details span:nth-child(2) {
   border-color: var(--wp--preset--color--neutral-white);
+}
+
+.content.ai-full-width .content--page {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  background-color: #f6f7f9;
+}
+
+.entry-content .wp-block-group > div,
+.entry-content .wp-block-group.osi-card {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content.ai-full-width h2.wp-block-heading {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 62px;
+  color: #1F1F25;
+  max-width: 1000px;
+}
+
+.content.ai-full-width h3.wp-block-heading {
+  font-size: 26px;
+  line-height: 54px;
+  margin: 0;
+}
+
+.content.ai-full-width .wp-block-group.small-round-details {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+.content.ai-full-width .wp-block-group.small-round-details h3 {
+  line-height: 32px !important;
+}
+
+.content.ai-full-width .entry-content > .wp-block-group {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 /*

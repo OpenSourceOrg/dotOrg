@@ -1,0 +1,81 @@
+/* Image Styles */
+
+.wp-block-image {
+    &.is-style-custom-filter-blackwhite {
+        img {
+            filter: grayscale(100%);
+            transition: filter 0.5s ease-in-out;
+            &:hover {
+                filter: grayscale(0%);
+            }
+        }
+    }
+    &.is-style-round-logo-border {
+        img {
+            padding: 10px;
+            border: 1px solid #E9E9E9;
+            border-radius: 50%;
+        }
+    }
+}
+
+
+/* Card Styles */
+
+.wp-block-group {
+    &.osi-card {
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03);
+        margin-bottom: 20px !important;
+        h3 {
+            line-height: 30px !important;
+        }
+    }
+}
+
+
+/* Slide-Up Animation */
+
+.content .wp-block-heading {
+    &.slide-up {
+        transform: translateY(20px);
+        opacity: 0;
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0s 0.5s;
+        overflow: hidden;
+        &.visible {
+            transform: translateY(0);
+            opacity: 1;
+            overflow: hidden;
+        }
+    }
+}
+
+.plethoraplugins-tabs-container.button-tabs {
+    h3 {
+        line-height: 36px !important;
+    }
+    .plethoraplugins-tabs {
+        margin-bottom: 26px;
+    }
+    .js-plethoraplugins-tabs {
+        li {
+            a {
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 19px;
+                color: rgb(31, 31, 37);
+                padding: 15px 33px;
+                background: rgb(255, 255, 255);
+                border-radius: 5px;
+                text-decoration: none;
+                &.active {
+                    background-color: #3Ea638;
+                    color: #fff;
+                    text-decoration: none !important;
+                    span {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}

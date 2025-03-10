@@ -1,144 +1,133 @@
 @media only screen and (min-width: $break-small) {
-	.archive-columns {
-		gap: 2%;
-		flex-wrap: wrap !important;
-	}
-	.wp-block-column {
-		
-		&.three-column {
-			max-width: 49%;
-			min-width: 49%;
-		}
-		
-		&.four-column {
-			max-width: 49%;
-			min-width: 49%;
-		}
-	}
+    .archive-columns {
+        gap: 2%;
+        flex-wrap: wrap !important;
+    }
+    .wp-block-column {
+        &.three-column {
+            max-width: 49%;
+            min-width: 49%;
+        }
+        &.four-column {
+            max-width: 49%;
+            min-width: 49%;
+        }
+    }
 }
 
 @media only screen and (min-width: $break-medium) {
-	.wp-block-column {
-		&.two-column {
-			max-width: 49%;
-			min-width: 49%;
-		}
-		
-		&.three-column {
-			max-width: 32%;
-			min-width: 32%;
-		}
-		
-		&.four-column {
-			max-width: 23.5%;
-			min-width: 23.5%;
-		}
-	}
+    .wp-block-column {
+        &.two-column {
+            max-width: 49%;
+            min-width: 49%;
+        }
+        &.three-column {
+            max-width: 32%;
+            min-width: 32%;
+        }
+        &.four-column {
+            max-width: 23.5%;
+            min-width: 23.5%;
+        }
+    }
 }
-
 
 .alignright,
 .alignleft,
 .aligncenter {
     display: block !important;
     max-width: 100%;
-	position: relative;
-	z-index: 2; // dealing with gutenberg issues
+    position: relative;
+    z-index: 2; // dealing with gutenberg issues
 }
 
 .is-flex-container {
-	&.aligncenter {
-		justify-content: center;
-		text-align: inherit;
-	}
-	&.alignright {
-		justify-content: flex-end;
-		text-align: inherit;
-	}
+    &.aligncenter {
+        justify-content: center;
+        text-align: inherit;
+    }
+    &.alignright {
+        justify-content: flex-end;
+        text-align: inherit;
+    }
 }
 
-.content.has_no_sidebar, footer {
-	.alignwide {
-		// @extend %alignwide;
-		@extend %alignwide-narrow; // for narrow widths
-	}
-	.alignfull {
-		// @extend %alignfull;
-		@extend %alignfull-narrow-maxwidth; // for narrow widths
-	}
-	// uncomment for narrow widths
-	.content--page article:not(.archive), .comments, .archive-press-mentions {
-		max-width: $contentMax !important;
-		margin-left: auto !important;
-		margin-right: auto !important;
-	}
-
-	.single-post & {
-		.content--page article:not(.archive), .comments {
-			max-width: $postMax !important;
-
-			.alignwide {
-				@extend %alignwide;
-			}
-			.alignfull {
-				@extend %alignfull;
-			}
-			.alignwide.email-block {
-				max-width: none !important;
-			}
-		}
-	}
-
-	.single-license & {
-		.content--page article:not(.archive), .comments {
-<<<<<<< HEAD
-			max-width: $postMax !important;
-=======
-			max-width: $boxedMax !important;
->>>>>>> origin/develop
-
-			.alignwide {
-				@extend %alignwide;
-			}
-			.alignfull {
-				@extend %alignfull;
-			}
-			.alignwide.email-block {
-				max-width: none !important;
-			}
-		}
-
-		.license-comments {
-			background: #f0E68C;
-			padding: 2rem;
-
-			.wp-block-heading {
-				margin-top: 0;
-			}
-
-			&:not(:has(h2)):not(:has(.wp-block-heading)) {
-				background: none;
-			}
-		}
-	}
+.content.has_no_sidebar,
+footer {
+    .alignwide {
+        // @extend %alignwide;
+        @extend %alignwide-narrow; // for narrow widths
+    }
+    .alignfull {
+        // @extend %alignfull;
+        @extend %alignfull-narrow-maxwidth; // for narrow widths
+    }
+    // uncomment for narrow widths
+    .content--page article:not(.archive),
+    .comments,
+    .archive-press-mentions {
+        max-width: $contentMax !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .single-post & {
+        .content--page article:not(.archive),
+        .comments {
+            max-width: $postMax !important;
+            .alignwide {
+                @extend %alignwide;
+            }
+            .alignfull {
+                @extend %alignfull;
+            }
+            .alignwide.email-block {
+                max-width: none !important;
+            }
+        }
+    }
+    .single-license & {
+        .content--page article:not(.archive),
+        .comments {
+            max-width: $boxedMax !important;
+            .alignwide {
+                @extend %alignwide;
+            }
+            .alignfull {
+                @extend %alignfull;
+            }
+            .alignwide.email-block {
+                max-width: none !important;
+            }
+        }
+        .license-comments {
+            background: #f0E68C;
+            padding: 2rem;
+            .wp-block-heading {
+                margin-top: 0;
+            }
+            &:not(:has(h2)):not(:has(.wp-block-heading)) {
+                background: none;
+            }
+        }
+    }
 }
 
 .alignfull {
-	  margin-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 
-.alignfull + * {
-	margin-top: $smallPadding;
+.alignfull+* {
+    margin-top: $smallPadding;
 }
 
-.alignfull + .alignfull {
-	margin-top: 0 !important;
+.alignfull+.alignfull {
+    margin-top: 0 !important;
 }
 
 .alignfull .alignwide {
-	margin-left: auto !important;
-	margin-right: auto !important;
-	width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
 }
 
 @media only screen and (min-width: #{$break-small}) {
@@ -146,37 +135,31 @@
         float: right;
         //max-width: 50%;
     }
-
     .alignleft {
         float: left;
         //max-width: 50%;
     }
-
     .aligncenter {
         display: block;
         margin-left: auto;
-		margin-right: auto;
+        margin-right: auto;
         clear: both;
-				text-align: center;
+        text-align: center;
     }
-
     .alignnone {
         float: none !important;
         margin: 1em 0;
         max-width: 100%;
     }
-
-		.alignfull + * {
-			margin-top: $midPadding;
-		}
+    .alignfull+* {
+        margin-top: $midPadding;
+    }
 }
 
 @media only screen and (min-width: #{$break-medium}) {
-	.alignfull + * {
-		margin-top: $maxPadding;
-	}
+    .alignfull+* {
+        margin-top: $maxPadding;
+    }
 }
 
-@media only screen and (min-width: #{$boxedMax}) {
-
-}
+@media only screen and (min-width: #{$boxedMax}) {}
