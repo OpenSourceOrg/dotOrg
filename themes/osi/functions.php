@@ -426,6 +426,11 @@ function osi_wpdc_comment_body( string $comment_body ) {
 }
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
+/**
+ * Register the AI block template.
+ *
+ * @return void
+ */
 function osi_register_block_template() {
 	$post_type     = 'page'; // Assign the template to pages
 	$template_slug = 'ai-template';
