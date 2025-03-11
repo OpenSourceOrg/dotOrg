@@ -5,7 +5,7 @@ Template Post Type: page
 Description: Custom template for full width
 */
 
-get_header('ai'); ?>
+get_header( 'ai' ); ?>
 
 <section class="content ai-full-width" id="content">
 
