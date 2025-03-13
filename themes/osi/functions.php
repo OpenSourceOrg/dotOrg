@@ -575,3 +575,6 @@ function osi_register_ai_menu() {
 	register_nav_menu( 'ai', __( 'AI Menu', 'osi' ) );
 }
 add_action( 'after_setup_theme', 'osi_register_ai_menu' );
+
+
+add_filter( 'jetpack_disable_tracking', '__return_true' );
