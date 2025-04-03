@@ -578,3 +578,18 @@ add_action( 'after_setup_theme', 'osi_register_ai_menu' );
 
 
 add_filter( 'jetpack_disable_tracking', '__return_true' );
+
+/**
+ * Modify the post type arguments for the podcast post type.
+ *
+ * @param array $args The post type arguments.
+ *
+ * @return array The modified post type arguments.
+ */
+function osi_ssp_register_post_type_args( $args ) {
+	$args['rewrite']['slug']       = 'ai';
+	$args['rewrite']['with_front'] = false;
+	return $args;
+}
+add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10, 1 );
+
