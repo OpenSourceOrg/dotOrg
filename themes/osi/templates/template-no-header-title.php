@@ -1,6 +1,7 @@
 <?php
 /**
  * Template Name: No Header with Title
+ * Template Post Type: post, page, podcast, board-member, license, meeting-minutes, press-mentions, event, supporter
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
