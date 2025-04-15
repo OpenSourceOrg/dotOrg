@@ -507,3 +507,17 @@ function osi_handle_supporter_form_flamingo_spam_status_change( string $new_stat
 	}
 }
 add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_status_change', 10, 3 );
+
+/**
+ * Modify the post type arguments for the podcast post type.
+ *
+ * @param array $args The post type arguments.
+ *
+ * @return array The modified post type arguments.
+ */
+function osi_ssp_register_post_type_args( $args ) {
+	$args['rewrite']['slug']       = 'ai/podcast';
+	$args['rewrite']['with_front'] = false;
+	return $args;
+}
+add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10, 1 );
