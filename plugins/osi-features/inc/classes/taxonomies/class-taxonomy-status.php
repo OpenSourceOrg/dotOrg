@@ -73,7 +73,7 @@ class Taxonomy_Status extends Base {
 				'hierarchical'       => false,
 				'rewrite'            => false,
 				'public'             => false,
-				'publicly_queryable' => false,
+				'publicly_queryable' => true,
 				'show_ui'            => true,
 				'show_in_menu'       => true,
 				'show_in_nav_menus'  => false,
