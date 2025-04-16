@@ -68,18 +68,13 @@ class Taxonomy_Status extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-		
-		return wp_parse_args( 
-			[
+
+		return wp_parse_args(
+			array(
 				'hierarchical' => false,
-				'rewrite'      => array(
-					'slug' => 'about/board-of-directors',
-					'with_front' => false,
-					'hierarchical' => false,
-				),
-			], 
+				'rewrite'      => array( 'slug' => 'status' ),
+			),
 			parent::get_args()
 		);
 	}
-
 }
