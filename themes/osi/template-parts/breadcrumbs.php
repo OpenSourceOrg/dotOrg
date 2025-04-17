@@ -8,7 +8,31 @@
         $post_type                 = is_page() ? 'page' : get_query_var( 'post_type' );
         $is_post_type_hierarchical = is_post_type_hierarchical( $post_type );
       
+        // Special handling for podcast post type
+        if ( $post_type === 'podcast' ) {
+          $breadcrumb          = '';
+          $position            = 1;
+          $podcast_archive_url = home_url( '/ai/podcast/' );
+          
+          if ( is_archive() || is_post_type_archive( 'podcast' ) ) {
+            $breadcrumb .= '<span class="current-page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><meta itemprop="position" content="' . esc_attr( $position ) . '"><span itemprop="name">Podcast</span></span>';
+          } else {
+            $breadcrumb .= '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><meta itemprop="position" content="' . esc_attr( $position ) . '"><a href="' . esc_url( $podcast_archive_url ) . '" itemprop="item"><span itemprop="name">Podcast</span></a></span>';
+            ++$position;
+            
+            $post_id = get_queried_object_id();
+            $breadcrumb .= '<span class="current-page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><meta itemprop="position" content="' . esc_attr( $position ) . '"><span itemprop="name">' . esc_html( get_the_title( $post_id ) ) . '</span></span>';
+          }
+          
+          $home = '<span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><meta itemprop="position" content="0"><a href="' . esc_url( home_url( '/' ) ) . '" class="home-link" itemprop="item" rel="home"><span itemprop="name">' . esc_html__( 'Home', 'jetpack' ) . '</span></a></span>';
+          
+          echo '<nav class="entry-breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">' . $home . $breadcrumb . '</nav>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+          echo '</div></div>'; // Close the breadcrumb area
+          return;
+        }
+        
         if ( ! ( $is_post_type_hierarchical || $is_taxonomy_hierarchical ) || is_front_page() ) {
+          echo '</div></div>'; // Close the breadcrumb area
           return;
         }
       
