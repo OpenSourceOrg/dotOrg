@@ -97,10 +97,8 @@ class Post_Type_Press_Mentions extends Base {
 	 * @param \WP_Post $post The post object
 	 */
 	public function render_meta_box( $post ) {
-		// Add nonce for security
 		\wp_nonce_field( 'press_mentions_meta_box', 'press_mentions_meta_box_nonce' );
 
-		// Get existing values
 		$date_of_publication = \get_post_meta( $post->ID, 'date_of_publication', true );
 		// Convert Ymd format to Y-m-d for the input field
 		if ( ! empty( $date_of_publication ) ) {
@@ -143,22 +141,18 @@ class Post_Type_Press_Mentions extends Base {
 	 * @param \WP_Post $post    The post object
 	 */
 	public function save_custom_fields( $post_id, $post ) {
-		// Check if nonce is set
 		if ( ! isset( $_POST['press_mentions_meta_box_nonce'] ) ) {
 			return;
 		}
 
-		// Verify nonce
 		if ( ! \wp_verify_nonce( $_POST['press_mentions_meta_box_nonce'], 'press_mentions_meta_box' ) ) {
 			return;
 		}
 
-		// If this is an autosave, don't do anything
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
 
-		// Check user permissions
 		if ( ! \current_user_can( 'edit_post', $post_id ) ) {
 			return;
 		}
@@ -190,11 +184,18 @@ class Post_Type_Press_Mentions extends Base {
 					return \get_post_meta( $post['id'], 'date_of_publication', true );
 				},
 				'update_callback' => function ( $value, $post ) {
-					\update_post_meta( $post->ID, 'date_of_publication', $value );
+					// Handle array input from Make.com
+					$date_value = is_array( $value ) && ! empty( $value ) ? $value[0] : $value;
+					if ( ! empty( $date_value ) ) {
+						// Convert the date to Ymd format
+						$formatted_date = gmdate( 'Ymd', strtotime( $date_value ) );
+						\update_post_meta( $post->ID, 'date_of_publication', $formatted_date );
+					}
 				},
 				'schema'          => array(
-					'type'        => 'string',
-					'description' => 'Date of Publication',
+					'type'        => array( 'string', 'array' ),
+					'items'       => array( 'type' => 'string' ),
+					'description' => 'Date of Publication in Ymd format',
 					'required'    => true,
 				),
 			),
@@ -208,11 +209,57 @@ class Post_Type_Press_Mentions extends Base {
 					return \get_post_meta( $post['id'], 'article_url', true );
 				},
 				'update_callback' => function ( $value, $post ) {
-					\update_post_meta( $post->ID, 'article_url', \esc_url_raw( $value ) );
+					// Handle array input from Make.com
+					$url_value = is_array( $value ) && ! empty( $value ) ? $value[0] : $value;
+					if ( ! empty( $url_value ) ) {
+						\update_post_meta( $post->ID, 'article_url', \esc_url_raw( $url_value ) );
+					}
 				},
 				'schema'          => array(
-					'type'        => 'string',
+					'type'        => array( 'string', 'array' ),
+					'items'       => array( 'type' => 'string' ),
 					'description' => 'Article URL',
+					'required'    => true,
+				),
+			),
+		);
+
+		\register_rest_field(
+			self::SLUG,
+			'publication_name',
+			array(
+				'get_callback'    => function ( $post ) {
+					$terms = \get_the_terms( $post['id'], 'taxonomy-publication' );
+					if ( ! empty( $terms ) && ! \is_wp_error( $terms ) ) {
+						return $terms[0]->name;
+					}
+					return '';
+				},
+				'update_callback' => function ( $value, $post ) {
+					// Handle array input from Make.com
+					$pub_value = is_array( $value ) && ! empty( $value ) ? $value[0] : $value;
+					if ( ! empty( $pub_value ) ) {
+						$term = \get_term_by( 'name', $pub_value, 'taxonomy-publication' );
+
+						if ( ! $term ) {
+							$new_term = \wp_insert_term( $pub_value, 'taxonomy-publication' );
+							if ( ! \is_wp_error( $new_term ) ) {
+								$term_id = $new_term['term_id'];
+							}
+						} else {
+							$term_id = $term->term_id;
+						}
+
+						if ( isset( $term_id ) ) {
+							// Set the taxonomy term for the post
+							\wp_set_object_terms( $post->ID, array( $term_id ), 'taxonomy-publication' );
+						}
+					}
+				},
+				'schema'          => array(
+					'type'        => array( 'string', 'array' ),
+					'items'       => array( 'type' => 'string' ),
+					'description' => 'Publication Name',
 					'required'    => true,
 				),
 			),
