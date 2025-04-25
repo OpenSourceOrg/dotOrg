@@ -27,13 +27,22 @@ class Post_Type_Press_Mentions extends Base {
 	const LABEL = 'Press mentions';
 
 	/**
+	 * Initialize the class and set up hooks
+	 */
+	public function init() {
+		\add_action( 'add_meta_boxes', array( $this, 'register_custom_fields' ) );
+		\add_action( 'save_post_' . self::SLUG, array( $this, 'save_custom_fields' ), 10, 2 );
+		\add_action( 'rest_api_init', array( $this, 'register_rest_fields' ) );
+	}
+
+	/**
 	 * To get list of labels for post type.
 	 *
 	 * @return array
 	 */
 	public function get_labels() {
 
-		return [
+		return array(
 			'name'               => __( 'Press mentions', 'osi-features' ),
 			'singular_name'      => __( 'Press mentions', 'osi-features' ),
 			'all_items'          => __( 'Press mentions', 'osi-features' ),
@@ -45,8 +54,7 @@ class Post_Type_Press_Mentions extends Base {
 			'search_items'       => __( 'Search Press mentions', 'osi-features' ),
 			'not_found'          => __( 'No Press mentions found', 'osi-features' ),
 			'not_found_in_trash' => __( 'No Press mentions found in Trash', 'osi-features' ),
-		];
-
+		);
 	}
 
 	/**
@@ -56,14 +64,158 @@ class Post_Type_Press_Mentions extends Base {
 	 */
 	public function get_args() {
 
-		return [
+		return array(
 			'show_in_rest'  => true,
 			'public'        => true,
 			'has_archive'   => true,
 			'menu_position' => 6,
-			'supports'      => [ 'title', 'author', 'excerpt' ],
-			'rewrite'       => [ 'slug' => 'press-mentions', 'with_front' => false ]
-		];
+			'supports'      => array( 'title', 'author', 'excerpt' ),
+			'rewrite'       => array(
+				'slug'       => 'press-mentions',
+				'with_front' => false,
+			),
+		);
+	}
 
+	/**
+	 * Register custom fields for press mentions
+	 */
+	public function register_custom_fields() {
+		\add_meta_box(
+			'press_mentions_meta_box',
+			\__( 'Press Mention Details', 'osi-features' ),
+			array( $this, 'render_meta_box' ),
+			self::SLUG,
+			'normal',
+			'high'
+		);
+	}
+
+	/**
+	 * Render the meta box
+	 *
+	 * @param \WP_Post $post The post object
+	 */
+	public function render_meta_box( $post ) {
+		// Add nonce for security
+		\wp_nonce_field( 'press_mentions_meta_box', 'press_mentions_meta_box_nonce' );
+
+		// Get existing values
+		$date_of_publication = \get_post_meta( $post->ID, 'date_of_publication', true );
+		// Convert Ymd format to Y-m-d for the input field
+		if ( ! empty( $date_of_publication ) ) {
+			$date_of_publication = \DateTime::createFromFormat( 'Ymd', $date_of_publication )->format( 'Y-m-d' );
+		}
+		$article_url = \get_post_meta( $post->ID, 'article_url', true );
+
+		?>
+		<div class="press-mentions-fields">
+			<p>
+				<label for="date_of_publication"><?php \esc_html_e( 'Date of Publication', 'osi-features' ); ?> *</label><br>
+				<input 
+					type="date" 
+					id="date_of_publication" 
+					name="date_of_publication" 
+					value="<?php echo \esc_attr( $date_of_publication ); ?>"
+					required
+					data-first-day="1"
+				>
+			</p>
+			<p>
+				<label for="article_url"><?php \esc_html_e( 'Article URL', 'osi-features' ); ?> *</label><br>
+				<input 
+					type="url" 
+					id="article_url" 
+					name="article_url" 
+					value="<?php echo \esc_url( $article_url ); ?>"
+					required
+					style="width: 100%;"
+				>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Save custom fields
+	 *
+	 * @param int     $post_id The post ID
+	 * @param \WP_Post $post    The post object
+	 */
+	public function save_custom_fields( $post_id, $post ) {
+		// Check if nonce is set
+		if ( ! isset( $_POST['press_mentions_meta_box_nonce'] ) ) {
+			return;
+		}
+
+		// Verify nonce
+		if ( ! \wp_verify_nonce( $_POST['press_mentions_meta_box_nonce'], 'press_mentions_meta_box' ) ) {
+			return;
+		}
+
+		// If this is an autosave, don't do anything
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+		// Check user permissions
+		if ( ! \current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+
+		// Save date of publication
+		if ( isset( $_POST['date_of_publication'] ) ) {
+			$date = \sanitize_text_field( $_POST['date_of_publication'] );
+			// Convert to Ymd format
+			$formatted_date = gmdate( 'Ymd', strtotime( $date ) );
+			\update_post_meta( $post_id, 'date_of_publication', $formatted_date );
+		}
+
+		// Save article URL
+		if ( isset( $_POST['article_url'] ) ) {
+			$url = \esc_url_raw( $_POST['article_url'] );
+			\update_post_meta( $post_id, 'article_url', $url );
+		}
+	}
+
+	/**
+	 * Register REST API fields
+	 */
+	public function register_rest_fields() {
+		\register_rest_field(
+			self::SLUG,
+			'date_of_publication',
+			array(
+				'get_callback'    => function ( $post ) {
+					return \get_post_meta( $post['id'], 'date_of_publication', true );
+				},
+				'update_callback' => function ( $value, $post ) {
+					\update_post_meta( $post->ID, 'date_of_publication', $value );
+				},
+				'schema'          => array(
+					'type'        => 'string',
+					'description' => 'Date of Publication',
+					'required'    => true,
+				),
+			),
+		);
+
+		\register_rest_field(
+			self::SLUG,
+			'article_url',
+			array(
+				'get_callback'    => function ( $post ) {
+					return \get_post_meta( $post['id'], 'article_url', true );
+				},
+				'update_callback' => function ( $value, $post ) {
+					\update_post_meta( $post->ID, 'article_url', \esc_url_raw( $value ) );
+				},
+				'schema'          => array(
+					'type'        => 'string',
+					'description' => 'Article URL',
+					'required'    => true,
+				),
+			),
+		);
 	}
 }
