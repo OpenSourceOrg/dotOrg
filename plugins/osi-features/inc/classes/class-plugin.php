@@ -52,7 +52,10 @@ class Plugin {
 		Post_Type_Board_Member::get_instance();
 		Post_Type_License::get_instance();
 		Post_Type_Meeting_Minutes::get_instance();
-		Post_Type_Press_Mentions::get_instance();
+		
+		// Get instance and initialize Press Mentions
+		$press_mentions = Post_Type_Press_Mentions::get_instance();
+		$press_mentions->init();
 
 	}
 
