@@ -28,7 +28,7 @@ class Taxonomy_Publication extends Base {
 	 */
 	public function get_labels() {
 
-		return [
+		return array(
 			'name'                       => _x( 'Publication', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Publication', 'taxonomy singular name', 'osi-features' ),
 			'search_items'               => __( 'Search Publication', 'osi-features' ),
@@ -45,8 +45,7 @@ class Taxonomy_Publication extends Base {
 			'choose_from_most_used'      => __( 'Choose from the most used Publications', 'osi-features' ),
 			'not_found'                  => __( 'No Publication found.', 'osi-features' ),
 			'menu_name'                  => __( 'Publications', 'osi-features' ),
-		];
-
+		);
 	}
 
 	/**
@@ -56,10 +55,9 @@ class Taxonomy_Publication extends Base {
 	 */
 	public function get_post_types() {
 
-		return [
+		return array(
 			Post_Type_Press_Mentions::get_instance()->get_slug(),
-		];
-
+		);
 	}
 
 	/**
@@ -68,18 +66,17 @@ class Taxonomy_Publication extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-		
-		return wp_parse_args( 
-			[
+
+		return wp_parse_args(
+			array(
 				'hierarchical' => true,
+				'show_in_rest' => true,
 				'rewrite'      => array(
-					'slug' => 'publication',
+					'slug'       => 'publication',
 					'with_front' => false,
 				),
-
-			], 
+			),
 			parent::get_args()
 		);
 	}
-
 }
