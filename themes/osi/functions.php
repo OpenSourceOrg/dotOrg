@@ -576,7 +576,14 @@ function osi_register_ai_menu() {
 }
 add_action( 'after_setup_theme', 'osi_register_ai_menu' );
 
-function mytheme_full_width_editor( $editor_settings ) {
+/**
+ * Enqueue the full-width editor styles for the AI template.
+ *
+ * @param array $editor_settings The editor settings.
+ *
+ * @return array
+ */
+function osi_full_width_editor( array $editor_settings ): array {
 	if ( get_page_template_slug() === 'templates/ai-wide.php' ) {
 		$editor_settings['styles'][] = array(
 			'css' => '.wp-block { max-width: 1140px !important; }',
@@ -584,4 +591,4 @@ function mytheme_full_width_editor( $editor_settings ) {
 	}
 	return $editor_settings;
 }
-add_filter( 'block_editor_settings_all', 'mytheme_full_width_editor' );
+add_filter( 'block_editor_settings_all', 'osi_full_width_editor' );
