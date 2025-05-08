@@ -149,9 +149,6 @@ $footer_block = <<<HTML
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 HTML;
-// $parsed_footer_block = parse_blocks( $footer_block );
-// dd($parsed_footer_block);
-
 ?>
 
 		<footer id="colophon" class="footer site-footer ai-footer" role="contentinfo">
