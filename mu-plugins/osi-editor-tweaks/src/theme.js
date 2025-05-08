@@ -3,7 +3,7 @@
  *
  * @returns {void}
  */
-const initAnimatedHeadings = () => {
+const initAnimatedElements = () => {
   // Function to check if an element is in the viewport
   const isInViewport = (element) => {
     const rect = element.getBoundingClientRect();
@@ -17,7 +17,7 @@ const initAnimatedHeadings = () => {
 
   // Function to add 'visible' class if element is in the viewport
   const checkVisibility = () => {
-    document.querySelectorAll('.wp-block-heading.slide-up').forEach(el => {
+    document.querySelectorAll('.wp-block-heading.slide-up, p.slide-up').forEach(el => {
       if (isInViewport(el)) {
         el.classList.add('visible');
       }
@@ -25,7 +25,8 @@ const initAnimatedHeadings = () => {
   };
 
   // Select all headings you want to monitor
-  const headings = document.querySelectorAll('.wp-block-heading.slide-up');
+  const headings = document.querySelectorAll('.wp-block-heading.slide-up, p.slide-up');
+console.log(headings.length);
 
   // Create an IntersectionObserver instance
   const intersectionObserver = new IntersectionObserver((entries) => {
@@ -76,4 +77,4 @@ const initAnimatedHeadings = () => {
 
 
 // Initialize observers when the DOM content is loaded
-document.addEventListener("DOMContentLoaded", initAnimatedHeadings);
+document.addEventListener("DOMContentLoaded", initAnimatedElements);

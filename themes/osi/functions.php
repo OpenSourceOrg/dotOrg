@@ -575,3 +575,13 @@ function osi_register_ai_menu() {
 	register_nav_menu( 'ai', __( 'AI Menu', 'osi' ) );
 }
 add_action( 'after_setup_theme', 'osi_register_ai_menu' );
+
+function mytheme_full_width_editor( $editor_settings ) {
+	if ( get_page_template_slug() === 'templates/ai-wide.php' ) {
+		$editor_settings['styles'][] = array(
+			'css' => '.wp-block { max-width: 1140px !important; }',
+		);
+	}
+	return $editor_settings;
+}
+add_filter( 'block_editor_settings_all', 'mytheme_full_width_editor' );

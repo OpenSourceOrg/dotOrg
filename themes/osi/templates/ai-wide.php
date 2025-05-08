@@ -12,7 +12,7 @@ get_header( 'ai' ); ?>
 	<main class="content--body <?php echo esc_attr( osi_main_class() ); ?>" role="main">
 		<section class="content--page" id="content-page">
 			<?php
-			get_template_part( 'template-parts/breadcrumbs' );
+			// get_template_part( 'template-parts/breadcrumbs' );
 
 			while ( have_posts() ) :
 				the_post();
@@ -25,4 +25,4 @@ get_header( 'ai' ); ?>
 </section>
 
 <?php
-get_footer();
+get_footer( 'ai' );

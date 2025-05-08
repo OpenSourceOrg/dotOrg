@@ -16,6 +16,16 @@ registerBlockStyle('core/image', {
 	label: __('Round Logo with Border', 'osi-et'),
 });
 
+registerBlockStyle('core/button', {
+	name: 'spin-white',
+	label: __('Spin (White)', 'osi-et'),
+});
+
+registerBlockStyle('core/button', {
+	name: 'spin-green',
+	label: __('Spin (Green)', 'osi-et'),
+});
+
 /**
  * Custom filter to add an "Animations" panel to the Inspector Controls of Heading blocks.
  *

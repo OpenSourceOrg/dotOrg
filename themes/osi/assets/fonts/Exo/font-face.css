@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Exo';
+    font-style: normal;
+    font-weight: 100 900;
+    /* Full variable range */
+    font-display: swap;
+    src: url('./Exo-VariableFont_wght.ttf') format('truetype-variations');
+}
+
+@font-face {
+    font-family: 'Exo';
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('./Exo-Italic-VariableFont_wght.ttf') format('truetype-variations');
+}
