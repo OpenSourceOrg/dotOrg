@@ -592,3 +592,20 @@ function osi_full_width_editor( array $editor_settings ): array {
 	return $editor_settings;
 }
 add_filter( 'block_editor_settings_all', 'osi_full_width_editor' );
+
+add_filter( 'jetpack_disable_tracking', '__return_true' );
+
+/**
+ * Modify the post type arguments for the podcast post type.
+ *
+ * @param array $args The post type arguments.
+ *
+ * @return array The modified post type arguments.
+ */
+function osi_ssp_register_post_type_args( array $args ): array {
+	$args['rewrite']['slug']       = 'ai';
+	$args['rewrite']['with_front'] = false;
+	return $args;
+}
+add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10, 1 );
+
