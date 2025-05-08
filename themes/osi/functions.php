@@ -608,4 +608,3 @@ function osi_ssp_register_post_type_args( array $args ): array {
 	return $args;
 }
 add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10, 1 );
-
