@@ -576,6 +576,22 @@ function osi_register_ai_menu() {
 }
 add_action( 'after_setup_theme', 'osi_register_ai_menu' );
 
+/**
+ * Enqueue the full-width editor styles for the AI template.
+ *
+ * @param array $editor_settings The editor settings.
+ *
+ * @return array
+ */
+function osi_full_width_editor( array $editor_settings ): array {
+	if ( get_page_template_slug() === 'templates/ai-wide.php' ) {
+		$editor_settings['styles'][] = array(
+			'css' => '.wp-block { max-width: 1140px !important; }',
+		);
+	}
+	return $editor_settings;
+}
+add_filter( 'block_editor_settings_all', 'osi_full_width_editor' );
 
 add_filter( 'jetpack_disable_tracking', '__return_true' );
 
@@ -586,10 +602,9 @@ add_filter( 'jetpack_disable_tracking', '__return_true' );
  *
  * @return array The modified post type arguments.
  */
-function osi_ssp_register_post_type_args( $args ) {
+function osi_ssp_register_post_type_args( array $args ): array {
 	$args['rewrite']['slug']       = 'ai';
 	$args['rewrite']['with_front'] = false;
 	return $args;
 }
 add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10, 1 );
-

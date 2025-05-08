@@ -21,7 +21,7 @@
 
 <body <?php body_class(); ?>>
 	<div class="wrapper" role="document">
-		<header id="masthead" class="site-header header-main">
+		<header id="masthead" class="site-header header-main ai-header">
 			<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'osi' ); ?></a>
 			<div class="header--inner">
 				<div class="site-branding header--blog-name">
@@ -49,11 +49,7 @@
 					endif;
 					?>
 				</nav><!-- #site-navigation -->
-				<section class="open-search-wrapper">
-				<a aria-label="Open Search" class="open-search open-button jetpack-search-filter__link" href="#">
-					<?php OSI\SVG::the_svg( 'search' ); ?>
-				</a>
-				</section>
+
 				<section class="open-button-wrapper">
 						<button aria-label="Open Menu" id="openMainMenu" class="open-main-menu open-button">
 							<span class="menu-text"><?php esc_html_e( 'Open Main Menu', 'osi' ); ?></span>
