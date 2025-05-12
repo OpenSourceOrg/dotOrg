@@ -53,7 +53,6 @@ if ( ! function_exists( 'osi_posted_by' ) ) :
 		);
 
 	echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore
-
 	}
 endif;
 
@@ -138,12 +137,25 @@ function osi_linked_logo( $class = 'header-logo', $size = 'large', $path = '' ) 
 		echo '<a href="' . esc_url( home_url( $path ) ) . '">';
 		echo '<img class="' . esc_attr( $class ) . '" src="' . esc_url( $thumb[0] ) . '" alt="' . esc_attr( $alt ) . '" />';
 		echo '</a>';
-
 	} else { // If nothing else is entered, show the blog name as usual
 
 		echo '<div class="site-title"><a href="' . esc_url( home_url( $path ) ) . '">' . esc_html( get_bloginfo( 'name' ) ) . '</a></div>';
-
 	}
+}
+
+/**
+ * Gets the full string of a linked logo.
+ *
+ * @param string $class The class name for the logo.
+ * @param string $size  The size of the logo.
+ *
+ * @return string The HTML string for the linked logo.
+ */
+function osi_get_linked_logo( $class = 'header-logo', $size = 'large', $path = '' ) {
+	ob_start();
+	osi_linked_logo( $class, $size, $path );
+	$output = ob_get_clean();
+	return $output;
 }
 
 /**
@@ -169,7 +181,7 @@ function osi_title() {
 	} elseif ( is_archive() ) {
 		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 		if ( $term ) {
-			return apply_filters( 'single_term_title', get_taxonomy_labels( get_taxonomy($term->taxonomy) )->name . ': ' . $term->name );
+			return apply_filters( 'single_term_title', get_taxonomy_labels( get_taxonomy( $term->taxonomy ) )->name . ': ' . $term->name );
 		} elseif ( is_post_type_archive() ) {
 			return apply_filters( 'the_title', get_queried_object()->labels->name, get_queried_object_id() );
 		} elseif ( is_day() ) {
@@ -223,7 +235,6 @@ if ( ! function_exists( 'osi_get_custom_taxonomies_terms_links' ) ) {
 		$close = '';
 		$out   = array();
 		foreach ( $taxonomies as $taxonomy_slug => $taxonomy ) {
-
 			if ( true === $taxonomy->public ) {
 
 				// get the terms related to post
@@ -267,7 +278,7 @@ if ( ! function_exists( 'osi_get_custom_taxonomies_terms_links' ) ) {
 */
 if ( ! function_exists( 'osi_get_single_taxonomy_terms_links' ) ) {
 	// get taxonomies terms links
-	function osi_get_single_taxonomy_terms_links( $post, $taxonomy_slug='' ) {
+	function osi_get_single_taxonomy_terms_links( $post, $taxonomy_slug = '' ) {
 		// get post by post id
 		$post = get_post( $post->ID );
 
@@ -275,7 +286,7 @@ if ( ! function_exists( 'osi_get_single_taxonomy_terms_links' ) ) {
 		$close = '';
 		$out   = array();
 
-		if( $taxonomy_slug ) {
+		if ( $taxonomy_slug ) {
 			// get the terms related to post
 			$terms = get_the_terms( $post->ID, $taxonomy_slug );
 
@@ -306,11 +317,7 @@ if ( ! function_exists( 'osi_get_single_taxonomy_terms_links' ) ) {
 				}
 				$close = "</div>\n";
 			}
-
 		}
-
-
-
 
 		return $open . implode( '', $out ) . $close;
 	}
@@ -323,7 +330,7 @@ if ( ! function_exists( 'osi_get_single_taxonomy_terms_links' ) ) {
 */
 if ( ! function_exists( 'osi_get_single_taxonomy_terms_query' ) ) {
 	// get taxonomies terms links
-	function osi_get_single_taxonomy_terms_query( $post, $taxonomy_slug='', $base = '', $query_string = '?=' ) {
+	function osi_get_single_taxonomy_terms_query( $post, $taxonomy_slug = '', $base = '', $query_string = '?=' ) {
 		// get post by post id
 		$post = get_post( $post->ID );
 
@@ -331,7 +338,7 @@ if ( ! function_exists( 'osi_get_single_taxonomy_terms_query' ) ) {
 		$close = '';
 		$out   = array();
 
-		if( $taxonomy_slug ) {
+		if ( $taxonomy_slug ) {
 			// get the terms related to post
 			$terms = get_the_terms( $post->ID, $taxonomy_slug );
 
@@ -362,7 +369,6 @@ if ( ! function_exists( 'osi_get_single_taxonomy_terms_query' ) ) {
 				}
 				$close = "</div>\n";
 			}
-
 		}
 		return $open . implode( '', $out ) . $close;
 	}
@@ -381,7 +387,7 @@ if ( ! function_exists( 'osi_terms_from_taxonomy_links_all' ) ) {
 			$i         = 0;
 			$term_list = '<ul class="osi-component--term-list">';
 			foreach ( $terms as $term ) {
-				$i++;
+				++$i;
 				// translators: %s is term name
 				$term_list .= '<li><a class="term-item" aria-label="' . sprintf( __( 'View all filed under %s', 'osi' ), $term->name ) . '" href="' . get_term_link( $term ) . '" title="' . sprintf( __( 'View all filed under %s', 'osi' ), $term->name ) . '" data-id="' . $term->term_id . '" data-term="term-' . $term->slug . '">' . $term->name . '</a></li>';
 				if ( $count !== $i ) {
@@ -409,8 +415,8 @@ if ( ! function_exists( 'osi_terms_from_taxonomy_checkboxes' ) ) {
 			$i         = 0;
 			$term_list = '<fieldset><ul class="osi-component--term-list">';
 			foreach ( $terms as $term ) {
-				$i++;
-				$term_list .= '<li><label class="term-item" for="osi-filter-cb-' . $term->slug .  '"><span>' . $term->name . '</span><input type="checkbox" id="osi-filter-cb-' . $term->slug .  '"  class="category-filter-cb" value="' . $term->slug . '"/></label></li>';
+				++$i;
+				$term_list .= '<li><label class="term-item" for="osi-filter-cb-' . $term->slug . '"><span>' . $term->name . '</span><input type="checkbox" id="osi-filter-cb-' . $term->slug . '"  class="category-filter-cb" value="' . $term->slug . '"/></label></li>';
 				//
 				if ( $count !== $i ) {
 					$term_list .= ' ';
@@ -540,7 +546,6 @@ function kses_svg_ruelset() {
  * $related_post_ids = osi_get_related_posts( $current_post_id );
  *
  * @see https://gist.github.com/abgregs/2d440edb0c56845b3e3e1a9f4ef26f44
- *
  */
 
 function osi_get_related_posts( $current_post_id, $number = 3 ) {
@@ -554,7 +559,7 @@ function osi_get_related_posts( $current_post_id, $number = 3 ) {
 		// If you want to only check against certain taxonomies, modify this section as needed
 		// to set conditions for which taxonomies should be excluded or included. Below is just an example.
 		// if ( 'post_format' !== $taxonomy->name && 'post_tag' !== $taxonomy->name ) {
-		// 	array_push( $taxonomies, $taxonomy );
+		//  array_push( $taxonomies, $taxonomy );
 		// }
 		// By default, we will check against all taxonomies.
 		array_push( $taxonomies, $taxonomy );
@@ -579,7 +584,6 @@ function osi_get_related_posts( $current_post_id, $number = 3 ) {
 	// If we have other posts, loop through them and
 	// count matches for any taxonomy terms in common.
 	if ( $other_posts->have_posts() ) {
-
 		foreach ( $taxonomies as $taxonomy ) {
 
 			// Get the term IDs of terms for the current post
@@ -589,7 +593,6 @@ function osi_get_related_posts( $current_post_id, $number = 3 ) {
 
 			// Only continue if the current post actually has some terms for this taxonomy.
 			if ( false !== $current_post_terms ) {
-
 				foreach ( $other_posts->posts as $post ) {
 
 					// Get the term IDs of terms for this taxonomy
@@ -599,7 +602,6 @@ function osi_get_related_posts( $current_post_id, $number = 3 ) {
 					// Check that other post has terms and only continue if there
 					// are terms to compare.
 					if ( false !== $other_post_terms ) {
-
 						$other_post_term_ids   = array();
 						$current_post_term_ids = array();
 
@@ -630,7 +632,6 @@ function osi_get_related_posts( $current_post_id, $number = 3 ) {
 								// If posts have already been added to our matches
 								// then check to see if we already added this post.
 								if ( ! empty( $matching_posts ) ) {
-
 									foreach ( $matching_posts as $post ) {
 										// If this post was added previously then let's increment the count
 										// for our new matching terms.
@@ -668,7 +669,7 @@ function osi_get_related_posts( $current_post_id, $number = 3 ) {
 				// (most related to least).
 				usort(
 					$matching_posts,
-					function( $a, $b ) {
+					function ( $a, $b ) {
 						return strcmp( $b->count, $a->count );
 					}
 				);
@@ -677,7 +678,7 @@ function osi_get_related_posts( $current_post_id, $number = 3 ) {
 				$most_related = array_slice( $matching_posts, 0, $number );
 
 				$related_posts = array_map(
-					function( $obj ) {
+					function ( $obj ) {
 						return $obj->ID;
 					},
 					$most_related
@@ -685,7 +686,6 @@ function osi_get_related_posts( $current_post_id, $number = 3 ) {
 
 				// Return an array of post IDs for the related posts
 				return $related_posts;
-
 		}
 	}
 
@@ -713,19 +713,19 @@ function osi_credits( $args = array() ) {
 	$args = wp_parse_args(
 		$args,
 		array(
-			'separator'      => ' ',
+			'separator' => ' ',
 			/* translators: %s: WordPress. */
-			'wpcom'          => sprintf( __( 'Proudly powered by %s.', 'osi' ), 'WordPress' ),
+			'wpcom'     => sprintf( __( 'Proudly powered by %s.', 'osi' ), 'WordPress' ),
 			/* translators: %s: Pressable. */
-			'pressable'      => sprintf( __( 'Hosted by %s.', 'osi' ), 'Pressable' ),
+			'pressable' => sprintf( __( 'Hosted by %s.', 'osi' ), 'Pressable' ),
 		)
 	);
 
 	$credit_links = array();
 
 	if ( $args['wpcom'] ) {
-		$partner_domain = wp_parse_url( get_site_url(), PHP_URL_HOST );
-		$wpcom_link = apply_filters(
+		$partner_domain        = wp_parse_url( get_site_url(), PHP_URL_HOST );
+		$wpcom_link            = apply_filters(
 			'osi_credits_link_wpcom',
 			add_query_arg(
 				array(
@@ -746,7 +746,7 @@ function osi_credits( $args = array() ) {
 	}
 
 	if ( $args['pressable'] ) {
-		$pressable_link = apply_filters(
+		$pressable_link            = apply_filters(
 			'osi_credits_link_pressable',
 			add_query_arg(
 				array(
@@ -790,20 +790,23 @@ add_action( 'osi_credits', 'osi_credits', 10, 1 );
  */
 function osi_credits_shortcode( $atts ) {
 	$pairs = array(
-		'separator'      => ' ',
+		'separator' => ' ',
 		/* translators: %s: WordPress. */
-		'wpcom'          => sprintf( __( 'Proudly powered by %s.', 'osi' ), 'WordPress' ),
+		'wpcom'     => sprintf( __( 'Proudly powered by %s.', 'osi' ), 'WordPress' ),
 		/* translators: %s: Pressable. */
-		'pressable'      => sprintf( __( 'Hosted by %s.', 'osi' ), 'Pressable' ),
+		'pressable' => sprintf( __( 'Hosted by %s.', 'osi' ), 'Pressable' ),
 	);
-	$atts = shortcode_atts( $pairs, $atts, 'osi-credits' );
+	$atts  = shortcode_atts( $pairs, $atts, 'osi-credits' );
 	ob_start();
 	osi_credits( $atts );
 	return ob_get_clean();
 }
-add_action( 'init', function() {
-	add_shortcode( 'osi-credits', 'osi_credits_shortcode' );
-} );
+add_action(
+	'init',
+	function () {
+		add_shortcode( 'osi-credits', 'osi_credits_shortcode' );
+	}
+);
 
 /**
  * Custom ACF function that checks if ACF exists and if field has value
@@ -811,8 +814,8 @@ add_action( 'init', function() {
  */
 
 function osi_field_check( $fieldname ) {
-	if( class_exists( 'ACF' ) ) {
-		if( get_field( $fieldname ) ) {
+	if ( class_exists( 'ACF' ) ) {
+		if ( get_field( $fieldname ) ) {
 			return true;
 		}
 	}
@@ -825,8 +828,8 @@ function osi_field_check( $fieldname ) {
  */
 
 function osi_get_valid_field( $fieldname ) {
-	if( class_exists( 'ACF' ) ) {
-		if( get_field( $fieldname ) ) {
+	if ( class_exists( 'ACF' ) ) {
+		if ( get_field( $fieldname ) ) {
 			return get_field( $fieldname );
 		}
 	}
@@ -842,7 +845,7 @@ function osi_the_valid_field( $fieldname ) {
  */
 
 function osi_the_valid_date_field( $fieldname, $format = 'F j, Y' ) {
-	if( osi_get_valid_field( $fieldname ) ) {
+	if ( osi_get_valid_field( $fieldname ) ) {
 		$date = DateTime::createFromFormat( 'Ymd', osi_get_valid_field( $fieldname ) );
 		echo $date->format( $format );
 	}
@@ -854,9 +857,9 @@ function osi_the_valid_date_field( $fieldname, $format = 'F j, Y' ) {
  */
 
 function osi_get_valid_sub_field( $fieldname, $subfieldname ) {
-	if( class_exists( 'ACF' ) ) {
-		if( have_rows( $fieldname ) ) {
-			while( have_rows( $fieldname ) ) {
+	if ( class_exists( 'ACF' ) ) {
+		if ( have_rows( $fieldname ) ) {
+			while ( have_rows( $fieldname ) ) {
 				the_row();
 				return get_sub_field( $subfieldname );
 			}

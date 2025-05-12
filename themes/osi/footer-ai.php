@@ -8,15 +8,17 @@
  * @package osi
  */
 
-use WpOrg\Requests\Exception\Http;
+// Get the footer icon
+$image_url = get_template_directory_uri() . '/assets/img/osi-horizontal-white.svg';
 
+// Compile the block markup for the footer
 $footer_block = <<<HTML
 <!-- wp:group {"className":"os-awesome-feedbacak ai-pre-footer","style":{"elements":{"link":{"color":{"text":"var:preset|color|brand-color-1"}}}},"backgroundColor":"neutral-dark","textColor":"neutral-white","layout":{"type":"constrained","contentSize":"100%"},"noBottomMargin":true,"padding":"no"} -->
 <div class="wp-block-group os-awesome-feedbacak ai-pre-footer has-neutral-white-color has-text-color has-background has-link-color mb-0"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"},"padding":"no"} -->
 <div class="wp-block-group"><!-- wp:columns {"className":"ai-footer-top wide","style":{"layout":{"selfStretch":"fill","flexSize":null},"spacing":{"margin":{"top":"32px","bottom":"32px"}}}} -->
 <div class="wp-block-columns ai-footer-top wide" style="margin-top:32px;margin-bottom:32px"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"id":25020,"width":"270px","sizeSlug":"large","linkDestination":"none","align":"center"} -->
-<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://opensource.gq/wp-content/uploads/2025/04/osi-horizontal-white.svg" alt="" class="wp-image-25020" style="width:270px"/></figure>
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="$image_url" alt="" class="wp-image-25020" style="width:270px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 

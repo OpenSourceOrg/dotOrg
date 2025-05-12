@@ -32,6 +32,25 @@
     }
 }
 
+.is-style-mob-2-cols.wp-block-columns {
+    @media (max-width: 950px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 95% !important;
+        .wp-block-column {
+            max-width: 45vw;
+            width: 100%;
+            flex-basis: unset !important;
+        }
+    }
+    @media (max-width: 475px) {
+        grid-template-columns: repeat(1, 1fr);
+        wp-block-column {
+            max-width: 90vw;
+        }
+    }
+}
+
 
 /* Slide-Up Animation */
 
