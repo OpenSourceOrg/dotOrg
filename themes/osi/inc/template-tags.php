@@ -16,7 +16,6 @@ if ( ! function_exists( 'osi_posted_on' ) ) :
 	 * @return void
 	 */
 	function osi_posted_on( string $format = '' ) {
-
 		$time_string = '<time class="byline--date entry-date published" datetime="%1$s">%2$s</time>';
 
 		// Don't display the updated date for blog posts and meeting-minutes.
@@ -173,9 +172,13 @@ function osi_get_linked_logo( string $class_name = 'header-logo', string $size =
 }
 
 /**
-* Check Block Registry if a block exists
-*/
-function osi_check_block_registry( $name ) {
+ * Check Block Registry if a block exists
+ *
+ * @param string $name The block name.
+ *
+ * @return boolean
+ */
+function osi_check_block_registry( $name ) { // phpcs:ignore
 	// return 1 or nothing
 	return WP_Block_Type_Registry::get_instance()->is_registered( $name );
 }
@@ -424,7 +427,6 @@ if ( ! function_exists( 'osi_terms_from_taxonomy_links_all' ) ) {
 	 * @return string
 	 */
 	function osi_get_terms_from_taxonomy_links_all( string $tax = '' ) {
-
 		$terms = get_terms( $tax );
 
 		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
@@ -459,7 +461,6 @@ if ( ! function_exists( 'osi_terms_from_taxonomy_checkboxes' ) ) {
 	 * @return string
 	 */
 	function osi_get_terms_from_taxonomy_checkboxes( string $tax = '' ) {
-
 		$terms = get_terms( $tax );
 
 		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
@@ -581,7 +582,7 @@ if ( ! function_exists( 'osi_taxonomy_query' ) ) {
 }
 
 /**
- * kses ruleset for SVG escaping
+ * The kses ruleset for SVG escaping.
  *
  * @return array
  */
@@ -800,7 +801,7 @@ function osi_credits( $args = array() ) {
 		$args = (array) $args;
 	}
 
-	$args = wp_parse_args(
+	$args         = wp_parse_args(
 		$args,
 		array(
 			'separator' => ' ',
