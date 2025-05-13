@@ -26,6 +26,16 @@ registerBlockStyle('core/button', {
 	label: __('Spin (Green)', 'osi-et'),
 });
 
+registerBlockStyle('core/columns', {
+	name: 'mob-2-cols',
+	label: __('Show as 2 column on mobile', 'osi-et'),
+});
+
+registerBlockStyle('wpcomsp/counter', {
+	name: 'as-percentage',
+	label: __('Percentage Unit', 'osi-et'),
+});
+
 /**
  * Custom filter to add an "Animations" panel to the Inspector Controls of Heading blocks.
  *
