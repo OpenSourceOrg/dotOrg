@@ -161,6 +161,7 @@ function osi_linked_logo( string $class_name = 'header-logo', string $size = 'la
  *
  * @param string $class_name The class name for the logo.
  * @param string $size       The size of the logo.
+ * @param string $path       The path to link to.
  *
  * @return string The HTML string for the linked logo.
  */
