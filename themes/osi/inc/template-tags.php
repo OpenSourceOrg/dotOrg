@@ -790,11 +790,16 @@ function osi_get_related_posts( $current_post_id, int $number = 3 ) {
  *                             Default 'Hosted by Pressable.'
  * }
  *
- * @param array $args An associative array of arguments.
+ * @param array|string $args An associative array of arguments.
  *
  * @return void
  */
-function osi_credits( array $args = array() ) {
+function osi_credits( $args = array() ) {
+	// If args are not an array, convert to array.
+	if ( ! is_array( $args ) ) {
+		$args = (array) $args;
+	}
+
 	$args = wp_parse_args(
 		$args,
 		array(
@@ -805,7 +810,6 @@ function osi_credits( array $args = array() ) {
 			'pressable' => sprintf( __( 'Hosted by %s.', 'osi' ), 'Pressable' ),
 		)
 	);
-
 	$credit_links = array();
 
 	if ( $args['wpcom'] ) {
