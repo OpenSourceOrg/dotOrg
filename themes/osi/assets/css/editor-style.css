@@ -76,6 +76,7 @@
   */
   /* Specific styling for mobile devices */
   /* Adjust the aspect ratio of the cover image */
+  /* Hide Events Manager Honeypot phone field */
   /* 08. OVERRIDES */
   /* Block Editor Styling
 
@@ -2535,6 +2536,9 @@
 .editor-styles-wrapper .single-event .entry-header .wp-block-cover {
   aspect-ratio: 16/9;
   min-height: auto;
+}
+.editor-styles-wrapper p.input-group.input-text.em-input-text.input-field-phone_hp {
+  display: none !important;
 }
 .editor-styles-wrapper .single-license .entry-content {
   margin-left: auto;
