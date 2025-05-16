@@ -529,7 +529,7 @@ add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10
  * Field must have the slug 'phone_hp', and must be a text input.
  *
  * @param boolean    $result     The result.
- * @param EM_Booking $EM_Booking The booking object.
+ * @param EM_Booking $em_booking The booking object.
  *
  * @return boolean The result.
  */
