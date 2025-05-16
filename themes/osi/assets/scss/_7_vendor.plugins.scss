@@ -111,3 +111,8 @@ form.wp-block-jetpack-contact-form {
     aspect-ratio: 16 / 9;
     min-height: auto;
 }
+
+/* Hide Events Manager Honeypot phone field */
+p.input-group.input-text.em-input-text.input-field-phone_hp {
+    display: none!important;
+}
