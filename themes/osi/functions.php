@@ -608,3 +608,25 @@ function osi_ssp_register_post_type_args( array $args ): array {
 	return $args;
 }
 add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10, 1 );
+
+
+/**
+ * Block booking if honeypot phone field is filled.
+ * Phone field is hidden using CSS.
+ * Field must have the slug 'phone_hp', and must be a text input.
+ *
+ * @param boolean    $result     The result.
+ * @param EM_Booking $EM_Booking The booking object.
+ *
+ * @return boolean The result.
+ */
+function osi_block_booking_if_phone_filled( $result, $em_booking ) {
+	if ( ! empty( $em_booking->event ) ) {
+		if ( isset( $_POST['phone_hp'] ) && trim( $_POST['phone_hp'] ) !== '' ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$em_booking->add_error( 'There was a problem with your booking. Please do not include a phone number.' );
+			return false;
+		}
+	}
+	return $result;
+}
+add_filter( 'em_booking_validate', 'osi_block_booking_if_phone_filled', 10, 2 );
