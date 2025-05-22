@@ -5498,19 +5498,17 @@ footer.ai-footer {
   display: block;
   margin-top: 6px;
 }
-.page-template-ai-wide .ai-footer-bottom ul {
+.page-template-ai-wide .ai-footer-bottom ul:not(.menu) {
   margin: 0;
   margin-block-start: 0;
   padding-left: 0;
 }
-.page-template-ai-wide .ai-footer-bottom li {
+.page-template-ai-wide .ai-footer-bottom ul:not(.menu) li {
   margin-bottom: 0px;
   list-style: none;
   position: relative;
-  padding-left: 10px;
-  /* add space for the custom marker */
 }
-.page-template-ai-wide .ai-footer-bottom li a {
+.page-template-ai-wide .ai-footer-bottom ul:not(.menu) li a {
   color: #74787c;
   text-decoration: none;
   font-weight: 400;
@@ -5519,7 +5517,7 @@ footer.ai-footer {
   transition: 0.3s;
   margin-bottom: 0;
 }
-.page-template-ai-wide .ai-footer-bottom li a .dashicons {
+.page-template-ai-wide .ai-footer-bottom ul:not(.menu) li a .dashicons {
   font-weight: 400;
   font-size: 16px;
   line-height: 40px;
@@ -5531,7 +5529,7 @@ footer.ai-footer {
   margin-right: 7px;
   color: #3DA639;
 }
-.page-template-ai-wide .ai-footer-bottom li:hover a {
+.page-template-ai-wide .ai-footer-bottom ul:not(.menu) li:hover a {
   color: white;
   text-decoration: underline;
   text-decoration-color: #3DA639;
