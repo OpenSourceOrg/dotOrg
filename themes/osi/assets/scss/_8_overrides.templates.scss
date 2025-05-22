@@ -614,32 +614,11 @@ footer.ai-footer {
                 }
             }
         }
-        // li::before {
-        //     content: '>';
-        //     position: absolute;
-        //     left: 0;
-        //     color: #3DA639;
-        //     font-size: 16px;
-        //     line-height: 40px;
-        //     transition: text-decoration 0.2s;
-        // }
         li:hover a {
             color: white;
             text-decoration: underline;
             text-decoration-color: #3DA639;
         }
-        // li::marker {
-        //     content: '>';
-        //     unicode-bidi: isolate;
-        //     font-variant-numeric: tabular-nums;
-        //     text-transform: none;
-        //     text-indent: 0px !important;
-        //     text-align: start !important;
-        //     text-align-last: auto !important;
-        //     line-height: 26px;
-        //     font-size: 26px;
-        //     color: #3DA639;
-        // }
     }
 }
 
