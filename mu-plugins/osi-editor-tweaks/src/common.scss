@@ -94,7 +94,7 @@
 .is-style-spin-green>a,
 .is-style-spin-green.block-editor-block-list__block>div {
     color: #fff !important;
-    text-decoration: underline !important;
+    text-decoration: none;
 }
 
 .is-style-spin-white>a,
@@ -151,6 +151,7 @@
 .is-style-spin-white.block-editor-block-list__block>div:hover {
     box-sizing: border-box !important;
     border-width: 0 !important;
+    text-decoration: underline !important;
 }
 
 .is-style-spin-white>a:hover,
