@@ -3072,8 +3072,19 @@
   }
 }
 @media only screen and (max-width: 540px) {
-  .editor-styles-wrapper .wp-block-columns.has-tabs-wrapper .plethoraplugins-tabs li a {
+  .editor-styles-wrapper .wp-block-columns.has-tabs-wrapper .plethoraplugins-tabs ul {
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .editor-styles-wrapper .wp-block-columns.has-tabs-wrapper .plethoraplugins-tabs ul li a {
     font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .editor-styles-wrapper .wp-block-columns.has-tabs-wrapper .plethoraplugins-tabs ul li a {
+    font-size: 12px;
     padding: 8px 16px;
   }
 }
@@ -3176,32 +3187,41 @@
 }
 .editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom ul {
   margin: 0;
+  margin-block-start: 0;
+  padding-left: 0;
 }
 .editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom li {
   margin-bottom: 0px;
+  list-style: none;
+  position: relative;
+  padding-left: 10px;
+  /* add space for the custom marker */
 }
 .editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom li a {
   color: #74787c;
+  text-decoration: none;
   font-weight: 400;
   font-size: 16px;
   line-height: 40px;
-  margin-left: 10px;
+  transition: 0.3s;
+  margin-bottom: 0;
 }
-.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom li::marker {
-  content: ">";
-  unicode-bidi: isolate;
-  font-variant-numeric: tabular-nums;
-  text-transform: none;
-  text-indent: 0px !important;
-  text-align: start !important;
-  text-align-last: auto !important;
-  line-height: 26px;
-  font-size: 26px;
+.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom li a .dashicons {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 40px;
+  transition: 0.3s;
+  margin-bottom: 0;
+  height: 14px;
+  vertical-align: initial;
+  text-align: center;
+  margin-right: 7px;
   color: #3DA639;
 }
 .editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom li:hover a {
   color: white;
   text-decoration: underline;
+  text-decoration-color: #3DA639;
 }
 .editor-styles-wrapper .entry-content .wp-block-group.osi-card.vcenter {
   align-items: center;

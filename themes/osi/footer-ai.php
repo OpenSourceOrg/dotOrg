@@ -59,35 +59,35 @@ $footer_block = <<<HTML
 
 <!-- wp:list -->
 <ul class="wp-block-list"><!-- wp:list-item -->
-<li><a href="https://opensource.org/about">About Us</a></li>
+<li><a href="https://opensource.org/about"><span class="dashicons dashicons-arrow-right-alt2"></span>About Us</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/about/team">Our team</a></li>
+<li><a href="https://opensource.org/about/team"><span class="dashicons dashicons-arrow-right-alt2"></span>Our team</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/associations">Associations</a></li>
+<li><a href="https://opensource.org/associations"><span class="dashicons dashicons-arrow-right-alt2"></span>Associations</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/sponsors">Sponsors</a></li>
+<li><a href="https://opensource.org/sponsors"><span class="dashicons dashicons-arrow-right-alt2"></span>Sponsors</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/articles-of-incorporation">Articles of Incorporation</a></li>
+<li><a href="https://opensource.org/articles-of-incorporation"><span class="dashicons dashicons-arrow-right-alt2"></span>Articles of Incorporation</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/bylaws">Bylaws</a></li>
+<li><a href="https://opensource.org/bylaws"><span class="dashicons dashicons-arrow-right-alt2"></span>Bylaws</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/history">History</a></li>
+<li><a href="https://opensource.org/history"><span class="dashicons dashicons-arrow-right-alt2"></span>History</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/trademark-guidelines">Trademark Guidelines</a></li>
+<li><a href="https://opensource.org/trademark-guidelines"><span class="dashicons dashicons-arrow-right-alt2"></span>Trademark Guidelines</a></li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>
 <!-- /wp:column -->
@@ -99,19 +99,19 @@ $footer_block = <<<HTML
 
 <!-- wp:list -->
 <ul class="wp-block-list"><!-- wp:list-item -->
-<li><a href="https://opensource.org/osd">Open Source Definition</a></li>
+<li><a href="https://opensource.org/osd"><span class="dashicons dashicons-arrow-right-alt2"></span>Open Source Definition</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/licenses">Licenses</a></li>
+<li><a href="https://opensource.org/licenses"><span class="dashicons dashicons-arrow-right-alt2"></span>Licenses</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/licenses/review-process">License Review Process</a></li>
+<li><a href="https://opensource.org/licenses/review-process"><span class="dashicons dashicons-arrow-right-alt2"></span>License Review Process</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/osr">Open Standards Requirement for Software</a></li>
+<li><a href="https://opensource.org/osr"><span class="dashicons dashicons-arrow-right-alt2"></span>Open Standards Requirement for Software</a></li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>
 <!-- /wp:column -->
@@ -123,27 +123,27 @@ $footer_block = <<<HTML
 
 <!-- wp:list -->
 <ul class="wp-block-list"><!-- wp:list-item -->
-<li><a href="https://opensource.org/about/board-of-directors">Board of Directors</a></li>
+<li><a href="https://opensource.org/about/board-of-directors"><span class="dashicons dashicons-arrow-right-alt2"></span>Board of Directors</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/minutes">Minutes</a></li>
+<li><a href="https://opensource.org/minutes"><span class="dashicons dashicons-arrow-right-alt2"></span>Minutes</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/about/board-of-directors/elections">Elections</a></li>
+<li><a href="https://opensource.org/about/board-of-directors/elections"><span class="dashicons dashicons-arrow-right-alt2"></span>Elections</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/organization">Organization &amp; Operations</a></li>
+<li><a href="https://opensource.org/organization"><span class="dashicons dashicons-arrow-right-alt2"></span>Organization &amp; Operations</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/conflict_of_interest_policy">Conflict of Interest Policy</a></li>
+<li><a href="https://opensource.org/conflict_of_interest_policy"><span class="dashicons dashicons-arrow-right-alt2"></span>Conflict of Interest Policy</a></li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li><a href="https://opensource.org/board/board-member-agreement">Board member agreement</a></li>
+<li><a href="https://opensource.org/board/board-member-agreement"><span class="dashicons dashicons-arrow-right-alt2"></span>Board member agreement</a></li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>
 <!-- /wp:column --></div>
