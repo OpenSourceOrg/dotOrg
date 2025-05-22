@@ -3194,8 +3194,6 @@
   margin-bottom: 0px;
   list-style: none;
   position: relative;
-  padding-left: 10px;
-  /* add space for the custom marker */
 }
 .editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom ul:not(.menu) li a {
   color: #74787c;
