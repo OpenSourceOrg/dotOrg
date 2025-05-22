@@ -3185,19 +3185,19 @@
   display: block;
   margin-top: 6px;
 }
-.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom ul {
+.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom ul:not(.menu) {
   margin: 0;
   margin-block-start: 0;
   padding-left: 0;
 }
-.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom li {
+.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom ul:not(.menu) li {
   margin-bottom: 0px;
   list-style: none;
   position: relative;
   padding-left: 10px;
   /* add space for the custom marker */
 }
-.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom li a {
+.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom ul:not(.menu) li a {
   color: #74787c;
   text-decoration: none;
   font-weight: 400;
@@ -3206,7 +3206,7 @@
   transition: 0.3s;
   margin-bottom: 0;
 }
-.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom li a .dashicons {
+.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom ul:not(.menu) li a .dashicons {
   font-weight: 400;
   font-size: 16px;
   line-height: 40px;
@@ -3218,7 +3218,7 @@
   margin-right: 7px;
   color: #3DA639;
 }
-.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom li:hover a {
+.editor-styles-wrapper .page-template-ai-wide .ai-footer-bottom ul:not(.menu) li:hover a {
   color: white;
   text-decoration: underline;
   text-decoration-color: #3DA639;
