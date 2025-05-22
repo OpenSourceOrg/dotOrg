@@ -29,6 +29,7 @@
 				</div><!-- .site-branding -->
 				<nav aria-label="Primary" id="site-navigation" class="nav-main" role="navigation">
 					<?php
+					dump( get_registered_nav_menus());
 					if ( array_key_exists( 'ai', get_registered_nav_menus() ) ) :
 							wp_nav_menu(
 								array(
