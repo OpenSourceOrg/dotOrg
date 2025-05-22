@@ -515,7 +515,7 @@ add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_s
  *
  * @return array The modified post type arguments.
  */
-function osi_ssp_register_post_type_args( $args ) {
+function osi_ssp_register_post_type_args( array $args ): array {
 	$args['rewrite']['slug']       = 'ai/podcast';
 	$args['rewrite']['with_front'] = false;
 	return $args;
@@ -533,7 +533,7 @@ add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10
  *
  * @return boolean The result.
  */
-function osi_block_booking_if_phone_filled( $result, $em_booking ) {
+function osi_block_booking_if_phone_filled( $result, $em_booking ) { // phpcs:ignore
 	if ( ! empty( $em_booking->event ) ) {
 		if ( isset( $_POST['phone_hp'] ) && trim( $_POST['phone_hp'] ) !== '' ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$em_booking->add_error( 'There was a problem with your booking. Please do not include a phone number.' );
@@ -543,3 +543,20 @@ function osi_block_booking_if_phone_filled( $result, $em_booking ) {
 	return $result;
 }
 add_filter( 'em_booking_validate', 'osi_block_booking_if_phone_filled', 10, 2 );
+
+/**
+ * Enqueue the full-width editor styles for the AI template.
+ *
+ * @param array $editor_settings The editor settings.
+ *
+ * @return array
+ */
+function osi_full_width_editor( array $editor_settings ): array {
+	if ( get_page_template_slug() === 'templates/ai-wide.php' ) {
+		$editor_settings['styles'][] = array(
+			'css' => '.wp-block { max-width: 1140px !important; }',
+		);
+	}
+	return $editor_settings;
+}
+add_filter( 'block_editor_settings_all', 'osi_full_width_editor' );
