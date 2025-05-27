@@ -16,7 +16,6 @@ if ( ! function_exists( 'osi_posted_on' ) ) :
 	 * @return void
 	 */
 	function osi_posted_on( string $format = '' ) {
-
 		$time_string = '<time class="byline--date entry-date published" datetime="%1$s">%2$s</time>';
 
 		// Don't display the updated date for blog posts and meeting-minutes.
@@ -429,7 +428,6 @@ if ( ! function_exists( 'osi_terms_from_taxonomy_links_all' ) ) {
 	 * @return string
 	 */
 	function osi_get_terms_from_taxonomy_links_all( string $tax = '' ) {
-
 		$terms = get_terms( $tax );
 
 		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
@@ -464,7 +462,6 @@ if ( ! function_exists( 'osi_terms_from_taxonomy_checkboxes' ) ) {
 	 * @return string
 	 */
 	function osi_get_terms_from_taxonomy_checkboxes( string $tax = '' ) {
-
 		$terms = get_terms( $tax );
 
 		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
@@ -556,7 +553,8 @@ if ( ! function_exists( 'osi_post_type_query' ) ) {
 /**
 * Reusable taxonomy archive query
 */
-if ( ! function_exists( 'osi_taxonomy_query' ) ) {	/**
+if ( ! function_exists( 'osi_taxonomy_query' ) ) {
+	/**
 	 * Creates a reusable taxonomy query.
 	 *
 	 * @param string  $posttype The post type.
