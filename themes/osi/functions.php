@@ -560,3 +560,13 @@ function osi_full_width_editor( array $editor_settings ): array {
 	return $editor_settings;
 }
 add_filter( 'block_editor_settings_all', 'osi_full_width_editor' );
+
+/**
+ * Register the AI menu.
+ *
+ * @return void
+ */
+function osi_register_ai_menu() {
+	register_nav_menu( 'ai', __( 'AI Menu', 'osi' ) );
+}
+add_action( 'after_setup_theme', 'osi_register_ai_menu' );
