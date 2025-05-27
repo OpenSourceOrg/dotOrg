@@ -1,6 +1,7 @@
 <?php
 /**
- * Plugin Name: OSI Event List
+ * Plugin Name: OSI Editor Tweaks
+ * Plugin Description: A place where all custom block variations and syles are added.
  * Version: 1.0.0
  * Author: WordPress.com Special Projects
  * Author URI: https://wpspecialprojects.wordpress.com/
