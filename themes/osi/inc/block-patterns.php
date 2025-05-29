@@ -1,21 +1,42 @@
 <?php
-add_filter('block_editor_rest_api_preload_paths', '__return_empty_array');
+/**
+ * Registers block patterns for the Open Source AI Definition.
+ *
+ * @package osi
+ */
 
-add_action('init', function () {
-    register_block_pattern_category(
-        'ai', // Unique slug for the category
-        ['label' => __('AI', 'osi')] // Category label (visible in the editor)
-    );
-});
+// General WordPress filters and actions for the Open Source AI Definition
+add_filter( 'block_editor_rest_api_preload_paths', '__return_empty_array' );
 
+/**
+ * Registers teh AI patterns for the Open Source AI Definition.
+ *
+ * @return void
+ */
+function osi_register_ai_patterns() {
+	register_block_pattern_category(
+		'ai', // Unique slug for the category
+		array( 'label' => __( 'AI', 'osi' ) ) // Category label (visible in the editor)
+	);
+}
+add_action( 'init', 'osi_register_ai_patterns' );
+
+
+/**
+ * Registers the "About Area" pattern for the Open Source AI Definition.
+ *
+ * This pattern includes a reusable section with tabs and custom content.
+ *
+ * @return void
+ */
 function osi_register_about_area_pattern() {
-    register_block_pattern(
-        'custom/about-area',
-        [
-            'title'       => __('About Area', 'osi'),
-            'description' => __('A reusable section with tabs and custom content.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/about-area',
+		array(
+			'title'       => __( 'About Area', 'osi' ),
+			'description' => __( 'A reusable section with tabs and custom content.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- rts about area start -->
                 <div class="rts-about-area rts-section-gap">
                     <div class="container">
@@ -78,19 +99,26 @@ function osi_register_about_area_pattern() {
                 </div>
                 <!-- rts about area end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_about_area_pattern');
+add_action( 'init', 'osi_register_about_area_pattern' );
 
+/**
+ * Registers the "Banner Area" pattern for the Open Source AI Definition.
+ *
+ * This pattern includes a banner section with a title, description, and button.
+ *
+ * @return void
+ */
 function osi_register_banner_area_pattern() {
-    register_block_pattern(
-        'custom/banner-area',
-        [
-            'title'       => __('Banner Area', 'osi'),
-            'description' => __('A banner section with a title, description, and button.', 'osi'),
-			'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/banner-area',
+		array(
+			'title'       => __( 'Banner Area', 'osi' ),
+			'description' => __( 'A banner section with a title, description, and button.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- banner area start -->
                 <div class="banner-area-start banner-solar-energy-bg bg_image">
                     <div class="container">
@@ -115,19 +143,27 @@ function osi_register_banner_area_pattern() {
                 </div>
                 <!-- banner area end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_banner_area_pattern');
+add_action( 'init', 'osi_register_banner_area_pattern' );
 
+/**
+ * Registers the "Benefits Area" pattern for the Open Source AI Definition.
+ *
+ * This pattern includes a section highlighting the benefits of Open Source AI
+ * with an accordion and image.
+ *
+ * @return void
+ */
 function osi_register_benefits_area_pattern() {
-    register_block_pattern(
-        'custom/benefits-area',
-        [
-            'title'       => __('Benefits Area', 'osi'),
-            'description' => __('A section highlighting the benefits of Open Source AI with an accordion and image.', 'osi'),
-			'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/benefits-area',
+		array(
+			'title'       => __( 'Benefits Area', 'osi' ),
+			'description' => __( 'A section highlighting the benefits of Open Source AI with an accordion and image.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- benefits area start -->
                 <div class="faq-section-start-solar rts-section-gapBottom">
                     <div class="container">
@@ -185,19 +221,27 @@ function osi_register_benefits_area_pattern() {
                 </div>
                 <!-- benefits area end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_benefits_area_pattern');
+add_action( 'init', 'osi_register_benefits_area_pattern' );
 
+/**
+ * Registers the "Whitepaper" pattern for the Open Source AI Definition.
+ *
+ * This pattern includes a section highlighting the Data Governance whitepaper,
+ * with an image, title, description, and a button to read the whitepaper.
+ *
+ * @return void
+ */
 function osi_register_whitepaper_pattern() {
-    register_block_pattern(
-        'custom/whitepaper',
-        [
-            'title'       => __('Whitepaper', 'osi'),
-            'description' => __('A section highlighting the Data Governance whitepaper.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/whitepaper',
+		array(
+			'title'       => __( 'Whitepaper', 'osi' ),
+			'description' => __( 'A section highlighting the Data Governance whitepaper.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- whitepaper area start -->
                 <div class="rts-project-details-area rts-section-gapBottom">
                     <div class="container" style="background:#fff; border-radius: 20px; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03)">
@@ -224,19 +268,27 @@ function osi_register_whitepaper_pattern() {
                 </div>
                 <!-- whitepaper area end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_whitepaper_pattern');
+add_action( 'init', 'osi_register_whitepaper_pattern' );
 
+/**
+ * Registers the "Why Open Source AI Needs a Definition" pattern.
+ *
+ * This pattern includes a section explaining why Open Source AI needs a definition,
+ * with three key reasons and corresponding icons.
+ *
+ * @return void
+ */
 function osi_register_why_ai_definition_pattern() {
-    register_block_pattern(
-        'custom/why-ai-definition',
-        [
-            'title'       => __('Why Open Source AI Needs a Definition', 'osi'),
-            'description' => __('A section explaining why Open Source AI needs a definition, with three key reasons.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/why-ai-definition',
+		array(
+			'title'       => __( 'Why Open Source AI Needs a Definition', 'osi' ),
+			'description' => __( 'A section explaining why Open Source AI needs a definition, with three key reasons.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- why area start -->
                 <div class="rts-service-area">
                     <div class="container">
@@ -288,19 +340,26 @@ function osi_register_why_ai_definition_pattern() {
                 </div>
                 <!-- why area end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_why_ai_definition_pattern');
+add_action( 'init', 'osi_register_why_ai_definition_pattern' );
 
+/**
+ * Registers the "Endorsements Area" pattern for the Open Source AI Definition.
+ *
+ * This pattern includes a section showcasing endorsements with a title, button, and carousel of logos.
+ *
+ * @return void
+ */
 function osi_register_endorsements_area_pattern() {
-    register_block_pattern(
-        'custom/endorsements-area',
-        [
-            'title'       => __('Endorsements Area', 'osi'),
-            'description' => __('A section showcasing endorsements with a title, button, and carousel of logos.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/endorsements-area',
+		array(
+			'title'       => __( 'Endorsements Area', 'osi' ),
+			'description' => __( 'A section showcasing endorsements with a title, button, and carousel of logos.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- endorsements area start -->
                 <div class="rts-Product-area rts-section-gap">
                     <div class="container">
@@ -398,19 +457,26 @@ function osi_register_endorsements_area_pattern() {
                 </div>
                 <!-- endorsements area end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_endorsements_area_pattern');
+add_action( 'init', 'osi_register_endorsements_area_pattern' );
 
+/**
+ * Registers the "Stats Area" pattern for the Open Source AI Definition.
+ *
+ * This pattern includes a section displaying key statistics in a structured grid.
+ *
+ * @return void
+ */
 function osi_register_stats_area_pattern() {
-    register_block_pattern(
-        'custom/stats-area',
-        [
-            'title'       => __('Stats Area', 'osi'),
-            'description' => __('A section displaying key statistics in a structured grid.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/stats-area',
+		array(
+			'title'       => __( 'Stats Area', 'osi' ),
+			'description' => __( 'A section displaying key statistics in a structured grid.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- stats -->
                 <div class="rts-funfact fun-fact-bg rts-section-gapBottom">
                     <div class="container">
@@ -494,19 +560,26 @@ function osi_register_stats_area_pattern() {
                 </div>
                 <!-- stats end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_stats_area_pattern');
+add_action( 'init', 'osi_register_stats_area_pattern' );
 
+/**
+ * Registers the "Process Section" pattern for the Open Source AI Definition.
+ *
+ * This pattern includes a co-design and research process area, along with endorsements.
+ *
+ * @return void
+ */
 function osi_register_process_area_pattern() {
-    register_block_pattern(
-        'custom/process-area',
-        [
-            'title'       => __('Process Section', 'osi'),
-            'description' => __('A section displaying the co-design and research process, along with endorsements.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/process-area',
+		array(
+			'title'       => __( 'Process Section', 'osi' ),
+			'description' => __( 'A section displaying the co-design and research process, along with endorsements.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- process -->
                 <div class="rts-awesome-funfacts-area bg-awesome-feedback">
                     <div class="container-75">
@@ -563,20 +636,24 @@ function osi_register_process_area_pattern() {
                 </div>
                 <!-- process end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_process_area_pattern');
+add_action( 'init', 'osi_register_process_area_pattern' );
 
-
+/**
+ * Registers the "OSAID Compliant Systems" pattern for the Open Source AI Definition.
+ *
+ * @return void
+ */
 function osi_register_osaid_compliant_systems_pattern() {
-    register_block_pattern(
-        'custom/osaid-compliant-systems',
-        [
-            'title'       => __('OSAID Compliant Systems', 'osi'),
-            'description' => __('A section listing AI systems that comply with the Open Source AI Definition.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/osaid-compliant-systems',
+		array(
+			'title'       => __( 'OSAID Compliant Systems', 'osi' ),
+			'description' => __( 'A section listing AI systems that comply with the Open Source AI Definition.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- osaid compliant systems area start -->
                 <div class="rts-service-area rts-section-gapTop">
                     <div class="container">
@@ -602,19 +679,24 @@ function osi_register_osaid_compliant_systems_pattern() {
                 </div>
                 <!-- osaid compliant systems area end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_osaid_compliant_systems_pattern');
+add_action( 'init', 'osi_register_osaid_compliant_systems_pattern' );
 
+/**
+ * Registers the "How to Participate" pattern for the Open Source AI Definition.
+ *
+ * @return void
+ */
 function register_how_to_participate_pattern() {
-    register_block_pattern(
-        'custom/how-to-participate',
-        [
-            'title'       => __('How to Participate', 'osi'),
-            'description' => __('A section explaining how users can get involved with Open Source AI.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/how-to-participate',
+		array(
+			'title'       => __( 'How to Participate', 'osi' ),
+			'description' => __( 'A section explaining how users can get involved with Open Source AI.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- how to participate -->
                 <div class="rts-about-style-four rts-section-gap bg-about-h4 rts-section-gapBottom">
                     <div class="container">
@@ -651,19 +733,24 @@ function register_how_to_participate_pattern() {
                 </div>
                 <!-- how to participate end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'register_how_to_participate_pattern');
+add_action( 'init', 'register_how_to_participate_pattern' );
 
+/**
+ * Registers the governance pattern for the Open Source AI Definition.
+ *
+ * @return void
+ */
 function osi_register_governance_pattern() {
-    register_block_pattern(
-        'custom/governance-area',
-        [
-            'title'       => __('Governance', 'osi'),
-            'description' => __('A section explaining the governance of the Open Source AI Definition.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/governance-area',
+		array(
+			'title'       => __( 'Governance', 'osi' ),
+			'description' => __( 'A section explaining the governance of the Open Source AI Definition.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- rts governance area start -->
                 <div class="rts-project-details-area">
                     <div class="container">
@@ -686,19 +773,24 @@ function osi_register_governance_pattern() {
                 </div>
                 <!-- rts governance area end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_governance_pattern');
+add_action( 'init', 'osi_register_governance_pattern' );
 
+/**
+ * Registers the quotes pattern for individual endorsers.
+ *
+ * @return void
+ */
 function osi_register_quotes_pattern() {
-        register_block_pattern(
-            'custom/quotes-area',
-            [
-                'title'       => __('Individual Endorsers', 'osi'),
-                'description' => __('A section displaying quotes from endorsers of the Open Source AI Definition.', 'osi'),
-                'categories'  => ['ai'],
-                'content'     => '
+		register_block_pattern(
+			'custom/quotes-area',
+			array(
+				'title'       => __( 'Individual Endorsers', 'osi' ),
+				'description' => __( 'A section displaying quotes from endorsers of the Open Source AI Definition.', 'osi' ),
+				'categories'  => array( 'ai' ),
+				'content'     => '
                     <!-- quotes area start -->
                     <div class="rts-feedback-area-solar-energy rts-section-gap">
                         <div class="container">
@@ -957,19 +1049,24 @@ function osi_register_quotes_pattern() {
                             </div>
                     <!-- quotes area end -->
                 ',
-            ]
-        );
-    }
-    add_action('init', 'osi_register_quotes_pattern');
+			)
+		);
+}
+	add_action( 'init', 'osi_register_quotes_pattern' );
 
+/**
+ * Register the brand area block pattern.
+ *
+ * @return void
+ */
 function osi_register_brand_pattern() {
-    register_block_pattern(
-        'custom/brand-area',
-        [
-            'title'       => __('Supported by (Brand Area)', 'osi'),
-            'description' => __('A section displaying organizations supporting the Open Source AI initiative.', 'osi'),
-            'categories'  => ['ai'],
-            'content'     => '
+	register_block_pattern(
+		'custom/brand-area',
+		array(
+			'title'       => __( 'Supported by (Brand Area)', 'osi' ),
+			'description' => __( 'A section displaying organizations supporting the Open Source AI initiative.', 'osi' ),
+			'categories'  => array( 'ai' ),
+			'content'     => '
                 <!-- rts brand area start -->
                 <div class="rts-Product-area rts-section-gap" style="padding-bottom:50px">
                     <div class="container">
@@ -1008,20 +1105,172 @@ function osi_register_brand_pattern() {
                 </div>
                 <!-- rts brand area end -->
             ',
-        ]
-    );
+		)
+	);
 }
-add_action('init', 'osi_register_brand_pattern');
+add_action( 'init', 'osi_register_brand_pattern' );
 
-function allow_font_awesome_icons($tags) {
-    $tags['i'] = array(
-        'class' => true,
-        'style' => true
-    );
-    $tags['span'] = array(
-        'class' => true,
-        'style' => true
-    );
-    return $tags;
+/**
+ * Allow Font Awesome icons in the content.
+ *
+ * @param array<mixed> $tags The allowed HTML tags.
+ *
+ * @return array
+ */
+function osi_allow_font_awesome_icons( array $tags ): array {
+	$tags['i']    = array(
+		'class' => true,
+		'style' => true,
+	);
+	$tags['span'] = array(
+		'class' => true,
+		'style' => true,
+	);
+	return $tags;
 }
-add_filter('wp_kses_allowed_html', 'allow_font_awesome_icons', 10, 2);
+add_filter( 'wp_kses_allowed_html', 'osi_allow_font_awesome_icons', 10, 2 );
+
+/**
+ * Create the base AI footer reusable block programmatically.
+ *
+ * @return integer
+ */
+function osi_create_or_find_ai_footer_block_content(): int {
+	$title = 'OSI AI Footer';
+	$slug  = sanitize_title( $title );
+
+	// Check if block already exists
+	$existing = get_page_by_path( $slug, OBJECT, 'wp_block' );
+	if ( $existing ) {
+		return $existing->ID;
+	}
+
+	$image_url = get_template_directory_uri() . '/assets/img/osi-horizontal-white.svg';
+
+	// Compile the block markup for the footer
+	$block_content = <<<HTML
+<!-- wp:group {"className":"os-awesome-feedbacak ai-pre-footer","style":{"elements":{"link":{"color":{"text":"var:preset|color|brand-color-1"}}}},"backgroundColor":"neutral-dark","textColor":"neutral-white","layout":{"type":"constrained","contentSize":"100%"},"noBottomMargin":true,"padding":"no"} -->
+<div class="wp-block-group os-awesome-feedbacak ai-pre-footer has-neutral-white-color has-text-color has-background has-link-color mb-0"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"},"padding":"no"} -->
+<div class="wp-block-group"><!-- wp:columns {"className":"ai-footer-top wide","style":{"layout":{"selfStretch":"fill","flexSize":null},"spacing":{"margin":{"top":"32px","bottom":"32px"}}}} -->
+<div class="wp-block-columns ai-footer-top wide" style="margin-top:32px;margin-bottom:32px"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:image {"id":25020,"width":"270px","sizeSlug":"large","linkDestination":"none","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="$image_url" alt="" class="wp-image-25020" style="width:270px"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:column -->
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"textColor":"neutral-white","className":"is-style-spin-green","style":{"elements":{"link":{"color":{"text":"var:preset|color|neutral-white"}}}}} -->
+<div class="wp-block-button is-style-spin-green"><a class="wp-block-button__link has-neutral-white-color has-text-color has-link-color wp-element-button">Join us</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:column -->
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:shortcode -->
+[jetpack-social]
+<!-- /wp:shortcode --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+<!-- wp:columns {"className":"ai-footer-bottom wide"} -->
+<div class="wp-block-columns ai-footer-bottom wide"><!-- wp:column {"width":"30%"} -->
+<div class="wp-block-column" style="flex-basis:30%"><!-- wp:heading {"level":5} -->
+<h5 class="wp-block-heading">The Open Source Initiative</h5>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>The OSI is the authority that defines Open Source, recognized globally by individuals, companies, and by public institutions.</p>
+<!-- /wp:paragraph -->
+<!-- wp:shortcode -->
+[jetpack-social]
+<!-- /wp:shortcode --></div>
+<!-- /wp:column -->
+<!-- wp:column {"width":"20%"} -->
+<div class="wp-block-column" style="flex-basis:20%"><!-- wp:heading {"level":5} -->
+<h5 class="wp-block-heading">About</h5>
+<!-- /wp:heading -->
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><a href="https://opensource.org/about"><span class="dashicons dashicons-arrow-right-alt2"></span>About Us</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/about/team"><span class="dashicons dashicons-arrow-right-alt2"></span>Our team</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/associations"><span class="dashicons dashicons-arrow-right-alt2"></span>Associations</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/sponsors"><span class="dashicons dashicons-arrow-right-alt2"></span>Sponsors</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/articles-of-incorporation"><span class="dashicons dashicons-arrow-right-alt2"></span>Articles of Incorporation</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/bylaws"><span class="dashicons dashicons-arrow-right-alt2"></span>Bylaws</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/history"><span class="dashicons dashicons-arrow-right-alt2"></span>History</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/trademark-guidelines"><span class="dashicons dashicons-arrow-right-alt2"></span>Trademark Guidelines</a></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:column -->
+<!-- wp:column {"width":"20%"} -->
+<div class="wp-block-column" style="flex-basis:20%"><!-- wp:heading {"level":5} -->
+<h5 class="wp-block-heading">Licenses</h5>
+<!-- /wp:heading -->
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><a href="https://opensource.org/osd"><span class="dashicons dashicons-arrow-right-alt2"></span>Open Source Definition</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/licenses"><span class="dashicons dashicons-arrow-right-alt2"></span>Licenses</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/licenses/review-process"><span class="dashicons dashicons-arrow-right-alt2"></span>License Review Process</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/osr"><span class="dashicons dashicons-arrow-right-alt2"></span>Open Standards Requirement for Software</a></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:column -->
+<!-- wp:column {"width":"20%"} -->
+<div class="wp-block-column" style="flex-basis:20%"><!-- wp:heading {"level":5} -->
+<h5 class="wp-block-heading">Board</h5>
+<!-- /wp:heading -->
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><a href="https://opensource.org/about/board-of-directors"><span class="dashicons dashicons-arrow-right-alt2"></span>Board of Directors</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/minutes"><span class="dashicons dashicons-arrow-right-alt2"></span>Minutes</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/about/board-of-directors/elections"><span class="dashicons dashicons-arrow-right-alt2"></span>Elections</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/organization"><span class="dashicons dashicons-arrow-right-alt2"></span>Organization &amp; Operations</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/conflict_of_interest_policy"><span class="dashicons dashicons-arrow-right-alt2"></span>Conflict of Interest Policy</a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://opensource.org/board/board-member-agreement"><span class="dashicons dashicons-arrow-right-alt2"></span>Board member agreement</a></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+HTML;
+
+	$post_id = wp_insert_post(
+		array(
+			'post_title'   => $title,
+			'post_name'    => $slug,
+			'post_type'    => 'wp_block',
+			'post_status'  => 'publish',
+			'post_content' => $block_content,
+		)
+	);
+
+	return $post_id;
+}
