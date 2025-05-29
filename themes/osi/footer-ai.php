@@ -8,7 +8,7 @@
  * @package osi
  */
 
-$footer_block_id = create_or_find_ai_footer_block_content();
+$footer_block_id = osi_create_or_find_ai_footer_block_content();
 ?>
 
 	<footer id="colophon" class="footer site-footer ai-footer" role="contentinfo">

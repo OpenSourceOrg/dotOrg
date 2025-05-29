@@ -6,31 +6,12 @@
  * @package OSI
  */
 
-if ( function_exists( 'register_block_pattern' ) ) {
-	register_block_pattern(
-		'osi/ai-footer',
-		array(
-			'title'       => __( 'Hero Section', 'osi' ),
-			'description' => __( 'A full-width hero section with a title and subtitle.', 'osi' ),
-			'content'     => '<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"backgroundColor":"primary","textColor":"white","layout":{"type":"constrained"}} -->
-			<div class="wp-block-group alignfull has-white-color has-primary-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)"><!-- wp:heading {"textAlign":"center"} -->
-			<h2 class="has-text-align-center">Welcome to Our Site</h2>
-			<!-- /wp:heading -->
-
-			<!-- wp:paragraph {"align":"center"} -->
-			<p class="has-text-align-center">This is a simple hero section with a title and subtitle.</p>
-			<!-- /wp:paragraph --></div>
-			<!-- /wp:group -->',
-		)
-	);
-}
-
 /**
  * Create the base AI footer reusable block programmatically.
  *
  * @return integer
  */
-function create_or_find_ai_footer_block_content(): int {
+function osi_create_or_find_ai_footer_block_content(): int {
 	$title = 'OSI AI Footer';
 	$slug  = sanitize_title( $title );
 
@@ -195,4 +176,3 @@ HTML;
 
 	return $post_id;
 }
-// add_action( 'init', 'create_reusable_block_programmatically' );
