@@ -9,6 +9,14 @@ if ( osi_field_check( 'osi_use_ai_header' ) && true === (bool) osi_get_valid_fie
 	get_header( 'ai' );
 else :
 	get_header();
+	 // Display the AI secondary nav menu
+        wp_nav_menu( array(
+          'theme_location' => 'ai_secondary_nav',
+          'menu'           => 'AI secondary nav',
+          'container'      => 'nav',
+          'container_class'=> 'ai-secondary-nav',
+          'menu_class'     => 'ai-secondary-nav-menu',
+        ) );
 endif;
 ?>
 
