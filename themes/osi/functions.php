@@ -621,7 +621,7 @@ add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10
  *
  * @return boolean The result.
  */
-function osi_block_booking_if_phone_filled( $result, $em_booking ) {
+function osi_block_booking_if_phone_filled( bool $result, EM_Booking $em_booking ) {
 	if ( ! empty( $em_booking->event ) ) {
 		if ( isset( $_POST['phone_hp'] ) && trim( $_POST['phone_hp'] ) !== '' ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$em_booking->add_error( 'There was a problem with your booking. Please do not include a phone number.' );
