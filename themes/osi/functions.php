@@ -573,6 +573,7 @@ add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_s
  */
 function osi_register_ai_menu() {
 	register_nav_menu( 'ai', __( 'AI Menu', 'osi' ) );
+	register_nav_menu( 'ai_secondary_nav', __( 'AI Secondary Navigation', 'osi' ) );
 }
 add_action( 'after_setup_theme', 'osi_register_ai_menu' );
 
