@@ -5420,6 +5420,52 @@ footer.ai-footer {
 .page-template-ai-wide .ai-def-header .wp-block-coblocks-hero__inner {
   height: 850px;
 }
+.page-template-ai-wide .ai-secondary-navbar-wrapper {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  position: sticky;
+  top: 90px;
+  z-index: 999;
+}
+.page-template-ai-wide .ai-secondary-nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+  font-size: 10px;
+}
+.page-template-ai-wide .ai-secondary-nav-menu li {
+  display: inline-block;
+}
+.page-template-ai-wide .ai-mobile-label {
+  display: none;
+}
+@media (max-width: 768px) {
+  .page-template-ai-wide .ai-secondary-mobile-wrapper {
+    margin-top: 10px;
+    padding-top: 0;
+  }
+  .page-template-ai-wide .ai-mobile-label {
+    display: block;
+    color: #bbb;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 8px 20px 4px;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-align: right;
+  }
+  .page-template-ai-wide .ai-secondary-mobile-menu {
+    margin-top: 0;
+  }
+  .page-template-ai-wide .ai-secondary-mobile-menu li {
+    padding: 10px 20px;
+  }
+}
 .page-template-ai-wide .jetpack-social-navigation {
   height: 40px;
   margin: 0;

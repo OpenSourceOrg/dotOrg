@@ -42,41 +42,41 @@
             "first_day": 1
         },
         {
-          "key": "field_6783hdda5y544gf",
-          "label": "Submission URL",
-          "name": "submission_url",
-          "aria-label": "",
-          "type": "url",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "placeholder": ""
+            "key": "field_6783hdda5y544gf",
+            "label": "Submission URL",
+            "name": "submission_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         },
         {
-          "key": "field_62fcda3b00451",
-          "label": "Submitter",
-          "name": "submitter",
-          "aria-label": "",
-          "type": "text",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "placeholder": "",
-          "prepend": "",
-          "append": "",
-          "maxlength": ""
+            "key": "field_62fcda3b00451",
+            "label": "Submitter",
+            "name": "submitter",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
             "key": "field_62fcd90c2f885",
@@ -224,6 +224,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 0,
-    "modified": 1686668177
+    "show_in_rest": 1,
+    "modified": 1749470357
 }

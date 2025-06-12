@@ -1,0 +1,62 @@
+{
+    "key": "group_ai_page_toggles",
+    "title": "AI Page Features",
+    "fields": [{
+            "key": "field_use_ai_header",
+            "label": "Use AI Header",
+            "name": "use_ai_header",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Enable AI-generated header for this page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Enabled",
+            "ui_off_text": "Disabled"
+        },
+        {
+            "key": "field_use_ai_footer",
+            "label": "Use AI Footer",
+            "name": "use_ai_footer",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Enable AI-generated footer for this page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Enabled",
+            "ui_off_text": "Disabled"
+        }
+    ],
+    "location": [
+        [{
+            "param": "post_type",
+            "operator": "==",
+            "value": "page"
+        }]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Toggle settings for AI-generated header and footer on pages",
+    "show_in_rest": 0,
+    "modified": 1701234567
+}
