@@ -346,7 +346,7 @@ class OSI_API {
 			$request = new WP_REST_Request( 'GET', '/osi/v1/licenses' );
 
 			// Add query parameters if any
-			if ( ! empty( $_GET ) ) {
+			if ( ! empty( $_GET ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				foreach ( $_GET as $key => $value ) { // phpcs:ignore WordPress.Security.NonceVerification
 					// Sanitize key and value
 					$sanitized_key   = sanitize_key( $key );
