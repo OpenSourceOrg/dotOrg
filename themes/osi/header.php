@@ -45,6 +45,19 @@
 								)
 							);
 					endif;
+					//Adding for AI template - secondary navigation
+					if ( is_page_template( 'templates/ai-wide.php' ) ) :
+						echo '<p class="ai-mobile-label">' . esc_html__( 'Open Source AI', 'osi' ) . '</p>';
+						wp_nav_menu(
+							array(
+								'theme_location'  => 'ai_secondary_nav',
+								'menu'            => 'AI secondary nav',
+								'container'       => false,
+								'container_class' => 'ai-secondary-nav',
+								'menu_class'      => 'ai-secondary-nav-menu',
+							)
+						);
+					endif;
 					?>
 				</nav><!-- #site-navigation -->
 				<section class="open-search-wrapper">
