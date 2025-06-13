@@ -17,3 +17,4 @@ function osi_sponsors_list_register_block() {
 }
 // Register the block.
 add_action( 'init', 'osi_sponsors_list_register_block' );
+
