@@ -49,7 +49,7 @@ class OSI_API {
 				'callback'            => array( $this, 'get_licenses' ),
 				'permission_callback' => '__return_true',
 				'args'                => array(
-					'name'      => array(
+					'name'    => array(
 						'required'    => false,
 						'type'        => 'string',
 						'description' => 'Filter by license name',
@@ -347,8 +347,14 @@ class OSI_API {
 
 			// Add query parameters if any
 			if ( ! empty( $_GET ) ) {
-				foreach ( $_GET as $key => $value ) {
-					$request->set_param( $key, $value );
+				foreach ( $_GET as $key => $value ) { // phpcs:ignore WordPress.Security.NonceVerification
+					// Sanitize key and value
+					$sanitized_key   = sanitize_key( $key );
+					$sanitized_value = is_array( $value )
+						? array_map( 'sanitize_text_field', $value )
+						: sanitize_text_field( $value );
+
+					$request->set_param( $sanitized_key, $sanitized_value );
 				}
 			}
 
