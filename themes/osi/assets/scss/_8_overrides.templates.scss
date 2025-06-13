@@ -494,6 +494,55 @@ footer.ai-footer {
     .ai-def-header .wp-block-coblocks-hero__inner {
         height: 850px;
     }
+    // Secondary Nav
+    .ai-secondary-navbar-wrapper {
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+        position: sticky;
+        top: 90px; // adjust as needed
+        z-index: 999;
+    }
+    .ai-secondary-nav-menu {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        padding-top: 10px;
+        font-size: 10px;
+        li {
+            display: inline-block;
+        }
+    }
+    // Hide mobile label by default (desktop)
+    .ai-mobile-label {
+        display: none;
+    }
+    // Mobile-specific styles (not using "force override" block)
+    @media (max-width: 768px) {
+        .ai-secondary-mobile-wrapper {
+            margin-top: 10px;
+            padding-top: 0;
+        }
+        .ai-mobile-label {
+            display: block;
+            color: #bbb;
+            font-size: 13px;
+            text-transform: uppercase;
+            padding: 8px 20px 4px;
+            margin: 0;
+            letter-spacing: 0.5px;
+            text-align: right;
+        }
+        .ai-secondary-mobile-menu {
+            margin-top: 0;
+            li {
+                padding: 10px 20px;
+            }
+        }
+    }
     .jetpack-social-navigation {
         height: 40px;
         margin: 0;
