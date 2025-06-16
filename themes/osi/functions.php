@@ -568,5 +568,6 @@ add_filter( 'block_editor_settings_all', 'osi_full_width_editor' );
  */
 function osi_register_ai_menu() {
 	register_nav_menu( 'ai', __( 'AI Menu', 'osi' ) );
+	register_nav_menu( 'ai_secondary_nav', __( 'AI Secondary Navigation', 'osi' ) );
 }
 add_action( 'after_setup_theme', 'osi_register_ai_menu' );

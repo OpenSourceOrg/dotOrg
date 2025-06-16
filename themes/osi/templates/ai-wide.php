@@ -4,8 +4,12 @@ Template Name: AI Full Width
 Template Post Type: page
 Description: Custom template for full width
 */
-
-get_header( 'ai' ); ?>
+if ( osi_field_check( 'osi_use_ai_header' ) && true === (bool) osi_get_valid_field( 'osi_use_ai_header' ) ) :
+	get_header( 'ai' );
+else :
+	get_header();
+endif;
+?>
 
 <section class="content ai-full-width" id="content">
 
@@ -23,4 +27,8 @@ get_header( 'ai' ); ?>
 </section>
 
 <?php
-get_footer( 'ai' );
+if ( osi_field_check( 'osi_use_ai_footer' ) && true === (bool) osi_get_valid_field( 'osi_use_ai_footer' ) ) :
+	get_footer( 'ai' );
+else :
+	get_footer();
+endif;
