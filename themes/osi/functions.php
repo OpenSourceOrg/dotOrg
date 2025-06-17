@@ -631,3 +631,12 @@ function osi_block_booking_if_phone_filled( bool $result, EM_Booking $em_booking
 	return $result;
 }
 add_filter( 'em_booking_validate', 'osi_block_booking_if_phone_filled', 10, 2 );
+
+/**
+ * Queuing swiper for the new home page rotating quotes
+**/
+function osi_enqueue_swiper_assets() {
+    wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper@11/swiper-bundle.min.css');
+    wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper@11/swiper-bundle.min.js', [], null, true);
+}
+add_action('wp_enqueue_scripts', 'osi_enqueue_swiper_assets');
