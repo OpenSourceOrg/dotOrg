@@ -19,6 +19,7 @@ mu-plugins/*
 !mu-plugins/activitypub-migration.php
 !mu-plugins/osi-event-list
 !mu-plugins/osi-sponsors-list
+!mu-plugins/osi-api
 !websub-compat.php
 !mu-plugins/osi-events-manager-tweaks
 !mu-plugins/osi-editor-tweaks
