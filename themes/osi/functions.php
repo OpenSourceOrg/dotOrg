@@ -580,7 +580,7 @@ add_action( 'after_setup_theme', 'osi_register_ai_menu' );
  * @return void
  **/
 function osi_enqueue_swiper_assets(): void {
-	wp_enqueue_style( 'swiper-css', 'https://unpkg.com/swiper@11/swiper-bundle.min.css' );
-	wp_enqueue_script( 'swiper-js', 'https://unpkg.com/swiper@11/swiper-bundle.min.js', array(), null, true );
+	wp_enqueue_style( 'swiper-css', 'https://unpkg.com/swiper@11/swiper-bundle.min.css', array(), filemtime( untrailingslashit( get_template_directory() ) . '/style.css' ) );
+	wp_enqueue_script( 'swiper-js', 'https://unpkg.com/swiper@11/swiper-bundle.min.js', array(), filemtime( untrailingslashit( get_template_directory() ) . '/style.css' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'osi_enqueue_swiper_assets' );
