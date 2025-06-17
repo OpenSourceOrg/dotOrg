@@ -571,3 +571,16 @@ function osi_register_ai_menu() {
 	register_nav_menu( 'ai_secondary_nav', __( 'AI Secondary Navigation', 'osi' ) );
 }
 add_action( 'after_setup_theme', 'osi_register_ai_menu' );
+
+/**
+ * Queuing swiper for the new home page rotating quotes.
+ *
+ * @link https://swiperjs.com/
+ *
+ * @return void
+ **/
+function osi_enqueue_swiper_assets(): void {
+	wp_enqueue_style( 'swiper-css', 'https://unpkg.com/swiper@11/swiper-bundle.min.css' );
+	wp_enqueue_script( 'swiper-js', 'https://unpkg.com/swiper@11/swiper-bundle.min.js', array(), null, true );
+}
+add_action( 'wp_enqueue_scripts', 'osi_enqueue_swiper_assets' );
