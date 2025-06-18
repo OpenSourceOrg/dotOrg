@@ -358,14 +358,14 @@ class OSI_API {
 			if ( ! empty( $_GET ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				foreach ( $_GET as $key => $value ) { // phpcs:ignore WordPress.Security.NonceVerification
 					// Remap reserved "name" param to avoid canonical redirect
-					if ( $key === 'name' ) {
+					if ( 'name' === $key ) {
 						$key = 'license_name';
 					}
 
 					$sanitized_key   = sanitize_key( $key );
 					$sanitized_value = is_array( $value )
-					? array_map( 'sanitize_text_field', $value )
-					: sanitize_text_field( $value );
+						? array_map( 'sanitize_text_field', $value )
+						: sanitize_text_field( $value );
 
 					$request->set_param( $sanitized_key, $sanitized_value );
 				}
