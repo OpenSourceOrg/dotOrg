@@ -49,17 +49,17 @@ class OSI_API {
 				'callback'            => array( $this, 'get_licenses' ),
 				'permission_callback' => '__return_true',
 				'args'                => array(
-					'license_name' => array(
+					'id'      => array(
 						'required'    => false,
 						'type'        => 'string',
 						'description' => 'Filter by license name',
 					),
-					'keyword'      => array(
+					'keyword' => array(
 						'required'    => false,
 						'type'        => 'string',
 						'description' => 'Filter licenses by keyword',
 					),
-					'steward'      => array(
+					'steward' => array(
 						'required'    => false,
 						'type'        => 'string',
 						'description' => 'Filter licenses by steward',
@@ -111,7 +111,7 @@ class OSI_API {
 	public function get_licenses( WP_REST_Request $data ) {
 
 		// Check if we have an ID passed.
-		$name = $data->get_param( 'license_name' );
+		$searched_slug = $data->get_param( 'id' );
 
 		// Check if we have any keyword passed.
 		$keyword = $data->get_param( 'keyword' );
@@ -127,11 +127,11 @@ class OSI_API {
 		);
 
 		// If we have an id, search for posts with a name LIKE
-		if ( ! empty( $name ) ) {
+		if ( ! empty( $searched_slug ) ) {
 			// Add the filter
 			add_filter( 'posts_where', array( $this, 'posts_where_title_like' ), 10, 2 );
 
-			$args['post_title_like'] = sanitize_text_field( $name ); // Use the post name (slug) to filter by ID
+			$args['post_title_like'] = sanitize_text_field( $searched_slug ); // Use the post name (slug) to filter by ID
 		} elseif ( ! empty( $keyword ) ) {
 			// Add a tax query on taxonomy-license-category where passed term is a the slug
 			$args['tax_query'] = array(
@@ -357,11 +357,6 @@ class OSI_API {
 			// Add query parameters if any
 			if ( ! empty( $_GET ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				foreach ( $_GET as $key => $value ) { // phpcs:ignore WordPress.Security.NonceVerification
-					// Remap reserved "name" param to avoid canonical redirect
-					if ( 'name' === $key ) {
-						$key = 'license_name';
-					}
-
 					$sanitized_key   = sanitize_key( $key );
 					$sanitized_value = is_array( $value )
 						? array_map( 'sanitize_text_field', $value )
@@ -401,9 +396,9 @@ class OSI_API {
 
 			if ( is_wp_error( $response ) ) {
 				status_header( 404 );
-				echo wp_json_encode( array( 'error' => esc_html( $response->get_error_message() ) ) );
+				echo wp_json_encode( array( 'error' => $response->get_error_message() ) );
 			} else {
-				status_header( esc_html( $response->get_status() ) );
+				status_header( $response->get_status() );
 				echo wp_json_encode( $response->get_data() );
 			}
 			exit;
