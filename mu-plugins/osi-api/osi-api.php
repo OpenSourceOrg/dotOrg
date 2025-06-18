@@ -401,9 +401,9 @@ class OSI_API {
 
 			if ( is_wp_error( $response ) ) {
 				status_header( 404 );
-				echo wp_json_encode( array( 'error' => $response->get_error_message() ) );
+				echo wp_json_encode( array( 'error' => esc_html( $response->get_error_message() ) ) );
 			} else {
-				status_header( $response->get_status() );
+				status_header( esc_html( $response->get_status() ) );
 				echo wp_json_encode( $response->get_data() );
 			}
 			exit;
