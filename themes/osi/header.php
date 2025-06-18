@@ -25,7 +25,7 @@
 			<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'osi' ); ?></a>
 			<div class="header--inner">
 				<div class="site-branding header--blog-name">
-					<?php osi_linked_logo( 'header-logo', 'large' ); ?>
+					<?php //osi_linked_logo( 'header-logo', 'large' ); ?>
 				</div><!-- .site-branding -->
 				<nav aria-label="Primary" id="site-navigation" class="nav-main" role="navigation">
 					<?php
