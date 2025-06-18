@@ -31,7 +31,7 @@ class OSI_API {
 		// Add all custom rewrites
 		add_action( 'init', array( $instance, 'add_rewrites' ) );
 		add_filter( 'query_vars', array( $instance, 'add_query_vars' ), 0 );
-		add_action( 'template_redirect', array( $instance, 'handle_redirects' ) );
+		add_action( 'template_redirect', array( $instance, 'handle_redirects' ), 0 );
 	}
 
 	/**
@@ -49,7 +49,7 @@ class OSI_API {
 				'callback'            => array( $this, 'get_licenses' ),
 				'permission_callback' => '__return_true',
 				'args'                => array(
-					'name'    => array(
+					'id'      => array(
 						'required'    => false,
 						'type'        => 'string',
 						'description' => 'Filter by license name',
@@ -111,7 +111,7 @@ class OSI_API {
 	public function get_licenses( WP_REST_Request $data ) {
 
 		// Check if we have an ID passed.
-		$name = $data->get_param( 'name' );
+		$searched_slug = $data->get_param( 'id' );
 
 		// Check if we have any keyword passed.
 		$keyword = $data->get_param( 'keyword' );
@@ -127,11 +127,11 @@ class OSI_API {
 		);
 
 		// If we have an id, search for posts with a name LIKE
-		if ( ! empty( $name ) ) {
+		if ( ! empty( $searched_slug ) ) {
 			// Add the filter
 			add_filter( 'posts_where', array( $this, 'posts_where_title_like' ), 10, 2 );
 
-			$args['post_title_like'] = sanitize_text_field( $name ); // Use the post name (slug) to filter by ID
+			$args['post_title_like'] = sanitize_text_field( $searched_slug ); // Use the post name (slug) to filter by ID
 		} elseif ( ! empty( $keyword ) ) {
 			// Add a tax query on taxonomy-license-category where passed term is a the slug
 			$args['tax_query'] = array(
@@ -184,14 +184,20 @@ class OSI_API {
 		}
 
 		// Get the license post by slug
-		$license = get_page_by_path( $slug, OBJECT, 'license' );
-
-		if ( ! $license ) {
+		$licenses = get_posts(
+			array(
+				'name'        => $slug,
+				'post_type'   => 'license',
+				'post_status' => 'publish',
+				'numberposts' => 1,
+			)
+		);
+		if ( empty( $licenses ) ) {
 			return new WP_REST_Response( array( 'error' => 'License not found.' ), 404 );
 		}
 
 		// Compile the license model
-		$model = $this->get_license_model( $license->ID );
+		$model = $this->get_license_model( $licenses[0]->ID );
 
 		return new WP_REST_Response( $model, 200 );
 	}
@@ -224,7 +230,7 @@ class OSI_API {
 			'submitter_name'          => get_post_meta( $license->ID, 'submitter', true ),
 			'approval_date'           => get_post_meta( $license->ID, 'approval_date', true ),
 			'license_steward_version' => get_post_meta( $license->ID, 'license_steward_version', true ),
-			'licanse_steward_url'     => get_post_meta( $license->ID, 'license_steward_version_url', true ),
+			'license_steward_url'     => get_post_meta( $license->ID, 'license_steward_version_url', true ),
 			'board_minutes'           => get_post_meta( $license->ID, 'link_to_board_minutes_url', true ),
 		);
 
@@ -304,9 +310,8 @@ class OSI_API {
 	 * @return void
 	 */
 	public function add_rewrites() {
-		// This is used to redirect /api/licenses to the REST API endpoint.
 		add_rewrite_rule(
-			'^api/licenses?$', // regex for /api/licenses or /api/licenses
+			'^api/licenses?/?$',
 			'index.php?osi_api_redirect=1',
 			'top'
 		);
@@ -317,8 +322,6 @@ class OSI_API {
 			'index.php?osi_api_slug_redirect=1&license_slug=$matches[1]',
 			'top'
 		);
-
-		flush_rewrite_rules();
 	}
 
 	/**
@@ -341,6 +344,12 @@ class OSI_API {
 	 * @return void
 	 */
 	public function handle_redirects() {
+
+		// Prevent WordPress canonical redirects for custom API endpoints
+		if ( get_query_var( 'osi_api_redirect' ) || get_query_var( 'osi_api_slug_redirect' ) ) {
+			remove_filter( 'template_redirect', 'redirect_canonical' );
+		}
+
 		if ( get_query_var( 'osi_api_redirect' ) ) {
 			// Build REST request
 			$request = new WP_REST_Request( 'GET', '/osi/v1/licenses' );
@@ -348,7 +357,6 @@ class OSI_API {
 			// Add query parameters if any
 			if ( ! empty( $_GET ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 				foreach ( $_GET as $key => $value ) { // phpcs:ignore WordPress.Security.NonceVerification
-					// Sanitize key and value
 					$sanitized_key   = sanitize_key( $key );
 					$sanitized_value = is_array( $value )
 						? array_map( 'sanitize_text_field', $value )
@@ -396,6 +404,7 @@ class OSI_API {
 			exit;
 		}
 	}
+
 
 	/**
 	 * Get the License scehema.
