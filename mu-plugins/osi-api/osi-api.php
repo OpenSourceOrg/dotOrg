@@ -49,7 +49,7 @@ class OSI_API {
 				'callback'            => array( $this, 'get_licenses' ),
 				'permission_callback' => '__return_true',
 				'args'                => array(
-					'name'      => array(
+					'name'    => array(
 						'required'    => false,
 						'type'        => 'string',
 						'description' => 'Filter by license name',
