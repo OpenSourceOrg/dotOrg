@@ -49,7 +49,7 @@ class OSI_API {
 				'callback'            => array( $this, 'get_licenses' ),
 				'permission_callback' => '__return_true',
 				'args'                => array(
-					'id'      => array(
+					'name'    => array(
 						'required'    => false,
 						'type'        => 'string',
 						'description' => 'Filter by license name',
@@ -111,7 +111,7 @@ class OSI_API {
 	public function get_licenses( WP_REST_Request $data ) {
 
 		// Check if we have an ID passed.
-		$searched_slug = $data->get_param( 'id' );
+		$searched_slug = $data->get_param( 'name' );
 
 		// Check if we have any keyword passed.
 		$keyword = $data->get_param( 'keyword' );
