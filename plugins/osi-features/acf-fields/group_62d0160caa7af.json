@@ -1,8 +1,7 @@
 {
     "key": "group_62d0160caa7af",
     "title": "License Data",
-    "fields": [
-        {
+    "fields": [{
             "key": "field_62fcd8910c9f7",
             "label": "Version",
             "name": "version",
@@ -112,28 +111,26 @@
                 "id": ""
             },
             "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_62fcfcecb4ab2",
-                    "label": "Display Text",
-                    "name": "display_text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                }
-            ]
+            "sub_fields": [{
+                "key": "field_62fcfcecb4ab2",
+                "label": "Display Text",
+                "name": "display_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            }]
         },
         {
             "key": "field_62fcda1400450",
@@ -150,25 +147,23 @@
                 "id": ""
             },
             "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_62fcda4d00452",
-                    "label": "URL",
-                    "name": "url",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                }
-            ]
+            "sub_fields": [{
+                "key": "field_62fcda4d00452",
+                "label": "URL",
+                "name": "url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            }]
         },
         {
             "key": "field_62fcda6600453",
@@ -186,35 +181,53 @@
             },
             "relevanssi_exclude": 1,
             "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_62fcda6600455",
-                    "label": "URL",
-                    "name": "url",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                }
-            ]
+            "sub_fields": [{
+                "key": "field_62fcda6600455",
+                "label": "URL",
+                "name": "url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            }]
+        },
+        {
+            "key": "field_6855605992d38",
+            "label": "Approved",
+            "name": "approved",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "message": "Denotes if a license has been approved",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "license"
-            }
-        ]
+        [{
+            "param": "post_type",
+            "operator": "==",
+            "value": "license"
+        }]
     ],
     "menu_order": 0,
     "position": "side",
@@ -225,5 +238,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 1,
-    "modified": 1749470357
+    "modified": 1750425728
 }
