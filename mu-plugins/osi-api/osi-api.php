@@ -49,7 +49,7 @@ class OSI_API {
 				'callback'            => array( $this, 'get_licenses' ),
 				'permission_callback' => '__return_true',
 				'args'                => array(
-					'id'      => array(
+					'name'    => array(
 						'required'    => false,
 						'type'        => 'string',
 						'description' => 'Filter by license name',
@@ -111,13 +111,16 @@ class OSI_API {
 	public function get_licenses( WP_REST_Request $data ) {
 
 		// Check if we have an ID passed.
-		$searched_slug = $data->get_param( 'id' );
+		$searched_slug = $data->get_param( 'name' );
 
 		// Check if we have any keyword passed.
 		$keyword = $data->get_param( 'keyword' );
 
 		// Check if we have any steward passed.
 		$steward = $data->get_param( 'steward' );
+
+		// Check the SPDX parameter.
+		$spdx = $data->get_param( 'spdx' );
 
 		// Get all public posts from the 'osi_license' post type
 		$args = array(
@@ -132,6 +135,19 @@ class OSI_API {
 			add_filter( 'posts_where', array( $this, 'posts_where_title_like' ), 10, 2 );
 
 			$args['post_title_like'] = sanitize_text_field( $searched_slug ); // Use the post name (slug) to filter by ID
+		} elseif ( ! empty( $spdx ) ) {
+			// Cast the term to a regex pattern
+			$regex = $this->cast_wildcard_to_regex( $spdx );
+
+			// If we have no wildcards, look for a direct match
+			$args['meta_query'][] = array(
+				'key'     => 'spdx_identifier_display_text',
+				'value'   => $regex,
+				'compare' => str_contains( $spdx, '*' ) ? 'REGEXP' : '==',
+			);
+			// // Add the filter to search by SPDX I
+			// add_filter( 'posts_where', array( $this, 'posts_where_spdx_like' ), 10, 2 );
+			// $args['spdx_like'] = $this->cast_wildcard_to_sql_like( $spdx ); // Use the spdx identifier to filter by SPDX ID
 		} elseif ( ! empty( $keyword ) ) {
 			// Add a tax query on taxonomy-license-category where passed term is a the slug
 			$args['tax_query'] = array(
@@ -167,6 +183,26 @@ class OSI_API {
 		}
 
 		return new WP_REST_Response( $all, 200 );
+	}
+
+	/**
+	 * Turns a wildcard string into a LIKE query format.
+	 *
+	 * @param string $spdx The SPDX identifier to search for.
+	 *
+	 * @return string The LIKE query format for the SPDX identifier.
+	 */
+	public function cast_wildcard_to_regex( string $spdx ): string {
+		$escaped = preg_quote( $spdx, '/' );
+
+		$pattern = str_replace(
+			array( '\*', '\?' ),
+			array( '.*', '.' ),
+			$escaped
+		);
+
+		// Ensure it matches the whole string
+		return '^' . $pattern . '$';
 	}
 
 	/**
@@ -222,8 +258,7 @@ class OSI_API {
 			'id'   => $license->post_name,
 			'name' => $license->post_title,
 		);
-
-		$meta = array(
+		$meta  = array(
 			'version'                 => get_post_meta( $license->ID, 'version', true ),
 			'submission_date'         => get_post_meta( $license->ID, 'release_date', true ),
 			'submission_url'          => get_post_meta( $license->ID, 'submission_url', true ),
@@ -232,6 +267,7 @@ class OSI_API {
 			'license_steward_version' => get_post_meta( $license->ID, 'license_steward_version', true ),
 			'license_steward_url'     => get_post_meta( $license->ID, 'license_steward_version_url', true ),
 			'board_minutes'           => get_post_meta( $license->ID, 'link_to_board_minutes_url', true ),
+			'spdx_id'                 => get_post_meta( $license->ID, 'spdx_identifier_display_text', true ),
 		);
 
 		// Get the license stewards (terms)
@@ -404,7 +440,6 @@ class OSI_API {
 			exit;
 		}
 	}
-
 
 	/**
 	 * Get the License scehema.
