@@ -145,9 +145,6 @@ class OSI_API {
 				'value'   => $regex,
 				'compare' => str_contains( $spdx, '*' ) ? 'REGEXP' : '==',
 			);
-			// // Add the filter to search by SPDX I
-			// add_filter( 'posts_where', array( $this, 'posts_where_spdx_like' ), 10, 2 );
-			// $args['spdx_like'] = $this->cast_wildcard_to_sql_like( $spdx ); // Use the spdx identifier to filter by SPDX ID
 		} elseif ( ! empty( $keyword ) ) {
 			// Add a tax query on taxonomy-license-category where passed term is a the slug
 			$args['tax_query'] = array(
@@ -324,7 +321,7 @@ class OSI_API {
 	 *
 	 * @return mixed The sanitized value.
 	 */
-	public function sanitize_value( $value ) {
+	public function sanitize_value( $value ) { // phpcs:ignore
 		return is_bool( $value ) ? $value : esc_html( $value );
 	}
 
