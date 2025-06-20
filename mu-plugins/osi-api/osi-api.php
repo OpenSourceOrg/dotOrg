@@ -259,15 +259,16 @@ class OSI_API {
 			'name' => $license->post_title,
 		);
 		$meta  = array(
+			'spdx_id'                 => get_post_meta( $license->ID, 'spdx_identifier_display_text', true ),
 			'version'                 => get_post_meta( $license->ID, 'version', true ),
 			'submission_date'         => get_post_meta( $license->ID, 'release_date', true ),
 			'submission_url'          => get_post_meta( $license->ID, 'submission_url', true ),
 			'submitter_name'          => get_post_meta( $license->ID, 'submitter', true ),
+			'approved'                => get_post_meta( $license->ID, 'approved', true ) === '1' ? true : false,
 			'approval_date'           => get_post_meta( $license->ID, 'approval_date', true ),
 			'license_steward_version' => get_post_meta( $license->ID, 'license_steward_version', true ),
 			'license_steward_url'     => get_post_meta( $license->ID, 'license_steward_version_url', true ),
 			'board_minutes'           => get_post_meta( $license->ID, 'link_to_board_minutes_url', true ),
-			'spdx_id'                 => get_post_meta( $license->ID, 'spdx_identifier_display_text', true ),
 		);
 
 		// Get the license stewards (terms)
@@ -309,11 +310,22 @@ class OSI_API {
 
 		return array_merge(
 			$model,
-			array_map( 'esc_html', $meta ),
+			array_map( array( $this, 'sanitize_value' ), $meta ),
 			array( 'stewards' => $license_stewards ),
 			array( 'keywords' => $license_categories ),
 			array( '_links' => $links )
 		);
+	}
+
+	/**
+	 * Sanitize values to ensure all but bools are escaped.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return mixed The sanitized value.
+	 */
+	public function sanitize_value( $value ) {
+		return is_bool( $value ) ? $value : esc_html( $value );
 	}
 
 	/**
@@ -453,6 +465,11 @@ class OSI_API {
 				'type'        => 'string',
 				'context'     => array( 'view', 'edit' ),
 			),
+			'spdx_id'                 => array(
+				'description' => 'The SPDX identifier for the license.',
+				'type'        => 'string',
+				'context'     => array( 'view', 'edit' ),
+			),
 			'name'                    => array(
 				'description' => 'The name of the license.',
 				'type'        => 'string',
@@ -479,6 +496,12 @@ class OSI_API {
 				'description' => 'Name of the submitter.',
 				'type'        => 'string',
 				'context'     => array( 'view' ),
+			),
+			'approved'                => array(
+				'description' => 'Whether the license is approved.',
+				'type'        => 'boolean',
+				'default'     => false,
+				'context'     => array( 'view', 'edit' ),
 			),
 			'approval_date'           => array(
 				'description' => 'Date the license was approved.',
