@@ -136,13 +136,10 @@ class OSI_API {
 
 			$args['post_title_like'] = sanitize_text_field( $searched_slug ); // Use the post name (slug) to filter by ID
 		} elseif ( ! empty( $spdx ) ) {
-			// Cast the term to a regex pattern
-			$regex = $this->cast_wildcard_to_regex( $spdx );
-
 			// If we have no wildcards, look for a direct match
 			$args['meta_query'][] = array(
 				'key'     => 'spdx_identifier_display_text',
-				'value'   => $regex,
+				'value'   => str_contains( $spdx, '*' ) ? $this->cast_wildcard_to_regex( $spdx ) : sanitize_text_field( $spdx ),
 				'compare' => str_contains( $spdx, '*' ) ? 'REGEXP' : '==',
 			);
 		} elseif ( ! empty( $keyword ) ) {
