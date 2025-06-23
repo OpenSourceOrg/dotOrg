@@ -119,6 +119,9 @@ class OSI_API {
 		// Check if we have any steward passed.
 		$steward = $data->get_param( 'steward' );
 
+		// Check the SPDX parameter.
+		$spdx = $data->get_param( 'spdx' );
+
 		// Get all public posts from the 'osi_license' post type
 		$args = array(
 			'post_type'      => 'license',
@@ -132,6 +135,13 @@ class OSI_API {
 			add_filter( 'posts_where', array( $this, 'posts_where_title_like' ), 10, 2 );
 
 			$args['post_title_like'] = sanitize_text_field( $searched_slug ); // Use the post name (slug) to filter by ID
+		} elseif ( ! empty( $spdx ) ) {
+			// If we have no wildcards, look for a direct match
+			$args['meta_query'][] = array(
+				'key'     => 'spdx_identifier_display_text',
+				'value'   => str_contains( $spdx, '*' ) ? $this->cast_wildcard_to_regex( $spdx ) : sanitize_text_field( $spdx ),
+				'compare' => str_contains( $spdx, '*' ) ? 'REGEXP' : '==',
+			);
 		} elseif ( ! empty( $keyword ) ) {
 			// Add a tax query on taxonomy-license-category where passed term is a the slug
 			$args['tax_query'] = array(
@@ -167,6 +177,26 @@ class OSI_API {
 		}
 
 		return new WP_REST_Response( $all, 200 );
+	}
+
+	/**
+	 * Turns a wildcard string into a LIKE query format.
+	 *
+	 * @param string $spdx The SPDX identifier to search for.
+	 *
+	 * @return string The LIKE query format for the SPDX identifier.
+	 */
+	public function cast_wildcard_to_regex( string $spdx ): string {
+		$escaped = preg_quote( $spdx, '/' );
+
+		$pattern = str_replace(
+			array( '\*', '\?' ),
+			array( '.*', '.' ),
+			$escaped
+		);
+
+		// Ensure it matches the whole string
+		return '^' . $pattern . '$';
 	}
 
 	/**
@@ -222,12 +252,13 @@ class OSI_API {
 			'id'   => $license->post_name,
 			'name' => $license->post_title,
 		);
-
-		$meta = array(
+		$meta  = array(
+			'spdx_id'                 => get_post_meta( $license->ID, 'spdx_identifier_display_text', true ),
 			'version'                 => get_post_meta( $license->ID, 'version', true ),
 			'submission_date'         => get_post_meta( $license->ID, 'release_date', true ),
 			'submission_url'          => get_post_meta( $license->ID, 'submission_url', true ),
 			'submitter_name'          => get_post_meta( $license->ID, 'submitter', true ),
+			'approved'                => get_post_meta( $license->ID, 'approved', true ) === '1' ? true : false,
 			'approval_date'           => get_post_meta( $license->ID, 'approval_date', true ),
 			'license_steward_version' => get_post_meta( $license->ID, 'license_steward_version', true ),
 			'license_steward_url'     => get_post_meta( $license->ID, 'license_steward_version_url', true ),
@@ -273,11 +304,22 @@ class OSI_API {
 
 		return array_merge(
 			$model,
-			array_map( 'esc_html', $meta ),
+			array_map( array( $this, 'sanitize_value' ), $meta ),
 			array( 'stewards' => $license_stewards ),
 			array( 'keywords' => $license_categories ),
 			array( '_links' => $links )
 		);
+	}
+
+	/**
+	 * Sanitize values to ensure all but bools are escaped.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return mixed The sanitized value.
+	 */
+	public function sanitize_value( $value ) { // phpcs:ignore
+		return is_bool( $value ) ? $value : esc_html( $value );
 	}
 
 	/**
@@ -405,7 +447,6 @@ class OSI_API {
 		}
 	}
 
-
 	/**
 	 * Get the License scehema.
 	 *
@@ -415,6 +456,11 @@ class OSI_API {
 		return array(
 			'id'                      => array(
 				'description' => 'The unique slug ID of the license.',
+				'type'        => 'string',
+				'context'     => array( 'view', 'edit' ),
+			),
+			'spdx_id'                 => array(
+				'description' => 'The SPDX identifier for the license.',
 				'type'        => 'string',
 				'context'     => array( 'view', 'edit' ),
 			),
@@ -444,6 +490,12 @@ class OSI_API {
 				'description' => 'Name of the submitter.',
 				'type'        => 'string',
 				'context'     => array( 'view' ),
+			),
+			'approved'                => array(
+				'description' => 'Whether the license is approved.',
+				'type'        => 'boolean',
+				'default'     => false,
+				'context'     => array( 'view', 'edit' ),
 			),
 			'approval_date'           => array(
 				'description' => 'Date the license was approved.',
