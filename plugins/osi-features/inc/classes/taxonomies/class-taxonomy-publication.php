@@ -72,7 +72,11 @@ class Taxonomy_Publication extends Base {
 		return wp_parse_args( 
 			[
 				'hierarchical' => true,
-				'rewrite'      => array( 'slug' => 'publication' ),
+				'rewrite'      => array(
+					'slug' => 'publication',
+					'with_front' => false,
+				),
+
 			], 
 			parent::get_args()
 		);
