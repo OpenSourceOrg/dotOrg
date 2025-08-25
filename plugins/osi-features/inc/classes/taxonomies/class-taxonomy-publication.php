@@ -27,7 +27,6 @@ class Taxonomy_Publication extends Base {
 	 * @return array
 	 */
 	public function get_labels() {
-
 		return array(
 			'name'                       => _x( 'Publication', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Publication', 'taxonomy singular name', 'osi-features' ),
@@ -54,7 +53,6 @@ class Taxonomy_Publication extends Base {
 	 * @return array
 	 */
 	public function get_post_types() {
-
 		return array(
 			Post_Type_Press_Mentions::get_instance()->get_slug(),
 		);
@@ -66,13 +64,11 @@ class Taxonomy_Publication extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-
 		return wp_parse_args(
 			array(
 				'hierarchical' => true,
-				'show_in_rest' => true,
 				'rewrite'      => array(
-					'slug'       => 'publication',
+					'slug'       => Post_Type_Press_Mentions::get_instance()->get_slug() . '/publication',
 					'with_front' => false,
 				),
 			),

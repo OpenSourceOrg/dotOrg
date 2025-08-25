@@ -25,8 +25,7 @@ class Taxonomy_Example extends Base {
 	 * @return array
 	 */
 	public function get_labels() {
-
-		return [
+		return array(
 			'name'                       => _x( 'Taxonomy_Example', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Taxonomy_Example', 'taxonomy singular name', 'osi-features' ),
 			'search_items'               => __( 'Search Taxonomy_Example', 'osi-features' ),
@@ -43,8 +42,7 @@ class Taxonomy_Example extends Base {
 			'choose_from_most_used'      => __( 'Choose from the most used Taxonomy_Example', 'osi-features' ),
 			'not_found'                  => __( 'No Taxonomy_Example found.', 'osi-features' ),
 			'menu_name'                  => __( 'Taxonomy_Example', 'osi-features' ),
-		];
-
+		);
 	}
 
 	/**
@@ -53,11 +51,8 @@ class Taxonomy_Example extends Base {
 	 * @return array
 	 */
 	public function get_post_types() {
-
-		return [
+		return array(
 			'post',
-		];
-
+		);
 	}
-
 }
