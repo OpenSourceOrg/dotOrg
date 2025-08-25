@@ -27,7 +27,6 @@ class Taxonomy_License_Category extends Base {
 	 * @return array
 	 */
 	public function get_labels() {
-
 		return array(
 			'name'                       => _x( 'Category', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Category', 'taxonomy singular name', 'osi-features' ),
@@ -54,7 +53,6 @@ class Taxonomy_License_Category extends Base {
 	 * @return array
 	 */
 	public function get_post_types() {
-
 		return array(
 			Post_Type_License::get_instance()->get_slug(),
 		);
@@ -66,7 +64,6 @@ class Taxonomy_License_Category extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-
 		return wp_parse_args(
 			array(
 				'rewrite' => array(

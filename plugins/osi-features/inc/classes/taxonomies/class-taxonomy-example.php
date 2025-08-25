@@ -25,7 +25,6 @@ class Taxonomy_Example extends Base {
 	 * @return array
 	 */
 	public function get_labels() {
-
 		return array(
 			'name'                       => _x( 'Taxonomy_Example', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Taxonomy_Example', 'taxonomy singular name', 'osi-features' ),
@@ -52,7 +51,6 @@ class Taxonomy_Example extends Base {
 	 * @return array
 	 */
 	public function get_post_types() {
-
 		return array(
 			'post',
 		);

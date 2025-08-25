@@ -27,7 +27,6 @@ class Taxonomy_Status extends Base {
 	 * @return array
 	 */
 	public function get_labels() {
-
 		return array(
 			'name'                       => _x( 'Status', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Status', 'taxonomy singular name', 'osi-features' ),
@@ -54,7 +53,6 @@ class Taxonomy_Status extends Base {
 	 * @return array
 	 */
 	public function get_post_types() {
-
 		return array(
 			Post_Type_Board_Member::get_instance()->get_slug(),
 		);
@@ -66,7 +64,6 @@ class Taxonomy_Status extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-
 		return wp_parse_args(
 			array(
 				'hierarchical' => false,
