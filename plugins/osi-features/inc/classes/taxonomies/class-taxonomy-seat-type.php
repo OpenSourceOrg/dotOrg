@@ -28,7 +28,7 @@ class Taxonomy_Seat_Type extends Base {
 	 */
 	public function get_labels() {
 
-		return [
+		return array(
 			'name'                       => _x( 'Seat type', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Seat type', 'taxonomy singular name', 'osi-features' ),
 			'search_items'               => __( 'Search Seat type', 'osi-features' ),
@@ -45,8 +45,7 @@ class Taxonomy_Seat_Type extends Base {
 			'choose_from_most_used'      => __( 'Choose from the most used Seat types', 'osi-features' ),
 			'not_found'                  => __( 'No Seat type found.', 'osi-features' ),
 			'menu_name'                  => __( 'Seat Types', 'osi-features' ),
-		];
-
+		);
 	}
 
 	/**
@@ -56,10 +55,9 @@ class Taxonomy_Seat_Type extends Base {
 	 */
 	public function get_post_types() {
 
-		return [
+		return array(
 			Post_Type_Board_Member::get_instance()->get_slug(),
-		];
-
+		);
 	}
 
 	/**
@@ -70,15 +68,14 @@ class Taxonomy_Seat_Type extends Base {
 	public function get_args() {
 
 		return wp_parse_args(
-			[
+			array(
 				'hierarchical' => false,
-				'rewrite'      => [
+				'rewrite'      => array(
 					'slug'       => Post_Type_Board_Member::get_instance()->get_slug() . '/seat-type',
 					'with_front' => false,
-				],
-			],
+				),
+			),
 			parent::get_args()
 		);
 	}
-
 }

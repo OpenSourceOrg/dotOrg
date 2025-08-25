@@ -28,7 +28,7 @@ class Taxonomy_License_Category extends Base {
 	 */
 	public function get_labels() {
 
-		return [
+		return array(
 			'name'                       => _x( 'Category', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Category', 'taxonomy singular name', 'osi-features' ),
 			'search_items'               => __( 'Search Category', 'osi-features' ),
@@ -45,8 +45,7 @@ class Taxonomy_License_Category extends Base {
 			'choose_from_most_used'      => __( 'Choose from the most used Categories', 'osi-features' ),
 			'not_found'                  => __( 'No Category found.', 'osi-features' ),
 			'menu_name'                  => __( 'Categories', 'osi-features' ),
-		];
-
+		);
 	}
 
 	/**
@@ -56,10 +55,9 @@ class Taxonomy_License_Category extends Base {
 	 */
 	public function get_post_types() {
 
-		return [
+		return array(
 			Post_Type_License::get_instance()->get_slug(),
-		];
-
+		);
 	}
 
 	/**
@@ -70,14 +68,13 @@ class Taxonomy_License_Category extends Base {
 	public function get_args() {
 
 		return wp_parse_args(
-			[
-				'rewrite'      => [
+			array(
+				'rewrite' => array(
 					'slug'       => Post_Type_License::get_instance()->get_slug() . '/category',
 					'with_front' => false,
-				],
-			],
+				),
+			),
 			parent::get_args()
 		);
 	}
-
 }
