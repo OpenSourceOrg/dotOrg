@@ -68,19 +68,15 @@ class Taxonomy_Status extends Base {
 	 * @return array
 	 */
 	public function get_args() {
+
 		return wp_parse_args(
-			array(
-				'hierarchical'       => false,
-				'rewrite'            => false,
-				'public'             => false,
-				'publicly_queryable' => true,
-				'show_ui'            => true,
-				'show_in_menu'       => true,
-				'show_in_nav_menus'  => false,
-				'show_in_rest'       => true,
-				'show_admin_column'  => true,
-				'query_var'          => true,
-			),
+			[
+				'hierarchical' => false,
+				'rewrite'      => [
+					'slug'       => Post_Type_Board_Member::get_instance()->get_slug() . '/status',
+					'with_front' => false,
+				],
+			],
 			parent::get_args()
 		);
 	}

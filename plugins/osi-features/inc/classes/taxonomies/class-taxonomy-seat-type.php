@@ -68,15 +68,15 @@ class Taxonomy_Seat_Type extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-		
-		return wp_parse_args( 
+
+		return wp_parse_args(
 			[
 				'hierarchical' => false,
-				'rewrite'      => array(
-					'slug' => 'seat-type',
+				'rewrite'      => [
+					'slug'       => Post_Type_Board_Member::get_instance()->get_slug() . '/seat-type',
 					'with_front' => false,
-				),
-			], 
+				],
+			],
 			parent::get_args()
 		);
 	}
