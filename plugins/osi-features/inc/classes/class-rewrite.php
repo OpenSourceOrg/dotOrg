@@ -28,9 +28,7 @@ class Rewrite {
 	 * Construct method.
 	 */
 	protected function __construct() {
-
 		$this->setup_hooks();
-
 	}
 
 	/**
@@ -40,12 +38,17 @@ class Rewrite {
 	 */
 	protected function setup_hooks() {
 		add_filter( 'query_vars', array( $this, 'add_query_vars' ), 10 );
-		add_action( 'init', [ $this, 'add_custom_rewrite_rules' ], 20 );
+		add_action( 'init', array( $this, 'add_custom_rewrite_rules' ), 20 );
 	}
 
+	/**
+	 * Add custom query vars.
+	 *
+	 * @param array $vars Public query vars.
+	 * @return array
+	 */
 	public function add_query_vars( $vars ) {
 		$vars[] = 'categories';
-
 		return $vars;
 	}
 
@@ -61,7 +64,7 @@ class Rewrite {
 			'index.php?taxonomy=' . Taxonomy_Steward::SLUG . '&term=$matches[1]',
 			'top'
 		);
-		
+
 		$base = Post_Type_Board_Member::get_instance()->get_slug();
 		add_rewrite_rule(
 			'^' . $base . '/status/([^/]+)/?$',
@@ -89,8 +92,8 @@ class Rewrite {
 			'index.php?taxonomy=' . Taxonomy_Publication::SLUG . '&term=$matches[1]',
 			'top'
 		);
-
-
 	}
+
+}
 
 }
