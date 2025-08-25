@@ -20,7 +20,6 @@ abstract class Base {
 	 * Base constructor.
 	 */
 	protected function __construct() {
-
 		$this->setup_hooks();
 	}
 
@@ -30,7 +29,6 @@ abstract class Base {
 	 * @return void
 	 */
 	protected function setup_hooks() {
-
 		add_action( 'init', array( $this, 'register_taxonomy' ) );
 	}
 
@@ -40,7 +38,6 @@ abstract class Base {
 	 * @return void
 	 */
 	public function register_taxonomy() {
-
 		if ( empty( static::SLUG ) ) {
 			return;
 		}
@@ -70,7 +67,6 @@ abstract class Base {
 	 * @return array
 	 */
 	public function get_args() {
-
 		return array(
 			'hierarchical'      => true,
 			'show_ui'           => true,
