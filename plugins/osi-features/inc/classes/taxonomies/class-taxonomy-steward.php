@@ -68,12 +68,15 @@ class Taxonomy_Steward extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-		
-		return wp_parse_args( 
+
+		return wp_parse_args(
 			[
 				'hierarchical' => false,
-				'rewrite'      => array( 'slug' => 'steward' ),
-			], 
+				'rewrite'      => [
+					'slug'       => Post_Type_License::get_instance()->get_slug() . '/steward',
+					'with_front' => false,
+				],
+			],
 			parent::get_args()
 		);
 	}

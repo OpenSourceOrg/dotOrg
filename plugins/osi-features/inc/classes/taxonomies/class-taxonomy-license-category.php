@@ -68,11 +68,14 @@ class Taxonomy_License_Category extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-		
-		return wp_parse_args( 
+
+		return wp_parse_args(
 			[
-				'rewrite'      => array( 'slug' => 'license-category' ),
-			], 
+				'rewrite'      => [
+					'slug'       => Post_Type_License::get_instance()->get_slug() . '/category',
+					'with_front' => false,
+				],
+			],
 			parent::get_args()
 		);
 	}

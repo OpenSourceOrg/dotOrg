@@ -68,12 +68,15 @@ class Taxonomy_Status extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-		
-		return wp_parse_args( 
+
+		return wp_parse_args(
 			[
 				'hierarchical' => false,
-				'rewrite'      => array( 'slug' => 'status' ),
-			], 
+				'rewrite'      => [
+					'slug'       => Post_Type_Board_Member::get_instance()->get_slug() . '/status',
+					'with_front' => false,
+				],
+			],
 			parent::get_args()
 		);
 	}
