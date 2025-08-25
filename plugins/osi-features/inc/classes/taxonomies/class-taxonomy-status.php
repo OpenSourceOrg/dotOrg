@@ -28,7 +28,7 @@ class Taxonomy_Status extends Base {
 	 */
 	public function get_labels() {
 
-		return [
+		return array(
 			'name'                       => _x( 'Status', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Status', 'taxonomy singular name', 'osi-features' ),
 			'search_items'               => __( 'Search Status', 'osi-features' ),
@@ -45,8 +45,7 @@ class Taxonomy_Status extends Base {
 			'choose_from_most_used'      => __( 'Choose from the most used Statuses', 'osi-features' ),
 			'not_found'                  => __( 'No Status found.', 'osi-features' ),
 			'menu_name'                  => __( 'Statuses', 'osi-features' ),
-		];
-
+		);
 	}
 
 	/**
@@ -56,10 +55,9 @@ class Taxonomy_Status extends Base {
 	 */
 	public function get_post_types() {
 
-		return [
+		return array(
 			Post_Type_Board_Member::get_instance()->get_slug(),
-		];
-
+		);
 	}
 
 	/**
@@ -70,13 +68,13 @@ class Taxonomy_Status extends Base {
 	public function get_args() {
 
 		return wp_parse_args(
-			[
+			array(
 				'hierarchical' => false,
-				'rewrite'      => [
+				'rewrite'      => array(
 					'slug'       => Post_Type_Board_Member::get_instance()->get_slug() . '/status',
 					'with_front' => false,
-				],
-			],
+				),
+			),
 			parent::get_args()
 		);
 	}

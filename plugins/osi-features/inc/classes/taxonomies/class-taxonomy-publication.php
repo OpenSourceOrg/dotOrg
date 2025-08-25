@@ -68,13 +68,13 @@ class Taxonomy_Publication extends Base {
 	public function get_args() {
 
 		return wp_parse_args(
-			[
+			array(
 				'hierarchical' => true,
-				'rewrite'      => [
+				'rewrite'      => array(
 					'slug'       => Post_Type_Press_Mentions::get_instance()->get_slug() . '/publication',
 					'with_front' => false,
-				],
-			],
+				),
+			),
 			parent::get_args()
 		);
 	}
