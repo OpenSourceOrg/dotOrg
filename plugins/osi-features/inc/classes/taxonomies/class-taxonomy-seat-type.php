@@ -53,7 +53,6 @@ class Taxonomy_Seat_Type extends Base {
 	 * @return array
 	 */
 	public function get_post_types() {
-
 		return array(
 			Post_Type_Board_Member::get_instance()->get_slug(),
 		);
