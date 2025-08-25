@@ -27,7 +27,6 @@ class Taxonomy_Seat_Type extends Base {
 	 * @return array
 	 */
 	public function get_labels() {
-
 		return array(
 			'name'                       => _x( 'Seat type', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'Seat type', 'taxonomy singular name', 'osi-features' ),
@@ -66,7 +65,6 @@ class Taxonomy_Seat_Type extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-
 		return wp_parse_args(
 			array(
 				'hierarchical' => false,
