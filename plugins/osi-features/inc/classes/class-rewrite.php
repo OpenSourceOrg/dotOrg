@@ -45,9 +45,10 @@ class Rewrite {
 	 * Add custom query vars.
 	 *
 	 * @param array $vars Public query vars.
+	 *
 	 * @return array
 	 */
-	public function add_query_vars( $vars ) {
+	public function add_query_vars( array $vars ) {
 		$vars[] = 'categories';
 		return $vars;
 	}
@@ -93,5 +94,4 @@ class Rewrite {
 			'top'
 		);
 	}
-
 }
