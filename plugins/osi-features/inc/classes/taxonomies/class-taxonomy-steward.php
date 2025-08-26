@@ -27,8 +27,7 @@ class Taxonomy_Steward extends Base {
 	 * @return array
 	 */
 	public function get_labels() {
-
-		return [
+		return array(
 			'name'                       => _x( 'License Steward', 'taxonomy general name', 'osi-features' ),
 			'singular_name'              => _x( 'License Steward', 'taxonomy singular name', 'osi-features' ),
 			'search_items'               => __( 'Search License Steward', 'osi-features' ),
@@ -45,8 +44,7 @@ class Taxonomy_Steward extends Base {
 			'choose_from_most_used'      => __( 'Choose from the most used License Stewards', 'osi-features' ),
 			'not_found'                  => __( 'No License Steward found.', 'osi-features' ),
 			'menu_name'                  => __( 'License Stewards', 'osi-features' ),
-		];
-
+		);
 	}
 
 	/**
@@ -55,11 +53,9 @@ class Taxonomy_Steward extends Base {
 	 * @return array
 	 */
 	public function get_post_types() {
-
-		return [
+		return array(
 			Post_Type_License::get_instance()->get_slug(),
-		];
-
+		);
 	}
 
 	/**
@@ -68,14 +64,15 @@ class Taxonomy_Steward extends Base {
 	 * @return array
 	 */
 	public function get_args() {
-		
-		return wp_parse_args( 
-			[
+		return wp_parse_args(
+			array(
 				'hierarchical' => false,
-				'rewrite'      => array( 'slug' => 'steward' ),
-			], 
+				'rewrite'      => array(
+					'slug'       => Post_Type_License::get_instance()->get_slug() . '/steward',
+					'with_front' => false,
+				),
+			),
 			parent::get_args()
 		);
 	}
-
 }
