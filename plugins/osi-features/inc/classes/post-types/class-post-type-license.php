@@ -52,6 +52,9 @@ class Post_Type_License extends Base {
 		add_action( 'save_post_' . self::SLUG, array( $this, 'clear_slug_cache' ) );
 		add_action( 'before_delete_post', array( $this, 'clear_slug_cache' ) );
 		add_action( 'wp_trash_post', array( $this, 'clear_slug_cache' ) );
+
+		// Gutenberg: override cleanForSlug to preserve dots in the editor UI.
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_slug_script' ) );
 	}
 
 	/**
@@ -163,13 +166,13 @@ class Post_Type_License extends Base {
 
 		// Check if a license post with this dotted slug exists.
 		global $wpdb;
-		$exists = (bool) $wpdb->get_var(
+		$exists = $wpdb->get_var(
 			$wpdb->prepare(
 				"SELECT ID FROM {$wpdb->posts} WHERE post_name = %s AND post_type = %s LIMIT 1",
 				$dotted_slug,
 				self::SLUG
 			)
-		);
+		) ? 1 : 0;
 
 		wp_cache_set( $cache_key, $exists, self::CACHE_GROUP );
 
@@ -195,6 +198,29 @@ class Post_Type_License extends Base {
 
 		$cache_key = 'slug_' . md5( $post->post_name );
 		wp_cache_delete( $cache_key, self::CACHE_GROUP );
+	}
+
+	/**
+	 * Enqueue the Gutenberg slug override script on the license editor screen.
+	 *
+	 * Subscribes to the editor data store and restores dots in the slug
+	 * when the post title contains dots (e.g., SPDX identifiers).
+	 *
+	 * @return void
+	 */
+	public function enqueue_editor_slug_script() {
+		$screen = get_current_screen();
+		if ( ! $screen || self::SLUG !== $screen->post_type ) {
+			return;
+		}
+
+		wp_enqueue_script(
+			'osi-license-slug-dots',
+			OSI_URL . '/assets/src/js/license-slug-dots.js',
+			array( 'wp-data', 'wp-editor' ),
+			filemtime( OSI_PATH . '/assets/src/js/license-slug-dots.js' ),
+			true
+		);
 	}
 
 	/**
