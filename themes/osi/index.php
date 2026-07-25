@@ -12,6 +12,8 @@
  * @package osi
  */
 
+defined( 'ABSPATH' ) || exit;
+
 get_header(); ?>
 
 <section class="content <?php echo ( osi_display_sidebar() ? 'has_sidebar' : 'has_no_sidebar' ); ?>" id="content">
