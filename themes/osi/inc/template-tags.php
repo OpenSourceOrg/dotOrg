@@ -33,10 +33,7 @@ if ( ! function_exists( 'osi_posted_on' ) ) :
 			esc_html( get_the_modified_date( $format ) )
 		);
 
-		$posted_on = sprintf(
-			/* translators: %s: post date. */
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-		);
+		$posted_on = '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>';
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore
 	}
