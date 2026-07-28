@@ -20,26 +20,46 @@ License: GPLv2
 (function($) {
 
 	$('.sub-menu').addClass('menu-collapse');
-	$('.menu-item-has-children > a').append('<button aria-label="Toggle Submenu" class="menu-toggle"></button>');
+	// button is a sibling of the link, not a child — a <button> inside an <a> is invalid markup
+	$('.menu-item-has-children > a').each(function( index ) {
+		var $link    = $(this);
+		var $submenu = $link.siblings('.sub-menu').first();
+
+		if (!$submenu.length) {
+			return; // no rendered submenu — a toggle would control nothing
+		}
+
+		var id = $submenu.attr('id') || 'osi-submenu-' + index;
+		$submenu.attr('id', id);
+		$('<button class="menu-toggle"></button>')
+			.attr({
+				'aria-label': 'Toggle submenu for ' + $link.text().trim(),
+				'aria-expanded': 'false',
+				'aria-controls': id
+			})
+			.insertAfter($link);
+	});
 
 	$('.menu-toggle').on('click', function(e) {
 
 		e.preventDefault();
+		e.stopPropagation();
 
-	    if ($(this).parent().next('.sub-menu').hasClass('menu-collapse')) {
-	        $(this).parent().next('.sub-menu').removeClass('menu-collapse');
-					$(this).parent().parent('.menu-item-has-children').addClass('tab-active');
-					$(this).parent().parent().parent('.sub-menu').addClass('can-overflow');
-	        $(this).addClass('menu-toggle-active');
-	        e.stopPropagation();
-	    } else {
-	        $(this).parent().next('.sub-menu').addClass('menu-collapse');
-					$(this).parent().parent('.menu-item-has-children').removeClass('tab-active');
-					$(this).parent().parent().parent('.sub-menu').removeClass('can-overflow');
-					$(this).parent().parent().find('.sub-menu').removeClass('can-overflow');
-					$(this).removeClass('menu-toggle-active');
-	        e.stopPropagation();
-	    }
+		var $button  = $(this);
+		var $item    = $button.closest('.menu-item-has-children');
+		var $submenu = $button.siblings('.sub-menu').first();
+		var opening  = $submenu.hasClass('menu-collapse');
+
+		$submenu.toggleClass('menu-collapse', !opening);
+		$item.toggleClass('tab-active', opening);
+		$item.parent().closest('.sub-menu').toggleClass('can-overflow', opening);
+		if (!opening) {
+			// collapsing a parent collapses its descendants too, so their buttons' state can't go stale
+			$item.find('.sub-menu').addClass('menu-collapse').removeClass('can-overflow');
+			$item.find('.tab-active').removeClass('tab-active');
+			$item.find('.menu-toggle').removeClass('menu-toggle-active').attr('aria-expanded', 'false');
+		}
+		$button.toggleClass('menu-toggle-active', opening).attr('aria-expanded', String(opening));
 	});
 
 })( jQuery );

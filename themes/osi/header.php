@@ -34,6 +34,7 @@
 								array(
 									'theme_location' => 'primary_navigation',
 									'menu_class'     => 'nav-main--menu',
+									'walker'         => new OSI_Megamenu_Walker(),
 								)
 							);
 					endif;

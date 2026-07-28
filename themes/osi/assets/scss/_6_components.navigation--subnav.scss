@@ -2,6 +2,13 @@
   padding-right: 30px;
 }
 
+.nav-main--menu, .nav-mobile--menu {
+  ul.sub-menu a[href='#'] { // placeholder items act as labels, not links (all widths)
+    pointer-events: none;
+    text-decoration: none;
+  }
+}
+
 .menu-toggle {
     background: transparent;
     border: 0;
@@ -43,6 +50,10 @@
 }
 
 @media only screen and (max-width: #{$break-nav - 1}) {
+  .megamenu-header { // walker section-header markup is desktop-only UI
+    display: none;
+  }
+
   .nav-mobile--menu {
     .menu-item a {
       font-size: 20px;
@@ -70,7 +81,9 @@
 
       .menu-toggle {
         color: $Nwhite;
-        height: 100%;
+        // fixed height: the button now sits on the li, and 100% of an li with an
+        // expanded submenu would center the glyph mid-list instead of on the label
+        height: 44px;
         padding: 0;
         position: absolute;
         right: -5px;
@@ -165,8 +178,8 @@
     }
   }
 
-  & > li:hover, & > li:focus, li.tab-active {
-    & >a .menu-toggle:after {
+  & > li:hover, & > li:focus, & > li:focus-within, li.tab-active {
+    & > .menu-toggle:after { // toggle is a sibling of the link since the a11y fix
       transform:rotateZ(0) translateY(3px);
     }
     &>ul {
@@ -238,50 +251,105 @@
       }
 
     .menu-item.megamenu {
-      position:inherit;
+      // static li: the panel's positioned ancestor becomes .header-main (full
+      // width). NB .header--inner computes to static — the position:relative in
+      // the 1200px media block loses specificity to `.header-main .header--inner`
+      position: static;
+
+      // no chevrons at desktop widths (mockup) — the injected .menu-toggle is
+      // the mobile accordion control; hide it here and drop its reserved padding
+      & > .menu-toggle {
+        display: none;
+      }
+
+      & > a {
+        padding-right: .5em;
+      }
+
       & > ul.sub-menu {
-        display: inline-block;
-        margin-left: -130px;
-        max-width: calc( #{$boxedMax} - 2 * #{$maxPadding} );
-        top: 95%;
-        width: 90vw;
-        & > li { // first level drop menu items
-          min-width: 200px;
-          max-width: 300px;
-          margin-bottom: .5em;
-          vertical-align: top;
-          width: 19%;
+        // downward-only shadow: the base .sub-menu halo shadow paints a line
+        // between header and panel, making them read as two separate blocks
+        box-shadow: 0 14px 18px -10px rgba(#{$Ndarkest_RGB}, 0.2);
+        display: grid;
+        gap: 0 2.5rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        left: 0;
+        max-height: none;
+        max-width: none;
+        overflow: visible;
+        // open/close via fade: max-height animation would clip a tall panel
+        opacity: 0;
+        padding: 2rem calc(max(#{$maxPadding}, (100% - #{$boxedMax}) / 2 + #{$maxPadding})) 2.5rem;
+        right: 0;
+        text-align: left;
+        top: 100%;
+        transform: translateY(8px);
+        transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+        visibility: hidden;
+        width: auto;
 
-          & > a {
-            background-color: transparent !important;
+        .megamenu-header { // section eyebrow + tagline row (from OSI_Megamenu_Walker)
+          grid-column: 1 / -1;
+          margin-bottom: 1.25rem;
+
+          .megamenu-eyebrow {
+            color: $interactColor;
+            display: block;
+            font-size: .85rem;
             font-weight: $baseWeightBold;
-            letter-spacing: 1px;
-            line-height: 1.1;
-            pointer-events: none;
-            text-decoration: none !important;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-
-            .menu-toggle {
-              display: none;
-            }
           }
 
-          a {
+          .megamenu-tagline {
+            color: $Ndark;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            margin: .4rem 0 0;
+          }
+        }
+
+        & > li { // panel items: plain links in columns
+          min-width: 0;
+
+          & > a {
+            font-size: 1.05rem;
+            font-weight: $baseWeightBold;
+            line-height: 1.3;
+            padding: .6rem 0;
             white-space: normal;
           }
 
-          & > ul {
-            background-color: transparent;
-            display: block;
-            height: auto;
-            max-height:none;
+          // an item with its own children renders as a column heading
+          &.menu-item-has-children > a {
+            font-weight: $baseWeightBold;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-transform: uppercase;
           }
 
-          ul {
+          & > ul { // links under a heading
+            background-color: transparent;
             left: auto;
-            position: relative;
+            max-height: none; // base .sub-menu collapses nested lists; keep these open
+            overflow: visible;
+            padding: 0;
           }
         }
+
+        .menu-toggle {
+          display: none;
+        }
+      }
+
+      // keyboard open is JS-driven (.is-open via focusin) so Escape can actually
+      // close the panel — :focus-within here would reopen it while focus remains
+      &:hover > ul.sub-menu,
+      &.is-open > ul.sub-menu {
+        opacity: 1;
+        transform: none;
+        transition: opacity .2s ease, transform .2s ease;
+        visibility: visible;
       }
     }
   }
