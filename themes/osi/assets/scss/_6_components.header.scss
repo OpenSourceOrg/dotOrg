@@ -1,14 +1,14 @@
 .header-main {
     // position:fixed; // for header scroll
-    position: sticky;
-    top: 0;
+	position: sticky;
+	top: 0;
     width: 100%;
-    z-index: 999;
-    .button a {
-        color: inherit;
-    }
-}
+    z-index:999;
 
+	.button a {
+		color: inherit;
+	}
+}
 .admin-bar {
     .header-main.header-main-small {
         top: 32px;
@@ -16,24 +16,26 @@
             top: 46px;
         }
     }
-}
 
+}
 .header-main {
     .header--inner {
         position: static;
         opacity: 1;
         transition: all .3s;
-        z-index: 999;
+        z-index:999;
         height: 125px;
         display: flex;
         align-items: center;
-        @media only screen and ( max-width: 1200px) {
+
+        @media only screen and ( max-width: 1200px ) {
             background: #fff;
             padding: 16px;
         }
         @media only screen and (max-width: #{$break-small}) {
             padding: 8px 16px;
         }
+
         .header--blog-name {
             box-sizing: border-box;
             max-width: calc(100% - 130px);
@@ -41,6 +43,7 @@
             height: 100%;
             display: flex;
             align-items: center;
+
             a {
                 color: $Ndarkest;
                 display: block;
@@ -48,11 +51,13 @@
                 line-height: 1;
                 text-decoration: none;
                 transition: none;
+
                 &:hover,
                 &:focus {
                     text-decoration: none;
                 }
             }
+
             img {
                 // all logos
                 max-width: 300px;
@@ -64,19 +69,23 @@
                     max-width: 180px;
                 }
             }
+
             .hide-mobile {
                 display: none;
             }
+
             .header-logo-mobile {
                 display: block;
             }
         }
     }
+
     &.header-main-small {
         .header--inner {
             padding-top: 16px;
             padding-bottom: 16px;
             max-height: 100px;
+
             .header--blog-name {
                 a {
                     img {
@@ -86,6 +95,8 @@
             }
         }
     }
+
+    
 }
 
 .header--quicklinks {
@@ -107,39 +118,45 @@
 }
 
 .header-main-small {
+
     .header--quicklinks {
         padding-top: 0;
         padding-bottom: 0;
         overflow: hidden;
         transition: all .3s;
     }
+
     .header--inner {
         // opacity: 0;
         overflow: hidden;
         transition: all .3s;
     }
-    .header--blog-name {}
-    .header--extra-text {
-        display: none;
+
+    .header--blog-name {
+
     }
+
+        .header--extra-text {
+            display: none;
+        }
 }
 
 @media only screen and (max-width: #{$break-nav}) {
-    .header-main-small {
-        .header--blog-name img {
-            max-height: 67.19px;
-        }
-    }
+	.header-main-small {
+		.header--blog-name img {
+			max-height: 67.19px;
+		}
+	}
 }
 
 @media only screen and (min-width: #{$break-nav}) {
-    .header--inner,
-    .header--quicklinks-inner {
+    .header--inner, .header--quicklinks-inner {
         // @include clearfix();
         padding-left: $maxPadding;
         padding-right: $maxPadding;
         padding-top: 1em;
     }
+
     .header--inner {
         border: 0;
         position: relative;
@@ -148,24 +165,66 @@
         .hide-mobile {
             display: inline-block;
         }
+
         .header-logo-mobile {
             display: none;
         }
     }
+
     .header--extra-text {
         text-align: right;
         float: right;
         clear: right;
         padding: 0;
     }
+
+    // white header while a mega panel is open (hover, keyboard, or JS state).
+    // Painted on .header--inner, not .header-main: a stacking-context root's own
+    // background renders below its negative-z children, so the dim ::before
+    // overlay would darken a background set on .header-main itself.
+    // The .is-nav-open and :has() variants are separate rules on purpose — an
+    // unparseable :has() in a selector list would drop the JS fallback with it
+    .header-main.is-nav-open .header--inner {
+        background-color: $Nwhite;
+    }
+
+    .header-main:has(.menu-item.megamenu:hover) .header--inner {
+        background-color: $Nwhite;
+    }
+
+    // dim the page behind an open mega panel. Hangs off .header-main::before:
+    // z-index -1 inside the header's own stacking context (z-index 999) paints
+    // above all page content but below the header surface and the panel.
+    // NB body::after would cover the header too (.wrapper caps content at z 1),
+    // and .wrapper::after is already taken by the triangle motif (structure.scss)
+    .header-main.is-nav-open::before {
+        background: rgba(0, 0, 0, .35);
+        content: '';
+        inset: 0;
+        pointer-events: none;
+        position: fixed;
+        z-index: -1;
+    }
+
+    .header-main:has(.menu-item.megamenu:hover)::before {
+        background: rgba(0, 0, 0, .35);
+        content: '';
+        inset: 0;
+        pointer-events: none;
+        position: fixed;
+        z-index: -1;
+    }
+
     .header-main-small {
         background-color: $Nwhite;
+
         .nav-main {
             height: auto;
             top: 0;
             // transition: all .2s;
             margin-top: 0;
-            .nav-main--menu>.menu-item>a {
+
+            .nav-main--menu > .menu-item > a {
                 padding-top: 0.6em;
                 padding-bottom: 0.5em;
                 transition: all .3s;
@@ -175,10 +234,9 @@
 }
 
 @media only screen and (min-width: #{$break-wide}) {
-    .header--inner,
-    .header--quicklinks-inner {
+    .header--inner, .header--quicklinks-inner {
         // @include center-block;
-        display: flex;
-        align-items: center;
+		display: flex;
+		align-items: center;
     }
 }

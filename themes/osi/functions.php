@@ -285,6 +285,11 @@ require get_template_directory() . '/inc/config.php';
 require get_template_directory() . '/inc/class-osi-sidebar.php';
 
 /**
+ * Mega menu nav walker.
+ */
+require get_template_directory() . '/inc/class-osi-megamenu-walker.php';
+
+/**
  * Color functions.
  */
 require get_template_directory() . '/inc/palette.php';
