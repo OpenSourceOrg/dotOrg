@@ -17,16 +17,16 @@ License: GPLv2
  http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+// toggle buttons are inserted as siblings of the links: a <button> inside an <a> is invalid markup
 (function($) {
 
 	$('.sub-menu').addClass('menu-collapse');
-	// button is a sibling of the link, not a child — a <button> inside an <a> is invalid markup
 	$('.menu-item-has-children > a').each(function( index ) {
 		var $link    = $(this);
 		var $submenu = $link.siblings('.sub-menu').first();
 
 		if (!$submenu.length) {
-			return; // no rendered submenu — a toggle would control nothing
+			return;
 		}
 
 		var id = $submenu.attr('id') || 'osi-submenu-' + index;
@@ -54,7 +54,6 @@ License: GPLv2
 		$item.toggleClass('tab-active', opening);
 		$item.parent().closest('.sub-menu').toggleClass('can-overflow', opening);
 		if (!opening) {
-			// collapsing a parent collapses its descendants too, so their buttons' state can't go stale
 			$item.find('.sub-menu').addClass('menu-collapse').removeClass('can-overflow');
 			$item.find('.tab-active').removeClass('tab-active');
 			$item.find('.menu-toggle').removeClass('menu-toggle-active').attr('aria-expanded', 'false');

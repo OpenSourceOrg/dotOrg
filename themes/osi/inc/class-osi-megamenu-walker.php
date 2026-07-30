@@ -98,25 +98,21 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	/**
 	 * Build the featured card markup.
 	 *
+	 * The image is lazy (else core hands it the page's fetchpriority=high slot),
+	 * built with wp_get_attachment_image because the theme's thumbnail filter
+	 * strips the width/height a lazy image needs, and the excerpt is read raw
+	 * because get_the_excerpt runs the_content filters in the header.
+	 *
 	 * @return string
 	 */
 	private function get_featured_card() {
 		$featured = $this->current_featured['post'];
-		// Raw excerpt/content instead of get_the_excerpt(): its empty-excerpt fallback
-		// runs the full `the_content` filter chain on every page load during header
-		// render. The substr bounds trimming cost on long posts.
-		$excerpt = '' !== $featured->post_excerpt ? $featured->post_excerpt : strip_shortcodes( mb_substr( $featured->post_content, 0, 2000 ) );
-		$excerpt = wp_trim_words( $excerpt, 18, '...' );
+		$excerpt  = '' !== $featured->post_excerpt ? $featured->post_excerpt : strip_shortcodes( mb_substr( $featured->post_content, 0, 2000 ) );
+		$excerpt  = wp_trim_words( $excerpt, 18, '...' );
 
 		$card  = '<li class="megamenu-featured">';
 		$card .= '<span class="megamenu-featured--heading">' . esc_html( $this->current_featured['heading'] ) . '</span>';
 		$card .= '<a class="megamenu-featured--card" href="' . esc_url( get_permalink( $featured ) ) . '">';
-		// Lazy-load: this image is hidden until hover, and without the explicit flag
-		// core marks pre-loop header images in-viewport and hands it the page's one
-		// fetchpriority=high slot ahead of the real hero image. wp_get_attachment_image
-		// instead of get_the_post_thumbnail: the theme's osi_remove_width_attribute
-		// filter strips width/height from post_thumbnail_html, and a lazy image with
-		// auto sizes but no dimensions renders with a broken intrinsic height.
 		$card .= wp_get_attachment_image(
 			(int) get_post_thumbnail_id( $featured ),
 			'medium',

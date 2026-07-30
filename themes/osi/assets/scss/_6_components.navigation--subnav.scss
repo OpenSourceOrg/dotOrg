@@ -50,8 +50,9 @@
 }
 
 @media only screen and (max-width: #{$break-nav - 1}) {
+  // walker-injected markup is desktop-only UI
   .megamenu-header,
-  .megamenu-featured { // walker section-header + featured-card markup is desktop-only UI
+  .megamenu-featured {
     display: none;
   }
 
@@ -251,14 +252,10 @@
         }
       }
 
+    // static li so the panel's positioned ancestor is the full-width .header-main
     .menu-item.megamenu {
-      // static li: the panel's positioned ancestor becomes .header-main (full
-      // width). NB .header--inner computes to static — the position:relative in
-      // the 1200px media block loses specificity to `.header-main .header--inner`
       position: static;
 
-      // no chevrons at desktop widths (mockup) — the injected .menu-toggle is
-      // the mobile accordion control; hide it here and drop its reserved padding
       & > .menu-toggle {
         display: none;
       }
@@ -267,9 +264,8 @@
         padding-right: .5em;
       }
 
+      // full-bleed panel; fades open because max-height animation would clip it
       & > ul.sub-menu {
-        // downward-only shadow: the base .sub-menu halo shadow paints a line
-        // between header and panel, making them read as two separate blocks
         box-shadow: 0 14px 18px -10px rgba(#{$Ndarkest_RGB}, 0.2);
         display: grid;
         gap: 0 2.5rem;
@@ -278,7 +274,6 @@
         max-height: none;
         max-width: none;
         overflow: visible;
-        // open/close via fade: max-height animation would clip a tall panel
         opacity: 0;
         padding: 2rem calc(max(#{$maxPadding}, (100% - #{$boxedMax}) / 2 + #{$maxPadding})) 2.5rem;
         right: 0;
@@ -289,7 +284,8 @@
         visibility: hidden;
         width: auto;
 
-        .megamenu-header { // section eyebrow + tagline row (from OSI_Megamenu_Walker)
+        // markup from OSI_Megamenu_Walker
+        .megamenu-header {
           grid-column: 1 / -1;
           margin-bottom: 1.25rem;
 
@@ -310,7 +306,7 @@
           }
         }
 
-        & > li { // panel items: plain links in columns
+        & > li {
           min-width: 0;
 
           & > a {
@@ -321,7 +317,6 @@
             white-space: normal;
           }
 
-          // an item with its own children renders as a column heading
           &.menu-item-has-children > a {
             font-weight: $baseWeightBold;
             letter-spacing: 1px;
@@ -329,10 +324,11 @@
             text-transform: uppercase;
           }
 
-          & > ul { // links under a heading
+          // max-height: none because the base .sub-menu rule collapses nested lists
+          & > ul {
             background-color: transparent;
             left: auto;
-            max-height: none; // base .sub-menu collapses nested lists; keep these open
+            max-height: none;
             overflow: visible;
             padding: 0;
           }
@@ -343,24 +339,20 @@
         }
       }
 
-      // featured card (from OSI_Megamenu_Walker): a 4th grid column on the right
+      // markup from OSI_Megamenu_Walker
       &.has-featured > ul.sub-menu {
         grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.15fr);
 
         .megamenu-header {
-          grid-column: 1 / -2; // all columns but the card's
+          grid-column: 1 / -2;
         }
 
+        // spans 30 rows: links must never auto-place under the card, and
+        // 1 / -1 cannot span implicit grid rows
         .megamenu-featured {
           grid-column: 4;
-          // span far past any realistic row count so the card owns the full
-          // panel height and auto-placed links never flow under it; leftover
-          // implicit rows collapse to zero height (1 / -1 can't span implicit
-          // rows, and this relies on the panel's row-gap staying 0)
           grid-row: 1 / span 30;
 
-          // heading typography mirrors the column headings at
-          // `.menu-item-has-children > a` above; a span can't inherit them
           .megamenu-featured--heading {
             display: block;
             font-size: 1.05rem;
@@ -371,7 +363,6 @@
             text-transform: uppercase;
           }
 
-          // font sizing/weight/padding come from the panel's `> li > a` rule above
           .megamenu-featured--card {
             display: block;
           }
@@ -399,8 +390,7 @@
         }
       }
 
-      // keyboard open is JS-driven (.is-open via focusin) so Escape can actually
-      // close the panel — :focus-within here would reopen it while focus remains
+      // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape
       &:hover > ul.sub-menu,
       &.is-open > ul.sub-menu {
         opacity: 1;
