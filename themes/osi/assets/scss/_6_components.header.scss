@@ -178,12 +178,9 @@
         padding: 0;
     }
 
-    // white header while a mega panel is open (hover, keyboard, or JS state).
-    // Painted on .header--inner, not .header-main: a stacking-context root's own
-    // background renders below its negative-z children, so the dim ::before
-    // overlay would darken a background set on .header-main itself.
-    // The .is-nav-open and :has() variants are separate rules on purpose — an
-    // unparseable :has() in a selector list would drop the JS fallback with it
+    // white header while a panel is open; on .header--inner because a stacking-
+    // context root's own background paints below its negative-z ::before dim.
+    // Kept as separate rules: an unparseable :has() would drop the JS fallback
     .header-main.is-nav-open .header--inner {
         background-color: $Nwhite;
     }
@@ -192,11 +189,8 @@
         background-color: $Nwhite;
     }
 
-    // dim the page behind an open mega panel. Hangs off .header-main::before:
-    // z-index -1 inside the header's own stacking context (z-index 999) paints
-    // above all page content but below the header surface and the panel.
-    // NB body::after would cover the header too (.wrapper caps content at z 1),
-    // and .wrapper::after is already taken by the triangle motif (structure.scss)
+    // page dim behind an open panel: z-index -1 inside the header's stacking
+    // context paints above page content but below the header and panel
     .header-main.is-nav-open::before {
         background: rgba(0, 0, 0, .35);
         content: '';

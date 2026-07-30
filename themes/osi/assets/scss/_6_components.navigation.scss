@@ -264,8 +264,6 @@ footer {
 				}
 			}
 
-			// mockup: top-bar hover keeps dark text, only the underline is green.
-			// Direct-child scoped so panel links don't inherit the treatment
 			& > .menu-item > a:hover,
 			& > .menu-item > a:focus {
 				color: $Ndarkest;

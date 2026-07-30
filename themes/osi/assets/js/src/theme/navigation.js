@@ -12,8 +12,6 @@
 		return;
 	}
 
-	// submenu chevrons (.menu-toggle) belong to mobile-menu-toggle.js — binding
-	// this legacy hamburger handler to them double-toggles and breaks aria state
 	button = container.querySelector( 'button:not(.menu-toggle)' );
 	if ( ! button ) {
 		return;

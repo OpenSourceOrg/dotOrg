@@ -6,9 +6,10 @@ License: GPLv2
 
  Desktop behavior for .menu-item.megamenu items: keeps aria-expanded in sync,
  enforces one open panel at a time, closes on Escape or press outside, and
- mirrors the open state onto the header (`is-nav-open`) so it turns opaque —
- the CSS :has() rule covers that too, this is the no-:has() fallback and the
- source of the close-delay grace period.
+ mirrors the open state onto the header (`is-nav-open`) as the no-:has()
+ fallback for the CSS opaque-header rule, with a close-delay grace period.
+ Placeholder (href="#") triggers also toggle on click because taps don't
+ reliably fire mouseenter/focusin at desktop widths (iPadOS).
 */
 
 // keep in sync with $break-nav (assets/scss/_1_settings.breakpoints.scss)
@@ -55,7 +56,6 @@ if ( header && megaItems.length ) {
 				return;
 			}
 			window.clearTimeout( closeTimer );
-			// one panel at a time — the click/tap path could otherwise stack panels
 			megaItems.forEach( ( other ) => {
 				if ( other !== item ) {
 					closeItem( other );
@@ -81,8 +81,6 @@ if ( header && megaItems.length ) {
 			}
 		};
 
-		// touch/click support: taps don't reliably fire mouseenter/focusin (iPadOS
-		// at desktop widths); placeholder triggers toggle instead of jumping to #
 		if ( trigger && '#' === trigger.getAttribute( 'href' ) ) {
 			trigger.addEventListener( 'click', ( event ) => {
 				if ( ! desktopNav.matches ) {
@@ -115,7 +113,6 @@ if ( header && megaItems.length ) {
 		} );
 	} );
 
-	// tap-opened panels get no mouseleave; close on any press outside the mega items
 	document.addEventListener( 'pointerdown', ( event ) => {
 		if (
 			! event.target.closest( '.nav-main--menu > .menu-item.megamenu' ) &&
@@ -125,7 +122,6 @@ if ( header && megaItems.length ) {
 		}
 	} );
 
-	// leaving desktop widths: drop any open state
 	desktopNav.addEventListener( 'change', ( event ) => {
 		if ( ! event.matches ) {
 			closeAll();
