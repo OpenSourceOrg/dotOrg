@@ -7,17 +7,25 @@
 
 /**
  * Nav walker for the primary menu: prepends a section header (eyebrow + tagline)
- * inside the panel of top-level items carrying the `megamenu` class. The tagline
- * comes from the menu item's Description field, editable in Appearance > Menus.
+ * inside the panel of top-level items carrying the `megamenu` class, and appends
+ * a featured-content card when one is selected on the item (see megamenu-featured.php).
+ * Tagline and featured fields are editable in Appearance > Menus.
  */
 class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 
 	/**
-	 * The top-level item whose sub-menu is currently being rendered.
+	 * The top-level megamenu item whose panel is being rendered, or null outside one.
 	 *
 	 * @var WP_Post|null
 	 */
 	private $current_parent = null;
+
+	/**
+	 * Resolved featured content (post + heading) for the current panel, if any.
+	 *
+	 * @var array|null
+	 */
+	private $current_featured = null;
 
 	/**
 	 * Start element output; remembers the current top-level item.
@@ -32,7 +40,13 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing,Squiz.Commenting.FunctionComment.TypeHintMissing -- typing params on a Walker_Nav_Menu override is a fatal signature mismatch; parent is untyped.
 		if ( 0 === $depth ) {
-			$this->current_parent = $item;
+			$is_panel               = $this->has_children && in_array( 'megamenu', (array) $item->classes, true );
+			$this->current_parent   = $is_panel ? $item : null;
+			$this->current_featured = $is_panel ? osi_megamenu_featured( $item ) : null;
+
+			if ( null !== $this->current_featured ) {
+				$item->classes[] = 'has-featured';
+			}
 		}
 		parent::start_el( $output, $item, $depth, $args, $id );
 	}
@@ -49,7 +63,7 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	public function start_lvl( &$output, $depth = 0, $args = null ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing -- typing params on a Walker_Nav_Menu override is a fatal signature mismatch; parent is untyped.
 		parent::start_lvl( $output, $depth, $args );
 
-		if ( 0 !== $depth || null === $this->current_parent || ! in_array( 'megamenu', (array) $this->current_parent->classes, true ) ) {
+		if ( 0 !== $depth || null === $this->current_parent ) {
 			return;
 		}
 
@@ -63,5 +77,60 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 		}
 
 		$output .= '</li>';
+	}
+
+	/**
+	 * End sub-menu output; appends the featured card column for mega menu panels.
+	 *
+	 * @param string        $output Used to append additional content (passed by reference).
+	 * @param integer       $depth  Depth of menu item.
+	 * @param stdClass|null $args   An object of wp_nav_menu() arguments.
+	 *
+	 * @return void
+	 */
+	public function end_lvl( &$output, $depth = 0, $args = null ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing -- typing params on a Walker_Nav_Menu override is a fatal signature mismatch; parent is untyped.
+		if ( 0 === $depth && null !== $this->current_featured ) {
+			$output .= $this->get_featured_card();
+		}
+		parent::end_lvl( $output, $depth, $args );
+	}
+
+	/**
+	 * Build the featured card markup.
+	 *
+	 * @return string
+	 */
+	private function get_featured_card() {
+		$featured = $this->current_featured['post'];
+		// Raw excerpt/content instead of get_the_excerpt(): its empty-excerpt fallback
+		// runs the full `the_content` filter chain on every page load during header
+		// render. The substr bounds trimming cost on long posts.
+		$excerpt = '' !== $featured->post_excerpt ? $featured->post_excerpt : strip_shortcodes( mb_substr( $featured->post_content, 0, 2000 ) );
+		$excerpt = wp_trim_words( $excerpt, 18, '...' );
+
+		$card  = '<li class="megamenu-featured">';
+		$card .= '<span class="megamenu-featured--heading">' . esc_html( $this->current_featured['heading'] ) . '</span>';
+		$card .= '<a class="megamenu-featured--card" href="' . esc_url( get_permalink( $featured ) ) . '">';
+		// Lazy-load: this image is hidden until hover, and without the explicit flag
+		// core marks pre-loop header images in-viewport and hands it the page's one
+		// fetchpriority=high slot ahead of the real hero image.
+		$card .= get_the_post_thumbnail(
+			$featured,
+			'medium',
+			array(
+				'class'   => 'megamenu-featured--image',
+				'loading' => 'lazy',
+				'sizes'   => '(min-width: 1200px) 300px, 100vw',
+			)
+		);
+		$card .= '<span class="megamenu-featured--title">' . esc_html( get_the_title( $featured ) ) . '</span>';
+
+		if ( '' !== $excerpt ) {
+			$card .= '<span class="megamenu-featured--excerpt">' . esc_html( $excerpt ) . '</span>';
+		}
+
+		$card .= '</a></li>';
+
+		return $card;
 	}
 }
