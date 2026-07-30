@@ -113,10 +113,14 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 		$card .= '<a class="megamenu-featured--card" href="' . esc_url( get_permalink( $featured ) ) . '">';
 		// Lazy-load: this image is hidden until hover, and without the explicit flag
 		// core marks pre-loop header images in-viewport and hands it the page's one
-		// fetchpriority=high slot ahead of the real hero image.
-		$card .= get_the_post_thumbnail(
-			$featured,
+		// fetchpriority=high slot ahead of the real hero image. wp_get_attachment_image
+		// instead of get_the_post_thumbnail: the theme's osi_remove_width_attribute
+		// filter strips width/height from post_thumbnail_html, and a lazy image with
+		// auto sizes but no dimensions renders with a broken intrinsic height.
+		$card .= wp_get_attachment_image(
+			(int) get_post_thumbnail_id( $featured ),
 			'medium',
+			false,
 			array(
 				'class'   => 'megamenu-featured--image',
 				'loading' => 'lazy',
