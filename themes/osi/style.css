@@ -1863,7 +1863,8 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 }
 
 @media only screen and (max-width: 1199px) {
-  .megamenu-header {
+  .megamenu-header,
+  .megamenu-featured {
     display: none;
   }
   .nav-mobile--menu .menu-item a {
@@ -2071,6 +2072,46 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
   .nav-main--menu .menu-item.megamenu > ul.sub-menu .menu-toggle {
     display: none;
+  }
+  .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.15fr);
+  }
+  .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-header {
+    grid-column: 1/-2;
+  }
+  .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured {
+    grid-column: 4;
+    grid-row: 1/span 30;
+  }
+  .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--heading {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: var(--wp--custom--typography--body--font-weight-bold);
+    letter-spacing: 1px;
+    line-height: 1.1;
+    padding: 0.6rem 0;
+    text-transform: uppercase;
+  }
+  .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--card {
+    display: block;
+  }
+  .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--image {
+    border-radius: 8px;
+    display: block;
+    height: auto;
+    margin-bottom: 0.75rem;
+    width: 100%;
+  }
+  .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--title {
+    display: block;
+  }
+  .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--excerpt {
+    color: var(--wp--preset--color--neutral-dark);
+    display: block;
+    font-size: 0.9rem;
+    font-weight: var(--wp--custom--typography--body--font-weight);
+    line-height: 1.45;
+    margin-top: 0.35rem;
   }
   .nav-main--menu .menu-item.megamenu:hover > ul.sub-menu, .nav-main--menu .menu-item.megamenu.is-open > ul.sub-menu {
     opacity: 1;

@@ -50,7 +50,8 @@
 }
 
 @media only screen and (max-width: #{$break-nav - 1}) {
-  .megamenu-header { // walker section-header markup is desktop-only UI
+  .megamenu-header,
+  .megamenu-featured { // walker section-header + featured-card markup is desktop-only UI
     display: none;
   }
 
@@ -339,6 +340,62 @@
 
         .menu-toggle {
           display: none;
+        }
+      }
+
+      // featured card (from OSI_Megamenu_Walker): a 4th grid column on the right
+      &.has-featured > ul.sub-menu {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.15fr);
+
+        .megamenu-header {
+          grid-column: 1 / -2; // all columns but the card's
+        }
+
+        .megamenu-featured {
+          grid-column: 4;
+          // span far past any realistic row count so the card owns the full
+          // panel height and auto-placed links never flow under it; leftover
+          // implicit rows collapse to zero height (1 / -1 can't span implicit
+          // rows, and this relies on the panel's row-gap staying 0)
+          grid-row: 1 / span 30;
+
+          // heading typography mirrors the column headings at
+          // `.menu-item-has-children > a` above; a span can't inherit them
+          .megamenu-featured--heading {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: $baseWeightBold;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            padding: .6rem 0;
+            text-transform: uppercase;
+          }
+
+          // font sizing/weight/padding come from the panel's `> li > a` rule above
+          .megamenu-featured--card {
+            display: block;
+          }
+
+          .megamenu-featured--image {
+            border-radius: 8px;
+            display: block;
+            height: auto;
+            margin-bottom: .75rem;
+            width: 100%;
+          }
+
+          .megamenu-featured--title {
+            display: block;
+          }
+
+          .megamenu-featured--excerpt {
+            color: $Ndark;
+            display: block;
+            font-size: .9rem;
+            font-weight: $baseWeight;
+            line-height: 1.45;
+            margin-top: .35rem;
+          }
         }
       }
 
