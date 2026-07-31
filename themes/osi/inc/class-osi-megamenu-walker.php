@@ -120,7 +120,6 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 			array(
 				'class'   => 'megamenu-featured--image',
 				'loading' => 'lazy',
-				'sizes'   => '(min-width: 1200px) 300px, 100vw',
 			)
 		);
 		$card .= '<span class="megamenu-featured--title">' . esc_html( get_the_title( $featured ) ) . '</span>';
