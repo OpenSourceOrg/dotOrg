@@ -2341,7 +2341,8 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
 }
 @media only screen and (min-width: 1200px) {
-  .header--inner, .header--quicklinks-inner {
+  .header--inner,
+  .header--quicklinks-inner {
     padding-left: 48px;
     padding-right: 48px;
     padding-top: 1em;
@@ -2399,7 +2400,8 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
 }
 @media only screen and (min-width: 1280px) {
-  .header--inner, .header--quicklinks-inner {
+  .header--inner,
+  .header--quicklinks-inner {
     display: flex;
     align-items: center;
   }
