@@ -12,8 +12,8 @@
 		return;
 	}
 
-	button = container.getElementsByTagName( 'button' )[0];
-	if ( 'undefined' === typeof button ) {
+	button = container.querySelector( 'button:not(.menu-toggle)' );
+	if ( ! button ) {
 		return;
 	}
 

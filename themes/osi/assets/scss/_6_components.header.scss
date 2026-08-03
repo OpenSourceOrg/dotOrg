@@ -158,6 +158,33 @@
         clear: right;
         padding: 0;
     }
+    // white header while a panel is open; on .header--inner because a stacking-
+    // context root's own background paints below its negative-z ::before dim.
+    // Kept as separate rules: an unparseable :has() would drop the JS fallback
+    .header-main.is-nav-open .header--inner {
+        background-color: $Nwhite;
+    }
+    .header-main:has(.menu-item.megamenu:hover) .header--inner {
+        background-color: $Nwhite;
+    }
+    // page dim behind an open panel: z-index -1 inside the header's stacking
+    // context paints above page content but below the header and panel
+    .header-main.is-nav-open::before {
+        background: rgba(0, 0, 0, .35);
+        content: '';
+        inset: 0;
+        pointer-events: none;
+        position: fixed;
+        z-index: -1;
+    }
+    .header-main:has(.menu-item.megamenu:hover)::before {
+        background: rgba(0, 0, 0, .35);
+        content: '';
+        inset: 0;
+        pointer-events: none;
+        position: fixed;
+        z-index: -1;
+    }
     .header-main-small {
         background-color: $Nwhite;
         .nav-main {
