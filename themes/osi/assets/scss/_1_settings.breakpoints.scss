@@ -41,7 +41,13 @@ $boxedMax: 1180px; // duplicates var(--wp--custom--layout--wide-size)
 $wideMax: 1440px;
 
 // padding values
+$wrapperPad: 5vw; // duplicates the production Customizer CSS inset on body > .wrapper
 $maxPadding: 48px; // duplicates var(--wp--custom--spacing--max-padding)
+
+// header dimensions
+$headerInnerHeight: 125px; // .header--inner fixed height
+$adminBarHeight: 32px;
+$adminBarHeightSmall: 46px; // at and below $break-medium
 $midPadding: 32px; // duplicates var(--wp--custom--spacing--mid-padding);
 $smallPadding: 16px; // duplicates var(--wp--custom--spacing--small-padding);
 

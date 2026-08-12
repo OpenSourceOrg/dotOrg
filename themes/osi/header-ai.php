@@ -35,6 +35,7 @@
 									'theme_location' => 'primary_navigation',
 									'menu_class'     => 'nav-main--menu',
 									'menu'           => 'ai',
+									'walker'         => new OSI_Megamenu_Walker(),
 								)
 							);
 					endif;
@@ -44,10 +45,12 @@
 									'theme_location' => 'mobile_navigation',
 									'menu_class'     => 'nav-mobile--menu',
 									'menu'           => 'ai',
+									'walker'         => new OSI_Megamenu_Walker(),
 								)
 							);
 					endif;
 					?>
+					<a class="nav-main--cta" href="<?php echo esc_url( home_url( '/get-involved/' ) ); ?>"><?php esc_html_e( 'Get Involved', 'osi' ); ?></a>
 				</nav><!-- #site-navigation -->
 
 				<section class="open-button-wrapper">

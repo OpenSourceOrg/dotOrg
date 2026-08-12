@@ -90,7 +90,7 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = null ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing -- typing params on a Walker_Nav_Menu override is a fatal signature mismatch; parent is untyped.
 		if ( 0 === $depth && null !== $this->current_featured ) {
-			$output .= $this->get_featured_card();
+			$output .= $this->get_featured_card( isset( $args->theme_location ) && 'primary_navigation' === $args->theme_location );
 		}
 		parent::end_lvl( $output, $depth, $args );
 	}
@@ -98,38 +98,59 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	/**
 	 * Build the featured card markup.
 	 *
-	 * The image is lazy (else core hands it the page's fetchpriority=high slot),
-	 * built with wp_get_attachment_image because the theme's thumbnail filter
-	 * strips the width/height a lazy image needs, and the excerpt is read raw
-	 * because get_the_excerpt runs the_content filters in the header.
+	 * The image is skipped in the mobile menu (its card design has no image), lazy
+	 * elsewhere (else core hands it the page's fetchpriority=high slot), and built
+	 * with wp_get_attachment_image because the theme's thumbnail filter strips the
+	 * width/height a lazy image needs. The excerpt fallback is read raw because
+	 * get_the_excerpt runs the_content filters in the header.
+	 *
+	 * @param boolean $with_image Whether to render the thumbnail.
 	 *
 	 * @return string
 	 */
-	private function get_featured_card() {
+	private function get_featured_card( bool $with_image ) {
 		$featured = $this->current_featured['post'];
-		$excerpt  = '' !== $featured->post_excerpt ? $featured->post_excerpt : strip_shortcodes( mb_substr( $featured->post_content, 0, 2000 ) );
-		$excerpt  = wp_trim_words( $excerpt, 18, '...' );
+		$link     = $this->current_featured['link'];
+		$text     = $this->current_featured['text'];
+		$title    = get_the_title( $featured );
 
-		$card  = '<li class="megamenu-featured">';
-		$card .= '<span class="megamenu-featured--heading">' . esc_html( $this->current_featured['heading'] ) . '</span>';
-		$card .= '<a class="megamenu-featured--card" href="' . esc_url( get_permalink( $featured ) ) . '">';
-		$card .= wp_get_attachment_image(
-			(int) get_post_thumbnail_id( $featured ),
-			'medium',
-			false,
-			array(
-				'class'   => 'megamenu-featured--image',
-				'loading' => 'lazy',
-				'sizes'   => '(min-width: 1200px) 300px, 100vw',
-			)
-		);
-		$card .= '<span class="megamenu-featured--title">' . esc_html( get_the_title( $featured ) ) . '</span>';
-
-		if ( '' !== $excerpt ) {
-			$card .= '<span class="megamenu-featured--excerpt">' . esc_html( $excerpt ) . '</span>';
+		if ( '' === $text ) {
+			$text = '' !== $featured->post_excerpt ? $featured->post_excerpt : strip_shortcodes( mb_substr( $featured->post_content, 0, 2000 ) );
+			$text = wp_trim_words( $text, 18, '...' );
 		}
 
-		$card .= '</a></li>';
+		$more_attrs = '';
+
+		if ( $link['url'] === $this->current_featured['permalink'] ) {
+			/* translators: 1: link label, 2: featured item title. */
+			$more_attrs = ' aria-label="' . esc_attr( sprintf( __( '%1$s: %2$s', 'osi' ), $link['label'], $title ) ) . '"';
+		}
+
+		$card  = '<li class="megamenu-featured">';
+		$card .= '<a class="megamenu-featured--card" href="' . esc_url( $this->current_featured['permalink'] ) . '">';
+
+		if ( $with_image ) {
+			$card .= wp_get_attachment_image(
+				(int) get_post_thumbnail_id( $featured ),
+				'medium',
+				false,
+				array(
+					'class'   => 'megamenu-featured--image',
+					'loading' => 'lazy',
+				)
+			);
+		}
+
+		$card .= '<span class="megamenu-featured--heading">' . esc_html( $this->current_featured['heading'] ) . '</span>';
+		$card .= '<span class="megamenu-featured--title">' . esc_html( $title ) . '</span>';
+
+		if ( '' !== $text ) {
+			$card .= '<span class="megamenu-featured--excerpt">' . esc_html( $text ) . '</span>';
+		}
+
+		$card .= '</a>';
+		$card .= '<a class="megamenu-featured--more" href="' . esc_url( $link['url'] ) . '"' . ( $link['target'] ? ' target="_blank" rel="noopener noreferrer"' : '' ) . $more_attrs . '>' . esc_html( $link['label'] ) . '</a>';
+		$card .= '</li>';
 
 		return $card;
 	}

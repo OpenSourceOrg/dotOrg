@@ -43,6 +43,7 @@
 								array(
 									'theme_location' => 'mobile_navigation',
 									'menu_class'     => 'nav-mobile--menu',
+									'walker'         => new OSI_Megamenu_Walker(),
 								)
 							);
 					endif;
@@ -60,6 +61,7 @@
 						);
 					endif;
 					?>
+					<a class="nav-main--cta" href="<?php echo esc_url( home_url( '/get-involved/' ) ); ?>"><?php esc_html_e( 'Get Involved', 'osi' ); ?></a>
 				</nav><!-- #site-navigation -->
 				<section class="open-search-wrapper">
 				<a aria-label="Open Search" class="open-search open-button jetpack-search-filter__link" href="#">

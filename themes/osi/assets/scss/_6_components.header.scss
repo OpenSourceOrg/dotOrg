@@ -23,8 +23,8 @@
         position: static;
         opacity: 1;
         transition: all .3s;
-        z-index:999;
-        height: 125px;
+        z-index: 999;
+        height: $headerInnerHeight;
         display: flex;
         align-items: center;
 
@@ -177,36 +177,31 @@
         clear: right;
         padding: 0;
     }
-
-    // white header while a panel is open; on .header--inner because a stacking-
-    // context root's own background paints below its negative-z ::before dim.
-    // Kept as separate rules: an unparseable :has() would drop the JS fallback
-    .header-main.is-nav-open .header--inner {
-        background-color: $Nwhite;
+    // open-panel layers: full-bleed white veil (::after escapes the wrapper inset) and
+    // page dim; z-index -1 keeps both under content, tree order paints veil over dim
+    @mixin nav-open-layers {
+        &::after {
+            background-color: $Nwhite;
+            content: '';
+            inset: 0 (-$wrapperPad);
+            position: absolute;
+            z-index: -1;
+        }
+        &::before {
+            background: rgba(0, 0, 0, .35);
+            content: '';
+            inset: 0;
+            pointer-events: none;
+            position: fixed;
+            z-index: -1;
+        }
     }
-
-    .header-main:has(.menu-item.megamenu:hover) .header--inner {
-        background-color: $Nwhite;
+    // kept as separate rules (no @extend): an unparseable :has() would drop the JS fallback
+    .header-main.is-nav-open {
+        @include nav-open-layers;
     }
-
-    // page dim behind an open panel: z-index -1 inside the header's stacking
-    // context paints above page content but below the header and panel
-    .header-main.is-nav-open::before {
-        background: rgba(0, 0, 0, .35);
-        content: '';
-        inset: 0;
-        pointer-events: none;
-        position: fixed;
-        z-index: -1;
-    }
-
-    .header-main:has(.menu-item.megamenu:hover)::before {
-        background: rgba(0, 0, 0, .35);
-        content: '';
-        inset: 0;
-        pointer-events: none;
-        position: fixed;
-        z-index: -1;
+    .header-main:has(.menu-item.megamenu:hover) {
+        @include nav-open-layers;
     }
 
     .header-main-small {
