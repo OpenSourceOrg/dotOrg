@@ -8,6 +8,11 @@ body>.wrapper {
     position: relative;
     @include multi-transition('margin-left .2s ease-out, margin-right .2s ease-out, left .2s ease-out');
     z-index: 1;
+    // horizontal inset matching the production Customizer CSS rule (retire that copy at deploy)
+    @media only screen and (min-width: #{$break-nav}) {
+        padding-left: $wrapperPad;
+        padding-right: $wrapperPad;
+    }
     &:after {
         content: '';
         background-color: $Nlightest;

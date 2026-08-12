@@ -40,6 +40,9 @@ $Nwhite: var(--wp--preset--color--neutral-white); //#fff
 $bodyColor: $Nwhite;
 $sidebarColor: $Nlightest;
 
+// Megamenu (menu-only value, deliberately not in the editor palette)
+$megamenuExpandedBg: #f9fbf8;
+
 // Text
 $textColor: var(--wp--custom--typography--body--color);
 $headingColor: var(--wp--custom--typography--heading--color);

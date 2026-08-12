@@ -49,25 +49,133 @@
     }
 }
 
+// shared featured-card styles; the breakpoint blocks below hold only their deltas
+.megamenu-featured {
+  .megamenu-featured--card {
+    display: block;
+    padding: 0;
+  }
+
+  .megamenu-featured--heading {
+    color: $brandColor1;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .megamenu-featured--title {
+    display: block;
+    font-weight: $baseWeightBold;
+  }
+
+  .megamenu-featured--excerpt {
+    color: $Ndark;
+    display: block;
+    font-weight: $baseWeight;
+    line-height: 1.45;
+  }
+
+  a.megamenu-featured--more {
+    color: $brandColor1;
+    display: inline-block;
+    font-weight: $baseWeightBold;
+    padding: 0;
+
+    &::after {
+      content: ' \2192';
+    }
+
+    &:hover, &:focus {
+      color: $brandColor1_Dk;
+      text-decoration: underline;
+    }
+  }
+}
+
 @media only screen and (max-width: #{$break-nav - 1}) {
-  .megamenu-header,
+  .megamenu-header {
+    .megamenu-eyebrow {
+      display: none; // the accordion row already shows the item label
+    }
+
+    .megamenu-tagline {
+      color: $Ndark;
+      font-size: 13.5px;
+      line-height: 1.45;
+      margin: .25em 0 .75em;
+    }
+  }
+
   .megamenu-featured {
-    display: none;
+    background-color: $Nwhite;
+    border: 1px solid $Nlight;
+    border-radius: 12px;
+    margin: 16px 0 8px;
+    padding: 20px;
+
+    .megamenu-featured--heading {
+      font-size: 10.5px;
+      letter-spacing: 2px;
+      margin-bottom: .7em;
+    }
+
+    .megamenu-featured--title {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: .45em;
+    }
+
+    .megamenu-featured--excerpt {
+      font-size: 13px;
+    }
+
+    a.megamenu-featured--more {
+      font-size: 13.5px;
+      margin-top: 1.1em;
+    }
   }
 
   .nav-mobile--menu {
-    .menu-item a {
-      font-size: 20px;
+    .menu-item > a {
+      font-size: 17px;
+      font-weight: 500;
       padding-right: 30px;
     }
-  }  
-  
+
+    & > .menu-item {
+      border-bottom: 1px solid $Nlightest;
+    }
+  }
+
   .nav-main--menu, .nav-mobile--menu {
 
       * {
         &:focus {
-          outline-color: $Nwhite;
+          outline-color: $Ndarkest;
         }
+      }
+
+      // selected items recolor only, no underline on mobile
+      .menu-item.current-menu-item > a,
+      .menu-item.current-menu-parent > a,
+      .menu-item.current-menu-ancestor > a {
+        color: $brandColor1;
+        text-decoration: none;
+      }
+
+      .menu-item.tab-active > a {
+        color: $brandColor1;
+        font-weight: 700;
+      }
+
+      & > .menu-item.tab-active > ul.sub-menu {
+        background-color: $megamenuExpandedBg;
+        padding: $smallPadding;
+      }
+
+      // expanded section runs edge-to-edge: cancel the menu's side padding
+      & > .menu-item > ul.sub-menu {
+        margin-left: -$smallPadding;
+        margin-right: -$smallPadding;
       }
 
       .menu-item {
@@ -81,27 +189,36 @@
       }
 
       .menu-toggle {
-        color: $Nwhite;
+        color: $Ndarkest;
         height: 44px;
         padding: 0;
         position: absolute;
         right: -5px;
         top: 0;
         width: 2em;
-        
+
         &:hover, &:focus, &:active {
           transition: all .3s;
 
           &:after {
-              color: $Nwhite;
+              color: $brandColor1;
           }
         }
 
+        // filled triangle per the mobile design, replacing the base chevron glyph
         &:after {
           color: inherit;
-          font-size: 1.2em;
-          padding: .3em 0;
+          content: '\25BC';
+          font-size: 12px;
+          line-height: 44px;
+          padding: 0;
+          transform: none;
         }
+      }
+
+      .menu-toggle-active:after {
+        color: $brandColor1;
+        transform: rotate(180deg);
       }
 
       ul.sub-menu {
@@ -109,11 +226,13 @@
         margin-bottom: 20px;
 
         .menu-item a {
-          font-size: 15px;
-
-          &:hover, &:focus, &.tab-active {
-            letter-spacing: -.15px;
-          }
+          align-items: center;
+          display: flex;
+          font-size: 15.5px;
+          font-weight: 500;
+          min-height: 44px; // touch-target size
+          padding-bottom: 0;
+          padding-top: 0;
         }
 
         ul.sub-menu {
@@ -261,18 +380,21 @@
         padding-right: .5em;
       }
 
+      // full-bleed panel: negative offsets escape the wrapper's inset, and the
+      // content padding re-applies it so panel items align with the header content
       & > ul.sub-menu {
+        border-top: 1px solid $Nlight;
         box-shadow: 0 14px 18px -10px rgba(#{$Ndarkest_RGB}, 0.2);
         display: grid;
         gap: 0 2.5rem;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        left: 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        left: -$wrapperPad;
         max-height: none;
         max-width: none;
         overflow: visible;
         opacity: 0;
-        padding: 2rem calc(max(#{$maxPadding}, (100% - #{$boxedMax}) / 2 + #{$maxPadding})) 2.5rem;
-        right: 0;
+        padding: 2rem calc(#{$wrapperPad} + #{$maxPadding}) 2.5rem;
+        right: -$wrapperPad;
         text-align: left;
         top: 100%;
         transform: translateY(8px);
@@ -285,7 +407,7 @@
           margin-bottom: 1.25rem;
 
           .megamenu-eyebrow {
-            color: $interactColor;
+            color: $brandColor1;
             display: block;
             font-size: .85rem;
             font-weight: $baseWeightBold;
@@ -334,7 +456,7 @@
       }
 
       &.has-featured > ul.sub-menu {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.15fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 1.25fr);
 
         .megamenu-header {
           grid-column: 1 / -2;
@@ -343,21 +465,14 @@
         // spans 30 rows: links must never auto-place under the card, and
         // 1 / -1 cannot span implicit grid rows
         .megamenu-featured {
-          grid-column: 4;
+          border-left: 1px solid $Nlight;
+          grid-column: 3;
           grid-row: 1 / span 30;
-
-          .megamenu-featured--heading {
-            display: block;
-            font-size: 1.05rem;
-            font-weight: $baseWeightBold;
-            letter-spacing: 1px;
-            line-height: 1.1;
-            padding: .6rem 0;
-            text-transform: uppercase;
-          }
+          padding-left: 2.5rem;
 
           .megamenu-featured--card {
-            display: block;
+            font-weight: $baseWeight;
+            padding: 0;
           }
 
           .megamenu-featured--image {
@@ -368,17 +483,22 @@
             width: 100%;
           }
 
-          .megamenu-featured--title {
-            display: block;
+          .megamenu-featured--heading {
+            font-size: .85rem;
+            font-weight: $baseWeightBold;
+            letter-spacing: 2.5px;
+            line-height: 1.1;
+            margin-bottom: .5rem;
           }
 
           .megamenu-featured--excerpt {
-            color: $Ndark;
-            display: block;
             font-size: .9rem;
-            font-weight: $baseWeight;
-            line-height: 1.45;
             margin-top: .35rem;
+          }
+
+          .megamenu-featured--more {
+            margin-top: .75rem;
+            padding: 0;
           }
         }
       }
