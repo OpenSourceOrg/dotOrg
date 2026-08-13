@@ -50,7 +50,10 @@
 							);
 					endif;
 					?>
-					<a class="nav-main--cta" href="<?php echo esc_url( home_url( '/get-involved/' ) ); ?>"><?php esc_html_e( 'Get Involved', 'osi' ); ?></a>
+					<?php
+					$osi_cta = osi_menu_cta();
+					echo '<a class="nav-main--cta" href="' . esc_url( $osi_cta['url'] ) . '"' . ( $osi_cta['target'] ? ' target="_blank" rel="noopener noreferrer"' : '' ) . '>' . esc_html( $osi_cta['label'] ) . '</a>';
+					?>
 				</nav><!-- #site-navigation -->
 
 				<section class="open-button-wrapper">

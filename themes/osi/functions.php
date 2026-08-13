@@ -295,6 +295,11 @@ require get_template_directory() . '/inc/class-osi-megamenu-walker.php';
 require get_template_directory() . '/inc/megamenu-featured.php';
 
 /**
+ * Mobile menu CTA field.
+ */
+require get_template_directory() . '/inc/menu-cta.php';
+
+/**
  * Color functions.
  */
 require get_template_directory() . '/inc/palette.php';
