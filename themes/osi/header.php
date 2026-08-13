@@ -63,7 +63,9 @@
 					?>
 					<?php
 					$osi_cta = osi_menu_cta();
-					echo '<a class="nav-main--cta" href="' . esc_url( $osi_cta['url'] ) . '"' . ( $osi_cta['target'] ? ' target="_blank" rel="noopener noreferrer"' : '' ) . '>' . esc_html( $osi_cta['label'] ) . '</a>';
+					if ( null !== $osi_cta ) {
+						echo '<a class="nav-main--cta" href="' . esc_url( $osi_cta['url'] ) . '"' . ( $osi_cta['target'] ? ' target="_blank" rel="noopener noreferrer"' : '' ) . '>' . esc_html( $osi_cta['label'] ) . '</a>';
+					}
 					?>
 				</nav><!-- #site-navigation -->
 				<section class="open-search-wrapper">

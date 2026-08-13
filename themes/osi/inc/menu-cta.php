@@ -23,7 +23,7 @@ function osi_menu_cta_field() {
 					'label'         => __( 'CTA link', 'osi' ),
 					'name'          => 'osi_menu_cta_link',
 					'type'          => 'link',
-					'instructions'  => __( 'Bottom button of the mobile menu only. Empty = the default "Get Involved" link.', 'osi' ),
+					'instructions'  => __( 'Bottom button of the mobile menu only. Empty = no button.', 'osi' ),
 					'return_format' => 'array',
 				),
 			),
@@ -41,9 +41,9 @@ function osi_menu_cta_field() {
 }
 
 /**
- * Resolve the mobile menu CTA, falling back to the Get Involved page.
+ * Resolve the mobile menu CTA; no field value means no button.
  *
- * @return array Array with 'url', 'label' and 'target' (boolean) keys.
+ * @return array|null Array with 'url', 'label' and 'target' (boolean) keys, or null.
  */
 function osi_menu_cta() {
 	$locations = get_nav_menu_locations();
@@ -51,8 +51,12 @@ function osi_menu_cta() {
 	$link      = $menu ? (array) get_field( 'osi_menu_cta_link', $menu ) : array();
 	$url       = ! empty( $link['url'] ) ? esc_url_raw( $link['url'] ) : '';
 
+	if ( '' === $url ) {
+		return null;
+	}
+
 	return array(
-		'url'    => '' !== $url ? $url : home_url( '/get-involved/' ),
+		'url'    => $url,
 		'label'  => ! empty( $link['title'] ) ? $link['title'] : __( 'Get Involved', 'osi' ),
 		'target' => ! empty( $link['target'] ),
 	);
