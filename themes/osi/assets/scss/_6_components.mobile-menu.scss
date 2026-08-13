@@ -1,27 +1,10 @@
 .site-header {
+  // centered in the sticky header row: follows any logo height or admin-bar shift
   .open-button-wrapper {
       position: absolute;
-      // top: $quicklinksTop; // height of quicklinks
-      // top: 0;
-      top: 35px;
       right: 16px;
-  }
-
-  &.header-main-small {
-    .open-button-wrapper {
-        top: 25px;
-    }
-  }
-}
-
-.open-the-menu {
-  .open-button-wrapper {
-    position: fixed;
-  }
-  .admin-bar {
-    .open-button-wrapper {
-      top: 46px;
-    }
+      top: 50%;
+      transform: translateY(-50%);
   }
 }
 
@@ -35,7 +18,8 @@
       overflow: hidden;
       padding: .4em;
       position: absolute;
-      top: 0;
+      top: 50%;
+      transform: translateY(-50%);
       width: 44px;
       z-index: 1000;
 
