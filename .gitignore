@@ -422,3 +422,4 @@ $RECYCLE.BIN/
 
 # local browser-test artifacts
 .playwright-mcp/
+/*.png
