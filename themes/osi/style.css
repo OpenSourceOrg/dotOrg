@@ -2453,18 +2453,9 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 }
 .site-header .open-button-wrapper {
   position: absolute;
-  top: 35px;
   right: 16px;
-}
-.site-header.header-main-small .open-button-wrapper {
-  top: 25px;
-}
-
-.open-the-menu .open-button-wrapper {
-  position: fixed;
-}
-.open-the-menu .admin-bar .open-button-wrapper {
-  top: 46px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .open-button:not(.open-search) {
@@ -2479,7 +2470,8 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   overflow: hidden;
   padding: 0.4em;
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 44px;
   z-index: 1000;
 }
@@ -3041,12 +3033,10 @@ body.option-round .open-button:not(.open-search) {
 @media only screen and (max-width: 1200px) {
   .header-main .open-search-wrapper {
     position: absolute;
-    top: 40px;
     right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
   }
-}
-.header-main.header-main-small .open-search-wrapper {
-  top: 30px;
 }
 .header-main .open-search {
   background: none;
