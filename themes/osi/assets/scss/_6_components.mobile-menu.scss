@@ -1,27 +1,9 @@
 .site-header {
   .open-button-wrapper {
       position: absolute;
-      // top: $quicklinksTop; // height of quicklinks
-      // top: 0;
-      top: 35px;
       right: 16px;
-  }
-
-  &.header-main-small {
-    .open-button-wrapper {
-        top: 25px;
-    }
-  }
-}
-
-.open-the-menu {
-  .open-button-wrapper {
-    position: fixed;
-  }
-  .admin-bar {
-    .open-button-wrapper {
-      top: 46px;
-    }
+      top: 50%;
+      transform: translateY(-50%);
   }
 }
 
@@ -35,7 +17,8 @@
       overflow: hidden;
       padding: .4em;
       position: absolute;
-      top: 0;
+      top: 50%;
+      transform: translateY(-50%);
       width: 44px;
       z-index: 1000;
 
@@ -206,13 +189,40 @@
             position: static;
         }
 
+        // stack while open: overlay (2) < white bar (3) < logo and buttons (4)
+        .header--blog-name {
+            position: relative;
+            z-index: 4;
+        }
+
+        // white bar behind the fixed logo row: the open menu scrolls beneath it
+        .header--inner::before {
+            background-color: $Nwhite;
+            content: '';
+            height: $headerInnerHeight;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 3;
+        }
+
+        .admin-bar .header--inner::before {
+            top: var(--wp-admin--admin-bar--height);
+        }
+
+        .open-button-wrapper,
+        .open-search-wrapper {
+            z-index: 4;
+        }
+
         .open-main-menu {
           &:after {
-            color: $Nwhite;
+            color: $Ndarkest;
             content: "Close";
           }
           span:not(.menu-text) {
-            background-color: $Nwhite;
+            background-color: $Ndarkest;
             &:nth-child(2) {
               -webkit-transform: rotate(45deg);
               -moz-transform: rotate(45deg);
@@ -241,7 +251,7 @@
 
         .nav-main {
             //height: 100%;
-            max-height: 100vh;
+            max-height: none;
             overflow-y: auto;
             padding-bottom: 3em;
         }

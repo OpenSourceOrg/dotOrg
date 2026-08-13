@@ -812,6 +812,12 @@
   transition: margin-left .2s ease-out, margin-right .2s ease-out, left .2s ease-out;
   z-index: 1;
 }
+@media only screen and (min-width: 1200px) {
+  .editor-styles-wrapper body > .wrapper {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
 .editor-styles-wrapper body > .wrapper:after {
   content: "";
   background-color: var(--wp--preset--color--neutral-lightest);

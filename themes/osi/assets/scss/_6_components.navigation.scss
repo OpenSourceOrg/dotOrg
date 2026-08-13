@@ -25,11 +25,10 @@ nav {
 			padding: .5em 0;
 			transition: all .3s;
 
+			// recolor and underline only: weight/spacing changes make the text shift
 			&:hover, &:focus {
 				color: $linkColor;
 				transition: all .3s;
-				letter-spacing: -.25px;
-				font-weight: 600;
 				text-decoration: underline;
 			}
 		}
@@ -101,23 +100,29 @@ nav {
         color: $linkColor;
       }
   	}
-	.tab-active {
-		& > a {
-			font-weight: $baseWeightBold;
-			letter-spacing: -.25px;
-		}
-	}
 }
 
 .nav-main--menu {
 	margin: 0;
 }
 
+.nav-main--cta {
+	display: none;
+}
+
+// source order matters: the desktop top-level rule re-adds its own underline below
+.nav-main--menu .menu-item a:hover,
+.nav-main--menu .menu-item a:focus,
+.nav-mobile--menu .menu-item a:hover,
+.nav-mobile--menu .menu-item a:focus {
+	text-decoration: none;
+}
+
 // Main Menu Mobile
 .nav-mobile--menu {
-	padding: 3em 1em;
-	margin-top: 1em;
-	text-align: right;
+	padding: .5em $smallPadding 7em;
+	margin: 0;
+	text-align: left;
 }
 
 
@@ -158,6 +163,7 @@ footer {
 		margin-top: $quicklinksTop; // quicklinks header height
 		max-height: 0;
 		overflow: hidden;
+		padding: 0; // overflow clips at the padding edge: any padding leaks content while closed
     	position: fixed;
 		right: 0;
 		top: 0;
@@ -167,16 +173,46 @@ footer {
 		.menu-item {
 			a,
 			a:visited {
-				color: $Nwhite;
+				color: $Ndarkest;
 
 				&:hover, &:focus {
-					color: $Nwhite;
+					color: $brandColor1;
 				}
 			}
 		}
 
 		.open-the-menu & {
-			background-color: $Ndark;
+			background-color: $Nwhite;
+			bottom: 0;
+			box-sizing: border-box;
+			padding-top: $headerInnerHeight; // the logo row stays visible above the overlay
+			z-index: 2;
+		}
+
+		.open-the-menu .admin-bar & {
+			padding-top: calc(#{$headerInnerHeight} + var(--wp-admin--admin-bar--height));
+		}
+	}
+
+	.open-the-menu .nav-main--cta {
+		background-color: $brandColor1;
+		border-radius: 999px;
+		bottom: 24px;
+		color: $Nwhite;
+		display: block;
+		font-weight: $baseWeightBold;
+		left: $smallPadding;
+		padding: .9em;
+		position: fixed;
+		right: $smallPadding;
+		text-align: center;
+		text-decoration: none;
+		z-index: 5;
+
+		&:hover, &:focus {
+			background-color: $brandColor1_Dk;
+			color: $Nwhite;
+			text-decoration: none;
 		}
 	}
 
@@ -256,12 +292,6 @@ footer {
 					}
 				}
 
-				&:hover, &:focus, .tab-active {
-					& > a {
-						font-weight: $baseWeightBold;
-						letter-spacing: -.25px;
-					}
-				}
 			}
 
 			& > .menu-item > a:hover,
