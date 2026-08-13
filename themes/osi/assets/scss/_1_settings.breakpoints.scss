@@ -45,9 +45,7 @@ $wrapperPad: 5vw; // duplicates the production Customizer CSS inset on body > .w
 $maxPadding: 48px; // duplicates var(--wp--custom--spacing--max-padding)
 
 // header dimensions
-$headerInnerHeight: 125px; // .header--inner fixed height
-$adminBarHeight: 32px;
-$adminBarHeightSmall: 46px; // at and below $break-medium
+$headerInnerHeight: 125px; // .header--inner fixed height; admin-bar offsets come from core's --wp-admin--admin-bar--height
 $midPadding: 32px; // duplicates var(--wp--custom--spacing--mid-padding);
 $smallPadding: 16px; // duplicates var(--wp--custom--spacing--small-padding);
 

@@ -190,11 +190,7 @@ footer {
 		}
 
 		.open-the-menu .admin-bar & {
-			padding-top: $headerInnerHeight + $adminBarHeight;
-
-			@media only screen and (max-width: #{$break-medium}) {
-				padding-top: $headerInnerHeight + $adminBarHeightSmall;
-			}
+			padding-top: calc(#{$headerInnerHeight} + var(--wp-admin--admin-bar--height));
 		}
 	}
 
