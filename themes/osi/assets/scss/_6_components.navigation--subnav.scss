@@ -381,9 +381,10 @@
       }
 
       // full-bleed panel: negative offsets escape the wrapper's inset, and the
-      // content padding re-applies it so panel items align with the header content
+      // content padding re-applies it so panel items align with the header content.
+      // Closing freezes the panel solid for .2s so panel switches never cross-fade
+      // (two translucent panels would flash the dimmed page through)
       & > ul.sub-menu {
-        border-top: 1px solid $Nlight;
         box-shadow: 0 14px 18px -10px rgba(#{$Ndarkest_RGB}, 0.2);
         display: grid;
         gap: 0 2.5rem;
@@ -398,7 +399,7 @@
         text-align: left;
         top: 100%;
         transform: translateY(8px);
-        transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+        transition: opacity 0s linear .2s, transform 0s linear .2s, visibility 0s linear .2s;
         visibility: hidden;
         width: auto;
 
@@ -503,13 +504,15 @@
         }
       }
 
-      // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape
+      // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape.
+      // The z-index bump paints the entering panel above a still-solid exiting one
       &:hover > ul.sub-menu,
       &.is-open > ul.sub-menu {
         opacity: 1;
         transform: none;
         transition: opacity .2s ease, transform .2s ease;
         visibility: visible;
+        z-index: 100;
       }
     }
   }
