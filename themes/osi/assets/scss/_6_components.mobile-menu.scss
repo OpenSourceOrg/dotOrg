@@ -1,5 +1,4 @@
 .site-header {
-  // centered in the sticky header row: follows any logo height or admin-bar shift
   .open-button-wrapper {
       position: absolute;
       right: 16px;
@@ -190,7 +189,7 @@
             position: static;
         }
 
-        // stack while open: menu overlay (2) < white logo-row bar (3) < logo and buttons (4)
+        // stack while open: overlay (2) < white bar (3) < logo and buttons (4)
         .header--blog-name {
             position: relative;
             z-index: 4;

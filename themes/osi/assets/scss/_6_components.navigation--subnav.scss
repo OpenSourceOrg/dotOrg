@@ -154,7 +154,6 @@
         }
       }
 
-      // selected items recolor only, no underline on mobile
       .menu-item.current-menu-item > a,
       .menu-item.current-menu-parent > a,
       .menu-item.current-menu-ancestor > a {
@@ -172,7 +171,6 @@
         padding: $smallPadding;
       }
 
-      // expanded section runs edge-to-edge: cancel the menu's side padding
       & > .menu-item > ul.sub-menu {
         margin-left: -$smallPadding;
         margin-right: -$smallPadding;
@@ -205,7 +203,6 @@
           }
         }
 
-        // filled triangle per the mobile design, replacing the base chevron glyph
         &:after {
           color: inherit;
           content: '\25BC';
@@ -380,10 +377,8 @@
         padding-right: .5em;
       }
 
-      // full-bleed panel: negative offsets escape the wrapper's inset, and the
-      // content padding re-applies it so panel items align with the header content.
-      // Closing freezes the panel solid for .2s so panel switches never cross-fade
-      // (two translucent panels would flash the dimmed page through)
+      // offsets/padding align the full-bleed panel with the header content; closing
+      // freezes it solid for .2s so switches never cross-fade (dim would flash through)
       & > ul.sub-menu {
         box-shadow: 0 14px 18px -10px rgba(#{$Ndarkest_RGB}, 0.2);
         display: grid;
@@ -507,8 +502,7 @@
         }
       }
 
-      // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape.
-      // The z-index bump paints the entering panel above a still-solid exiting one
+      // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape
       &:hover > ul.sub-menu,
       &.is-open > ul.sub-menu {
         opacity: 1;
