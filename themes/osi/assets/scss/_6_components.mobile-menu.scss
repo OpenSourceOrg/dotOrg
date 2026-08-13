@@ -209,11 +209,7 @@
         }
 
         .admin-bar .header--inner::before {
-            top: $adminBarHeight;
-
-            @media only screen and (max-width: #{$break-medium}) {
-                top: $adminBarHeightSmall;
-            }
+            top: var(--wp-admin--admin-bar--height);
         }
 
         .open-button-wrapper,
