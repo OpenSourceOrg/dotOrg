@@ -110,7 +110,7 @@ nav {
 	display: none;
 }
 
-// nav hover only recolors; the desktop top-level rule re-adds its own underline
+// source order matters: the desktop top-level rule re-adds its own underline below
 .nav-main--menu .menu-item a:hover,
 .nav-main--menu .menu-item a:focus,
 .nav-mobile--menu .menu-item a:hover,
@@ -207,7 +207,7 @@ footer {
 		right: $smallPadding;
 		text-align: center;
 		text-decoration: none;
-		z-index: 5; // local to the .nav-main overlay's own stacking context
+		z-index: 5;
 
 		&:hover, &:focus {
 			background-color: $brandColor1_Dk;
