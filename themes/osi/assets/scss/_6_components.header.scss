@@ -180,8 +180,10 @@
     // open-panel layers: full-bleed white veil (::after escapes the wrapper inset) and
     // page dim; z-index -1 keeps both under content, tree order paints veil over dim
     @mixin nav-open-layers {
+        // the border is the header/panel divider: on the veil so it never fades with panel switches
         &::after {
             background-color: $Nwhite;
+            border-bottom: 1px solid $Nlight;
             content: '';
             inset: 0 (-$wrapperPad);
             position: absolute;

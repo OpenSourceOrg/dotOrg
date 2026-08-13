@@ -2142,7 +2142,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     padding-right: 0.5em;
   }
   .nav-main--menu .menu-item.megamenu > ul.sub-menu {
-    border-top: 1px solid var(--wp--preset--color--neutral-light);
     box-shadow: 0 14px 18px -10px rgba(var(--wp--custom--color--neutral-darkest-rgb), 0.2);
     display: grid;
     gap: 0 2.5rem;
@@ -2157,7 +2156,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     text-align: left;
     top: 100%;
     transform: translateY(8px);
-    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+    transition: opacity 0s linear 0.2s, transform 0s linear 0.2s, visibility 0s linear 0.2s;
     visibility: hidden;
     width: auto;
   }
@@ -2248,6 +2247,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     transform: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
     visibility: visible;
+    z-index: 100;
   }
 }
 .header-main {
@@ -2396,6 +2396,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
   .header-main.is-nav-open::after {
     background-color: var(--wp--preset--color--neutral-white);
+    border-bottom: 1px solid var(--wp--preset--color--neutral-light);
     content: "";
     inset: 0 -5vw;
     position: absolute;
@@ -2411,6 +2412,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
   .header-main:has(.menu-item.megamenu:hover)::after {
     background-color: var(--wp--preset--color--neutral-white);
+    border-bottom: 1px solid var(--wp--preset--color--neutral-light);
     content: "";
     inset: 0 -5vw;
     position: absolute;
