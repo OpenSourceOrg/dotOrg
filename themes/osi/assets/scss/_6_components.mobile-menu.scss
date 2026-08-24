@@ -183,6 +183,19 @@
             width: 100%;
             height: 100%;
             overflow: visible;
+            // the pinned header below leaves the flow: hold its height so the browser
+            // does not clamp the scroll position when the menu opens near the page end
+            padding-bottom: $headerInnerHeight;
+        }
+
+        // the scroll lock above drops sticky positioning, which strands the header at
+        // its static offset: pin it so the logo row and close button stay on screen
+        .header-main {
+            position: fixed;
+        }
+
+        .admin-bar .header-main {
+            top: var(--wp-admin--admin-bar--height);
         }
 
         .header--inner {
