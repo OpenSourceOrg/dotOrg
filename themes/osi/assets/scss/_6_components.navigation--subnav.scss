@@ -3,7 +3,7 @@
 }
 
 .nav-main--menu, .nav-mobile--menu {
-  ul.sub-menu a[href='#'] { // placeholder items act as labels, not links (all widths)
+  ul.sub-menu a[href='#'] {
     pointer-events: none;
     text-decoration: none;
   }
@@ -294,7 +294,7 @@
   }
 
   & > li:hover, & > li:focus, & > li:focus-within, li.tab-active {
-    & > .menu-toggle:after { // toggle is a sibling of the link since the a11y fix
+    & > .menu-toggle:after {
       transform:rotateZ(0) translateY(3px);
     }
     &>ul {
@@ -398,7 +398,6 @@
         visibility: hidden;
         width: auto;
 
-        // markup from OSI_Megamenu_Walker
         .megamenu-header {
           grid-column: 1 / -1;
           margin-bottom: 1.25rem;
@@ -438,7 +437,6 @@
             text-transform: uppercase;
           }
 
-          // max-height: none because the base .sub-menu rule collapses nested lists
           & > ul {
             background-color: transparent;
             left: auto;
@@ -453,7 +451,6 @@
         }
       }
 
-      // markup from OSI_Megamenu_Walker
       &.has-featured > ul.sub-menu {
         grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 1.25fr);
 
