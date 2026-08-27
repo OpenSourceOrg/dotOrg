@@ -28,6 +28,73 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	private $current_featured = null;
 
 	/**
+	 * Direct-child counts keyed by menu item ID.
+	 *
+	 * @var array
+	 */
+	private $child_counts = array();
+
+	/**
+	 * Zero-based position of the next item within the panel being rendered.
+	 *
+	 * @var integer
+	 */
+	private $panel_index = 0;
+
+	/**
+	 * Walk the tree, counting each item's children first.
+	 *
+	 * @param array   $elements  Menu items to walk.
+	 * @param integer $max_depth Depth limit.
+	 * @param mixed   ...$args   Arguments passed through to the element handlers.
+	 *
+	 * @return string
+	 */
+	public function walk( $elements, $max_depth, ...$args ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing,Squiz.Commenting.FunctionComment.TypeHintMissing -- typing params on a Walker override is a fatal signature mismatch; parent is untyped.
+		$this->child_counts = array_count_values( array_column( $elements, 'menu_item_parent' ) );
+
+		add_filter( 'nav_menu_item_attributes', array( $this, 'add_panel_placement' ), 10, 4 );
+		$output = parent::walk( $elements, $max_depth, ...$args );
+		remove_filter( 'nav_menu_item_attributes', array( $this, 'add_panel_placement' ), 10 );
+
+		return $output;
+	}
+
+	/**
+	 * Place a panel item in its column.
+	 *
+	 * Grid auto-flow cannot fill column one before column two without a row count, and
+	 * handing it one lets the featured card's height set every row (@see T51ENG-2081).
+	 *
+	 * @param array         $atts      HTML attributes for the menu item's li.
+	 * @param WP_Post       $menu_item Menu item data object.
+	 * @param stdClass|null $args      An object of wp_nav_menu() arguments.
+	 * @param integer       $depth     Depth of menu item.
+	 *
+	 * @return array
+	 */
+	public function add_panel_placement( $atts, $menu_item, $args, $depth ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing,Squiz.Commenting.FunctionComment.TypeHintMissing -- core passes whatever wp_nav_menu_objects produced, so the item cannot be typed.
+		if ( 1 !== $depth || null === $this->current_parent || 'primary_navigation' !== ( $args->theme_location ?? '' ) ) {
+			return $atts;
+		}
+
+		// two columns, matching grid-template-columns in _6_components.navigation--subnav.scss.
+		$rows = (int) ceil( ( $this->child_counts[ $this->current_parent->ID ] ?? 0 ) / 2 );
+
+		if ( $rows < 1 ) {
+			return $atts;
+		}
+
+		$column = intdiv( $this->panel_index, $rows ) + 1;
+		$row    = ( $this->panel_index % $rows ) + 2;
+		++$this->panel_index;
+
+		$atts['style'] = ltrim( rtrim( $atts['style'] ?? '', '; ' ) . ';grid-column:' . $column . ';grid-row:' . $row, ';' );
+
+		return $atts;
+	}
+
+	/**
 	 * Start element output; remembers the current top-level item.
 	 *
 	 * @param string        $output Used to append additional content (passed by reference).
@@ -43,6 +110,7 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 			$is_panel               = $this->has_children && in_array( 'megamenu', (array) $item->classes, true );
 			$this->current_parent   = $is_panel ? $item : null;
 			$this->current_featured = $is_panel ? osi_megamenu_featured( $item ) : null;
+			$this->panel_index      = 0;
 
 			if ( null !== $this->current_featured ) {
 				$item->classes[] = 'has-featured';
@@ -132,7 +200,7 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 		if ( $with_image ) {
 			$card .= wp_get_attachment_image(
 				(int) get_post_thumbnail_id( $featured ),
-				'medium',
+				'large',
 				false,
 				array(
 					'class'   => 'megamenu-featured--image',

@@ -2239,6 +2239,17 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   .nav-main--menu .menu-item.megamenu > a {
     padding-right: 0.5em;
   }
+  .nav-main--menu .menu-item.megamenu > a::after {
+    content: "▼"/"";
+    display: inline-block;
+    font-size: 0.55em;
+    margin-left: 0.45em;
+    transition: transform 0.2s ease;
+    vertical-align: middle;
+  }
+  .nav-main--menu .menu-item.megamenu:hover > a::after, .nav-main--menu .menu-item.megamenu.is-open > a::after {
+    transform: rotate(180deg);
+  }
   .nav-main--menu .menu-item.megamenu > ul.sub-menu {
     box-shadow: 0 14px 18px -10px rgba(var(--wp--custom--color--neutral-darkest-rgb), 0.2);
     display: grid;
@@ -2260,6 +2271,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   }
   .nav-main--menu .menu-item.megamenu > ul.sub-menu .megamenu-header {
     grid-column: 1/-1;
+    grid-row: 1;
     margin-bottom: 1.25rem;
   }
   .nav-main--menu .menu-item.megamenu > ul.sub-menu .megamenu-header .megamenu-eyebrow {
@@ -2319,10 +2331,12 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     padding: 0;
   }
   .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--image {
+    aspect-ratio: 16/9;
     border-radius: 8px;
     display: block;
     height: auto;
     margin-bottom: 0.75rem;
+    object-fit: cover;
     width: 100%;
   }
   .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--heading {
@@ -2339,6 +2353,12 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--more {
     margin-top: 0.75rem;
     padding: 0;
+  }
+  .header-main.is-nav-open .nav-main--menu .menu-item.megamenu:not(.is-open):not(:hover) > ul.sub-menu {
+    transition: none;
+  }
+  .header-main:has(.menu-item.megamenu:hover) .nav-main--menu .menu-item.megamenu:not(.is-open):not(:hover) > ul.sub-menu {
+    transition: none;
   }
   .nav-main--menu .menu-item.megamenu:hover > ul.sub-menu, .nav-main--menu .menu-item.megamenu.is-open > ul.sub-menu {
     opacity: 1;

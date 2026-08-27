@@ -375,6 +375,21 @@
 
       & > a {
         padding-right: .5em;
+
+        // alt text keeps the glyph out of the link's accessible name; aria-expanded carries the state
+        &::after {
+          content: '\25BC' / '';
+          display: inline-block;
+          font-size: .55em;
+          margin-left: .45em;
+          transition: transform .2s ease;
+          vertical-align: middle;
+        }
+      }
+
+      &:hover > a::after,
+      &.is-open > a::after {
+        transform: rotate(180deg);
       }
 
       // offsets/padding align the full-bleed panel with the header content; closing
@@ -400,6 +415,7 @@
 
         .megamenu-header {
           grid-column: 1 / -1;
+          grid-row: 1;
           margin-bottom: 1.25rem;
 
           .megamenu-eyebrow {
@@ -458,8 +474,7 @@
           grid-column: 1 / -2;
         }
 
-        // spans 30 rows: links must never auto-place under the card, and
-        // 1 / -1 cannot span implicit grid rows
+        // spans rows instead of 1 / -1, which would make the card's height set every row
         .megamenu-featured {
           border-left: 1px solid $Nlight;
           grid-column: 3;
@@ -472,10 +487,12 @@
           }
 
           .megamenu-featured--image {
+            aspect-ratio: 16 / 9;
             border-radius: 8px;
             display: block;
             height: auto;
             margin-bottom: .75rem;
+            object-fit: cover;
             width: 100%;
           }
 
@@ -497,6 +514,17 @@
             padding: 0;
           }
         }
+      }
+
+      // the closed state's .2s hold is only there to stop the dim veil cross-fading;
+      // while another panel is open it just leaves the taller one showing behind
+      .header-main.is-nav-open &:not(.is-open):not(:hover) > ul.sub-menu {
+        transition: none;
+      }
+
+      // separate rule, as above: an unparseable :has() would drop the JS one too
+      .header-main:has(.menu-item.megamenu:hover) &:not(.is-open):not(:hover) > ul.sub-menu {
+        transition: none;
       }
 
       // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape
