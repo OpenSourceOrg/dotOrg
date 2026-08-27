@@ -183,6 +183,15 @@
             width: 100%;
             height: 100%;
             overflow: visible;
+            padding-bottom: $headerInnerHeight;
+        }
+
+        .header-main {
+            position: fixed;
+        }
+
+        .admin-bar .header-main {
+            top: var(--wp-admin--admin-bar--height);
         }
 
         .header--inner {

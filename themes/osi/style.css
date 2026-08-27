@@ -2700,6 +2700,13 @@ body.option-round .open-button:not(.open-search) {
     width: 100%;
     height: 100%;
     overflow: visible;
+    padding-bottom: 125px;
+  }
+  .open-the-menu .header-main {
+    position: fixed;
+  }
+  .open-the-menu .admin-bar .header-main {
+    top: var(--wp-admin--admin-bar--height);
   }
   .open-the-menu .header--inner {
     position: static;
