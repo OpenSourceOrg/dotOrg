@@ -1872,7 +1872,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   .open-the-menu .admin-bar .nav-main {
     padding-top: calc(125px + var(--wp-admin--admin-bar--height));
   }
-  .open-the-menu .nav-main--cta {
+  .nav-main .nav-main--cta {
     background-color: var(--wp--preset--color--brand-color-1);
     border-radius: 999px;
     bottom: 24px;
@@ -1880,17 +1880,27 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     display: block;
     font-weight: var(--wp--custom--typography--body--font-weight-bold);
     left: 16px;
+    opacity: 0;
     padding: 0.9em;
+    pointer-events: none;
     position: fixed;
     right: 16px;
     text-align: center;
     text-decoration: none;
+    transition: opacity 0.3s, visibility 0s linear 0.3s;
+    visibility: hidden;
     z-index: 5;
   }
-  .open-the-menu .nav-main--cta:hover, .open-the-menu .nav-main--cta:focus {
+  .nav-main .nav-main--cta:hover, .nav-main .nav-main--cta:focus {
     background-color: var(--wp--preset--color--brand-color-1-darker);
     color: var(--wp--preset--color--neutral-white);
     text-decoration: none;
+  }
+  .open-the-menu .nav-main .nav-main--cta {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s, visibility 0s;
+    visibility: visible;
   }
   .nav-main--menu {
     height: 0 !important;
@@ -2240,12 +2250,16 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     padding-right: 0.5em;
   }
   .nav-main--menu .menu-item.megamenu > a::after {
-    content: "▼"/"";
+    background-color: currentColor;
+    content: "";
     display: inline-block;
-    font-size: 0.55em;
+    height: 0.45em;
     margin-left: 0.45em;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 8" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 6 6.5 11 1.5"/></svg>') no-repeat center/contain;
     transition: transform 0.2s ease;
     vertical-align: middle;
+    width: 0.7em;
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 8" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 6 6.5 11 1.5"/></svg>') no-repeat center/contain;
   }
   .nav-main--menu .menu-item.megamenu:hover > a::after, .nav-main--menu .menu-item.megamenu.is-open > a::after {
     transform: rotate(180deg);
@@ -2254,7 +2268,9 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     box-shadow: 0 14px 18px -10px rgba(var(--wp--custom--color--neutral-darkest-rgb), 0.2);
     display: grid;
     gap: 0 2.5rem;
+    grid-auto-flow: column;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(var(--megamenu-tracks, 1), auto);
     left: -5vw;
     max-height: none;
     max-width: none;
@@ -2323,7 +2339,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured {
     border-left: 1px solid var(--wp--preset--color--neutral-light);
     grid-column: 3;
-    grid-row: 1/span 30;
+    grid-row: 1/-1;
     padding-left: 2.5rem;
   }
   .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--card {
@@ -2354,10 +2370,10 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     margin-top: 0.75rem;
     padding: 0;
   }
-  .header-main.is-nav-open .nav-main--menu .menu-item.megamenu:not(.is-open):not(:hover) > ul.sub-menu {
+  .header-main.is-nav-open .nav-main--menu .menu-item.megamenu > ul.sub-menu {
     transition: none;
   }
-  .header-main:has(.menu-item.megamenu:hover) .nav-main--menu .menu-item.megamenu:not(.is-open):not(:hover) > ul.sub-menu {
+  .header-main:has(.menu-item.megamenu:hover) .nav-main--menu .menu-item.megamenu > ul.sub-menu {
     transition: none;
   }
   .nav-main--menu .menu-item.megamenu:hover > ul.sub-menu, .nav-main--menu .menu-item.megamenu.is-open > ul.sub-menu {
@@ -2709,6 +2725,10 @@ body.option-round .open-button:not(.open-search) {
 }
 
 @media only screen and (max-width: 1199.94px) {
+  .header--blog-name {
+    position: relative;
+    z-index: 4;
+  }
   .open-the-menu {
     overflow: hidden;
   }
@@ -2730,10 +2750,6 @@ body.option-round .open-button:not(.open-search) {
   }
   .open-the-menu .header--inner {
     position: static;
-  }
-  .open-the-menu .header--blog-name {
-    position: relative;
-    z-index: 4;
   }
   .open-the-menu .header--inner::before {
     background-color: var(--wp--preset--color--neutral-white);
