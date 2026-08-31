@@ -2268,9 +2268,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     box-shadow: 0 14px 18px -10px rgba(var(--wp--custom--color--neutral-darkest-rgb), 0.2);
     display: grid;
     gap: 0 2.5rem;
-    grid-auto-flow: column;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(var(--megamenu-tracks, 1), auto);
     left: -5vw;
     max-height: none;
     max-width: none;
@@ -2339,7 +2337,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured {
     border-left: 1px solid var(--wp--preset--color--neutral-light);
     grid-column: 3;
-    grid-row: 1/-1;
+    grid-row: 1/span 30;
     padding-left: 2.5rem;
   }
   .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--card {

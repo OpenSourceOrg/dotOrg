@@ -35,6 +35,13 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	private $child_counts = array();
 
 	/**
+	 * Zero-based position of the next item within the panel being rendered.
+	 *
+	 * @var integer
+	 */
+	private $panel_index = 0;
+
+	/**
 	 * Walk the tree, counting each item's children first.
 	 *
 	 * @param array   $elements  Menu items to walk.
@@ -46,20 +53,21 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	public function walk( $elements, $max_depth, ...$args ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing,Squiz.Commenting.FunctionComment.TypeHintMissing -- typing params on a Walker override is a fatal signature mismatch; parent is untyped.
 		$this->child_counts = array_count_values( array_column( $elements, 'menu_item_parent' ) );
 
-		add_filter( 'nav_menu_item_attributes', array( $this, 'add_panel_row_count' ), 10, 4 );
+		add_filter( 'nav_menu_item_attributes', array( $this, 'add_panel_placement' ), 10, 4 );
 
 		try {
 			return parent::walk( $elements, $max_depth, ...$args );
 		} finally {
-			remove_filter( 'nav_menu_item_attributes', array( $this, 'add_panel_row_count' ), 10 );
+			remove_filter( 'nav_menu_item_attributes', array( $this, 'add_panel_placement' ), 10 );
 		}
 	}
 
 	/**
-	 * Hand the panel its row count, so column auto-flow fills column one before column two.
+	 * Place a panel item in its column, filling column one before column two.
 	 *
-	 * Grid cannot work the count out on its own, and letting the featured card set it makes
-	 * the card's height drive every row (@see T51ENG-2081).
+	 * Auto-placement cannot do this: the featured card has to span past the explicit rows
+	 * to stay out of their sizing, and column flow would then fill that whole span before
+	 * wrapping (@see T51ENG-2081).
 	 *
 	 * @param array    $atts      HTML attributes for the menu item's li.
 	 * @param WP_Post  $menu_item Menu item data object.
@@ -68,16 +76,18 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	 *
 	 * @return array
 	 */
-	public function add_panel_row_count( array $atts, WP_Post $menu_item, stdClass $args, int $depth ): array {
-		if ( 0 !== $depth || null === $this->current_parent || 'primary_navigation' !== ( $args->theme_location ?? '' ) ) {
+	public function add_panel_placement( array $atts, WP_Post $menu_item, stdClass $args, int $depth ): array {
+		if ( 1 !== $depth || null === $this->current_parent || 'primary_navigation' !== ( $args->theme_location ?? '' ) ) {
 			return $atts;
 		}
 
-		// two columns, matching grid-template-columns in _6_components.navigation--subnav.scss,
-		// plus the row the section header sits in.
-		$tracks = (int) ceil( $this->child_counts[ $this->current_parent->ID ] / 2 ) + 1;
+		// two columns, matching grid-template-columns in _6_components.navigation--subnav.scss.
+		$rows   = (int) ceil( $this->child_counts[ $this->current_parent->ID ] / 2 );
+		$column = intdiv( $this->panel_index, $rows ) + 1;
+		$row    = ( $this->panel_index % $rows ) + 2;
+		++$this->panel_index;
 
-		$atts['style'] = ltrim( rtrim( $atts['style'] ?? '', '; ' ) . ';--megamenu-tracks:' . $tracks, ';' );
+		$atts['style'] = ltrim( rtrim( $atts['style'] ?? '', '; ' ) . ';grid-column:' . $column . ';grid-row:' . $row, ';' );
 
 		return $atts;
 	}
@@ -98,6 +108,7 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 			$is_panel               = $this->has_children && in_array( 'megamenu', (array) $item->classes, true );
 			$this->current_parent   = $is_panel ? $item : null;
 			$this->current_featured = $is_panel ? osi_megamenu_featured( $item ) : null;
+			$this->panel_index      = 0;
 
 			if ( null !== $this->current_featured ) {
 				$item->classes[] = 'has-featured';

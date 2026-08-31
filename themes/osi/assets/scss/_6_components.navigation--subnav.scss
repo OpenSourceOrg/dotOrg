@@ -405,9 +405,7 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
         box-shadow: 0 14px 18px -10px rgba(#{$Ndarkest_RGB}, 0.2);
         display: grid;
         gap: 0 2.5rem;
-        grid-auto-flow: column;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: repeat(var(--megamenu-tracks, 1), auto);
         left: -$wrapperPad;
         max-height: none;
         max-width: none;
@@ -483,11 +481,12 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
           grid-column: 1 / -2;
         }
 
-        // spans every row so the card's height never drives the rows the items sit in
+        // spans past the explicit rows: the card is taller than the links, and a span
+        // that ends inside the grid would share its height out across their rows
         .megamenu-featured {
           border-left: 1px solid $Nlight;
           grid-column: 3;
-          grid-row: 1 / -1;
+          grid-row: 1 / span 30;
           padding-left: 2.5rem;
 
           .megamenu-featured--card {
