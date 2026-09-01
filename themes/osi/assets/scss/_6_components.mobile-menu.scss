@@ -171,6 +171,14 @@
   }
 
 @media only screen and (max-width: #{$break-nav - 0.06}) {
+    // stays outside .open-the-menu: the panel keeps painting for .3s after that
+    // class is dropped, and would cover the logo for those frames without this
+    // stack while open: overlay (2) < white bar (3) < logo and buttons (4)
+    .header--blog-name {
+        position: relative;
+        z-index: 4;
+    }
+
     .open-the-menu {
         overflow: hidden;
 
@@ -183,16 +191,19 @@
             width: 100%;
             height: 100%;
             overflow: visible;
+            padding-bottom: $headerInnerHeight;
+        }
+
+        .header-main {
+            position: fixed;
+        }
+
+        .admin-bar .header-main {
+            top: var(--wp-admin--admin-bar--height);
         }
 
         .header--inner {
             position: static;
-        }
-
-        // stack while open: overlay (2) < white bar (3) < logo and buttons (4)
-        .header--blog-name {
-            position: relative;
-            z-index: 4;
         }
 
         // white bar behind the fixed logo row: the open menu scrolls beneath it

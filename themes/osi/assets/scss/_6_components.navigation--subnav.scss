@@ -1,3 +1,5 @@
+$chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 8" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 6 6.5 11 1.5"/></svg>') no-repeat center / contain;
+
 .menu-item.menu-item-has-children a {
   padding-right: 30px;
 }
@@ -375,10 +377,30 @@
 
       & > a {
         padding-right: .5em;
+
+        // masked so the chevron takes the link's colour; empty content keeps it out of
+        // the accessible name, and aria-expanded carries the open state
+        &::after {
+          background-color: currentColor;
+          content: '';
+          display: inline-block;
+          height: .45em;
+          margin-left: .45em;
+          mask: $chevronDown;
+          transition: transform .2s ease;
+          vertical-align: middle;
+          width: .7em;
+          -webkit-mask: $chevronDown;
+        }
+      }
+
+      &:hover > a::after,
+      &.is-open > a::after {
+        transform: rotate(180deg);
       }
 
       // offsets/padding align the full-bleed panel with the header content; closing
-      // freezes it solid for .2s so switches never cross-fade (dim would flash through)
+      // freezes it solid for .2s so the dim veil never flashes through two panels
       & > ul.sub-menu {
         box-shadow: 0 14px 18px -10px rgba(#{$Ndarkest_RGB}, 0.2);
         display: grid;
@@ -400,6 +422,7 @@
 
         .megamenu-header {
           grid-column: 1 / -1;
+          grid-row: 1;
           margin-bottom: 1.25rem;
 
           .megamenu-eyebrow {
@@ -458,8 +481,8 @@
           grid-column: 1 / -2;
         }
 
-        // spans 30 rows: links must never auto-place under the card, and
-        // 1 / -1 cannot span implicit grid rows
+        // spans past the explicit rows: the card is taller than the links, and a span
+        // that ends inside the grid would share its height out across their rows
         .megamenu-featured {
           border-left: 1px solid $Nlight;
           grid-column: 3;
@@ -472,10 +495,12 @@
           }
 
           .megamenu-featured--image {
+            aspect-ratio: 16 / 9;
             border-radius: 8px;
             display: block;
             height: auto;
             margin-bottom: .75rem;
+            object-fit: cover;
             width: 100%;
           }
 
@@ -497,6 +522,17 @@
             padding: 0;
           }
         }
+      }
+
+      // panels appear instantly whenever one is open: fading the incoming panel while
+      // the outgoing one snaps away leaves a frame with neither of them painted
+      .header-main.is-nav-open & > ul.sub-menu {
+        transition: none;
+      }
+
+      // separate rule, as above: an unparseable :has() would drop the JS one too
+      .header-main:has(.menu-item.megamenu:hover) & > ul.sub-menu {
+        transition: none;
       }
 
       // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape

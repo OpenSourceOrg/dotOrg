@@ -194,7 +194,7 @@ footer {
 		}
 	}
 
-	.open-the-menu .nav-main--cta {
+	.nav-main .nav-main--cta {
 		background-color: $brandColor1;
 		border-radius: 999px;
 		bottom: 24px;
@@ -202,11 +202,17 @@ footer {
 		display: block;
 		font-weight: $baseWeightBold;
 		left: $smallPadding;
+		// fades with the panel rather than appearing with it: display cannot transition,
+		// so the button used to land at full opacity while the panel was still arriving
+		opacity: 0;
 		padding: .9em;
+		pointer-events: none;
 		position: fixed;
 		right: $smallPadding;
 		text-align: center;
 		text-decoration: none;
+		transition: opacity .3s, visibility 0s linear .3s;
+		visibility: hidden;
 		z-index: 5;
 
 		&:hover, &:focus {
@@ -214,6 +220,22 @@ footer {
 			color: $Nwhite;
 			text-decoration: none;
 		}
+	}
+
+	.open-the-menu .nav-main .nav-main--cta {
+		opacity: 1;
+		pointer-events: auto;
+		transition: opacity .3s, visibility 0s;
+		visibility: visible;
+	}
+
+	// the mobile CTA already links to /get-involved, so this item duplicates it below the
+	// breakpoint. Class, not ID: core emits the id once, on the primary menu's copy, and
+	// the visible mobile copy carries only the class. Numbers are environment-specific:
+	// 2395 is production, 23441 is staging (@see T51ENG-2081).
+	.menu-item-2395,
+	.menu-item-23441 {
+		display: none;
 	}
 
 	.nav-main--menu {
