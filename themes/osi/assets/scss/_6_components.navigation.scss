@@ -229,6 +229,12 @@ footer {
 		visibility: visible;
 	}
 
+	// the mobile CTA already links to /get-involved, so the primary-menu item duplicates
+	// it below the breakpoint. ID is environment-specific (@see T51ENG-2081).
+	#menu-item-23441 {
+		display: none;
+	}
+
 	.nav-main--menu {
 		height: 0 !important;
 		padding: 0;
