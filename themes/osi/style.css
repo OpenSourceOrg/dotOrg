@@ -1902,6 +1902,9 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     transition: opacity 0.3s, visibility 0s;
     visibility: visible;
   }
+  #menu-item-23441 {
+    display: none;
+  }
   .nav-main--menu {
     height: 0 !important;
     padding: 0;
