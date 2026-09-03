@@ -231,8 +231,9 @@ footer {
 
 	// the mobile CTA already links to /get-involved, so this item duplicates it below the
 	// breakpoint. Class, not ID: core emits the id once, on the primary menu's copy, and
-	// the visible mobile copy carries only the class. Number is environment-specific
-	// (@see T51ENG-2081).
+	// the visible mobile copy carries only the class. Numbers are environment-specific:
+	// 2395 is production, 23441 is staging (@see T51ENG-2081).
+	.menu-item-2395,
 	.menu-item-23441 {
 		display: none;
 	}
