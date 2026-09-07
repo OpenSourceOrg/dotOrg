@@ -176,7 +176,7 @@ footer {
 				color: $Ndarkest;
 
 				&:hover, &:focus {
-					color: $brandColor1;
+					color: $brandColor1_Dk;
 				}
 			}
 		}
@@ -195,7 +195,7 @@ footer {
 	}
 
 	.nav-main .nav-main--cta {
-		background-color: $brandColor1;
+		background-color: $brandColor1_Dk;
 		border-radius: 999px;
 		bottom: 24px;
 		color: $Nwhite;
@@ -216,7 +216,7 @@ footer {
 		z-index: 5;
 
 		&:hover, &:focus {
-			background-color: $brandColor1_Dk;
+			background-color: $interactColor_Dk;
 			color: $Nwhite;
 			text-decoration: none;
 		}
