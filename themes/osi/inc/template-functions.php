@@ -375,7 +375,7 @@ add_shortcode( 'display_supporters', 'osi_supporters_shortcode_renderer' );
  *
  * @return array
  */
-function osi_megamenu_placeholder_link_atts( array $atts, WP_Post $item, stdClass $args, int $depth ): array {
+function osi_megamenu_placeholder_link_atts( $atts, $item = null, $args = null, $depth = 0 ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing,Squiz.Commenting.FunctionComment.TypeHintMissing -- other walkers re-apply this filter with fewer arguments; typed params would fatal.
 	if ( 0 < $depth && isset( $args->theme_location, $atts['href'] ) && 'primary_navigation' === $args->theme_location && '#' === $atts['href'] ) {
 		$atts['tabindex'] = '-1';
 	}

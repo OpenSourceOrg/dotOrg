@@ -4,8 +4,10 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
   padding-right: 30px;
 }
 
-.nav-main--menu, .nav-mobile--menu {
-  ul.sub-menu a[href='#'] {
+// desktop only: on mobile these rows are the accordion trigger, and mobile-menu-toggle.js
+// needs the click. It calls preventDefault(), so the empty href never navigates.
+@media only screen and (min-width: #{$break-nav}) {
+  .nav-main--menu ul.sub-menu a[href='#'] {
     pointer-events: none;
     text-decoration: none;
   }
@@ -59,7 +61,7 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
   }
 
   .megamenu-featured--heading {
-    color: $brandColor1;
+    color: $brandColor1_Dk;
     display: block;
     text-transform: uppercase;
   }
@@ -77,7 +79,7 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
   }
 
   a.megamenu-featured--more {
-    color: $brandColor1;
+    color: $brandColor1_Dk;
     display: inline-block;
     font-weight: $baseWeightBold;
     padding: 0;
@@ -87,7 +89,7 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
     }
 
     &:hover, &:focus {
-      color: $brandColor1_Dk;
+      color: $interactColor_Dk;
       text-decoration: underline;
     }
   }
@@ -159,12 +161,12 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
       .menu-item.current-menu-item > a,
       .menu-item.current-menu-parent > a,
       .menu-item.current-menu-ancestor > a {
-        color: $brandColor1;
+        color: $brandColor1_Dk;
         text-decoration: none;
       }
 
       .menu-item.tab-active > a {
-        color: $brandColor1;
+        color: $brandColor1_Dk;
         font-weight: 700;
       }
 
@@ -201,23 +203,32 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
           transition: all .3s;
 
           &:after {
-              color: $brandColor1;
+              color: $brandColor1_Dk;
           }
         }
 
+        // the 44px tap target starts at the row's top edge, so centre the glyph on the
+        // row height: 50% on the button would follow the expanded submenu down the page
         &:after {
           color: inherit;
           content: '\25BC';
           font-size: 12px;
-          line-height: 44px;
+          line-height: $mobileRowHeight;
           padding: 0;
           transform: none;
         }
       }
 
       .menu-toggle-active:after {
-        color: $brandColor1;
+        color: $brandColor1_Dk;
         transform: rotate(180deg);
+      }
+
+      // the generic sub-menu link hover (brand-links) outranks the shared card rule,
+      // so the darker hover has to be set at this depth to win
+      .megamenu-featured a.megamenu-featured--more:hover,
+      .megamenu-featured a.megamenu-featured--more:focus {
+        color: $interactColor_Dk;
       }
 
       ul.sub-menu {
@@ -426,7 +437,7 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
           margin-bottom: 1.25rem;
 
           .megamenu-eyebrow {
-            color: $brandColor1;
+            color: $brandColor1_Dk;
             display: block;
             font-size: .85rem;
             font-weight: $baseWeightBold;
@@ -520,6 +531,11 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
           .megamenu-featured--more {
             margin-top: .75rem;
             padding: 0;
+
+            // as on mobile: the generic sub-menu link hover outranks the shared rule
+            &:hover, &:focus {
+              color: $interactColor_Dk;
+            }
           }
         }
       }
@@ -531,8 +547,15 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
       }
 
       // separate rule, as above: an unparseable :has() would drop the JS one too
-      .header-main:has(.menu-item.megamenu:hover) & > ul.sub-menu {
+      .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed)) & > ul.sub-menu {
         transition: none;
+      }
+
+      // Escape sets .is-dismissed: without this the pointer still satisfies :hover below
+      // and the panel stays up, since JS cannot clear a CSS hover state
+      &.is-dismissed:hover > ul.sub-menu {
+        opacity: 0;
+        visibility: hidden;
       }
 
       // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape

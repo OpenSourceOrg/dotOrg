@@ -182,7 +182,8 @@
     .header-main.is-nav-open {
         @include nav-open-layers;
     }
-    .header-main:has(.menu-item.megamenu:hover) {
+    // :not(.is-dismissed) so Escape clears the veil while the pointer is still on the item
+    .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed)) {
         @include nav-open-layers;
     }
     .header-main-small {

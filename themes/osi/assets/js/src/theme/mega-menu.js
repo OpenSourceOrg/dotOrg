@@ -29,6 +29,12 @@ if ( header && megaItems.length ) {
 		);
 	};
 
+	const dismiss = ( item ) => {
+		closeItem( item );
+		item.classList.add( 'is-dismissed' );
+		syncHeader();
+	};
+
 	const closeItem = ( item ) => {
 		item.classList.remove( 'is-open' );
 		const trigger = triggerOf( item );
@@ -45,14 +51,14 @@ if ( header && megaItems.length ) {
 	megaItems.forEach( ( item ) => {
 		const trigger = triggerOf( item );
 		let closeTimer = null;
+		let suppressOpen = false;
 
 		if ( trigger ) {
-			trigger.setAttribute( 'aria-haspopup', 'true' );
 			trigger.setAttribute( 'aria-expanded', 'false' );
 		}
 
 		const open = () => {
-			if ( ! desktopNav.matches ) {
+			if ( suppressOpen || ! desktopNav.matches ) {
 				return;
 			}
 			window.clearTimeout( closeTimer );
@@ -96,19 +102,25 @@ if ( header && megaItems.length ) {
 		}
 
 		item.addEventListener( 'mouseenter', open );
-		item.addEventListener( 'mouseleave', () => close( false ) );
+		item.addEventListener( 'mouseleave', () => {
+			item.classList.remove( 'is-dismissed' );
+			close( false );
+		} );
 		item.addEventListener( 'focusin', open );
 		item.addEventListener( 'focusout', ( event ) => {
 			if ( ! item.contains( event.relatedTarget ) ) {
 				close( false );
 			}
 		} );
+		// returning focus to the trigger fires focusin, which would reopen the panel
 		item.addEventListener( 'keydown', ( event ) => {
 			if ( 'Escape' === event.key && item.classList.contains( 'is-open' ) ) {
-				close( true );
+				suppressOpen = true;
+				dismiss( item );
 				if ( trigger ) {
 					trigger.focus();
 				}
+				suppressOpen = false;
 			}
 		} );
 	} );
@@ -119,6 +131,16 @@ if ( header && megaItems.length ) {
 			document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' )
 		) {
 			closeAll();
+		}
+	} );
+
+	// a panel opened by hover holds focus nowhere, so Escape has to be caught globally
+	document.addEventListener( 'keydown', ( event ) => {
+		if (
+			'Escape' === event.key &&
+			document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' )
+		) {
+			megaItems.forEach( dismiss );
 		}
 	} );
 
