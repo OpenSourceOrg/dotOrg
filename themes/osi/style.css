@@ -2133,13 +2133,18 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     color: inherit;
     content: "▼";
     font-size: 12px;
-    line-height: 44px;
+    line-height: 34px;
     padding: 0;
     transform: none;
   }
   .nav-main--menu .menu-toggle-active:after, .nav-mobile--menu .menu-toggle-active:after {
     color: var(--wp--preset--color--brand-color-1-darker);
     transform: rotate(180deg);
+  }
+  .nav-main--menu .megamenu-featured a.megamenu-featured--more:hover,
+  .nav-main--menu .megamenu-featured a.megamenu-featured--more:focus, .nav-mobile--menu .megamenu-featured a.megamenu-featured--more:hover,
+  .nav-mobile--menu .megamenu-featured a.megamenu-featured--more:focus {
+    color: var(--wp--preset--color--brand-links-darker);
   }
   .nav-main--menu ul.sub-menu, .nav-mobile--menu ul.sub-menu {
     margin-left: 0;
@@ -2373,11 +2378,18 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     margin-top: 0.75rem;
     padding: 0;
   }
+  .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--more:hover, .nav-main--menu .menu-item.megamenu.has-featured > ul.sub-menu .megamenu-featured .megamenu-featured--more:focus {
+    color: var(--wp--preset--color--brand-links-darker);
+  }
   .header-main.is-nav-open .nav-main--menu .menu-item.megamenu > ul.sub-menu {
     transition: none;
   }
-  .header-main:has(.menu-item.megamenu:hover) .nav-main--menu .menu-item.megamenu > ul.sub-menu {
+  .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed)) .nav-main--menu .menu-item.megamenu > ul.sub-menu {
     transition: none;
+  }
+  .nav-main--menu .menu-item.megamenu.is-dismissed:hover > ul.sub-menu {
+    opacity: 0;
+    visibility: hidden;
   }
   .nav-main--menu .menu-item.megamenu:hover > ul.sub-menu, .nav-main--menu .menu-item.megamenu.is-open > ul.sub-menu {
     opacity: 1;
@@ -2548,7 +2560,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     position: fixed;
     z-index: -1;
   }
-  .header-main:has(.menu-item.megamenu:hover)::after {
+  .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed))::after {
     background-color: var(--wp--preset--color--neutral-white);
     border-bottom: 1px solid var(--wp--preset--color--neutral-light);
     content: "";
@@ -2556,7 +2568,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     position: absolute;
     z-index: -1;
   }
-  .header-main:has(.menu-item.megamenu:hover)::before {
+  .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed))::before {
     background: rgba(0, 0, 0, 0.35);
     content: "";
     inset: 0;

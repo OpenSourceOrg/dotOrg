@@ -29,6 +29,12 @@ if ( header && megaItems.length ) {
 		);
 	};
 
+	const dismiss = ( item ) => {
+		closeItem( item );
+		item.classList.add( 'is-dismissed' );
+		syncHeader();
+	};
+
 	const closeItem = ( item ) => {
 		item.classList.remove( 'is-open' );
 		const trigger = triggerOf( item );
@@ -96,7 +102,10 @@ if ( header && megaItems.length ) {
 		}
 
 		item.addEventListener( 'mouseenter', open );
-		item.addEventListener( 'mouseleave', () => close( false ) );
+		item.addEventListener( 'mouseleave', () => {
+			item.classList.remove( 'is-dismissed' );
+			close( false );
+		} );
 		item.addEventListener( 'focusin', open );
 		item.addEventListener( 'focusout', ( event ) => {
 			if ( ! item.contains( event.relatedTarget ) ) {
@@ -107,7 +116,7 @@ if ( header && megaItems.length ) {
 		item.addEventListener( 'keydown', ( event ) => {
 			if ( 'Escape' === event.key && item.classList.contains( 'is-open' ) ) {
 				suppressOpen = true;
-				close( true );
+				dismiss( item );
 				if ( trigger ) {
 					trigger.focus();
 				}
@@ -131,7 +140,7 @@ if ( header && megaItems.length ) {
 			'Escape' === event.key &&
 			document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' )
 		) {
-			closeAll();
+			megaItems.forEach( dismiss );
 		}
 	} );
 

@@ -207,11 +207,13 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
           }
         }
 
+        // the 44px tap target starts at the row's top edge, so centre the glyph on the
+        // row height: 50% on the button would follow the expanded submenu down the page
         &:after {
           color: inherit;
           content: '\25BC';
           font-size: 12px;
-          line-height: 44px;
+          line-height: $mobileRowHeight;
           padding: 0;
           transform: none;
         }
@@ -220,6 +222,13 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
       .menu-toggle-active:after {
         color: $brandColor1_Dk;
         transform: rotate(180deg);
+      }
+
+      // the generic sub-menu link hover (brand-links) outranks the shared card rule,
+      // so the darker hover has to be set at this depth to win
+      .megamenu-featured a.megamenu-featured--more:hover,
+      .megamenu-featured a.megamenu-featured--more:focus {
+        color: $interactColor_Dk;
       }
 
       ul.sub-menu {
@@ -522,6 +531,11 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
           .megamenu-featured--more {
             margin-top: .75rem;
             padding: 0;
+
+            // as on mobile: the generic sub-menu link hover outranks the shared rule
+            &:hover, &:focus {
+              color: $interactColor_Dk;
+            }
           }
         }
       }
@@ -533,8 +547,15 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
       }
 
       // separate rule, as above: an unparseable :has() would drop the JS one too
-      .header-main:has(.menu-item.megamenu:hover) & > ul.sub-menu {
+      .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed)) & > ul.sub-menu {
         transition: none;
+      }
+
+      // Escape sets .is-dismissed: without this the pointer still satisfies :hover below
+      // and the panel stays up, since JS cannot clear a CSS hover state
+      &.is-dismissed:hover > ul.sub-menu {
+        opacity: 0;
+        visibility: hidden;
       }
 
       // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape
