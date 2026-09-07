@@ -45,14 +45,14 @@ if ( header && megaItems.length ) {
 	megaItems.forEach( ( item ) => {
 		const trigger = triggerOf( item );
 		let closeTimer = null;
+		let suppressOpen = false;
 
 		if ( trigger ) {
-			trigger.setAttribute( 'aria-haspopup', 'true' );
 			trigger.setAttribute( 'aria-expanded', 'false' );
 		}
 
 		const open = () => {
-			if ( ! desktopNav.matches ) {
+			if ( suppressOpen || ! desktopNav.matches ) {
 				return;
 			}
 			window.clearTimeout( closeTimer );
@@ -103,12 +103,15 @@ if ( header && megaItems.length ) {
 				close( false );
 			}
 		} );
+		// returning focus to the trigger fires focusin, which would reopen the panel
 		item.addEventListener( 'keydown', ( event ) => {
 			if ( 'Escape' === event.key && item.classList.contains( 'is-open' ) ) {
+				suppressOpen = true;
 				close( true );
 				if ( trigger ) {
 					trigger.focus();
 				}
+				suppressOpen = false;
 			}
 		} );
 	} );
@@ -116,6 +119,16 @@ if ( header && megaItems.length ) {
 	document.addEventListener( 'pointerdown', ( event ) => {
 		if (
 			! event.target.closest( '.nav-main--menu > .menu-item.megamenu' ) &&
+			document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' )
+		) {
+			closeAll();
+		}
+	} );
+
+	// a panel opened by hover holds focus nowhere, so Escape has to be caught globally
+	document.addEventListener( 'keydown', ( event ) => {
+		if (
+			'Escape' === event.key &&
 			document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' )
 		) {
 			closeAll();
