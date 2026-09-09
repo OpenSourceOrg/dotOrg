@@ -1825,7 +1825,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     display: none;
   }
   .menu-item.current-menu-item > a, .menu-item.current-menu-parent > a, .menu-item.current-menu-ancestor > a {
-    text-decoration: underline;
     font-weight: var(--wp--custom--typography--body--font-weight-bold);
     letter-spacing: -0.25px;
   }
@@ -1851,7 +1850,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     padding: 0.5em;
   }
   .nav-main--menu .menu-item .menu-item.current-menu-item > a, .nav-main--menu .menu-item .menu-item.current-menu-parent > a, .nav-main--menu .menu-item .menu-item.current-menu-ancestor > a {
-    text-decoration: underline;
+    text-decoration: none;
   }
   .nav-main--menu > .menu-item > a:hover, .nav-main--menu > .menu-item > a:focus {
     color: var(--wp--preset--color--neutral-darkest);
@@ -1859,6 +1858,9 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     text-decoration-color: var(--wp--preset--color--brand-links);
     text-decoration-thickness: 3px;
     text-underline-offset: 8px;
+  }
+  .nav-main--menu > .menu-item.current-menu-item > a:hover, .nav-main--menu > .menu-item.current-menu-item > a:focus, .nav-main--menu > .menu-item.current-menu-parent > a:hover, .nav-main--menu > .menu-item.current-menu-parent > a:focus, .nav-main--menu > .menu-item.current-menu-ancestor > a:hover, .nav-main--menu > .menu-item.current-menu-ancestor > a:focus {
+    text-decoration: none;
   }
   .footer--menu {
     margin-top: 0;
