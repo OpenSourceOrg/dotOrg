@@ -79,7 +79,7 @@ class OSI_API {
 
 		register_rest_route(
 			OSI_API_NAMESPACE,
-			'/license/(?P<slug>[a-zA-Z0-9-_]+)',
+			'/license/(?P<slug>[a-zA-Z0-9._-]+)',
 			array(
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'get_license_by_slug' ),
