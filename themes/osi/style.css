@@ -1957,9 +1957,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     text-decoration-thickness: 3px;
     text-underline-offset: 8px;
   }
-  .nav-main--menu > .menu-item.current-menu-item > a:hover, .nav-main--menu > .menu-item.current-menu-item > a:focus, .nav-main--menu > .menu-item.current-menu-parent > a:hover, .nav-main--menu > .menu-item.current-menu-parent > a:focus, .nav-main--menu > .menu-item.current-menu-ancestor > a:hover, .nav-main--menu > .menu-item.current-menu-ancestor > a:focus {
-    text-decoration: none;
-  }
   .footer--menu {
     margin-top: 0;
   }

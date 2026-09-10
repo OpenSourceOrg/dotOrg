@@ -323,15 +323,6 @@ footer {
 				text-decoration-thickness: 3px;
 				text-underline-offset: 8px;
 			}
-
-			& > .menu-item.current-menu-item > a:hover,
-			& > .menu-item.current-menu-item > a:focus,
-			& > .menu-item.current-menu-parent > a:hover,
-			& > .menu-item.current-menu-parent > a:focus,
-			& > .menu-item.current-menu-ancestor > a:hover,
-			& > .menu-item.current-menu-ancestor > a:focus {
-				text-decoration: none;
-			}
 		}
 
 	// footer menu
