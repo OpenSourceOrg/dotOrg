@@ -34,6 +34,7 @@
 								array(
 									'theme_location' => 'primary_navigation',
 									'menu_class'     => 'nav-main--menu',
+									'walker'         => new OSI_Megamenu_Walker(),
 								)
 							);
 					endif;
@@ -42,22 +43,16 @@
 								array(
 									'theme_location' => 'mobile_navigation',
 									'menu_class'     => 'nav-mobile--menu',
+									'walker'         => new OSI_Megamenu_Walker(),
 								)
 							);
 					endif;
-					//Adding for AI template - secondary navigation
-					if ( is_page_template( 'templates/ai-wide.php' ) ) :
-						echo '<p class="ai-mobile-label">' . esc_html__( 'Open Source AI', 'osi' ) . '</p>';
-						wp_nav_menu(
-							array(
-								'theme_location'  => 'ai_secondary_nav',
-								'menu'            => 'AI secondary nav',
-								'container'       => false,
-								'container_class' => 'ai-secondary-nav',
-								'menu_class'      => 'ai-secondary-nav-menu',
-							)
-						);
-					endif;
+					?>
+					<?php
+					$osi_cta = osi_menu_cta();
+					if ( null !== $osi_cta ) {
+						echo '<a class="nav-main--cta" href="' . esc_url( $osi_cta['url'] ) . '"' . ( $osi_cta['target'] ? ' target="_blank" rel="noopener noreferrer"' : '' ) . '>' . esc_html( $osi_cta['label'] ) . '</a>';
+					}
 					?>
 				</nav><!-- #site-navigation -->
 				<section class="open-search-wrapper">

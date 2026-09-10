@@ -41,7 +41,12 @@ $boxedMax: 1180px; // duplicates var(--wp--custom--layout--wide-size)
 $wideMax: 1440px;
 
 // padding values
+$wrapperPad: 5vw; // duplicates the production Customizer CSS inset on body > .wrapper
 $maxPadding: 48px; // duplicates var(--wp--custom--spacing--max-padding)
+
+// header dimensions
+$headerInnerHeight: 125px; // .header--inner fixed height; admin-bar offsets come from core's --wp-admin--admin-bar--height
+$mobileRowHeight: 34px; // mobile accordion row: the caret's 44px tap target centres its glyph on this
 $midPadding: 32px; // duplicates var(--wp--custom--spacing--mid-padding);
 $smallPadding: 16px; // duplicates var(--wp--custom--spacing--small-padding);
 

@@ -1,5 +1,16 @@
+$chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 8" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 6 6.5 11 1.5"/></svg>') no-repeat center / contain;
+
 .menu-item.menu-item-has-children a {
   padding-right: 30px;
+}
+
+// desktop only: on mobile these rows are the accordion trigger, and mobile-menu-toggle.js
+// needs the click. It calls preventDefault(), so the empty href never navigates.
+@media only screen and (min-width: #{$break-nav}) {
+  .nav-main--menu ul.sub-menu a[href='#'] {
+    pointer-events: none;
+    text-decoration: none;
+  }
 }
 
 .menu-toggle {
@@ -42,20 +53,131 @@
     }
 }
 
+// shared featured-card styles; the breakpoint blocks below hold only their deltas
+.megamenu-featured {
+  .megamenu-featured--card {
+    display: block;
+    padding: 0;
+  }
+
+  .megamenu-featured--heading {
+    color: $brandColor1_Dk;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .megamenu-featured--title {
+    display: block;
+    font-weight: $baseWeightBold;
+  }
+
+  .megamenu-featured--excerpt {
+    color: $Ndark;
+    display: block;
+    font-weight: $baseWeight;
+    line-height: 1.45;
+  }
+
+  a.megamenu-featured--more {
+    color: $brandColor1_Dk;
+    display: inline-block;
+    font-weight: $baseWeightBold;
+    padding: 0;
+
+    &::after {
+      content: ' \2192';
+    }
+
+    &:hover, &:focus {
+      color: $interactColor_Dk;
+      text-decoration: underline;
+    }
+  }
+}
+
 @media only screen and (max-width: #{$break-nav - 1}) {
+  .megamenu-header {
+    .megamenu-eyebrow {
+      display: none; // the accordion row already shows the item label
+    }
+
+    .megamenu-tagline {
+      color: $Ndark;
+      font-size: 13.5px;
+      line-height: 1.45;
+      margin: .25em 0 .75em;
+    }
+  }
+
+  .megamenu-featured {
+    background-color: $Nwhite;
+    border: 1px solid $Nlight;
+    border-radius: 12px;
+    margin: 16px 0 8px;
+    padding: 20px;
+
+    .megamenu-featured--heading {
+      font-size: 10.5px;
+      letter-spacing: 2px;
+      margin-bottom: .7em;
+    }
+
+    .megamenu-featured--title {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: .45em;
+    }
+
+    .megamenu-featured--excerpt {
+      font-size: 13px;
+    }
+
+    a.megamenu-featured--more {
+      font-size: 13.5px;
+      margin-top: 1.1em;
+    }
+  }
+
   .nav-mobile--menu {
-    .menu-item a {
-      font-size: 20px;
+    .menu-item > a {
+      font-size: 17px;
+      font-weight: 500;
       padding-right: 30px;
     }
-  }  
-  
+
+    & > .menu-item {
+      border-bottom: 1px solid $Nlightest;
+    }
+  }
+
   .nav-main--menu, .nav-mobile--menu {
 
       * {
         &:focus {
-          outline-color: $Nwhite;
+          outline-color: $Ndarkest;
         }
+      }
+
+      .menu-item.current-menu-item > a,
+      .menu-item.current-menu-parent > a,
+      .menu-item.current-menu-ancestor > a {
+        color: $brandColor1_Dk;
+        text-decoration: none;
+      }
+
+      .menu-item.tab-active > a {
+        color: $brandColor1_Dk;
+        font-weight: 700;
+      }
+
+      & > .menu-item.tab-active > ul.sub-menu {
+        background-color: $megamenuExpandedBgColor;
+        padding: $smallPadding;
+      }
+
+      & > .menu-item > ul.sub-menu {
+        margin-left: -$smallPadding;
+        margin-right: -$smallPadding;
       }
 
       .menu-item {
@@ -69,27 +191,44 @@
       }
 
       .menu-toggle {
-        color: $Nwhite;
-        height: 100%;
+        color: $Ndarkest;
+        height: 44px;
         padding: 0;
         position: absolute;
         right: -5px;
         top: 0;
         width: 2em;
-        
+
         &:hover, &:focus, &:active {
           transition: all .3s;
 
           &:after {
-              color: $Nwhite;
+              color: $brandColor1_Dk;
           }
         }
 
+        // the 44px tap target starts at the row's top edge, so centre the glyph on the
+        // row height: 50% on the button would follow the expanded submenu down the page
         &:after {
           color: inherit;
-          font-size: 1.2em;
-          padding: .3em 0;
+          content: '\25BC';
+          font-size: 12px;
+          line-height: $mobileRowHeight;
+          padding: 0;
+          transform: none;
         }
+      }
+
+      .menu-toggle-active:after {
+        color: $brandColor1_Dk;
+        transform: rotate(180deg);
+      }
+
+      // the generic sub-menu link hover (brand-links) outranks the shared card rule,
+      // so the darker hover has to be set at this depth to win
+      .megamenu-featured a.megamenu-featured--more:hover,
+      .megamenu-featured a.megamenu-featured--more:focus {
+        color: $interactColor_Dk;
       }
 
       ul.sub-menu {
@@ -97,11 +236,13 @@
         margin-bottom: 20px;
 
         .menu-item a {
-          font-size: 15px;
-
-          &:hover, &:focus, &.tab-active {
-            letter-spacing: -.15px;
-          }
+          align-items: center;
+          display: flex;
+          font-size: 15.5px;
+          font-weight: 500;
+          min-height: 44px; // touch-target size
+          padding-bottom: 0;
+          padding-top: 0;
         }
 
         ul.sub-menu {
@@ -165,8 +306,8 @@
     }
   }
 
-  & > li:hover, & > li:focus, li.tab-active {
-    & >a .menu-toggle:after {
+  & > li:hover, & > li:focus, & > li:focus-within, li.tab-active {
+    & > .menu-toggle:after {
       transform:rotateZ(0) translateY(3px);
     }
     &>ul {
@@ -237,51 +378,194 @@
         }
       }
 
+    // static li so the panel's positioned ancestor is the full-width .header-main
     .menu-item.megamenu {
-      position:inherit;
+      position: static;
+
+      & > .menu-toggle {
+        display: none;
+      }
+
+      & > a {
+        padding-right: .5em;
+
+        // masked so the chevron takes the link's colour; empty content keeps it out of
+        // the accessible name, and aria-expanded carries the open state
+        &::after {
+          background-color: currentColor;
+          content: '';
+          display: inline-block;
+          height: .45em;
+          margin-left: .45em;
+          mask: $chevronDown;
+          transition: transform .2s ease;
+          vertical-align: middle;
+          width: .7em;
+          -webkit-mask: $chevronDown;
+        }
+      }
+
+      &:hover > a::after,
+      &.is-open > a::after {
+        transform: rotate(180deg);
+      }
+
+      // offsets/padding align the full-bleed panel with the header content; closing
+      // freezes it solid for .2s so the dim veil never flashes through two panels
       & > ul.sub-menu {
-        display: inline-block;
-        margin-left: -130px;
-        max-width: calc( #{$boxedMax} - 2 * #{$maxPadding} );
-        top: 95%;
-        width: 90vw;
-        & > li { // first level drop menu items
-          min-width: 200px;
-          max-width: 300px;
-          margin-bottom: .5em;
-          vertical-align: top;
-          width: 19%;
+        box-shadow: 0 14px 18px -10px rgba(#{$Ndarkest_RGB}, 0.2);
+        display: grid;
+        gap: 0 2.5rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        left: -$wrapperPad;
+        max-height: none;
+        max-width: none;
+        overflow: visible;
+        opacity: 0;
+        padding: 2rem calc(#{$wrapperPad} + #{$maxPadding}) 2.5rem;
+        right: -$wrapperPad;
+        text-align: left;
+        top: 100%;
+        transform: translateY(8px);
+        transition: opacity 0s linear .2s, transform 0s linear .2s, visibility 0s linear .2s;
+        visibility: hidden;
+        width: auto;
+
+        .megamenu-header {
+          grid-column: 1 / -1;
+          grid-row: 1;
+          margin-bottom: 1.25rem;
+
+          .megamenu-eyebrow {
+            color: $brandColor1_Dk;
+            display: block;
+            font-size: .85rem;
+            font-weight: $baseWeightBold;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+          }
+
+          .megamenu-tagline {
+            color: $Ndark;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            margin: .4rem 0 0;
+          }
+        }
+
+        & > li {
+          min-width: 0;
 
           & > a {
-            background-color: transparent !important;
+            font-size: 1.05rem;
+            font-weight: $baseWeightBold;
+            line-height: 1.3;
+            padding: .6rem 0;
+            white-space: normal;
+          }
+
+          &.menu-item-has-children > a {
             font-weight: $baseWeightBold;
             letter-spacing: 1px;
             line-height: 1.1;
-            pointer-events: none;
-            text-decoration: none !important;
             text-transform: uppercase;
-
-            .menu-toggle {
-              display: none;
-            }
-          }
-
-          a {
-            white-space: normal;
           }
 
           & > ul {
             background-color: transparent;
-            display: block;
-            height: auto;
-            max-height:none;
-          }
-
-          ul {
             left: auto;
-            position: relative;
+            max-height: none;
+            overflow: visible;
+            padding: 0;
           }
         }
+
+        .menu-toggle {
+          display: none;
+        }
+      }
+
+      &.has-featured > ul.sub-menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 1.25fr);
+
+        .megamenu-header {
+          grid-column: 1 / -2;
+        }
+
+        // spans past the explicit rows: the card is taller than the links, and a span
+        // that ends inside the grid would share its height out across their rows
+        .megamenu-featured {
+          border-left: 1px solid $Nlight;
+          grid-column: 3;
+          grid-row: 1 / span 30;
+          padding-left: 2.5rem;
+
+          .megamenu-featured--card {
+            font-weight: $baseWeight;
+            padding: 0;
+          }
+
+          .megamenu-featured--image {
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            display: block;
+            height: auto;
+            margin-bottom: .75rem;
+            object-fit: cover;
+            width: 100%;
+          }
+
+          .megamenu-featured--heading {
+            font-size: .85rem;
+            font-weight: $baseWeightBold;
+            letter-spacing: 2.5px;
+            line-height: 1.1;
+            margin-bottom: .5rem;
+          }
+
+          .megamenu-featured--excerpt {
+            font-size: .9rem;
+            margin-top: .35rem;
+          }
+
+          .megamenu-featured--more {
+            margin-top: .75rem;
+            padding: 0;
+
+            // as on mobile: the generic sub-menu link hover outranks the shared rule
+            &:hover, &:focus {
+              color: $interactColor_Dk;
+            }
+          }
+        }
+      }
+
+      // panels appear instantly whenever one is open: fading the incoming panel while
+      // the outgoing one snaps away leaves a frame with neither of them painted
+      .header-main.is-nav-open & > ul.sub-menu {
+        transition: none;
+      }
+
+      // separate rule, as above: an unparseable :has() would drop the JS one too
+      .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed)) & > ul.sub-menu {
+        transition: none;
+      }
+
+      // Escape sets .is-dismissed: without this the pointer still satisfies :hover below
+      // and the panel stays up, since JS cannot clear a CSS hover state
+      &.is-dismissed:hover > ul.sub-menu {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape
+      &:hover > ul.sub-menu,
+      &.is-open > ul.sub-menu {
+        opacity: 1;
+        transform: none;
+        transition: opacity .2s ease, transform .2s ease;
+        visibility: visible;
+        z-index: 100;
       }
     }
   }

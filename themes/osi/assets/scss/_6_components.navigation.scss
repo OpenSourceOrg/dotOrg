@@ -25,11 +25,10 @@ nav {
 			padding: .5em 0;
 			transition: all .3s;
 
+			// recolor and underline only: weight/spacing changes make the text shift
 			&:hover, &:focus {
 				color: $linkColor;
 				transition: all .3s;
-				letter-spacing: -.25px;
-				font-weight: 600;
 				text-decoration: underline;
 			}
 		}
@@ -101,23 +100,29 @@ nav {
         color: $linkColor;
       }
   	}
-	.tab-active {
-		& > a {
-			font-weight: $baseWeightBold;
-			letter-spacing: -.25px;
-		}
-	}
 }
 
 .nav-main--menu {
 	margin: 0;
 }
 
+.nav-main--cta {
+	display: none;
+}
+
+// source order matters: the desktop top-level rule re-adds its own underline below
+.nav-main--menu .menu-item a:hover,
+.nav-main--menu .menu-item a:focus,
+.nav-mobile--menu .menu-item a:hover,
+.nav-mobile--menu .menu-item a:focus {
+	text-decoration: none;
+}
+
 // Main Menu Mobile
 .nav-mobile--menu {
-	padding: 3em 1em;
-	margin-top: 1em;
-	text-align: right;
+	padding: .5em $smallPadding 7em;
+	margin: 0;
+	text-align: left;
 }
 
 
@@ -158,6 +163,7 @@ footer {
 		margin-top: $quicklinksTop; // quicklinks header height
 		max-height: 0;
 		overflow: hidden;
+		padding: 0; // overflow clips at the padding edge: any padding leaks content while closed
     	position: fixed;
 		right: 0;
 		top: 0;
@@ -167,17 +173,69 @@ footer {
 		.menu-item {
 			a,
 			a:visited {
-				color: $Nwhite;
+				color: $Ndarkest;
 
 				&:hover, &:focus {
-					color: $Nwhite;
+					color: $brandColor1_Dk;
 				}
 			}
 		}
 
 		.open-the-menu & {
-			background-color: $Ndark;
+			background-color: $Nwhite;
+			bottom: 0;
+			box-sizing: border-box;
+			padding-top: $headerInnerHeight; // the logo row stays visible above the overlay
+			z-index: 2;
 		}
+
+		.open-the-menu .admin-bar & {
+			padding-top: calc(#{$headerInnerHeight} + var(--wp-admin--admin-bar--height));
+		}
+	}
+
+	.nav-main .nav-main--cta {
+		background-color: $brandColor1_Dk;
+		border-radius: 999px;
+		bottom: 24px;
+		color: $Nwhite;
+		display: block;
+		font-weight: $baseWeightBold;
+		left: $smallPadding;
+		// fades with the panel rather than appearing with it: display cannot transition,
+		// so the button used to land at full opacity while the panel was still arriving
+		opacity: 0;
+		padding: .9em;
+		pointer-events: none;
+		position: fixed;
+		right: $smallPadding;
+		text-align: center;
+		text-decoration: none;
+		transition: opacity .3s, visibility 0s linear .3s;
+		visibility: hidden;
+		z-index: 5;
+
+		&:hover, &:focus {
+			background-color: $interactColor_Dk;
+			color: $Nwhite;
+			text-decoration: none;
+		}
+	}
+
+	.open-the-menu .nav-main .nav-main--cta {
+		opacity: 1;
+		pointer-events: auto;
+		transition: opacity .3s, visibility 0s;
+		visibility: visible;
+	}
+
+	// the mobile CTA already links to /get-involved, so this item duplicates it below the
+	// breakpoint. Class, not ID: core emits the id once, on the primary menu's copy, and
+	// the visible mobile copy carries only the class. Numbers are environment-specific:
+	// 2395 is production, 23441 is staging (@see T51ENG-2081).
+	.menu-item-2395,
+	.menu-item-23441 {
+		display: none;
 	}
 
 	.nav-main--menu {
@@ -207,7 +265,6 @@ footer {
 
 	.menu-item {
 		&.current-menu-item > a, &.current-menu-parent > a, &.current-menu-ancestor > a {
-			text-decoration: underline;
 			font-weight: $baseWeightBold;
 			letter-spacing: -.25px;
 		}
@@ -252,16 +309,19 @@ footer {
 
 				.menu-item {
 					&.current-menu-item > a, &.current-menu-parent > a, &.current-menu-ancestor > a {
-						text-decoration: underline;
+						text-decoration: none;
 					}
 				}
 
-				&:hover, &:focus, .tab-active {
-					& > a {
-						font-weight: $baseWeightBold;
-						letter-spacing: -.25px;
-					}
-				}
+			}
+
+			& > .menu-item > a:hover,
+			& > .menu-item > a:focus {
+				color: $Ndarkest;
+				text-decoration: underline;
+				text-decoration-color: $interactColor;
+				text-decoration-thickness: 3px;
+				text-underline-offset: 8px;
 			}
 		}
 

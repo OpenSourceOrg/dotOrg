@@ -362,3 +362,23 @@ function osi_supporters_shortcode_renderer( array $args = array() ): string {
 	return $output;
 }
 add_shortcode( 'display_supporters', 'osi_supporters_shortcode_renderer' );
+
+/**
+ * Keep placeholder (href="#") links inside mega menu panels out of the tab
+ * order — pointer-events:none already blocks the mouse, this aligns keyboard
+ * behavior with it.
+ *
+ * @param array    $atts  Link attributes.
+ * @param WP_Post  $item  Menu item data object.
+ * @param stdClass $args  An object of wp_nav_menu() arguments.
+ * @param integer  $depth Depth of menu item.
+ *
+ * @return array
+ */
+function osi_megamenu_placeholder_link_atts( $atts, $item = null, $args = null, $depth = 0 ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing,Squiz.Commenting.FunctionComment.TypeHintMissing -- other walkers re-apply this filter with fewer arguments; typed params would fatal.
+	if ( 0 < $depth && isset( $args->theme_location, $atts['href'] ) && 'primary_navigation' === $args->theme_location && '#' === $atts['href'] ) {
+		$atts['tabindex'] = '-1';
+	}
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'osi_megamenu_placeholder_link_atts', 10, 4 );

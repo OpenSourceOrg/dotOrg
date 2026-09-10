@@ -1,7 +1,7 @@
 import './block-styles.js';
 import './header-resize.js';
 import './mobile-menu-toggle.js';
-import './navigation.js';
+import './mega-menu.js';
 import './sortable-table.js';
 import './toggle-sections.js';
 import './license-filters.js';
