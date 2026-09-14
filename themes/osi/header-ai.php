@@ -35,6 +35,7 @@
 									'theme_location' => 'primary_navigation',
 									'menu_class'     => 'nav-main--menu',
 									'menu'           => 'ai',
+									'walker'         => new OSI_Megamenu_Walker(),
 								)
 							);
 					endif;
@@ -44,9 +45,16 @@
 									'theme_location' => 'mobile_navigation',
 									'menu_class'     => 'nav-mobile--menu',
 									'menu'           => 'ai',
+									'walker'         => new OSI_Megamenu_Walker(),
 								)
 							);
 					endif;
+					?>
+					<?php
+					$osi_cta = osi_menu_cta();
+					if ( null !== $osi_cta ) {
+						echo '<a class="nav-main--cta" href="' . esc_url( $osi_cta['url'] ) . '"' . ( $osi_cta['target'] ? ' target="_blank" rel="noopener noreferrer"' : '' ) . '>' . esc_html( $osi_cta['label'] ) . '</a>';
+					}
 					?>
 				</nav><!-- #site-navigation -->
 
