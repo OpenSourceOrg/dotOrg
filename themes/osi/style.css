@@ -2253,19 +2253,18 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     display: none;
   }
   .nav-main--menu .menu-item.megamenu > a {
-    padding-right: 0.5em;
+    padding-right: 1.15em;
   }
   .nav-main--menu .menu-item.megamenu > a::after {
-    backface-visibility: hidden;
     background-color: currentColor;
     content: "";
-    display: inline-block;
     height: 0.45em;
-    margin-left: 0.45em;
+    margin-top: -0.225em;
     mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 8" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 6 6.5 11 1.5"/></svg>') no-repeat center/contain;
+    position: absolute;
+    right: 0;
+    top: 50%;
     transition: transform 0.2s ease;
-    will-change: transform;
-    vertical-align: middle;
     width: 0.7em;
     -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 8" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 6 6.5 11 1.5"/></svg>') no-repeat center/contain;
   }
