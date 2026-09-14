@@ -1849,9 +1849,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     display: inline-block;
     padding: 0.5em;
   }
-  .nav-main--menu .menu-item .menu-item.current-menu-item > a, .nav-main--menu .menu-item .menu-item.current-menu-parent > a, .nav-main--menu .menu-item .menu-item.current-menu-ancestor > a {
-    text-decoration: none;
-  }
   .nav-main--menu > .menu-item > a:hover, .nav-main--menu > .menu-item > a:focus {
     color: var(--wp--preset--color--neutral-darkest);
     text-decoration: underline;

@@ -69,15 +69,16 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	 * to stay out of their sizing, and column flow would then fill that whole span before
 	 * wrapping (@see T51ENG-2081).
 	 *
-	 * @param array    $atts      HTML attributes for the menu item's li.
-	 * @param WP_Post  $menu_item Menu item data object.
-	 * @param stdClass $args      An object of wp_nav_menu() arguments.
-	 * @param integer  $depth     Depth of menu item.
+	 * @param array         $atts      HTML attributes for the menu item's li.
+	 * @param WP_Post|null  $menu_item Menu item data object.
+	 * @param stdClass|null $args      An object of wp_nav_menu() arguments.
+	 * @param integer       $depth     Depth of menu item.
 	 *
 	 * @return array
 	 */
-	public function add_panel_placement( array $atts, WP_Post $menu_item, stdClass $args, int $depth ): array {
-		if ( 1 !== $depth || null === $this->current_parent || 'primary_navigation' !== ( $args->theme_location ?? '' ) ) {
+	public function add_panel_placement( $atts, $menu_item = null, $args = null, $depth = 0 ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing,Squiz.Commenting.FunctionComment.TypeHintMissing -- other walkers re-apply this filter with fewer arguments; typed params would fatal.
+		if ( ! is_array( $atts ) || 1 !== (int) $depth || null === $this->current_parent
+			|| 'primary_navigation' !== ( is_object( $args ) ? ( $args->theme_location ?? '' ) : '' ) ) {
 			return $atts;
 		}
 

@@ -307,12 +307,6 @@ footer {
 					padding: .5em;
 				}
 
-				.menu-item {
-					&.current-menu-item > a, &.current-menu-parent > a, &.current-menu-ancestor > a {
-						text-decoration: none;
-					}
-				}
-
 			}
 
 			& > .menu-item > a:hover,
