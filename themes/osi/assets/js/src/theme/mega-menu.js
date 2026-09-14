@@ -29,19 +29,18 @@ if ( header && megaItems.length ) {
 		);
 	};
 
+	const dismiss = ( item ) => {
+		closeItem( item );
+		item.classList.add( 'is-dismissed' );
+		syncHeader();
+	};
+
 	const closeItem = ( item ) => {
 		item.classList.remove( 'is-open' );
 		const trigger = triggerOf( item );
 		if ( trigger ) {
 			trigger.setAttribute( 'aria-expanded', 'false' );
 		}
-	};
-
-	// .is-dismissed outranks the CSS :hover rule, which JS cannot otherwise clear
-	const dismiss = ( item ) => {
-		closeItem( item );
-		item.classList.add( 'is-dismissed' );
-		syncHeader();
 	};
 
 	const closeAll = () => {
