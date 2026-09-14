@@ -387,22 +387,22 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
       }
 
       & > a {
-        padding-right: .5em;
+        padding-right: 1.15em;
 
         // masked so the chevron takes the link's colour; empty content keeps it out of
         // the accessible name, and aria-expanded carries the open state
+        // out of flow: the anchor is `text-overflow: ellipsis`, and an inline chevron
+        // counts toward the text width, so it pushed the label into an ellipsis
         &::after {
-          backface-visibility: hidden;
           background-color: currentColor;
           content: '';
-          display: inline-block;
           height: .45em;
-          margin-left: .45em;
+          margin-top: -.225em;
           mask: $chevronDown;
+          position: absolute;
+          right: 0;
+          top: 50%;
           transition: transform .2s ease;
-          // the mask re-rasterizes every frame of the rotation without its own layer
-          will-change: transform;
-          vertical-align: middle;
           width: .7em;
           -webkit-mask: $chevronDown;
         }
