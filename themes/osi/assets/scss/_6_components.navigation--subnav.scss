@@ -392,6 +392,7 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
         // masked so the chevron takes the link's colour; empty content keeps it out of
         // the accessible name, and aria-expanded carries the open state
         &::after {
+          backface-visibility: hidden;
           background-color: currentColor;
           content: '';
           display: inline-block;
@@ -399,6 +400,8 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
           margin-left: .45em;
           mask: $chevronDown;
           transition: transform .2s ease;
+          // the mask re-rasterizes every frame of the rotation without its own layer
+          will-change: transform;
           vertical-align: middle;
           width: .7em;
           -webkit-mask: $chevronDown;
