@@ -61,6 +61,7 @@ if ( header && megaItems.length ) {
 			if ( suppressOpen || ! desktopNav.matches ) {
 				return;
 			}
+			item.classList.remove( 'is-dismissed' );
 			window.clearTimeout( closeTimer );
 			megaItems.forEach( ( other ) => {
 				if ( other !== item ) {
@@ -136,11 +137,12 @@ if ( header && megaItems.length ) {
 
 	// a panel opened by hover holds focus nowhere, so Escape has to be caught globally
 	document.addEventListener( 'keydown', ( event ) => {
-		if (
-			'Escape' === event.key &&
-			document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' )
-		) {
-			megaItems.forEach( dismiss );
+		if ( 'Escape' !== event.key ) {
+			return;
+		}
+		const openItem = document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' );
+		if ( openItem ) {
+			dismiss( openItem );
 		}
 	} );
 
