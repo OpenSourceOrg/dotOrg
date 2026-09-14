@@ -76,7 +76,7 @@ class OSI_Megamenu_Walker extends Walker_Nav_Menu {
 	 *
 	 * @return array
 	 */
-	public function add_panel_placement( $atts, $menu_item = null, $args = null, $depth = 0 ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing,Squiz.Commenting.FunctionComment.TypeHintMissing -- other walkers re-apply this filter with fewer arguments; typed params would fatal.
+	public function add_panel_placement( $atts, $menu_item = null, $args = null, $depth = 0 ) { // phpcs:ignore Squiz.Commenting.FunctionComment.ScalarTypeHintMissing,Squiz.Commenting.FunctionComment.TypeHintMissing -- untyped on purpose, see template-functions.php
 		if ( ! is_array( $atts ) || 1 !== (int) $depth || null === $this->current_parent
 			|| 'primary_navigation' !== ( is_object( $args ) ? ( $args->theme_location ?? '' ) : '' ) ) {
 			return $atts;
