@@ -29,18 +29,19 @@ if ( header && megaItems.length ) {
 		);
 	};
 
-	const dismiss = ( item ) => {
-		closeItem( item );
-		item.classList.add( 'is-dismissed' );
-		syncHeader();
-	};
-
 	const closeItem = ( item ) => {
 		item.classList.remove( 'is-open' );
 		const trigger = triggerOf( item );
 		if ( trigger ) {
 			trigger.setAttribute( 'aria-expanded', 'false' );
 		}
+	};
+
+	// .is-dismissed outranks the CSS :hover rule, which JS cannot otherwise clear
+	const dismiss = ( item ) => {
+		closeItem( item );
+		item.classList.add( 'is-dismissed' );
+		syncHeader();
 	};
 
 	const closeAll = () => {
@@ -61,6 +62,7 @@ if ( header && megaItems.length ) {
 			if ( suppressOpen || ! desktopNav.matches ) {
 				return;
 			}
+			item.classList.remove( 'is-dismissed' );
 			window.clearTimeout( closeTimer );
 			megaItems.forEach( ( other ) => {
 				if ( other !== item ) {
@@ -136,11 +138,12 @@ if ( header && megaItems.length ) {
 
 	// a panel opened by hover holds focus nowhere, so Escape has to be caught globally
 	document.addEventListener( 'keydown', ( event ) => {
-		if (
-			'Escape' === event.key &&
-			document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' )
-		) {
-			megaItems.forEach( dismiss );
+		if ( 'Escape' !== event.key ) {
+			return;
+		}
+		const openItem = document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' );
+		if ( openItem ) {
+			dismiss( openItem );
 		}
 	} );
 
