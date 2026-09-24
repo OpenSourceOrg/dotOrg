@@ -22,9 +22,10 @@
     .header--inner {
         position: static;
         opacity: 1;
-        transition: all .3s;
+        transition: padding .3s, max-height .3s;
         z-index: 999;
         height: $headerInnerHeight;
+        max-height: $headerInnerHeight;
         display: flex;
         align-items: center;
         @media only screen and ( max-width: 1200px) {
@@ -37,7 +38,7 @@
         .header--blog-name {
             box-sizing: border-box;
             max-width: calc(100% - 130px);
-            max-height: 110px;
+            max-height: $headerLogoHeight;
             height: 100%;
             display: flex;
             align-items: center;
@@ -56,10 +57,11 @@
             img {
                 // all logos
                 max-width: 300px;
+                max-height: $headerLogoHeight;
                 height: auto;
                 width: auto;
                 transform: translateZ(0); // chrome blurry fix
-                transition: all .3s;
+                transition: max-height .3s;
                 @media only screen and (max-width: #{$break-small}) {
                     max-width: 180px;
                 }
@@ -116,7 +118,6 @@
     .header--inner {
         // opacity: 0;
         overflow: hidden;
-        transition: all .3s;
     }
     .header--blog-name {}
     .header--extra-text {
