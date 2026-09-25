@@ -2418,9 +2418,10 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 .header-main .header--inner {
   position: static;
   opacity: 1;
-  transition: all 0.3s;
+  transition: padding 0.3s, max-height 0.3s;
   z-index: 999;
   height: 125px;
+  max-height: 125px;
   display: flex;
   align-items: center;
 }
@@ -2456,10 +2457,11 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 }
 .header-main .header--inner .header--blog-name img {
   max-width: 300px;
+  max-height: 110px;
   height: auto;
   width: auto;
   transform: translateZ(0);
-  transition: all 0.3s;
+  transition: max-height 0.3s;
 }
 @media only screen and (max-width: 600px) {
   .header-main .header--inner .header--blog-name img {
@@ -2507,7 +2509,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 }
 .header-main-small .header--inner {
   overflow: hidden;
-  transition: all 0.3s;
 }
 .header-main-small .header--extra-text {
   display: none;
