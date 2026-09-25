@@ -3047,6 +3047,10 @@
 .editor-styles-wrapper .page-template-ai-wide .ai-header {
   border-top: 10px solid #3Ea638;
 }
+.editor-styles-wrapper .page-template-ai-wide .ai-header::after {
+  border-top: 10px solid #3Ea638;
+  top: -10px;
+}
 .editor-styles-wrapper .page-template-ai-wide .ai-header .site-branding img {
   width: 200px;
   max-height: 75px !important;
