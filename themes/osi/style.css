@@ -2308,12 +2308,9 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   color: inherit;
 }
 
-.admin-bar .header-main.header-main-small {
-  top: 32px;
-}
-@media only screen and (max-width: 782px) {
-  .admin-bar .header-main.header-main-small {
-    top: 46px;
+@media only screen and (min-width: 601px) {
+  .admin-bar .header-main {
+    top: var(--wp-admin--admin-bar--height, 32px);
   }
 }
 
@@ -2416,6 +2413,10 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     border: 0;
     position: relative;
   }
+  .header--blog-name {
+    flex-shrink: 0;
+    width: 300px;
+  }
   .header--blog-name .hide-mobile {
     display: inline-block;
   }
@@ -2466,16 +2467,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     inset: 0 -5vw;
     position: absolute;
     z-index: -1;
-  }
-  .header-main-small .nav-main {
-    height: auto;
-    top: 0;
-    margin-top: 0;
-  }
-  .header-main-small .nav-main .nav-main--menu > .menu-item > a {
-    padding-top: 0.6em;
-    padding-bottom: 0.5em;
-    transition: all 0.3s;
   }
 }
 @media only screen and (min-width: 1280px) {

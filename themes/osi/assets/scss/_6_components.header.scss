@@ -9,12 +9,12 @@
     }
 }
 
-.admin-bar {
-    .header-main.header-main-small {
-        top: 32px;
-        @media only screen and (max-width: 782px) {
-            top: 46px;
-        }
+// offset in both states, or the header drops 32px out from behind the admin bar the
+// moment it goes small. Core stops pinning the bar below 601px, where an offset would
+// leave a gap once it scrolls away.
+.admin-bar .header-main {
+    @media only screen and (min-width: 601px) {
+        top: var(--wp-admin--admin-bar--height, 32px);
     }
 }
 
@@ -54,7 +54,7 @@
             }
             img {
                 // all logos
-                max-width: 300px;
+                max-width: $headerLogoWidth;
                 max-height: $headerLogoHeight;
                 height: auto;
                 width: auto;
@@ -77,7 +77,7 @@
             .header--blog-name {
                 a {
                     img {
-                        max-height: 60px;
+                        max-height: $headerLogoHeightSmall;
                     }
                 }
             }
@@ -127,6 +127,10 @@
         position: relative;
     }
     .header--blog-name {
+        // hold the column at full-logo width: letting it shrink with the logo hands the
+        // nav that width and the menu reflows from two rows to one
+        flex-shrink: 0;
+        width: $headerLogoWidth;
         .hide-mobile {
             display: inline-block;
         }
@@ -179,17 +183,6 @@
     // source-order tie and drop the open panel's bottom border
     .header-main-small {
         @include header-white-veil;
-        .nav-main {
-            height: auto;
-            top: 0;
-            // transition: all .2s;
-            margin-top: 0;
-            .nav-main--menu>.menu-item>a {
-                padding-top: 0.6em;
-                padding-bottom: 0.5em;
-                transition: all .3s;
-            }
-        }
     }
 }
 
