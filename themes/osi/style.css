@@ -2418,14 +2418,12 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 .header-main .header--inner {
   position: static;
   opacity: 1;
-  transition: padding 0.3s, max-height 0.3s;
   z-index: 999;
   height: 125px;
-  max-height: 125px;
   display: flex;
   align-items: center;
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1199.94px) {
   .header-main .header--inner {
     background: #fff;
     padding: 16px;
@@ -2474,11 +2472,6 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
 .header-main .header--inner .header--blog-name .header-logo-mobile {
   display: block;
 }
-.header-main.header-main-small .header--inner {
-  padding-top: 16px;
-  padding-bottom: 16px;
-  max-height: 100px;
-}
 .header-main.header-main-small .header--inner .header--blog-name a img {
   max-height: 60px;
 }
@@ -2507,24 +2500,15 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   overflow: hidden;
   transition: all 0.3s;
 }
-.header-main-small .header--inner {
-  overflow: hidden;
-}
 .header-main-small .header--extra-text {
   display: none;
 }
 
-@media only screen and (max-width: 1200px) {
-  .header-main-small .header--blog-name img {
-    max-height: 67.19px;
-  }
-}
 @media only screen and (min-width: 1200px) {
   .header--inner,
   .header--quicklinks-inner {
     padding-left: 48px;
     padding-right: 48px;
-    padding-top: 1em;
   }
   .header--inner {
     border: 0;
@@ -2574,8 +2558,12 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
     position: fixed;
     z-index: -1;
   }
-  .header-main-small {
+  .header-main-small::after {
     background-color: var(--wp--preset--color--neutral-white);
+    content: "";
+    inset: 0 -5vw;
+    position: absolute;
+    z-index: -1;
   }
   .header-main-small .nav-main {
     height: auto;
@@ -5771,6 +5759,10 @@ footer.ai-footer {
 }
 .page-template-ai-wide .ai-header {
   border-top: 10px solid #3Ea638;
+}
+.page-template-ai-wide .ai-header::after {
+  border-top: 10px solid #3Ea638;
+  top: -10px;
 }
 .page-template-ai-wide .ai-header .site-branding img {
   width: 200px;
