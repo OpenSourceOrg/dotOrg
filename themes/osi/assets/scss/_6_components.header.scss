@@ -9,12 +9,12 @@
     }
 }
 
-.admin-bar {
-    .header-main.header-main-small {
-        top: 32px;
-        @media only screen and (max-width: 782px) {
-            top: 46px;
-        }
+// offset in both states, or the header drops 32px out from behind the admin bar the
+// moment it goes small. Core stops pinning the bar below 601px, where an offset would
+// leave a gap once it scrolls away.
+.admin-bar .header-main {
+    @media only screen and (min-width: 601px) {
+        top: var(--wp-admin--admin-bar--height, 32px);
     }
 }
 
@@ -22,12 +22,11 @@
     .header--inner {
         position: static;
         opacity: 1;
-        transition: all .3s;
         z-index: 999;
         height: $headerInnerHeight;
         display: flex;
         align-items: center;
-        @media only screen and ( max-width: 1200px) {
+        @media only screen and (max-width: #{$break-nav - 0.06}) {
             background: #fff;
             padding: 16px;
         }
@@ -37,7 +36,7 @@
         .header--blog-name {
             box-sizing: border-box;
             max-width: calc(100% - 130px);
-            max-height: 110px;
+            max-height: $headerLogoHeight;
             height: 100%;
             display: flex;
             align-items: center;
@@ -55,11 +54,12 @@
             }
             img {
                 // all logos
-                max-width: 300px;
+                max-width: $headerLogoWidth;
+                max-height: $headerLogoHeight;
                 height: auto;
                 width: auto;
                 transform: translateZ(0); // chrome blurry fix
-                transition: all .3s;
+                transition: max-height .3s;
                 @media only screen and (max-width: #{$break-small}) {
                     max-width: 180px;
                 }
@@ -74,13 +74,10 @@
     }
     &.header-main-small {
         .header--inner {
-            padding-top: 16px;
-            padding-bottom: 16px;
-            max-height: 100px;
             .header--blog-name {
                 a {
                     img {
-                        max-height: 60px;
+                        max-height: $headerLogoHeightSmall;
                     }
                 }
             }
@@ -113,22 +110,8 @@
         overflow: hidden;
         transition: all .3s;
     }
-    .header--inner {
-        // opacity: 0;
-        overflow: hidden;
-        transition: all .3s;
-    }
-    .header--blog-name {}
     .header--extra-text {
         display: none;
-    }
-}
-
-@media only screen and (max-width: #{$break-nav}) {
-    .header-main-small {
-        .header--blog-name img {
-            max-height: 67.19px;
-        }
     }
 }
 
@@ -138,13 +121,16 @@
         // @include clearfix();
         padding-left: $maxPadding;
         padding-right: $maxPadding;
-        padding-top: 1em;
     }
     .header--inner {
         border: 0;
         position: relative;
     }
     .header--blog-name {
+        // hold the column at full-logo width: letting it shrink with the logo hands the
+        // nav that width and the menu reflows from two rows to one
+        flex-shrink: 0;
+        width: $headerLogoWidth;
         .hide-mobile {
             display: inline-block;
         }
@@ -158,17 +144,24 @@
         clear: right;
         padding: 0;
     }
-    // open-panel layers: full-bleed white veil (::after escapes the wrapper inset) and
-    // page dim; z-index -1 keeps both under content, tree order paints veil over dim
-    @mixin nav-open-layers {
+    // full-bleed white: ::after escapes the wrapper inset so the background spans the
+    // page, which the design asks for whenever the header is white
+    @mixin header-white-veil( $border: false ) {
         &::after {
             background-color: $Nwhite;
-            border-bottom: 1px solid $Nlight;
+            @if $border {
+                border-bottom: 1px solid $Nlight;
+            }
             content: '';
             inset: 0 (-$wrapperPad);
             position: absolute;
             z-index: -1;
         }
+    }
+    // open-panel layers: the white veil plus a page dim; z-index -1 keeps both under
+    // content, tree order paints veil over dim
+    @mixin nav-open-layers {
+        @include header-white-veil( true );
         &::before {
             background: rgba(0, 0, 0, .35);
             content: '';
@@ -186,19 +179,10 @@
     .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed)) {
         @include nav-open-layers;
     }
+    // one class on purpose: raising this above .header-main.is-nav-open would win the
+    // source-order tie and drop the open panel's bottom border
     .header-main-small {
-        background-color: $Nwhite;
-        .nav-main {
-            height: auto;
-            top: 0;
-            // transition: all .2s;
-            margin-top: 0;
-            .nav-main--menu>.menu-item>a {
-                padding-top: 0.6em;
-                padding-bottom: 0.5em;
-                transition: all .3s;
-            }
-        }
+        @include header-white-veil;
     }
 }
 

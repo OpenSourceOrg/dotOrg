@@ -528,6 +528,12 @@ footer.ai-footer {
     }
     .ai-header {
         border-top: 10px solid #3Ea638;
+        // the veil starts inside the trim, so pull it over and repeat the trim on it,
+        // otherwise the green stops short of the full-bleed white behind it
+        &::after {
+            border-top: 10px solid #3Ea638;
+            top: -10px;
+        }
         .site-branding {
             img {
                 width: 200px;
