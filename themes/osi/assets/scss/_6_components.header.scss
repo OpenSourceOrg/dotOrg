@@ -22,13 +22,11 @@
     .header--inner {
         position: static;
         opacity: 1;
-        transition: padding .3s, max-height .3s;
         z-index: 999;
         height: $headerInnerHeight;
-        max-height: $headerInnerHeight;
         display: flex;
         align-items: center;
-        @media only screen and ( max-width: 1200px) {
+        @media only screen and (max-width: #{$break-nav - 0.06}) {
             background: #fff;
             padding: 16px;
         }
@@ -76,9 +74,6 @@
     }
     &.header-main-small {
         .header--inner {
-            padding-top: 16px;
-            padding-bottom: 16px;
-            max-height: 100px;
             .header--blog-name {
                 a {
                     img {
@@ -115,21 +110,8 @@
         overflow: hidden;
         transition: all .3s;
     }
-    .header--inner {
-        // opacity: 0;
-        overflow: hidden;
-    }
-    .header--blog-name {}
     .header--extra-text {
         display: none;
-    }
-}
-
-@media only screen and (max-width: #{$break-nav}) {
-    .header-main-small {
-        .header--blog-name img {
-            max-height: 67.19px;
-        }
     }
 }
 
@@ -139,7 +121,6 @@
         // @include clearfix();
         padding-left: $maxPadding;
         padding-right: $maxPadding;
-        padding-top: 1em;
     }
     .header--inner {
         border: 0;
@@ -159,17 +140,24 @@
         clear: right;
         padding: 0;
     }
-    // open-panel layers: full-bleed white veil (::after escapes the wrapper inset) and
-    // page dim; z-index -1 keeps both under content, tree order paints veil over dim
-    @mixin nav-open-layers {
+    // full-bleed white: ::after escapes the wrapper inset so the background spans the
+    // page, which the design asks for whenever the header is white
+    @mixin header-white-veil( $border: false ) {
         &::after {
             background-color: $Nwhite;
-            border-bottom: 1px solid $Nlight;
+            @if $border {
+                border-bottom: 1px solid $Nlight;
+            }
             content: '';
             inset: 0 (-$wrapperPad);
             position: absolute;
             z-index: -1;
         }
+    }
+    // open-panel layers: the white veil plus a page dim; z-index -1 keeps both under
+    // content, tree order paints veil over dim
+    @mixin nav-open-layers {
+        @include header-white-veil( true );
         &::before {
             background: rgba(0, 0, 0, .35);
             content: '';
@@ -187,8 +175,10 @@
     .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed)) {
         @include nav-open-layers;
     }
+    // one class on purpose: raising this above .header-main.is-nav-open would win the
+    // source-order tie and drop the open panel's bottom border
     .header-main-small {
-        background-color: $Nwhite;
+        @include header-white-veil;
         .nav-main {
             height: auto;
             top: 0;

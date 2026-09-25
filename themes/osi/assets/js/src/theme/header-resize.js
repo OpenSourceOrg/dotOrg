@@ -20,24 +20,17 @@ License: GPLv2
 
 const header = document.querySelector( '.header-main' );
 
-// The header is sticky but still in flow, so shrinking it lifts the page by 25px
-// ($headerInnerHeight 125px down to the 100px cap) and scroll anchoring corrects scrollY
-// to match. One threshold would be re-crossed by that correction and the class would
-// toggle in a loop, so the bound to beat depends on which state we are in. Growing back
-// only at 0 is the safe end: browsers suppress anchoring while the scroller sits at 0.
-const SHRINK_AT = 40;
-const GROW_AT = 0;
+const SHRINK_AT = 40; // px scrolled before the logo shrinks
 
 if ( header ) {
 	let ticking = false;
 
 	const update = () => {
 		ticking = false;
-		const isSmall = header.classList.contains( 'header-main-small' );
-		const next = window.scrollY > ( isSmall ? GROW_AT : SHRINK_AT );
+		const small = window.scrollY > SHRINK_AT;
 
-		if ( next !== isSmall ) {
-			header.classList.toggle( 'header-main-small', next );
+		if ( small !== header.classList.contains( 'header-main-small' ) ) {
+			header.classList.toggle( 'header-main-small', small );
 		}
 	};
 
