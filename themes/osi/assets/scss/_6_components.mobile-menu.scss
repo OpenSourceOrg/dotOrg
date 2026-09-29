@@ -291,6 +291,11 @@
             margin-right: $sidebarWidthMid;
             overflow: visible;
         }
+
+        // the header is fixed to the viewport, so the wrapper's margins no longer carry it
+        .header-main {
+            transform: translateX(-$sidebarWidthMid);
+        }
     }
 
 }
@@ -301,6 +306,10 @@
         .wrapper {
             margin-left: -$sidebarWidthSmall;
             margin-right: $sidebarWidthSmall;
+        }
+
+        .header-main {
+            transform: translateX(-$sidebarWidthSmall);
         }
     }
 }

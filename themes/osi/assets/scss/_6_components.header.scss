@@ -1,21 +1,32 @@
+// fixed, not sticky: sticky leaves the header in the flow, so shrinking it reflows the page,
+// Chrome's scroll anchoring corrects scrollY to compensate, and that re-crosses the shrink
+// threshold in a loop. Out of the flow, the shrink costs the document nothing.
 .header-main {
-    // position:fixed; // for header scroll
-    position: sticky;
+    position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     z-index: 999;
     .button a {
         color: inherit;
     }
 }
 
-// offset in both states, or the header drops 32px out from behind the admin bar the
-// moment it goes small. Core stops pinning the bar below 601px, where an offset would
-// leave a gap once it scrolls away.
+// holds the header's place in the flow; stays $headerInnerHeight in both states so the page
+// below never moves
+.header--spacer {
+    height: $headerInnerHeight;
+}
+
+// the skip link and in-page anchors would otherwise land underneath the fixed header
+html {
+    scroll-padding-top: calc(#{$headerInnerHeight} + var(--wp-admin--admin-bar--height, 0px));
+}
+
+// no width guard: _8_overrides.admin-bar.scss pins the bar at every width, so the header has
+// to clear it at every width too. Core keeps the custom property in step (46px under 783px).
 .admin-bar .header-main {
-    @media only screen and (min-width: 601px) {
-        top: var(--wp-admin--admin-bar--height, 32px);
-    }
+    top: var(--wp-admin--admin-bar--height, 32px);
 }
 
 .header-main {
@@ -26,6 +37,7 @@
         height: $headerInnerHeight;
         display: flex;
         align-items: center;
+        transition: height .3s;
         @media only screen and (max-width: #{$break-nav - 0.06}) {
             background: #fff;
             padding: 16px;
@@ -116,7 +128,6 @@
 }
 
 @media only screen and (min-width: #{$break-nav}) {
-    .header--inner,
     .header--quicklinks-inner {
         // @include clearfix();
         padding-left: $maxPadding;
@@ -125,6 +136,22 @@
     .header--inner {
         border: 0;
         position: relative;
+        // the header spans the viewport now, so it carries the wrapper's inset itself to keep
+        // its contents lined up with the page below
+        padding-left: calc(#{$wrapperPad} + #{$maxPadding});
+        padding-right: calc(#{$wrapperPad} + #{$maxPadding});
+    }
+    // desktop only: below this the off-canvas menu measures itself against $headerInnerHeight,
+    // and the flicker this shrink caused was a desktop bug to begin with
+    .header-main-small {
+        .header--inner {
+            height: $headerInnerHeightSmall;
+        }
+        // a shorter bar needs a shorter nav, or the menu overflows it
+        .nav-main {
+            padding-bottom: $navPadSmall;
+            padding-top: $navPadSmall;
+        }
     }
     .header--blog-name {
         // hold the column at full-logo width: letting it shrink with the logo hands the
@@ -144,8 +171,8 @@
         clear: right;
         padding: 0;
     }
-    // full-bleed white: ::after escapes the wrapper inset so the background spans the
-    // page, which the design asks for whenever the header is white
+    // stays a pseudo-element rather than a plain background so it paints after the ::before
+    // page dim below, which would otherwise grey out the header along with the page
     @mixin header-white-veil( $border: false ) {
         &::after {
             background-color: $Nwhite;
@@ -153,7 +180,7 @@
                 border-bottom: 1px solid $Nlight;
             }
             content: '';
-            inset: 0 (-$wrapperPad);
+            inset: 0;
             position: absolute;
             z-index: -1;
         }
