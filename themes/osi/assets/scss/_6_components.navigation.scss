@@ -86,7 +86,7 @@ nav {
 .nav-main {
 	margin-left: auto;
 	padding: $navPad 0;
-	transition: padding .3s ease; // matches .header--inner, or the menu overhangs the shrinking bar
+	transition: padding .3s ease;
 
 	ul {
 		list-style: none;
