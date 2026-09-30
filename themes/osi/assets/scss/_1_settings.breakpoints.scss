@@ -45,10 +45,13 @@ $wrapperPad: 5vw; // duplicates the production Customizer CSS inset on body > .w
 $maxPadding: 48px; // duplicates var(--wp--custom--spacing--max-padding)
 
 // header dimensions
-$headerInnerHeight: 125px; // .header--inner fixed height; admin-bar offsets come from core's --wp-admin--admin-bar--height
+$headerInnerHeight: 125px; // .header--inner at rest; also the spacer that holds its place in the flow
+$headerInnerHeightSmall: 90px; // .header--inner once scrolled
 $headerLogoWidth: 300px; // logo column width, held constant so the nav never reflows
-$headerLogoHeight: 110px;
-$headerLogoHeightSmall: 60px; // logo cap once scrolled // logo cap at rest; needs a length, not none, so the shrink can animate
+$headerLogoHeight: 110px; // logo cap at rest; needs a length, not none, so the shrink can animate
+$headerLogoHeightSmall: 60px; // logo cap once scrolled
+$navPad: 2.1rem; // .nav-main vertical padding at rest
+$navPadSmall: .55rem; // .nav-main vertical padding once scrolled
 $mobileRowHeight: 34px; // mobile accordion row: the caret's 44px tap target centres its glyph on this
 $midPadding: 32px; // duplicates var(--wp--custom--spacing--mid-padding);
 $smallPadding: 16px; // duplicates var(--wp--custom--spacing--small-padding);

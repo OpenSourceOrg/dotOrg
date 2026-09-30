@@ -70,3 +70,4 @@
 				</section>
 			</div>
 		</header><!-- #masthead -->
+		<div class="header--spacer" aria-hidden="true"></div>

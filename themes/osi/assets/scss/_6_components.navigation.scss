@@ -85,8 +85,8 @@ nav {
 // Main Nav
 .nav-main {
 	margin-left: auto;
-	padding: 2.1rem 0;
-	transition: all 0.8s ease;
+	padding: $navPad 0;
+	transition: padding .3s ease;
 
 	ul {
 		list-style: none;

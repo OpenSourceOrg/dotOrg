@@ -1,21 +1,24 @@
 .header-main {
-    // position:fixed; // for header scroll
-    position: sticky;
+    position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     z-index: 999;
     .button a {
         color: inherit;
     }
 }
 
-// offset in both states, or the header drops 32px out from behind the admin bar the
-// moment it goes small. Core stops pinning the bar below 601px, where an offset would
-// leave a gap once it scrolls away.
+.header--spacer {
+    height: $headerInnerHeight;
+}
+
+html {
+    scroll-padding-top: calc(#{$headerInnerHeight} + var(--wp-admin--admin-bar--height, 0px));
+}
+
 .admin-bar .header-main {
-    @media only screen and (min-width: 601px) {
-        top: var(--wp-admin--admin-bar--height, 32px);
-    }
+    top: var(--wp-admin--admin-bar--height, 32px);
 }
 
 .header-main {
@@ -26,6 +29,7 @@
         height: $headerInnerHeight;
         display: flex;
         align-items: center;
+        transition: height .3s;
         @media only screen and (max-width: #{$break-nav - 0.06}) {
             background: #fff;
             padding: 16px;
@@ -116,7 +120,6 @@
 }
 
 @media only screen and (min-width: #{$break-nav}) {
-    .header--inner,
     .header--quicklinks-inner {
         // @include clearfix();
         padding-left: $maxPadding;
@@ -125,6 +128,17 @@
     .header--inner {
         border: 0;
         position: relative;
+        padding-left: calc(#{$wrapperPad} + #{$maxPadding});
+        padding-right: calc(#{$wrapperPad} + #{$maxPadding});
+    }
+    .header-main-small {
+        .header--inner {
+            height: $headerInnerHeightSmall;
+        }
+        .nav-main {
+            padding-bottom: $navPadSmall;
+            padding-top: $navPadSmall;
+        }
     }
     .header--blog-name {
         // hold the column at full-logo width: letting it shrink with the logo hands the
@@ -144,8 +158,6 @@
         clear: right;
         padding: 0;
     }
-    // full-bleed white: ::after escapes the wrapper inset so the background spans the
-    // page, which the design asks for whenever the header is white
     @mixin header-white-veil( $border: false ) {
         &::after {
             background-color: $Nwhite;
@@ -153,7 +165,7 @@
                 border-bottom: 1px solid $Nlight;
             }
             content: '';
-            inset: 0 (-$wrapperPad);
+            inset: 0;
             position: absolute;
             z-index: -1;
         }

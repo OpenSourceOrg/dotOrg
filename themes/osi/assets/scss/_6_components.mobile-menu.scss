@@ -291,6 +291,10 @@
             margin-right: $sidebarWidthMid;
             overflow: visible;
         }
+
+        .header-main {
+            transform: translateX(-$sidebarWidthMid);
+        }
     }
 
 }
@@ -301,6 +305,10 @@
         .wrapper {
             margin-left: -$sidebarWidthSmall;
             margin-right: $sidebarWidthSmall;
+        }
+
+        .header-main {
+            transform: translateX(-$sidebarWidthSmall);
         }
     }
 }
