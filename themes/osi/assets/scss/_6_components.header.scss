@@ -1,6 +1,3 @@
-// fixed, not sticky: sticky leaves the header in the flow, so shrinking it reflows the page,
-// Chrome's scroll anchoring corrects scrollY to compensate, and that re-crosses the shrink
-// threshold in a loop. Out of the flow, the shrink costs the document nothing.
 .header-main {
     position: fixed;
     top: 0;
@@ -12,19 +9,14 @@
     }
 }
 
-// holds the header's place in the flow; stays $headerInnerHeight in both states so the page
-// below never moves
 .header--spacer {
     height: $headerInnerHeight;
 }
 
-// the skip link and in-page anchors would otherwise land underneath the fixed header
 html {
     scroll-padding-top: calc(#{$headerInnerHeight} + var(--wp-admin--admin-bar--height, 0px));
 }
 
-// no width guard: _8_overrides.admin-bar.scss pins the bar at every width, so the header has
-// to clear it at every width too. Core keeps the custom property in step (46px under 783px).
 .admin-bar .header-main {
     top: var(--wp-admin--admin-bar--height, 32px);
 }
@@ -136,18 +128,13 @@ html {
     .header--inner {
         border: 0;
         position: relative;
-        // the header spans the viewport now, so it carries the wrapper's inset itself to keep
-        // its contents lined up with the page below
         padding-left: calc(#{$wrapperPad} + #{$maxPadding});
         padding-right: calc(#{$wrapperPad} + #{$maxPadding});
     }
-    // desktop only: below this the off-canvas menu measures itself against $headerInnerHeight,
-    // and the flicker this shrink caused was a desktop bug to begin with
     .header-main-small {
         .header--inner {
             height: $headerInnerHeightSmall;
         }
-        // a shorter bar needs a shorter nav, or the menu overflows it
         .nav-main {
             padding-bottom: $navPadSmall;
             padding-top: $navPadSmall;
@@ -171,8 +158,6 @@ html {
         clear: right;
         padding: 0;
     }
-    // stays a pseudo-element rather than a plain background so it paints after the ::before
-    // page dim below, which would otherwise grey out the header along with the page
     @mixin header-white-veil( $border: false ) {
         &::after {
             background-color: $Nwhite;
