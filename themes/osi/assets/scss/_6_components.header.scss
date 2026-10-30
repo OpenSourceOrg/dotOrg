@@ -206,3 +206,12 @@ html {
         align-items: center;
     }
 }
+
+@media print {
+    .header-main {
+        position: static;
+    }
+    .header--spacer {
+        display: none;
+    }
+}

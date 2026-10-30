@@ -532,7 +532,10 @@ footer.ai-footer {
         // otherwise the green stops short of the full-bleed white behind it
         &::after {
             border-top: 10px solid #3Ea638;
-            top: -10px;
+            margin-top: -10px;
+        }
+        + .header--spacer {
+            height: $headerInnerHeight + 10px;
         }
         .site-branding {
             img {
@@ -679,4 +682,8 @@ footer.ai-footer {
             padding: 0;
         }
     }
+}
+
+html:has(.ai-header) {
+    scroll-padding-top: calc(#{$headerInnerHeight + 10px} + var(--wp-admin--admin-bar--height, 0px));
 }

@@ -3049,7 +3049,10 @@
 }
 .editor-styles-wrapper .page-template-ai-wide .ai-header::after {
   border-top: 10px solid #3Ea638;
-  top: -10px;
+  margin-top: -10px;
+}
+.editor-styles-wrapper .page-template-ai-wide .ai-header + .header--spacer {
+  height: 135px;
 }
 .editor-styles-wrapper .page-template-ai-wide .ai-header .site-branding img {
   width: 200px;
@@ -3181,6 +3184,9 @@
   max-height: 8px;
   margin: 0;
   padding: 0;
+}
+.editor-styles-wrapper html:has(.ai-header) {
+  scroll-padding-top: calc(135px + var(--wp-admin--admin-bar--height, 0px));
 }
 .editor-styles-wrapper .wp-block {
   margin-left: auto;
