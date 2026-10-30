@@ -17,9 +17,9 @@
         .wp-block-cover {
             left: 50%;
             right: 50%;
-            margin-left: -50vw !important;
-            margin-right: unset !important;
-            width: 100vw !important;
+            margin-left: -50vw!important;
+            margin-right: unset!important;
+            width: 100vw!important;
         }
     }
     @media only screen and (min-width: $break-medium) {
@@ -150,7 +150,7 @@
             margin-right: 0;
         }
         .alignfull {
-            width: calc(100% + (2 * #{$midPadding}));
+            width: calc( 100% + (2 * #{$midPadding}));
             margin-left: -#{$midPadding};
             margin-right: -#{$midPadding};
             @media only screen and (min-width: #{$boxedMax}) {
@@ -214,12 +214,6 @@
     display: block;
 }
 
-footer.ai-footer {
-    margin-top: 0;
-    padding-top: 0;
-    border-top-width: 0;
-}
-
 .member-details span:nth-child(2) {
     border-left: 1px solid $Ndarkest;
     margin-left: 10px;
@@ -227,6 +221,12 @@ footer.ai-footer {
     .wp-block-cover & {
         border-color: $Nwhite;
     }
+}
+
+footer.ai-footer {
+    margin-top: 0;
+    padding-top: 0;
+    border-top-width: 0;
 }
 
 // Overrides for the Full Width AI Template
@@ -446,7 +446,7 @@ footer.ai-footer {
 
 // Custom tab/accordion styles
 .wp-block-columns.has-tabs-wrapper {
-    // Make column direction for all sizes un 1000
+    // Make column direction for all sizes under 1000
     @media only screen and (max-width: 1000px) {
         flex-direction: column;
     }

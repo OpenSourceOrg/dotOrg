@@ -80,9 +80,6 @@ Template Name: /ai/ template
                                     <nav>
                                         <ul>
                                             <li>
-                                                <a class="nav-link-green" href="https://opensource.org/donate">DONATE</a>
-                                            </li>
-											<li>
                                                 <a class="nav-link-green" href="https://opensource.org/about">About</a>
                                             </li>
     
@@ -147,11 +144,10 @@ Template Name: /ai/ template
                             <div class="header-nav main-nav-one" id="nav-links">
                                 <nav>
                                     <ul>
+                                        <li><a class="nav-link" href="https://go.opensource.org/osaid-latest">DEFINITION</a></li>
                                         <li><a class="nav-link" href="https://opensource.org/ai/process">PROCESS</a></li>
                                         <li><a class="nav-link" href="https://opensource.org/ai/timeline">TIMELINE</a></li>
-										<li><a class="nav-link" href="https://opensource.org/ai/open-weights">OPEN WEIGHTS</a></li>
                                         <li><a class="nav-link" href="https://opensource.org/ai/faq" target="_blank">FAQ</a></li>
-										<li><a class="nav-link" href="https://opensource.org/ai/checklist">CHECKLIST</a></li>
                                         <li><a class="nav-link" href="https://opensource.org/ai/endorsements">ENDORSEMENTS</a></li>
                                         <li><a href="https://go.opensource.org/osaid-latest" class="rts-btn btn-primary">Read version 1.0</a></li>
                                     </ul>
@@ -818,8 +814,7 @@ Template Name: /ai/ template
                             Which AI systems comply with the OSAID 1.0?
                         </h4>
                         <p class="disc" style="text-align:left">
-                            As part of our validation and testing of the OSAID, the volunteers checked whether the Definition could be used to evaluate if AI systems provided the freedoms expected. The list of models that passed the Validation phase are: Pythia (Eleuther AI), OLMo (AI2), Amber and CrystalCoder (LLM360) and T5 (Google). There are a couple of others that were analyzed and would probably pass if they changed their licenses/legal terms: BLOOM (BigScience), Starcoder2 (BigCode), Falcon (TII). Those that have been analyzed and don't pass because they lack required components and/or their legal agreements are incompatible with the Open Source principles: Llama2 (Meta), Grok (X/Twitter), Phi-2 (Microsoft), Mixtral (Mistral). These results should be seen as part of the definitional process, a learning moment, they're not certifications of any kind. OSI will continue to validate only legal documents, and will not validate or review individual AI systems, just as it does not validate or review software projects.<br />
-															   If you are wondering about <strong>Open Weights models</strong>, please refer to our <a href="https://opensource.org/ai/open-weights">dedicated page</a>.
+                            As part of our validation and testing of the OSAID, the volunteers checked whether the Definition could be used to evaluate if AI systems provided the freedoms expected. The list of models that passed the Validation phase are: Pythia (Eleuther AI), OLMo (AI2), Amber and CrystalCoder (LLM360) and T5 (Google). There are a couple of others that were analyzed and would probably pass if they changed their licenses/legal terms: BLOOM (BigScience), Starcoder2 (BigCode), Falcon (TII). Those that have been analyzed and don't pass because they lack required components and/or their legal agreements are incompatible with the Open Source principles: Llama2 (Meta), Grok (X/Twitter), Phi-2 (Microsoft), Mixtral (Mistral). These results should be seen as part of the definitional process, a learning moment, they're not certifications of any kind. OSI will continue to validate only legal documents, and will not validate or review individual AI systems, just as it does not validate or review software projects.
                         </p>
                     </div>
                 </div>
@@ -1541,3 +1536,5 @@ Template Name: /ai/ template
     <script src="https://opensourceorg.github.io/ai/assets/js/main.js"></script>
     <!-- header style two End -->
 	</div>
+
+

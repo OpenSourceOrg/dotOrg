@@ -30,7 +30,7 @@ body>.wrapper {
 }
 
 @media print {
-    // Esnure the background is not printed
+    // Ensure the background is not printed
     body>.wrapper::after {
         content: none !important;
         display: none !important;

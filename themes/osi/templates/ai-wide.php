@@ -4,7 +4,6 @@ Template Name: AI Full Width
 Template Post Type: page
 Description: Custom template for full width
 */
-
 if ( osi_field_check( 'osi_use_ai_header' ) && true === (bool) osi_get_valid_field( 'osi_use_ai_header' ) ) :
 	get_header( 'ai' );
 else :

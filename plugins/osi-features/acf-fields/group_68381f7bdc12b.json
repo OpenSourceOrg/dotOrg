@@ -1,7 +1,8 @@
 {
     "key": "group_68381f7bdc12b",
     "title": "AI Template Toggle",
-    "fields": [{
+    "fields": [
+        {
             "key": "field_68381f7c701f6",
             "label": "Use AI Header",
             "name": "osi_use_ai_header",
@@ -47,7 +48,8 @@
         }
     ],
     "location": [
-        [{
+        [
+            {
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"

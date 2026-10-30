@@ -119,7 +119,7 @@ if ( ! function_exists( 'osi_entry_footer' ) ) :
 endif;
 
 /**
-* Search bar with toggle button for header
+* Search bar with toggle button for header.
 *
 * @return void
 */
@@ -527,7 +527,7 @@ function osi_first_term_of_taxonomy( int $post_id, string $tax = '' ) {
 * Reusable post type query
 */
 if ( ! function_exists( 'osi_post_type_query' ) ) {
-	/**
+		/**
 	 * Reusable post type query.
 	 *
 	 * @param string  $posttype The post type.
@@ -794,12 +794,7 @@ function osi_get_related_posts( $current_post_id, int $number = 3 ) {
  * @return void
  */
 function osi_credits( $args = array() ) {
-	// If args are not an array, convert to array.
-	if ( ! is_array( $args ) ) {
-		$args = (array) $args;
-	}
-
-	$args         = wp_parse_args(
+	$args = wp_parse_args(
 		$args,
 		array(
 			'separator' => ' ',
@@ -809,6 +804,7 @@ function osi_credits( $args = array() ) {
 			'pressable' => sprintf( __( 'Hosted by %s.', 'osi' ), 'Pressable' ),
 		)
 	);
+
 	$credit_links = array();
 
 	if ( $args['wpcom'] ) {

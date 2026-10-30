@@ -59,8 +59,7 @@
                     "slug": "space-mono",
                     "name": "Space Mono",
                     "provider": "osi-fonts"
-                },
-                {
+                }, {
                     "name": "Exo",
                     "slug": "exo",
                     "fontFamily": "\"Exo\", sans-serif",

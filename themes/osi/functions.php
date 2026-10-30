@@ -442,64 +442,6 @@ function osi_wpdc_comment_body( string $comment_body ) {
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
 /**
- * Register the AI block template.
- *
- * @return void
- */
-function osi_register_block_template() {
-	$post_type     = 'page'; // Assign the template to pages
-	$template_slug = 'ai-template';
-	$template_file = 'templates/ai-template.html';
-
-	// Register the block template
-	register_block_template(
-		$post_type,
-		array(
-			'title' => __( 'AI Template new', 'osi' ),
-			'slug'  => $template_slug,
-			'path'  => get_theme_file_path( $template_file ),
-		)
-	);
-
-	// Enqueue styles conditionally
-	add_action(
-		'wp_enqueue_scripts',
-		function () use ( $template_slug ) {
-			if ( get_page_template_slug() === 'templates/ai-template.html' || get_page_template_slug() === 'templates/ai-fse.php' ) {
-				// Font Awesome - Updated to latest version
-				wp_enqueue_style( 'fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), '6.5.1' );
-
-				// Other CSS files
-				wp_enqueue_style( 'swiper', 'https://opensourceorg.github.io/ai/assets/css/plugins/swiper.css', array(), '1.0.0' );
-				wp_enqueue_style( 'unicons', 'https://opensourceorg.github.io/ai/assets/css/plugins/unicons.css', array(), '1.0.0' );
-				wp_enqueue_style( 'metismenu', 'https://opensourceorg.github.io/ai/assets/css/plugins/metismenu.css', array(), '1.0.0' );
-				wp_enqueue_style( 'animate', 'https://opensourceorg.github.io/ai/assets/css/vendor/animate.css', array(), '1.0.0' );
-				wp_enqueue_style( 'bootstrap', 'https://opensourceorg.github.io/ai/assets/css/vendor/bootstrap.min.css', array(), '1.0.0' );
-				wp_enqueue_style( 'ai-custom', 'https://opensourceorg.github.io/ai/assets/css/style.css', array( 'bootstrap' ), '1.0.0' );
-
-				// JavaScript files - with proper dependencies
-				wp_enqueue_script( 'jquery' );
-				wp_enqueue_script( 'jqueryui', 'https://opensourceorg.github.io/ai/assets/js/vendor/jqueryui.js', array( 'jquery' ), '1.0.0', true );
-				wp_enqueue_script( 'counter-up', 'https://opensourceorg.github.io/ai/assets/js/plugins/counter-up.js', array( 'jquery' ), '1.0.0', true );
-				wp_enqueue_script( 'swiper-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/swiper.js', array( 'jquery' ), '1.0.0', true );
-				wp_enqueue_script( 'metismenu-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/metismenu.js', array( 'jquery' ), '1.0.0', true );
-				wp_enqueue_script( 'waypoint', 'https://opensourceorg.github.io/ai/assets/js/vendor/waypoint.js', array( 'jquery' ), '1.0.0', true );
-				wp_enqueue_script( 'waw', 'https://opensourceorg.github.io/ai/assets/js/vendor/waw.js', array( 'jquery' ), '1.0.0', true );
-				wp_enqueue_script( 'gsap', 'https://opensourceorg.github.io/ai/assets/js/plugins/gsap.min.js', array(), '1.0.0', true );
-				wp_enqueue_script( 'scrolltrigger', 'https://opensourceorg.github.io/ai/assets/js/plugins/scrolltigger.js', array( 'gsap' ), '1.0.0', true );
-				wp_enqueue_script( 'split-text', 'https://opensourceorg.github.io/ai/assets/js/vendor/split-text.js', array( 'gsap' ), '1.0.0', true );
-				wp_enqueue_script( 'contact-form', 'https://opensourceorg.github.io/ai/assets/js/vendor/contact.form.js', array( 'jquery' ), '1.0.0', true );
-				wp_enqueue_script( 'split-type', 'https://opensourceorg.github.io/ai/assets/js/vendor/split-type.js', array(), '1.0.0', true );
-				wp_enqueue_script( 'jquery-timepicker', 'https://opensourceorg.github.io/ai/assets/js/plugins/jquery-timepicker.js', array( 'jquery' ), '1.0.0', true );
-				wp_enqueue_script( 'bootstrap-js', 'https://opensourceorg.github.io/ai/assets/js/plugins/bootstrap.min.js', array( 'jquery' ), '1.0.0', true );
-				wp_enqueue_script( 'ai-main', 'https://opensourceorg.github.io/ai/assets/js/main.js', array( 'jquery', 'bootstrap-js' ), '1.0.0', true );
-			}
-		}
-	);
-}
-add_action( 'init', 'osi_register_block_template' );
-
-/**
  * Process the supporter form submission.
  *
  * @param WPCF7_ContactForm $contact_form The Contact Form 7 instance.
@@ -582,14 +524,40 @@ function osi_handle_supporter_form_flamingo_spam_status_change( string $new_stat
 add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_status_change', 10, 3 );
 
 /**
- * Register the AI menu.
+ * Modify the post type arguments for the podcast post type.
  *
- * @return void
+ * @param array $args The post type arguments.
+ *
+ * @return array The modified post type arguments.
  */
-function osi_register_ai_menu() {
-	register_nav_menu( 'ai', __( 'AI Menu', 'osi' ) );
+function osi_ssp_register_post_type_args( array $args ): array {
+	$args['rewrite']['slug']       = 'ai/podcast';
+	$args['rewrite']['with_front'] = false;
+	return $args;
 }
-add_action( 'after_setup_theme', 'osi_register_ai_menu' );
+add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10, 1 );
+
+
+/**
+ * Block booking if honeypot phone field is filled.
+ * Phone field is hidden using CSS.
+ * Field must have the slug 'phone_hp', and must be a text input.
+ *
+ * @param boolean    $result     The result.
+ * @param EM_Booking $em_booking The booking object.
+ *
+ * @return boolean The result.
+ */
+function osi_block_booking_if_phone_filled( $result, $em_booking ) { // phpcs:ignore
+	if ( ! empty( $em_booking->event ) ) {
+		if ( isset( $_POST['phone_hp'] ) && trim( $_POST['phone_hp'] ) !== '' ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$em_booking->add_error( 'There was a problem with your booking. Please do not include a phone number.' );
+			return false;
+		}
+	}
+	return $result;
+}
+add_filter( 'em_booking_validate', 'osi_block_booking_if_phone_filled', 10, 2 );
 
 /**
  * Enqueue the full-width editor styles for the AI template.
@@ -608,49 +576,23 @@ function osi_full_width_editor( array $editor_settings ): array {
 }
 add_filter( 'block_editor_settings_all', 'osi_full_width_editor' );
 
-add_filter( 'jetpack_disable_tracking', '__return_true' );
-
 /**
- * Modify the post type arguments for the podcast post type.
- *
- * @param array $args The post type arguments.
- *
- * @return array The modified post type arguments.
- */
-function osi_ssp_register_post_type_args( array $args ): array {
-	$args['rewrite']['slug']       = 'ai';
-	$args['rewrite']['with_front'] = false;
-	return $args;
-}
-add_filter( 'ssp_register_post_type_args', 'osi_ssp_register_post_type_args', 10, 1 );
-
-
-/**
- * Block booking if honeypot phone field is filled.
- * Phone field is hidden using CSS.
- * Field must have the slug 'phone_hp', and must be a text input.
- *
- * @param boolean    $result     The result.
- * @param EM_Booking $em_booking The booking object.
- *
- * @return boolean The result.
- */
-function osi_block_booking_if_phone_filled( bool $result, EM_Booking $em_booking ) {
-	if ( ! empty( $em_booking->event ) ) {
-		if ( isset( $_POST['phone_hp'] ) && trim( $_POST['phone_hp'] ) !== '' ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$em_booking->add_error( 'There was a problem with your booking. Please do not include a phone number.' );
-			return false;
-		}
-	}
-	return $result;
-}
-add_filter( 'em_booking_validate', 'osi_block_booking_if_phone_filled', 10, 2 );
-
-/**
- * Queuing swiper for the new home page rotating quotes
+ * Register the AI menu.
  *
  * @return void
-**/
+ */
+function osi_register_ai_menu() {
+	register_nav_menu( 'ai', __( 'AI Menu', 'osi' ) );
+}
+add_action( 'after_setup_theme', 'osi_register_ai_menu' );
+
+/**
+ * Queuing swiper for the new home page rotating quotes.
+ *
+ * @link https://swiperjs.com/
+ *
+ * @return void
+ **/
 function osi_enqueue_swiper_assets(): void {
 	wp_enqueue_style( 'swiper-css', 'https://unpkg.com/swiper@11/swiper-bundle.min.css', array(), filemtime( untrailingslashit( get_template_directory() ) . '/style.css' ) );
 	wp_enqueue_script( 'swiper-js', 'https://unpkg.com/swiper@11/swiper-bundle.min.js', array(), filemtime( untrailingslashit( get_template_directory() ) . '/style.css' ), true );

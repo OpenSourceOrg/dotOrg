@@ -82,7 +82,6 @@ Methodology from ITCSS http://www.creativebloq.com/web-design/manage-large-scale
   --wp--preset--color--background: var(--wp--custom--color--background);
 }
 
-/*- Import custom fonts for AI -*/
 /*--------------------------------------------------------------
 # 02 Tools
 --------------------------------------------------------------*/
@@ -229,19 +228,19 @@ input[type=reset] {
   transition: all 0.3s;
   width: auto;
 }
-#sc-event-ticketing-buy-button:hover:not(.spin-animation),
-#sc-event-ticketing-purchase:hover:not(.spin-animation), .wp-block-button:not(.components-toolbar) .wp-block-button__link:hover:not(.spin-animation),
-.wp-block-button:not(.components-toolbar) wp-block .button:hover:not(.spin-animation):not(.insert-media):not(.acf-button), .global-button:hover:not(.spin-animation), button:hover:not(.spin-animation),
-.button:hover:not(.spin-animation),
-input[type=button]:hover:not(.spin-animation),
-input[type=submit]:hover:not(.spin-animation),
-input[type=reset]:hover:not(.spin-animation), #sc-event-ticketing-buy-button:focus:not(.spin-animation),
-#sc-event-ticketing-purchase:focus:not(.spin-animation), .wp-block-button:not(.components-toolbar) .wp-block-button__link:focus:not(.spin-animation),
-.wp-block-button:not(.components-toolbar) wp-block .button:focus:not(.spin-animation):not(.insert-media):not(.acf-button), .global-button:focus:not(.spin-animation), button:focus:not(.spin-animation),
-.button:focus:not(.spin-animation),
-input[type=button]:focus:not(.spin-animation),
-input[type=submit]:focus:not(.spin-animation),
-input[type=reset]:focus:not(.spin-animation) {
+#sc-event-ticketing-buy-button:hover,
+#sc-event-ticketing-purchase:hover, .wp-block-button:not(.components-toolbar) .wp-block-button__link:hover,
+.wp-block-button:not(.components-toolbar) wp-block .button:hover:not(.insert-media):not(.acf-button), .global-button:hover, button:hover,
+.button:hover,
+input[type=button]:hover,
+input[type=submit]:hover,
+input[type=reset]:hover, #sc-event-ticketing-buy-button:focus,
+#sc-event-ticketing-purchase:focus, .wp-block-button:not(.components-toolbar) .wp-block-button__link:focus,
+.wp-block-button:not(.components-toolbar) wp-block .button:focus:not(.insert-media):not(.acf-button), .global-button:focus, button:focus,
+.button:focus,
+input[type=button]:focus,
+input[type=submit]:focus,
+input[type=reset]:focus {
   background-color: var(--wp--custom--button--hover--color--background);
   border-color: var(--wp--custom--button--hover--border--color);
   border-width: var(--wp--custom--button--border--width) !important;
@@ -360,212 +359,140 @@ input[type=reset]:focus {
   font-weight: 300;
 }
 
-.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
-.single-license .content.has_no_sidebar .comments .alignfull,
-.single-license footer .content--page article:not(.archive) .alignfull,
-.single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
-.single-post .content.has_no_sidebar .comments .alignfull,
-.single-post footer .content--page article:not(.archive) .alignfull,
-.single-post footer .comments .alignfull {
+.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .content.has_no_sidebar .comments .alignfull, .single-license footer .content--page article:not(.archive) .alignfull, .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .content.has_no_sidebar .comments .alignfull, .single-post footer .content--page article:not(.archive) .alignfull, .single-post footer .comments .alignfull {
   margin-left: -16px;
   margin-right: -16px;
   max-width: none;
   width: calc(100% + (2 * 16px));
 }
-.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
-.single-license .content.has_no_sidebar .comments .alignfull .content--inner,
-.single-license footer .content--page article:not(.archive) .alignfull .content--inner,
-.single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
-.single-post .content.has_no_sidebar .comments .alignfull .content--inner,
-.single-post footer .content--page article:not(.archive) .alignfull .content--inner,
-.single-post footer .comments .alignfull .content--inner {
+.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-license .content.has_no_sidebar .comments .alignfull .content--inner, .single-license footer .content--page article:not(.archive) .alignfull .content--inner, .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .content.has_no_sidebar .comments .alignfull .content--inner, .single-post footer .content--page article:not(.archive) .alignfull .content--inner, .single-post footer .comments .alignfull .content--inner {
   padding-left: 16px;
   padding-right: 16px;
   margin: 0 auto;
   max-width: 1180px;
 }
 @media only screen and (min-width: 600px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
-  .single-license .content.has_no_sidebar .comments .alignfull,
-  .single-license footer .content--page article:not(.archive) .alignfull,
-  .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
-  .single-post .content.has_no_sidebar .comments .alignfull,
-  .single-post footer .content--page article:not(.archive) .alignfull,
-  .single-post footer .comments .alignfull {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .content.has_no_sidebar .comments .alignfull, .single-license footer .content--page article:not(.archive) .alignfull, .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .content.has_no_sidebar .comments .alignfull, .single-post footer .content--page article:not(.archive) .alignfull, .single-post footer .comments .alignfull {
     margin-left: -2rem;
     margin-right: -2rem;
     width: calc(100% + 4rem);
   }
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
-  .single-license .content.has_no_sidebar .comments .alignfull .content--inner,
-  .single-license footer .content--page article:not(.archive) .alignfull .content--inner,
-  .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
-  .single-post .content.has_no_sidebar .comments .alignfull .content--inner,
-  .single-post footer .content--page article:not(.archive) .alignfull .content--inner,
-  .single-post footer .comments .alignfull .content--inner {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-license .content.has_no_sidebar .comments .alignfull .content--inner, .single-license footer .content--page article:not(.archive) .alignfull .content--inner, .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .content.has_no_sidebar .comments .alignfull .content--inner, .single-post footer .content--page article:not(.archive) .alignfull .content--inner, .single-post footer .comments .alignfull .content--inner {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 @media only screen and (min-width: 782px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
-  .single-license .content.has_no_sidebar .comments .alignfull,
-  .single-license footer .content--page article:not(.archive) .alignfull,
-  .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
-  .single-post .content.has_no_sidebar .comments .alignfull,
-  .single-post footer .content--page article:not(.archive) .alignfull,
-  .single-post footer .comments .alignfull {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .content.has_no_sidebar .comments .alignfull, .single-license footer .content--page article:not(.archive) .alignfull, .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .content.has_no_sidebar .comments .alignfull, .single-post footer .content--page article:not(.archive) .alignfull, .single-post footer .comments .alignfull {
     margin-left: -48px;
     margin-right: -48px;
     width: calc(100% + (2 * 48px));
   }
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
-  .single-license .content.has_no_sidebar .comments .alignfull .content--inner,
-  .single-license footer .content--page article:not(.archive) .alignfull .content--inner,
-  .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner,
-  .single-post .content.has_no_sidebar .comments .alignfull .content--inner,
-  .single-post footer .content--page article:not(.archive) .alignfull .content--inner,
-  .single-post footer .comments .alignfull .content--inner {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-license .content.has_no_sidebar .comments .alignfull .content--inner, .single-license footer .content--page article:not(.archive) .alignfull .content--inner, .single-license footer .comments .alignfull .content--inner, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull .content--inner, .single-post .content.has_no_sidebar .comments .alignfull .content--inner, .single-post footer .content--page article:not(.archive) .alignfull .content--inner, .single-post footer .comments .alignfull .content--inner {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 @media only screen and (min-width: 1016px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
-  .single-license .content.has_no_sidebar .comments .alignfull,
-  .single-license footer .content--page article:not(.archive) .alignfull,
-  .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull,
-  .single-post .content.has_no_sidebar .comments .alignfull,
-  .single-post footer .content--page article:not(.archive) .alignfull,
-  .single-post footer .comments .alignfull {
-    margin-left: calc(-50vw + ( 920px) / 2);
-    margin-right: calc(-50vw + ( 920px) / 2);
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-license .content.has_no_sidebar .comments .alignfull, .single-license footer .content--page article:not(.archive) .alignfull, .single-license footer .comments .alignfull, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignfull, .single-post .content.has_no_sidebar .comments .alignfull, .single-post footer .content--page article:not(.archive) .alignfull, .single-post footer .comments .alignfull {
+    margin-left: calc(-50vw + ( 920px ) / 2);
+    margin-right: calc(-50vw + ( 920px ) / 2);
     width: 100vw;
   }
 }
 
-.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
-.single-license .content.has_no_sidebar .comments .alignwide,
-.single-license footer .content--page article:not(.archive) .alignwide,
-.single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
-.single-post .content.has_no_sidebar .comments .alignwide,
-.single-post footer .content--page article:not(.archive) .alignwide,
-.single-post footer .comments .alignwide {
+.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-license .content.has_no_sidebar .comments .alignwide, .single-license footer .content--page article:not(.archive) .alignwide, .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .content.has_no_sidebar .comments .alignwide, .single-post footer .content--page article:not(.archive) .alignwide, .single-post footer .comments .alignwide {
   margin-left: -16px;
   margin-right: -16px;
   max-width: 920px;
   width: calc(100% + (2 * 16px));
 }
 @media only screen and (min-width: 600px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
-  .single-license .content.has_no_sidebar .comments .alignwide,
-  .single-license footer .content--page article:not(.archive) .alignwide,
-  .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
-  .single-post .content.has_no_sidebar .comments .alignwide,
-  .single-post footer .content--page article:not(.archive) .alignwide,
-  .single-post footer .comments .alignwide {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-license .content.has_no_sidebar .comments .alignwide, .single-license footer .content--page article:not(.archive) .alignwide, .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .content.has_no_sidebar .comments .alignwide, .single-post footer .content--page article:not(.archive) .alignwide, .single-post footer .comments .alignwide {
     margin-left: -2rem;
     margin-right: -2rem;
     width: calc(100% + 4rem);
   }
 }
 @media only screen and (min-width: 782px) {
-  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
-  .single-license .content.has_no_sidebar .comments .alignwide,
-  .single-license footer .content--page article:not(.archive) .alignwide,
-  .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide,
-  .single-post .content.has_no_sidebar .comments .alignwide,
-  .single-post footer .content--page article:not(.archive) .alignwide,
-  .single-post footer .comments .alignwide {
+  .single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-license .content.has_no_sidebar .comments .alignwide, .single-license footer .content--page article:not(.archive) .alignwide, .single-license footer .comments .alignwide, .single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide, .single-post .content.has_no_sidebar .comments .alignwide, .single-post footer .content--page article:not(.archive) .alignwide, .single-post footer .comments .alignwide {
     margin-left: -48px;
     margin-right: -48px;
     width: calc(100% + (2 * 48px));
   }
 }
 
-.post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide,
-footer .alignwide {
+.post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide, footer .alignwide {
   max-width: 1180px;
   width: 100%;
 }
 @media only screen and (min-width: 600px) {
-  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide,
-  footer .alignwide {
+  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide, footer .alignwide {
     margin-left: -16px;
     margin-right: -16px;
-    width: calc(100% + (2 * 16px));
+    width: calc(100% + (2 * 16px ));
   }
 }
 @media only screen and (min-width: 874px) {
-  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide,
-  footer .alignwide {
-    margin-left: calc(-1 * ((100vw - 3 * 48px) - 730px) / 2);
-    margin-right: calc(-1 * ((100vw - 3 * 48px) - 730px) / 2);
+  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide, footer .alignwide {
+    margin-left: calc(-1 * ((100vw - 3 * 48px) - 730px ) / 2);
+    margin-right: calc(-1 * ((100vw - 3 * 48px) - 730px ) / 2);
     width: calc(100vw - 3 * 48px);
   }
 }
 @media only screen and (min-width: 1180px) {
-  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide,
-  footer .alignwide {
-    margin-left: calc(-1 * ( (1180px - (2 * 48px)) - 730px) / 2);
-    margin-right: calc(-1 * ( (1180px - (2 * 48px)) - 730px) / 2);
-    width: calc( 1180px - (2 * 48px));
+  .post-type-archive-sc_event .breadcrumb-area .wrapper, .content.has_no_sidebar .alignwide, footer .alignwide {
+    margin-left: calc(-1 * ( (1180px - (2 * 48px) ) - 730px ) / 2);
+    margin-right: calc(-1 * ( (1180px - (2 * 48px) ) - 730px ) / 2);
+    width: calc( 1180px - (2 * 48px ) );
   }
 }
 
-.content.has_no_sidebar .alignfull,
-footer .alignfull {
+.content.has_no_sidebar .alignfull, footer .alignfull {
   margin-left: -16px;
   margin-right: -16px;
   max-width: 1440px;
   width: calc(100% + (2 * 16px));
 }
-.content.has_no_sidebar .alignfull .content--inner,
-footer .alignfull .content--inner {
+.content.has_no_sidebar .alignfull .content--inner, footer .alignfull .content--inner {
   padding-left: 16px;
   padding-right: 16px;
   margin: 0 auto;
   max-width: 1180px;
 }
 @media only screen and (min-width: 600px) {
-  .content.has_no_sidebar .alignfull,
-  footer .alignfull {
+  .content.has_no_sidebar .alignfull, footer .alignfull {
     margin-left: -2rem;
     margin-right: -2rem;
     width: calc(100% + 4rem);
   }
-  .content.has_no_sidebar .alignfull .content--inner,
-  footer .alignfull .content--inner {
+  .content.has_no_sidebar .alignfull .content--inner, footer .alignfull .content--inner {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 @media only screen and (min-width: 782px) {
-  .content.has_no_sidebar .alignfull,
-  footer .alignfull {
+  .content.has_no_sidebar .alignfull, footer .alignfull {
     margin-left: -3rem;
     margin-right: -3rem;
     width: calc(100% + 6rem);
   }
 }
 @media only screen and (min-width: 826px) {
-  .content.has_no_sidebar .alignfull,
-  footer .alignfull {
-    margin-left: calc(-1 * (100vw - 730px) / 2);
-    margin-right: calc(-1 * (100vw - 730px) / 2);
+  .content.has_no_sidebar .alignfull, footer .alignfull {
+    margin-left: calc(-1 * (100vw - 730px ) / 2);
+    margin-right: calc(-1 * (100vw - 730px ) / 2);
     width: 100vw;
   }
-  .content.has_no_sidebar .alignfull .content--inner,
-  footer .alignfull .content--inner {
+  .content.has_no_sidebar .alignfull .content--inner, footer .alignfull .content--inner {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 @media only screen and (min-width: 1440px) {
-  .content.has_no_sidebar .alignfull,
-  footer .alignfull {
-    margin-left: calc(-1 * (1440px - 730px) / 2);
-    margin-right: calc(-1 * (1440px - 730px) / 2);
+  .content.has_no_sidebar .alignfull, footer .alignfull {
+    margin-left: calc(-1 * (1440px - 730px ) / 2);
+    margin-right: calc(-1 * (1440px - 730px ) / 2);
     width: 1440px;
   }
 }
@@ -1269,62 +1196,37 @@ body > .wrapper:after {
   text-align: inherit;
 }
 
-.page-template-template-no-header-wide .content.has_no_sidebar .content--page article:not(.archive),
-.page-template-template-no-header-wide .content.has_no_sidebar .comments,
-.page-template-template-no-header-wide .content.has_no_sidebar .archive-press-mentions,
-.page-template-template-no-header-wide footer .content--page article:not(.archive),
-.page-template-template-no-header-wide footer .comments,
-.page-template-template-no-header-wide footer .archive-press-mentions {
+.page-template-template-no-header-wide .content.has_no_sidebar .content--page article:not(.archive), .page-template-template-no-header-wide .content.has_no_sidebar .comments, .page-template-template-no-header-wide .content.has_no_sidebar .archive-press-mentions, .page-template-template-no-header-wide footer .content--page article:not(.archive), .page-template-template-no-header-wide footer .comments, .page-template-template-no-header-wide footer .archive-press-mentions {
   max-width: inherit !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-.content.has_no_sidebar .content--page article:not(.archive),
-.content.has_no_sidebar .comments,
-.content.has_no_sidebar .archive-press-mentions,
-footer .content--page article:not(.archive),
-footer .comments,
-footer .archive-press-mentions {
+.content.has_no_sidebar .content--page article:not(.archive), .content.has_no_sidebar .comments, .content.has_no_sidebar .archive-press-mentions, footer .content--page article:not(.archive), footer .comments, footer .archive-press-mentions {
   max-width: 730px !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
-.single-post .content.has_no_sidebar .content--page article:not(.archive),
-.single-post .content.has_no_sidebar .comments,
-.single-post footer .content--page article:not(.archive),
-.single-post footer .comments {
+.single-post .content.has_no_sidebar .content--page article:not(.archive), .single-post .content.has_no_sidebar .comments, .single-post footer .content--page article:not(.archive), .single-post footer .comments {
   max-width: 920px !important;
 }
-.single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block,
-.single-post .content.has_no_sidebar .comments .alignwide.email-block,
-.single-post footer .content--page article:not(.archive) .alignwide.email-block,
-.single-post footer .comments .alignwide.email-block {
+.single-post .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-post .content.has_no_sidebar .comments .alignwide.email-block, .single-post footer .content--page article:not(.archive) .alignwide.email-block, .single-post footer .comments .alignwide.email-block {
   max-width: none !important;
 }
-.single-license .content.has_no_sidebar .content--page article:not(.archive),
-.single-license .content.has_no_sidebar .comments,
-.single-license footer .content--page article:not(.archive),
-.single-license footer .comments {
+.single-license .content.has_no_sidebar .content--page article:not(.archive), .single-license .content.has_no_sidebar .comments, .single-license footer .content--page article:not(.archive), .single-license footer .comments {
   max-width: 1180px !important;
 }
-.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block,
-.single-license .content.has_no_sidebar .comments .alignwide.email-block,
-.single-license footer .content--page article:not(.archive) .alignwide.email-block,
-.single-license footer .comments .alignwide.email-block {
+.single-license .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-license .content.has_no_sidebar .comments .alignwide.email-block, .single-license footer .content--page article:not(.archive) .alignwide.email-block, .single-license footer .comments .alignwide.email-block {
   max-width: none !important;
 }
-.single-license .content.has_no_sidebar .license-comments,
-.single-license footer .license-comments {
+.single-license .content.has_no_sidebar .license-comments, .single-license footer .license-comments {
   background: #f0E68C;
   padding: 2rem;
 }
-.single-license .content.has_no_sidebar .license-comments .wp-block-heading,
-.single-license footer .license-comments .wp-block-heading {
+.single-license .content.has_no_sidebar .license-comments .wp-block-heading, .single-license footer .license-comments .wp-block-heading {
   margin-top: 0;
 }
-.single-license .content.has_no_sidebar .license-comments:not(:has(h2)):not(:has(.wp-block-heading)),
-.single-license footer .license-comments:not(:has(h2)):not(:has(.wp-block-heading)) {
+.single-license .content.has_no_sidebar .license-comments:not(:has(h2)):not(:has(.wp-block-heading)), .single-license footer .license-comments:not(:has(h2)):not(:has(.wp-block-heading)) {
   background: none;
 }
 
@@ -5471,12 +5373,6 @@ p.input-group.input-text.em-input-text.input-field-phone_hp {
   display: block;
 }
 
-footer.ai-footer {
-  margin-top: 0;
-  padding-top: 0;
-  border-top-width: 0;
-}
-
 .member-details span:nth-child(2) {
   border-left: 1px solid var(--wp--preset--color--neutral-darkest);
   margin-left: 10px;
@@ -5484,6 +5380,12 @@ footer.ai-footer {
 }
 .wp-block-cover .member-details span:nth-child(2) {
   border-color: var(--wp--preset--color--neutral-white);
+}
+
+footer.ai-footer {
+  margin-top: 0;
+  padding-top: 0;
+  border-top-width: 0;
 }
 
 .content.ai-full-width .content--page {
