@@ -561,6 +561,12 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
         visibility: hidden;
       }
 
+      // the pointer crosses a wrapped second row on its way to the open panel
+      .header-main.is-nav-open &:not(.is-open):hover > ul.sub-menu {
+        opacity: 0;
+        visibility: hidden;
+      }
+
       // keyboard open is JS-driven (.is-open); :focus-within here would defeat Escape
       &:hover > ul.sub-menu,
       &.is-open > ul.sub-menu {

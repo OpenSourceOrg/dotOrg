@@ -15,6 +15,7 @@ License: GPLv2
 // keep in sync with $break-nav (assets/scss/_1_settings.breakpoints.scss)
 const desktopNav = window.matchMedia( '(min-width: 1200px)' );
 const CLOSE_DELAY = 120;
+const SWITCH_DELAY = 200;
 
 const header = document.querySelector( '.header-main' );
 const megaItems = document.querySelectorAll( '.nav-main--menu > .menu-item.megamenu' );
@@ -30,6 +31,7 @@ if ( header && megaItems.length ) {
 	};
 
 	const dismiss = ( item ) => {
+		release();
 		closeItem( item );
 		item.classList.add( 'is-dismissed' );
 		syncHeader();
@@ -48,9 +50,35 @@ if ( header && megaItems.length ) {
 		syncHeader();
 	};
 
+	let holdTimer = null;
+	let held = null;
+	let lastY = 0;
+
+	const hold = ( action, delay ) => {
+		window.clearTimeout( holdTimer );
+		held = () => hold( action, delay );
+		holdTimer = window.setTimeout( () => {
+			held = null;
+			action();
+		}, delay );
+	};
+
+	const release = () => {
+		window.clearTimeout( holdTimer );
+		held = null;
+	};
+
+	// a wrapped second row sits between a first-row trigger and its panel, so a pointer still
+	// heading down is on its way to the panel and must not switch or close it
+	header.addEventListener( 'mousemove', ( event ) => {
+		if ( held && event.clientY > lastY ) {
+			held();
+		}
+		lastY = event.clientY;
+	} );
+
 	megaItems.forEach( ( item ) => {
 		const trigger = triggerOf( item );
-		let closeTimer = null;
 		let suppressOpen = false;
 
 		if ( trigger ) {
@@ -62,7 +90,7 @@ if ( header && megaItems.length ) {
 				return;
 			}
 			item.classList.remove( 'is-dismissed' );
-			window.clearTimeout( closeTimer );
+			release();
 			megaItems.forEach( ( other ) => {
 				if ( other !== item ) {
 					closeItem( other );
@@ -76,15 +104,20 @@ if ( header && megaItems.length ) {
 		};
 
 		const close = ( immediately ) => {
-			window.clearTimeout( closeTimer );
-			const doClose = () => {
-				closeItem( item );
-				syncHeader();
-			};
 			if ( immediately ) {
-				doClose();
+				release();
+				closeAll();
 			} else {
-				closeTimer = window.setTimeout( doClose, CLOSE_DELAY );
+				hold( closeAll, CLOSE_DELAY );
+			}
+		};
+
+		const openOnHover = () => {
+			const panelOpen = document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' );
+			if ( panelOpen && panelOpen !== item ) {
+				hold( open, SWITCH_DELAY );
+			} else {
+				open();
 			}
 		};
 
@@ -102,14 +135,14 @@ if ( header && megaItems.length ) {
 			} );
 		}
 
-		item.addEventListener( 'mouseenter', open );
+		item.addEventListener( 'mouseenter', openOnHover );
 		item.addEventListener( 'mouseleave', () => {
 			item.classList.remove( 'is-dismissed' );
 			close( false );
 		} );
 		item.addEventListener( 'focusin', open );
 		item.addEventListener( 'focusout', ( event ) => {
-			if ( ! item.contains( event.relatedTarget ) ) {
+			if ( ! item.contains( event.relatedTarget ) && item.classList.contains( 'is-open' ) ) {
 				close( false );
 			}
 		} );
