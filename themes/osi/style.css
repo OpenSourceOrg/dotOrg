@@ -2590,6 +2590,17 @@ html {
     align-items: center;
   }
 }
+@media print {
+  .header-main {
+    position: static;
+  }
+  .header--spacer,
+  .nav-main,
+  .open-button-wrapper,
+  .open-search-wrapper {
+    display: none;
+  }
+}
 .site-header .open-button-wrapper {
   position: absolute;
   right: 16px;
@@ -2828,17 +2839,11 @@ body.option-round .open-button:not(.open-search) {
     margin-right: var(--wp--custom--layout--sidebar-width-mid);
     overflow: visible;
   }
-  .open-the-sidebar .header-main {
-    transform: translateX(-var(--wp--custom--layout--sidebar-width-mid));
-  }
 }
 @media only screen and (max-width: 600px) {
   .open-the-sidebar .wrapper {
     margin-left: -var(--wp--custom--layout--sidebar-width-small);
     margin-right: var(--wp--custom--layout--sidebar-width-small);
-  }
-  .open-the-sidebar .header-main {
-    transform: translateX(-var(--wp--custom--layout--sidebar-width-small));
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -5775,7 +5780,10 @@ footer.ai-footer {
 }
 .page-template-ai-wide .ai-header::after {
   border-top: 10px solid #3Ea638;
-  top: -10px;
+  margin-top: -10px;
+}
+.page-template-ai-wide .ai-header + .header--spacer {
+  height: 135px;
 }
 .page-template-ai-wide .ai-header .site-branding img {
   width: 200px;
@@ -5912,6 +5920,10 @@ footer.ai-footer {
   max-height: 8px;
   margin: 0;
   padding: 0;
+}
+
+html:has(.ai-header) {
+  scroll-padding-top: calc(135px + var(--wp-admin--admin-bar--height, 0px));
 }
 
 /*
