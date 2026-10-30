@@ -2594,7 +2594,10 @@ html {
   .header-main {
     position: static;
   }
-  .header--spacer {
+  .header--spacer,
+  .nav-main,
+  .open-button-wrapper,
+  .open-search-wrapper {
     display: none;
   }
 }
