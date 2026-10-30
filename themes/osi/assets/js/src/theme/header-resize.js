@@ -2,7 +2,7 @@
 Name: Header Resize
 Author: Marktime Media
 Author URI: http://marktimemedia.com
-Version: 0.2
+Version: 0.4
 License: GPLv2
 
  This program is free software; you can redistribute it and/or modify
@@ -18,63 +18,60 @@ License: GPLv2
  http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-(function( $ ){
+const header = document.querySelector( '.header-main' );
 
-	/* Scroll Header */
+const SHRINK_AT = 40; // px scrolled before the header shrinks
+const MOBILE_SHRINK_AT = 120; // px scrolled before it shrinks on the direction-aware path
+const MOBILE_RESTORE_BY = 100; // px scrolled back up before it returns to full height
+const MOBILE_MAX_WIDTH = 784; // the width production switches paths at
 
-	var $lastScrollTop = $(window).scrollTop(); // reset variable any time it reloads
-	var $siteHeader = $('.header-main'); // your header element
-	var $content = $('#content'); // content container
-	var $contentWithHeader = $('body #content:not(.has_no_sidebar)'); // content container
-	var changeDirection = -1; // base comparitive variable
-	var shrinkClass = 'header-main-small'; // your small header class
-	var paddingTop = $siteHeader.innerHeight();
-	var paddingTopPlus = ( $siteHeader.innerHeight() + 50 );
+if ( header ) {
+	const narrow = window.matchMedia( `(max-width: ${ MOBILE_MAX_WIDTH }px)` );
 
-	// $content.css('padding-top', paddingTop);
-	// $contentWithHeader.css('padding-top', paddingTopPlus);
+	let ticking = false;
+	let lastY = Math.max( 0, window.scrollY );
+	let turningPoint = -1; // top of the current upward scroll, -1 while scrolling down
 
-	$(window).on('scroll', (function(event) {
-		var $scrollPosition = $(this).scrollTop();
+	const setSmall = ( small ) => header.classList.toggle( 'header-main-small', small );
 
-		if($(window).width() > 784 ) { // we're mobile first so this is anything larger than our mobile breakpoint
+	const update = () => {
+		ticking = false;
+		const y = Math.max( 0, window.scrollY ); // rubber-band overscroll reports negative
 
-			if ($scrollPosition > 100) { // once you get far enough down, shrink the header
+		if ( narrow.matches ) {
+			// narrow screens follow the scroll direction, so the full header comes back part-way
+			// down the page rather than only at the top (@see T51ENG-2081)
+			if ( y > MOBILE_SHRINK_AT && y > lastY ) {
+				turningPoint = -1;
+				setSmall( true );
+			} else {
+				if ( -1 === turningPoint ) {
+					// the peak, not where this frame landed: one frame can swallow a whole flick
+					turningPoint = Math.max( lastY, y );
+				}
 
-		        $siteHeader.addClass(shrinkClass);
-
-		    } else { // bring it back up again when we get back to the top
-
-		    	$siteHeader.removeClass(shrinkClass);
-		    }
-
-		} else { // this is mobile breakpoint or smaller
-
-			if ($scrollPosition > 120 && $scrollPosition > $lastScrollTop) { // once you get far enough down, hide the header
-
-		    	changeDirection = -1; // reset changeDirection
-		        $siteHeader.addClass(shrinkClass);
-
-		    } else { // bring it back up again if we scroll up at all
-
-		    	if ( -1 == changeDirection) {
-		    		changeDirection = $scrollPosition; // only set changeDirection once
-		    	}
-
-		    	// console.log(changeDirection + ' ' + scrollPosition);
-
-		    	if ( $scrollPosition < (changeDirection - 100) ) { // only add after you've scrolled up a bit
-
-			    	$siteHeader.removeClass(shrinkClass);
-			    	changeDirection = -1; // reset changeDirection
-			    }
-
-		    }
-
-		    $lastScrollTop = $scrollPosition;
+				if ( y <= MOBILE_SHRINK_AT || y < turningPoint - MOBILE_RESTORE_BY ) {
+					turningPoint = -1;
+					setSmall( false );
+				}
+			}
+		} else {
+			turningPoint = -1; // or a peak latched while narrow outlives a rotation
+			setSmall( y > SHRINK_AT );
 		}
 
-	}));
+		lastY = y;
+	};
 
+	window.addEventListener( 'scroll', () => {
+		if ( ! ticking ) {
+			ticking = true;
+			window.requestAnimationFrame( update );
+		}
+	}, { passive: true } );
 
-})( jQuery );
+	// the two paths disagree, so crossing the width mid-page has to re-decide
+	narrow.addEventListener( 'change', update );
+
+	update(); // reloads restore scroll position before this runs
+}
