@@ -554,8 +554,6 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
         transition: none;
       }
 
-      // JS cannot clear a CSS hover state: Escape sets .is-dismissed, and a pointer crossing
-      // a wrapped second row on its way to the open panel hovers an item that isn't open
       &.is-dismissed:hover > ul.sub-menu,
       .header-main.is-nav-open &:not(.is-open):hover > ul.sub-menu {
         opacity: 0;

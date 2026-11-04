@@ -34,7 +34,6 @@ if ( header && megaItems.length ) {
 		release();
 		closeItem( item );
 		item.classList.add( 'is-dismissed' );
-		// a pending switch dies with the dismiss, so the hovered item would show its panel by :hover alone
 		document.querySelector( `${ MEGA_ITEM }:hover` )?.classList.add( 'is-dismissed' );
 		syncHeader();
 	};
@@ -79,9 +78,6 @@ if ( header && megaItems.length ) {
 		held = null;
 	};
 
-	// a wrapped second row sits between a first-row trigger and its panel, so a pointer still
-	// heading down is on its way to the panel and must not switch or close it
-	// a tap that changes nothing visible follows the link on iOS, so only a mouse waits to switch
 	header.addEventListener( 'pointerover', ( event ) => {
 		pointerType = event.pointerType;
 	} );
@@ -149,7 +145,6 @@ if ( header && megaItems.length ) {
 			hold( closeAll, CLOSE_DELAY );
 		} );
 		item.addEventListener( 'focusin', open );
-		// one hold slot serves close and switch, so a blur must not overwrite a pending hover switch
 		item.addEventListener( 'focusout', ( event ) => {
 			if ( ! item.contains( event.relatedTarget ) && item.classList.contains( 'is-open' ) && ! held ) {
 				hold( closeAll, CLOSE_DELAY );
