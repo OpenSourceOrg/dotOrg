@@ -771,7 +771,7 @@
   padding: 0;
   padding-top: 65px;
 }
-@media only screen and (max-width: 1199.94px) {
+@media only screen and (max-width: 1200px) {
   .editor-styles-wrapper .content {
     padding-top: 0;
   }

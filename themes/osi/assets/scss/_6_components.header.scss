@@ -30,7 +30,7 @@ html {
         display: flex;
         align-items: center;
         transition: height .3s;
-        @media only screen and (max-width: #{$break-nav-max}) {
+        @media only screen and (max-width: #{$break-nav - 0.06}) {
             background: #fff;
             padding: 16px;
         }
