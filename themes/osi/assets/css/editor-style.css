@@ -901,14 +901,8 @@
 .single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive), .single-post .editor-styles-wrapper .content.has_no_sidebar .comments, .single-post .editor-styles-wrapper footer .content--page article:not(.archive), .single-post .editor-styles-wrapper footer .comments {
   max-width: 920px !important;
 }
-.single-post .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-post .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide.email-block, .single-post .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide.email-block, .single-post .editor-styles-wrapper footer .comments .alignwide.email-block {
-  max-width: none !important;
-}
 .single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive), .single-license .editor-styles-wrapper .content.has_no_sidebar .comments, .single-license .editor-styles-wrapper footer .content--page article:not(.archive), .single-license .editor-styles-wrapper footer .comments {
   max-width: 1180px !important;
-}
-.single-license .editor-styles-wrapper .content.has_no_sidebar .content--page article:not(.archive) .alignwide.email-block, .single-license .editor-styles-wrapper .content.has_no_sidebar .comments .alignwide.email-block, .single-license .editor-styles-wrapper footer .content--page article:not(.archive) .alignwide.email-block, .single-license .editor-styles-wrapper footer .comments .alignwide.email-block {
-  max-width: none !important;
 }
 .single-license .editor-styles-wrapper .content.has_no_sidebar .license-comments, .single-license .editor-styles-wrapper footer .license-comments {
   background: #f0E68C;
@@ -3009,6 +3003,12 @@
 .editor-styles-wrapper .page-template-ai-wide .footer-credits {
   background-image: none;
   background-color: #1B1B1B;
+}
+.editor-styles-wrapper .ai-footer .footer-newsletter {
+  color: var(--wp--preset--color--neutral-white);
+}
+.editor-styles-wrapper .ai-footer .footer-newsletter h2, .editor-styles-wrapper .ai-footer .footer-newsletter a {
+  color: inherit;
 }
 .editor-styles-wrapper .page-template-ai-wide .wrapper {
   background-color: rgb(246, 247, 249);

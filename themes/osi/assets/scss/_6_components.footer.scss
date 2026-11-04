@@ -51,6 +51,10 @@
 		}
 	}
 
+	.footer-newsletter {
+		padding-top: 4em;
+	}
+
 	.footer--inner {
 			@include clearfix();
 			padding: 0 $midPadding;
