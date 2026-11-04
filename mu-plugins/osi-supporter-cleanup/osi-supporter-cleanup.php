@@ -32,6 +32,9 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 	 * [--trashed]
 	 * : Target matching supporter posts already in the trash. Use with --force to purge them.
 	 *
+	 * [--newest-first]
+	 * : Work from the highest ID down, e.g. to remove a test submission with --limit=1.
+	 *
 	 * [--batch-size=<number>]
 	 * : Posts per batch.
 	 * ---
@@ -59,6 +62,7 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 	 *     wp osi-supporter-cleanup --limit=10 --dry-run=false
 	 *     wp osi-supporter-cleanup --dry-run=false --yes | tee supporter-cleanup.log
 	 *     wp osi-supporter-cleanup --trashed --force --dry-run=false
+	 *     wp osi-supporter-cleanup --newest-first --limit=1 --dry-run=false
 	 *
 	 * @param array $args       Positional arguments.
 	 * @param array $assoc_args Associative arguments.
@@ -69,6 +73,7 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 		$dry_run    = ! in_array( strtolower( (string) $assoc_args['dry-run'] ), array( 'false', '0', 'no', '' ), true );
 		$force      = ! empty( $assoc_args['force'] );
 		$status     = empty( $assoc_args['trashed'] ) ? 'pending' : 'trash';
+		$desc       = ! empty( $assoc_args['newest-first'] );
 		$batch_size = max( 1, absint( $assoc_args['batch-size'] ) );
 		$limit      = absint( $assoc_args['limit'] );
 		$sleep      = absint( $assoc_args['sleep'] );
@@ -84,10 +89,10 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 		$limit     = $limit ? $limit : PHP_INT_MAX;
 		$processed = 0;
 		$failed    = 0;
-		$last_id   = 0;
+		$last_id   = $desc ? PHP_INT_MAX : 0;
 
-		while ( $processed < $limit ) {
-			$ids = $this->get_candidates( $status, $last_id, min( $batch_size, $limit - $processed ) );
+		while ( $processed + $failed < $limit ) {
+			$ids = $this->get_candidates( $status, $last_id, min( $batch_size, $limit - $processed - $failed ), $desc );
 			if ( empty( $ids ) ) {
 				break;
 			}
@@ -127,28 +132,47 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 	 * The endorsement form always sends a type, so a submission without one came from another form.
 	 *
 	 * @param string  $status  Post status to search.
-	 * @param integer $last_id Fetch IDs above this one.
+	 * @param integer $last_id Fetch IDs past this one.
 	 * @param integer $size    Batch size.
+	 * @param boolean $desc    Highest IDs first.
 	 *
 	 * @return int[]
 	 */
-	private function get_candidates( string $status, int $last_id, int $size ): array {
+	private function get_candidates( string $status, int $last_id, int $size, bool $desc ): array {
 		global $wpdb;
 
-		$ids = $wpdb->get_col(
-			$wpdb->prepare(
-				"SELECT p.ID FROM {$wpdb->posts} p
-				WHERE p.post_type = 'supporter' AND p.post_status = %s AND p.post_author = 0 AND p.ID > %d
-				AND NOT EXISTS (
-					SELECT 1 FROM {$wpdb->postmeta} m WHERE m.post_id = p.ID
-					AND m.meta_key IN ( 'endorsement_type', 'link', '_thumbnail_id', '_edit_last' ) AND TRIM( m.meta_value ) NOT IN ( '', '0' )
+		// Two literal queries, because ORDER BY can't take a placeholder.
+		if ( $desc ) {
+			$ids = $wpdb->get_col(
+				$wpdb->prepare(
+					"SELECT p.ID FROM {$wpdb->posts} p
+					WHERE p.post_type = 'supporter' AND p.post_status = %s AND p.post_author = 0 AND p.ID < %d
+					AND NOT EXISTS (
+						SELECT 1 FROM {$wpdb->postmeta} m WHERE m.post_id = p.ID
+						AND m.meta_key IN ( 'endorsement_type', 'link', '_thumbnail_id', '_edit_last' ) AND TRIM( m.meta_value ) NOT IN ( '', '0' )
+					)
+					ORDER BY p.ID DESC LIMIT %d",
+					$status,
+					$last_id,
+					$size
 				)
-				ORDER BY p.ID ASC LIMIT %d",
-				$status,
-				$last_id,
-				$size
-			)
-		);
+			);
+		} else {
+			$ids = $wpdb->get_col(
+				$wpdb->prepare(
+					"SELECT p.ID FROM {$wpdb->posts} p
+					WHERE p.post_type = 'supporter' AND p.post_status = %s AND p.post_author = 0 AND p.ID > %d
+					AND NOT EXISTS (
+						SELECT 1 FROM {$wpdb->postmeta} m WHERE m.post_id = p.ID
+						AND m.meta_key IN ( 'endorsement_type', 'link', '_thumbnail_id', '_edit_last' ) AND TRIM( m.meta_value ) NOT IN ( '', '0' )
+					)
+					ORDER BY p.ID ASC LIMIT %d",
+					$status,
+					$last_id,
+					$size
+				)
+			);
+		}
 
 		if ( $wpdb->last_error ) {
 			WP_CLI::error( $wpdb->last_error );
