@@ -496,11 +496,23 @@ function osi_save_supporter_form_data_to_cpt( array $form_data ): void {
 
 	if ( $post_id ) {
 		update_field( 'name', $form_data['your-name'], $post_id );
-		update_field( 'organization', $form_data['your-org'], $post_id );
-		update_field( 'endorsement_type', $form_data['your-endorsement'], $post_id );
-		update_field( 'quote', $form_data['your-message'], $post_id );
+		update_field( 'organization', $form_data['your-org'] ?? '', $post_id );
+		update_field( 'endorsement_type', osi_single_endorsement_type( $form_data['your-endorsement'] ?? '' ), $post_id );
+		update_field( 'quote', $form_data['your-message'] ?? '', $post_id );
 	}
 }
+
+/**
+ * CF7 posts a radio as a one-item array; the Endorsement type field is a radio, so keep the single value.
+ *
+ * @param mixed $value Stored or submitted endorsement type.
+ *
+ * @return mixed
+ */
+function osi_single_endorsement_type( mixed $value ): mixed {
+	return is_array( $value ) ? (string) reset( $value ) : $value;
+}
+add_filter( 'acf/load_value/name=endorsement_type', 'osi_single_endorsement_type' );
 
 /**
  * Handle the supporter form spam status change.
