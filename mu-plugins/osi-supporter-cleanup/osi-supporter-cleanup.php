@@ -1,6 +1,6 @@
 <?php
 /**
- * WP-CLI command to remove the empty supporter posts other forms created.
+ * WP-CLI command to remove the supporter posts other forms created.
  *
  * @see https://linear.app/a8c/issue/T51ENG-2307
  * @package osi
@@ -16,7 +16,7 @@ if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
 class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 
 	/**
-	 * Trashes, or deletes, pending supporter posts with no title, name, organization, link or logo, in batches.
+	 * Trashes, or deletes, anonymous, never-edited supporter posts with no endorsement type, link or logo, in batches.
 	 *
 	 * ## OPTIONS
 	 *
@@ -30,7 +30,7 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 	 * : Delete permanently instead of moving to the trash.
 	 *
 	 * [--trashed]
-	 * : Target empty supporter posts already in the trash. Use with --force to purge them.
+	 * : Target matching supporter posts already in the trash. Use with --force to purge them.
 	 *
 	 * [--batch-size=<number>]
 	 * : Posts per batch.
@@ -77,7 +77,7 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 		$this->log( sprintf( '%s %s posts.', $dry_run ? 'DRY RUN on' : ( $force ? 'DELETING' : 'TRASHING' ), $status ) );
 
 		if ( ! $dry_run ) {
-			WP_CLI::confirm( sprintf( '%s empty supporter posts%s?', $force ? 'Permanently delete' : 'Trash', $limit ? " (limit {$limit})" : '' ), $assoc_args );
+			WP_CLI::confirm( sprintf( '%s supporter posts from other forms%s?', $force ? 'Permanently delete' : 'Trash', $limit ? " (limit {$limit})" : '' ), $assoc_args );
 			wp_defer_term_counting( true );
 		}
 
@@ -119,12 +119,12 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 		if ( $failed ) {
 			$this->log( sprintf( 'Failed: %d', $failed ) );
 		}
-		WP_CLI::success( sprintf( '%d empty supporter posts %s.', $processed, $verb ) );
+		WP_CLI::success( sprintf( '%d supporter posts from other forms %s.', $processed, $verb ) );
 	}
 
 	/**
-	 * Fetch the next batch of supporter IDs with no title and no name, organization, link or logo.
-	 * The broken form handler only ever created pending posts, and gave none of them those fields.
+	 * Fetch the next batch of anonymous, never-edited supporter IDs with no endorsement type, link or logo.
+	 * The endorsement form always sends a type, so a submission without one came from another form.
 	 *
 	 * @param string  $status  Post status to search.
 	 * @param integer $last_id Fetch IDs above this one.
@@ -138,10 +138,10 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 		$ids = $wpdb->get_col(
 			$wpdb->prepare(
 				"SELECT p.ID FROM {$wpdb->posts} p
-				WHERE p.post_type = 'supporter' AND p.post_status = %s AND p.post_title = '' AND p.ID > %d
+				WHERE p.post_type = 'supporter' AND p.post_status = %s AND p.post_author = 0 AND p.ID > %d
 				AND NOT EXISTS (
 					SELECT 1 FROM {$wpdb->postmeta} m WHERE m.post_id = p.ID
-					AND m.meta_key IN ( 'name', 'organization', 'link', '_thumbnail_id' ) AND TRIM( m.meta_value ) NOT IN ( '', '0' )
+					AND m.meta_key IN ( 'endorsement_type', 'link', '_thumbnail_id', '_edit_last' ) AND TRIM( m.meta_value ) NOT IN ( '', '0' )
 				)
 				ORDER BY p.ID ASC LIMIT %d",
 				$status,
