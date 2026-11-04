@@ -442,13 +442,23 @@ function osi_wpdc_comment_body( string $comment_body ) {
 add_filter( 'wpdc_comment_body', 'osi_wpdc_comment_body', 10, 1 );
 
 /**
+ * Title of the form that collects endorsements, and of the Flamingo channel it feeds.
+ * Keyed on the title because form IDs differ between environments.
+ */
+const OSI_ENDORSEMENT_FORM_TITLE = 'OSAID Endorsement';
+
+/**
  * Process the supporter form submission.
  *
  * @param WPCF7_ContactForm $contact_form The Contact Form 7 instance.
  *
  * @return void
  */
-function osi_handle_support_form_submission( WPCF7_ContactForm $contact_form ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
+function osi_handle_support_form_submission( WPCF7_ContactForm $contact_form ): void {
+	if ( OSI_ENDORSEMENT_FORM_TITLE !== $contact_form->title() ) {
+		return;
+	}
+
 	$submission = WPCF7_Submission::get_instance();
 
 	if ( $submission ) {
@@ -467,6 +477,10 @@ add_action( 'wpcf7_before_send_mail', 'osi_handle_support_form_submission' );
  * @return void
  */
 function osi_save_supporter_form_data_to_cpt( array $form_data ): void {
+	if ( '' === trim( (string) ( $form_data['your-name'] ?? '' ) ) ) {
+		return;
+	}
+
 	$post_id = wp_insert_post(
 		array(
 			'post_title'  => $form_data['your-name'],
@@ -505,7 +519,7 @@ function osi_handle_supporter_form_flamingo_spam_status_change( string $new_stat
 	if ( 'flamingo-spam' === $old_status && 'publish' === $new_status ) {
 		$term_obj_list = get_the_terms( $post->ID, 'flamingo_inbound_channel' );
 
-		if ( empty( $term_obj_list ) || is_wp_error( $term_obj_list ) || 'OSAID Endorsement' !== $term_obj_list[0]->name ) {
+		if ( empty( $term_obj_list ) || is_wp_error( $term_obj_list ) || OSI_ENDORSEMENT_FORM_TITLE !== $term_obj_list[0]->name ) {
 			return;
 		}
 
@@ -516,9 +530,7 @@ function osi_handle_supporter_form_flamingo_spam_status_change( string $new_stat
 			'your-message'     => get_post_meta( $post->ID, '_field_your-message', true ),
 		);
 
-		if ( ! empty( $form_data['your-name'] ) ) {
-			osi_save_supporter_form_data_to_cpt( $form_data );
-		}
+		osi_save_supporter_form_data_to_cpt( $form_data );
 	}
 }
 add_action( 'transition_post_status', 'osi_handle_supporter_form_flamingo_spam_status_change', 10, 3 );
