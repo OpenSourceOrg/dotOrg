@@ -9,8 +9,6 @@ $newsletter_pattern = get_page_by_path( 'newsletter-subscribe', OBJECT, 'coblock
 
 if ( $newsletter_pattern && 'publish' === $newsletter_pattern->post_status ) : ?>
 	<section class="footer-newsletter">
-		<div class="footer--inner">
-			<?php echo do_shortcode( do_blocks( $newsletter_pattern->post_content ) ); ?>
-		</div>
+		<?php echo do_shortcode( do_blocks( $newsletter_pattern->post_content ) ); ?>
 	</section>
 <?php endif; ?>
