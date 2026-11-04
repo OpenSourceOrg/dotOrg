@@ -47,6 +47,34 @@
             "append": ""
         },
         {
+            "key": "field_672accd44e671",
+            "label": "Endorsement type",
+            "name": "endorsement_type",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "From the endorsement form. A supporter without one did not come from that form.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "relevanssi_exclude": 0,
+            "choices": {
+                "Individual": "Individual",
+                "Institutional": "Institutional",
+                "Both": "Both"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 1,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        },
+        {
             "key": "field_672ad07b77def",
             "label": "Link",
             "name": "link",
@@ -130,5 +158,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733133647
+    "modified": 1793810000
 }
