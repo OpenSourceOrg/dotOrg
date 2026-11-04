@@ -158,7 +158,7 @@ footer {
 	
 }
 
-@media only screen and (max-width: #{$break-nav - 0.06}) {
+@media only screen and (max-width: #{$break-nav-max}) {
 	.nav-main {
 		margin-top: $quicklinksTop; // quicklinks header height
 		max-height: 0;

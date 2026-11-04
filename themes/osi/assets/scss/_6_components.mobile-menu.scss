@@ -170,7 +170,7 @@
       }
   }
 
-@media only screen and (max-width: #{$break-nav - 0.06}) {
+@media only screen and (max-width: #{$break-nav-max}) {
     // stays outside .open-the-menu: the panel keeps painting for .3s after that
     // class is dropped, and would cover the logo for those frames without this
     // stack while open: overlay (2) < white bar (3) < logo and buttons (4)

@@ -42,7 +42,7 @@ body>.wrapper {
     padding: 0;
     // padding: 0 $smallPadding; // for a boxed width background with sidebar only
     padding-top: $paddingTopMobile; // for fixed-position header, adjust to match header size
-    @media only screen and ( max-width: #{$break-nav - 0.06}) {
+    @media only screen and ( max-width: #{$break-nav-max}) {
         padding-top: 0;
     }
     &.inner-padding {

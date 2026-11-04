@@ -95,7 +95,7 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
   }
 }
 
-@media only screen and (max-width: #{$break-nav - 0.06}) {
+@media only screen and (max-width: #{$break-nav-max}) {
   .megamenu-header {
     .megamenu-eyebrow {
       display: none; // the accordion row already shows the item label
@@ -554,14 +554,9 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
         transition: none;
       }
 
-      // Escape sets .is-dismissed: without this the pointer still satisfies :hover below
-      // and the panel stays up, since JS cannot clear a CSS hover state
-      &.is-dismissed:hover > ul.sub-menu {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      // the pointer crosses a wrapped second row on its way to the open panel
+      // JS cannot clear a CSS hover state: Escape sets .is-dismissed, and a pointer crossing
+      // a wrapped second row on its way to the open panel hovers an item that isn't open
+      &.is-dismissed:hover > ul.sub-menu,
       .header-main.is-nav-open &:not(.is-open):hover > ul.sub-menu {
         opacity: 0;
         visibility: hidden;

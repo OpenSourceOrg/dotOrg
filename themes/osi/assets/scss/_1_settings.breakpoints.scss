@@ -34,6 +34,7 @@
 
 // Breakpoints defined by WordPress unless overwritten here
 $break-nav: 1200px;
+$break-nav-max: $break-nav - 0.06; // just below $break-nav, so min-width and max-width rules never both match
 
 /* values need to be declared explicitly in order to be used in media queries, which do not support variables */
 // boxed max-width

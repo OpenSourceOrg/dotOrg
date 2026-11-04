@@ -7,7 +7,7 @@ License: GPLv2
  Desktop behavior for .menu-item.megamenu items: keeps aria-expanded in sync,
  enforces one open panel at a time, closes on Escape or press outside, and
  mirrors the open state onto the header (`is-nav-open`) as the no-:has()
- fallback for the CSS opaque-header rule, with a close-delay grace period.
+ fallback for the CSS opaque-header rule, with close and switch grace periods.
  Placeholder (href="#") triggers also toggle on click because taps don't
  reliably fire mouseenter/focusin at desktop widths (iPadOS).
 */
@@ -15,26 +15,27 @@ License: GPLv2
 // keep in sync with $break-nav (assets/scss/_1_settings.breakpoints.scss)
 const desktopNav = window.matchMedia( '(min-width: 1200px)' );
 const CLOSE_DELAY = 120;
-const SWITCH_DELAY = 200;
+const SWITCH_DELAY = 150;
 const HOLD_LIMIT = 600;
 
 const header = document.querySelector( '.header-main' );
-const megaItems = document.querySelectorAll( '.nav-main--menu > .menu-item.megamenu' );
+const MEGA_ITEM = '.nav-main--menu > .menu-item.megamenu';
+const megaItems = document.querySelectorAll( MEGA_ITEM );
 
 if ( header && megaItems.length ) {
 	const triggerOf = ( item ) => item.querySelector( ':scope > a' );
+	const findOpen = () => document.querySelector( `${ MEGA_ITEM }.is-open` );
 
 	const syncHeader = () => {
-		header.classList.toggle(
-			'is-nav-open',
-			Boolean( document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' ) )
-		);
+		header.classList.toggle( 'is-nav-open', Boolean( findOpen() ) );
 	};
 
 	const dismiss = ( item ) => {
 		release();
 		closeItem( item );
 		item.classList.add( 'is-dismissed' );
+		// a pending switch dies with the dismiss, so the hovered item would show its panel by :hover alone
+		document.querySelector( `${ MEGA_ITEM }:hover` )?.classList.add( 'is-dismissed' );
 		syncHeader();
 	};
 
@@ -54,6 +55,7 @@ if ( header && megaItems.length ) {
 	let holdTimer = null;
 	let held = null;
 	let lastY = 0;
+	let pointerType = 'mouse';
 
 	const hold = ( action, delay ) => {
 		const start = Date.now();
@@ -79,6 +81,11 @@ if ( header && megaItems.length ) {
 
 	// a wrapped second row sits between a first-row trigger and its panel, so a pointer still
 	// heading down is on its way to the panel and must not switch or close it
+	// a tap that changes nothing visible follows the link on iOS, so only a mouse waits to switch
+	header.addEventListener( 'pointerover', ( event ) => {
+		pointerType = event.pointerType;
+	} );
+
 	header.addEventListener( 'mousemove', ( event ) => {
 		if ( held && event.clientY > lastY ) {
 			held();
@@ -112,18 +119,9 @@ if ( header && megaItems.length ) {
 			syncHeader();
 		};
 
-		const close = ( immediately ) => {
-			if ( immediately ) {
-				release();
-				closeAll();
-			} else {
-				hold( closeAll, CLOSE_DELAY );
-			}
-		};
-
 		const openOnHover = () => {
-			const panelOpen = document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' );
-			if ( panelOpen && panelOpen !== item && item.offsetTop > panelOpen.offsetTop ) {
+			const panelOpen = findOpen();
+			if ( 'mouse' === pointerType && panelOpen && panelOpen !== item && item.offsetTop > panelOpen.offsetTop ) {
 				hold( open, SWITCH_DELAY );
 			} else {
 				open();
@@ -137,7 +135,8 @@ if ( header && megaItems.length ) {
 				}
 				event.preventDefault();
 				if ( item.classList.contains( 'is-open' ) ) {
-					close( true );
+					release();
+					closeAll();
 				} else {
 					open();
 				}
@@ -147,12 +146,13 @@ if ( header && megaItems.length ) {
 		item.addEventListener( 'mouseenter', openOnHover );
 		item.addEventListener( 'mouseleave', () => {
 			item.classList.remove( 'is-dismissed' );
-			close( false );
+			hold( closeAll, CLOSE_DELAY );
 		} );
 		item.addEventListener( 'focusin', open );
+		// one hold slot serves close and switch, so a blur must not overwrite a pending hover switch
 		item.addEventListener( 'focusout', ( event ) => {
 			if ( ! item.contains( event.relatedTarget ) && item.classList.contains( 'is-open' ) && ! held ) {
-				close( false );
+				hold( closeAll, CLOSE_DELAY );
 			}
 		} );
 		// returning focus to the trigger fires focusin, which would reopen the panel
@@ -170,8 +170,8 @@ if ( header && megaItems.length ) {
 
 	document.addEventListener( 'pointerdown', ( event ) => {
 		if (
-			! event.target.closest( '.nav-main--menu > .menu-item.megamenu' ) &&
-			document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' )
+			! event.target.closest( MEGA_ITEM ) &&
+			findOpen()
 		) {
 			closeAll();
 		}
@@ -182,11 +182,9 @@ if ( header && megaItems.length ) {
 		if ( 'Escape' !== event.key ) {
 			return;
 		}
-		const openItem = document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' );
+		const openItem = findOpen();
 		if ( openItem ) {
 			dismiss( openItem );
-			// a pending switch dies with the dismiss, so the hovered item would show its panel by :hover alone
-			document.querySelector( '.nav-main--menu > .menu-item.megamenu:hover' )?.classList.add( 'is-dismissed' );
 		}
 	} );
 
