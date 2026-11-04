@@ -95,7 +95,7 @@ $chevronDown: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/sv
   }
 }
 
-@media only screen and (max-width: #{$break-nav - 1}) {
+@media only screen and (max-width: #{$break-nav - 0.06}) {
   .megamenu-header {
     .megamenu-eyebrow {
       display: none; // the accordion row already shows the item label

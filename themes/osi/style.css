@@ -1941,7 +1941,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   text-decoration: underline;
 }
 
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 1199.94px) {
   .megamenu-header .megamenu-eyebrow {
     display: none;
   }

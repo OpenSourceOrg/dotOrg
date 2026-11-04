@@ -16,6 +16,7 @@ License: GPLv2
 const desktopNav = window.matchMedia( '(min-width: 1200px)' );
 const CLOSE_DELAY = 120;
 const SWITCH_DELAY = 200;
+const HOLD_LIMIT = 600;
 
 const header = document.querySelector( '.header-main' );
 const megaItems = document.querySelectorAll( '.nav-main--menu > .menu-item.megamenu' );
@@ -55,12 +56,20 @@ if ( header && megaItems.length ) {
 	let lastY = 0;
 
 	const hold = ( action, delay ) => {
-		window.clearTimeout( holdTimer );
-		held = () => hold( action, delay );
-		holdTimer = window.setTimeout( () => {
-			held = null;
-			action();
-		}, delay );
+		const start = Date.now();
+		const arm = () => {
+			window.clearTimeout( holdTimer );
+			holdTimer = window.setTimeout( () => {
+				held = null;
+				action();
+			}, delay );
+		};
+		held = () => {
+			if ( Date.now() - start < HOLD_LIMIT ) {
+				arm();
+			}
+		};
+		arm();
 	};
 
 	const release = () => {
@@ -114,7 +123,7 @@ if ( header && megaItems.length ) {
 
 		const openOnHover = () => {
 			const panelOpen = document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' );
-			if ( panelOpen && panelOpen !== item ) {
+			if ( panelOpen && panelOpen !== item && item.offsetTop > panelOpen.offsetTop ) {
 				hold( open, SWITCH_DELAY );
 			} else {
 				open();
@@ -142,7 +151,7 @@ if ( header && megaItems.length ) {
 		} );
 		item.addEventListener( 'focusin', open );
 		item.addEventListener( 'focusout', ( event ) => {
-			if ( ! item.contains( event.relatedTarget ) && item.classList.contains( 'is-open' ) ) {
+			if ( ! item.contains( event.relatedTarget ) && item.classList.contains( 'is-open' ) && ! held ) {
 				close( false );
 			}
 		} );
@@ -176,6 +185,8 @@ if ( header && megaItems.length ) {
 		const openItem = document.querySelector( '.nav-main--menu > .menu-item.megamenu.is-open' );
 		if ( openItem ) {
 			dismiss( openItem );
+			// a pending switch dies with the dismiss, so the hovered item would show its panel by :hover alone
+			document.querySelector( '.nav-main--menu > .menu-item.megamenu:hover' )?.classList.add( 'is-dismissed' );
 		}
 	} );
 
