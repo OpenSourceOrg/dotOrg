@@ -2781,7 +2781,7 @@ body.option-round .open-button:not(.open-search) {
 }
 
 .footer-main, .footer-credits {
-  padding: 16px 0;
+  padding: 0 0 16px;
 }
 
 .footer-credits {
