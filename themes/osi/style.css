@@ -2286,7 +2286,7 @@ footer .widget_nav_menu .menu a:hover, footer .widget_nav_menu .menu a:focus {
   .header-main:has(.menu-item.megamenu:hover:not(.is-dismissed)) .nav-main--menu .menu-item.megamenu > ul.sub-menu {
     transition: none;
   }
-  .nav-main--menu .menu-item.megamenu.is-dismissed:hover > ul.sub-menu {
+  .nav-main--menu .menu-item.megamenu.is-dismissed:hover > ul.sub-menu, .header-main.is-nav-open .nav-main--menu .menu-item.megamenu:not(.is-open):hover > ul.sub-menu {
     opacity: 0;
     visibility: hidden;
   }
