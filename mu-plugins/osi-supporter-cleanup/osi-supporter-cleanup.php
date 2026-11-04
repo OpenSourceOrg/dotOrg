@@ -141,7 +141,6 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 	private function get_candidates( string $status, int $last_id, int $size, bool $desc ): array {
 		global $wpdb;
 
-		// Two literal queries, because ORDER BY can't take a placeholder.
 		if ( $desc ) {
 			$ids = $wpdb->get_col(
 				$wpdb->prepare(
