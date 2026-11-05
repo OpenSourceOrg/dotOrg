@@ -8,9 +8,6 @@
  */
 
 $footerclass = is_active_sidebar( 'sidebar-footer' ) ? 'widgetized-footer footer--widgets' : 'standard-footer';
-if ( is_blog() ) :
-	get_template_part( 'template-parts/email-block' );
-endif;
 ?>
 
 		<footer id="colophon" class="footer site-footer" role="contentinfo">
@@ -23,6 +20,7 @@ endif;
 					</section>
 				</div>
 			<?php endif; ?>
+			<?php get_template_part( 'template-parts/footer-newsletter' ); ?>
 			<section class="footer-main">
 				<div class="footer--inner">
 					<div class="<?php echo esc_attr( $footerclass ); ?> wp-block-columns alignwide">
