@@ -487,6 +487,14 @@ footer.ai-footer {
     background-color: #1B1B1B;
 }
 
+.ai-footer .footer-newsletter {
+    color: $Nwhite;
+
+    h2, a {
+        color: inherit;
+    }
+}
+
 .page-template-ai-wide {
     .wrapper {
         background-color: rgb(246, 247, 249);

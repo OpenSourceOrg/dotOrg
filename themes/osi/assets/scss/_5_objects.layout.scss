@@ -91,9 +91,6 @@
 			.alignfull {
 				@extend %alignfull;
 			}
-			.alignwide.email-block {
-				max-width: none !important;
-			}
 		}
 	}
 
@@ -106,9 +103,6 @@
 			}
 			.alignfull {
 				@extend %alignfull;
-			}
-			.alignwide.email-block {
-				max-width: none !important;
 			}
 		}
 

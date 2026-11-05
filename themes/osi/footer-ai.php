@@ -13,6 +13,7 @@ $footer_block_id = osi_create_or_find_ai_footer_block_content();
 
 	<footer id="colophon" class="footer site-footer ai-footer" role="contentinfo">
 		<?php echo do_shortcode( do_blocks( '<!-- wp:block {"ref":' . absint( $footer_block_id ) . '} /-->' ) ); ?>
+		<?php get_template_part( 'template-parts/footer-newsletter' ); ?>
 		<section class="footer-credits">
 			<div class="footer--inner">
 				<div class="widgetized-footer footer--widgets wp-block-columns alignwide">

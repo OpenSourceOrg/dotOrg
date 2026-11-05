@@ -17,7 +17,7 @@
 	}
 }
 	.footer-main, .footer-credits {
-		padding: $smallPadding 0;
+		padding: 0 0 $smallPadding;
 	}
 
 	.footer-credits {
@@ -48,6 +48,23 @@
 			nav + p {
 				display: none
 			}
+		}
+	}
+
+	.footer-newsletter {
+		display: flow-root;
+		padding: 4em $midPadding 0;
+
+		> * {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: calc(#{$boxedMax} - (2 * #{$maxPadding}));
+		}
+
+		.alignwide {
+			margin-left: auto;
+			margin-right: auto;
+			width: auto;
 		}
 	}
 
