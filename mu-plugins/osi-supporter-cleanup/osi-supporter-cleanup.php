@@ -16,7 +16,7 @@ if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
 class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 
 	/**
-	 * Trashes, or deletes, anonymous, never-edited supporter posts with no endorsement type, link or logo, in batches.
+	 * Trashes, or deletes, never-edited supporter posts with no endorsement type, link or logo, in batches.
 	 *
 	 * ## OPTIONS
 	 *
@@ -128,7 +128,7 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 	}
 
 	/**
-	 * Fetch the next batch of anonymous, never-edited supporter IDs with no endorsement type, link or logo.
+	 * Fetch the next batch of never-edited supporter IDs with no endorsement type, link or logo.
 	 * The endorsement form always sends a type, so a submission without one came from another form.
 	 *
 	 * @param string  $status  Post status to search.
@@ -145,7 +145,7 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 			$ids = $wpdb->get_col(
 				$wpdb->prepare(
 					"SELECT p.ID FROM {$wpdb->posts} p
-					WHERE p.post_type = 'supporter' AND p.post_status = %s AND p.post_author = 0 AND p.ID < %d
+					WHERE p.post_type = 'supporter' AND p.post_status = %s AND p.ID < %d
 					AND NOT EXISTS (
 						SELECT 1 FROM {$wpdb->postmeta} m WHERE m.post_id = p.ID
 						AND m.meta_key IN ( 'endorsement_type', 'link', '_thumbnail_id', '_edit_last' ) AND TRIM( m.meta_value ) NOT IN ( '', '0' )
@@ -160,7 +160,7 @@ class OSI_Supporter_Cleanup_Command extends WP_CLI_Command {
 			$ids = $wpdb->get_col(
 				$wpdb->prepare(
 					"SELECT p.ID FROM {$wpdb->posts} p
-					WHERE p.post_type = 'supporter' AND p.post_status = %s AND p.post_author = 0 AND p.ID > %d
+					WHERE p.post_type = 'supporter' AND p.post_status = %s AND p.ID > %d
 					AND NOT EXISTS (
 						SELECT 1 FROM {$wpdb->postmeta} m WHERE m.post_id = p.ID
 						AND m.meta_key IN ( 'endorsement_type', 'link', '_thumbnail_id', '_edit_last' ) AND TRIM( m.meta_value ) NOT IN ( '', '0' )
