@@ -52,7 +52,7 @@
             "name": "endorsement_type",
             "aria-label": "",
             "type": "radio",
-            "instructions": "From the endorsement form. A supporter without one did not come from that form.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
